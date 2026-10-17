@@ -33,56 +33,7 @@ export interface AgendaTask {
   createdAt: string;
 }
 
-const DEFAULT_TASKS: AgendaTask[] = [
-  {
-    id: 'habit-cleaning',
-    title: 'House Cleaning Every Saturday Afternoon 🔁',
-    category: 'chore',
-    assignee: 'both',
-    timeframe: 'this_week',
-    dueDay: 'Saturday',
-    dueTime: '14:00',
-    completed: false,
-    priority: 'normal',
-    createdAt: '2026-10-17'
-  },
-  {
-    id: 'habit-gym',
-    title: 'Gym at least twice a week 🔁',
-    category: 'reminder',
-    assignee: 'both',
-    timeframe: 'this_week',
-    dueDay: 'Tuesday, Thursday',
-    dueTime: '18:00',
-    completed: false,
-    priority: 'normal',
-    createdAt: '2026-10-17'
-  },
-  {
-    id: 'habit-picnics',
-    title: 'Picnics every weekend 🔁',
-    category: 'date',
-    assignee: 'both',
-    timeframe: 'this_week',
-    dueDay: 'Sunday',
-    dueTime: '11:00',
-    completed: false,
-    priority: 'normal',
-    createdAt: '2026-10-17'
-  },
-  {
-    id: 'habit-badminton',
-    title: 'Badminton Once a week 🔁',
-    category: 'reminder',
-    assignee: 'both',
-    timeframe: 'this_week',
-    dueDay: 'Wednesday',
-    dueTime: '19:00',
-    completed: false,
-    priority: 'normal',
-    createdAt: '2026-10-17'
-  }
-];
+const DEFAULT_TASKS: AgendaTask[] = [];
 
 const CATEGORIES = {
   grocery: { label: 'Grocery', icon: ShoppingCart, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
@@ -105,7 +56,25 @@ export default function AgendaPage() {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('berlyn_agenda_tasks');
       if (saved) {
-        try { return JSON.parse(saved); } catch (e) { /* fallback */ }
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) {
+            const hasMock = parsed.some((it: any) => 
+              it.title?.includes('Buy oat milk') || 
+              it.title?.includes('Deep clean') || 
+              it.title?.includes('Reserve table') || 
+              it.title?.includes('Pick up international') || 
+              it.title?.includes('Water the balcony') || 
+              it.title?.includes('Restock laundry') ||
+              it.id?.startsWith('habit-')
+            );
+            if (hasMock) {
+              localStorage.setItem('berlyn_agenda_tasks', JSON.stringify([]));
+              return [];
+            }
+            return parsed;
+          }
+        } catch (e) { /* fallback */ }
       }
     }
     return DEFAULT_TASKS;

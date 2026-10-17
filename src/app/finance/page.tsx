@@ -149,20 +149,21 @@ export default function FinancePage() {
     const interval = setInterval(fetchRates, 300000); // refresh every 5 mins in background
 
     fetchFinanceData().then((data) => {
-      const cAccs = data.compoundAccounts && data.compoundAccounts.length > 0 ? data.compoundAccounts : INITIAL_COMPOUND_ACCOUNTS;
-      let txs = data.transactions && data.transactions.length > 0 ? data.transactions : INITIAL_TRANSACTIONS;
+      const cAccs = data?.compoundAccounts || [];
+      let txs = data?.transactions || [];
       
       const todayDate = new Date();
       const calYear = todayDate.getFullYear();
       const calMonth = String(todayDate.getMonth() + 1).padStart(2, '0');
       const monthTag = `${calYear}-${calMonth}`;
 
-      // Auto-ensure passive interest transactions exist for active compound accounts whose startDate <= monthTag
-      txs = ensureMonthlyInterestTransactions(txs, cAccs, monthTag);
+      if (cAccs.length > 0) {
+        txs = ensureMonthlyInterestTransactions(txs, cAccs, monthTag);
+      }
 
       setTransactions(txs);
-      if (data.recurringPayments) setRecurringPayments(data.recurringPayments);
-      if (data.assets) setAssets(data.assets);
+      setRecurringPayments(data?.recurringPayments || []);
+      setAssets(data?.assets || []);
       setCompoundAccounts(cAccs);
     });
 
@@ -867,6 +868,11 @@ export default function FinancePage() {
             )}
 
             <div className="space-y-1.5">
+              {incomeList.length === 0 && unloggedMonthlyInterestSelected === 0 && (
+                <div className="p-5 rounded-xl border border-dashed border-white/[0.06] text-center text-slate-500 text-xs">
+                  Henüz bu aya ait gelir kaydı bulunmuyor. ✨
+                </div>
+              )}
               {incomeList.map((t) => (
                 <div
                   key={t.id}
@@ -951,6 +957,11 @@ export default function FinancePage() {
             )}
 
             <div className="space-y-1.5">
+              {expenseList.length === 0 && (
+                <div className="p-5 rounded-xl border border-dashed border-white/[0.06] text-center text-slate-500 text-xs">
+                  Henüz bu aya ait gider kaydı bulunmuyor. ✨
+                </div>
+              )}
               {expenseList.map((t) => (
                 <div
                   key={t.id}
