@@ -20,8 +20,7 @@ export function convertCurrency(
   to: Currency,
   rates: Record<Currency, number> = DEFAULT_KKTC_RATES
 ): number {
-  if (from === to) return amount;
-  // Convert from -> TRY -> to
+  if (from === to || !amount) return amount || 0;
   const amountInTRY = from === 'TRY' ? amount : amount * (rates[from] || DEFAULT_KKTC_RATES[from]);
   const finalAmount = to === 'TRY' ? amountInTRY : amountInTRY / (rates[to] || DEFAULT_KKTC_RATES[to]);
   return finalAmount;
@@ -99,7 +98,7 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
     id: 'a-2',
     name: 'Bileşik Faizli Vadeli Hesap (TRY)',
     category: 'cash_savings',
-    current_value: 400000,
+    current_value: 350000,
     currency: 'TRY',
     target_value: 1000000,
     monthly_contribution: 20000,
@@ -108,19 +107,10 @@ export const INITIAL_ASSETS: InvestmentAsset[] = [
     id: 'a-3',
     name: 'Sterlin Birikim Fonu (GBP)',
     category: 'cash_savings',
-    current_value: 8500,
+    current_value: 6000,
     currency: 'GBP',
     target_value: 20000,
     monthly_contribution: 400,
-  },
-  {
-    id: 'a-4',
-    name: 'Dolar & Endeks Yatırımları (USD)',
-    category: 'stocks',
-    current_value: 14000,
-    currency: 'USD',
-    target_value: 35000,
-    monthly_contribution: 500,
   },
 ];
 
@@ -130,18 +120,18 @@ export const INITIAL_COMPOUND_ACCOUNTS: CompoundInterestAccount[] = [
     name: 'TRY Yüksek Getirili Vadeli Hesap',
     principal: 350000,
     currency: 'TRY',
-    annualRate: 46, // %46 yıllık
+    annualRate: 48, // %48 yıllık
     compoundingFrequency: 'monthly',
     startDate: '2026-03-01',
     withholdingTax: 10, // %10 stopaj
-    note: 'Faiz her ay anaparaya eklenerek bileşik büyüyor',
+    note: 'Faiz her ay anaparaya eklenerek katlanıyor',
   },
   {
     id: 'c-2',
     name: 'İngiliz Sterlini (GBP) Vadeli Fon',
     principal: 6000,
     currency: 'GBP',
-    annualRate: 5.5, // %5.5
+    annualRate: 5.5,
     compoundingFrequency: 'monthly',
     startDate: '2026-04-15',
     withholdingTax: 0,
@@ -169,7 +159,6 @@ export function calculate12MonthTrajectory(account: CompoundInterestAccount): {
   let currentBalance = account.principal;
   let totalInterest = 0;
 
-  // Monthly nominal rate after tax
   const nominalAnnual = account.annualRate / 100;
   const taxMultiplier = 1 - (account.withholdingTax || 0) / 100;
   const monthlyRate = (nominalAnnual / 12) * taxMultiplier;
@@ -190,7 +179,9 @@ export function calculate12MonthTrajectory(account: CompoundInterestAccount): {
     });
   }
 
-  const effectiveYield = ((currentBalance - account.principal) / account.principal) * 100;
+  const effectiveYield = account.principal > 0
+    ? ((currentBalance - account.principal) / account.principal) * 100
+    : 0;
 
   return {
     points,
@@ -199,6 +190,17 @@ export function calculate12MonthTrajectory(account: CompoundInterestAccount): {
     monthlyAveragePassiveIncome: totalInterest / 12,
     effectiveAnnualYield: effectiveYield,
   };
+}
+
+export function calculateTotalMonthlyInterestTRY(
+  accounts: CompoundInterestAccount[],
+  rates: Record<Currency, number> = DEFAULT_KKTC_RATES
+): number {
+  return accounts.reduce((sum, acc) => {
+    const traj = calculate12MonthTrajectory(acc);
+    const inTRY = convertCurrency(traj.monthlyAveragePassiveIncome, acc.currency, 'TRY', rates);
+    return sum + inTRY;
+  }, 0);
 }
 
 export async function fetchFinanceData(): Promise<{
@@ -227,7 +229,7 @@ export async function fetchFinanceData(): Promise<{
   }
 }
 
-function getLocalTransactions(): FinanceItem[] {
+export function getLocalTransactions(): FinanceItem[] {
   try {
     const local = localStorage.getItem('berlyn_finance_tx');
     return local ? JSON.parse(local) : INITIAL_TRANSACTIONS;
@@ -236,7 +238,7 @@ function getLocalTransactions(): FinanceItem[] {
   }
 }
 
-function getLocalAssets(): InvestmentAsset[] {
+export function getLocalAssets(): InvestmentAsset[] {
   try {
     const local = localStorage.getItem('berlyn_finance_assets');
     return local ? JSON.parse(local) : INITIAL_ASSETS;
@@ -270,11 +272,21 @@ export function saveCompoundAccount(account: CompoundInterestAccount): CompoundI
   }
 }
 
+export function deleteCompoundAccount(id: string): CompoundInterestAccount[] {
+  try {
+    const accounts = getLocalCompoundAccounts().filter((a) => a.id !== id);
+    localStorage.setItem('berlyn_compound_accounts', JSON.stringify(accounts));
+    return accounts;
+  } catch {
+    return [];
+  }
+}
+
 export async function saveTransaction(item: Partial<FinanceItem>): Promise<FinanceItem> {
   const newItem: FinanceItem = {
     id: item.id || `f-${Date.now()}`,
     type: item.type || 'expense',
-    title: item.title || 'Masraf',
+    title: item.title || 'İşlem',
     amount: Number(item.amount) || 0,
     currency: item.currency || 'TRY',
     category: item.category || 'Genel',
@@ -284,19 +296,29 @@ export async function saveTransaction(item: Partial<FinanceItem>): Promise<Finan
   };
 
   try {
-    const supabase = createClient();
-    await supabase.from('finance_items').upsert(newItem);
-  } catch {
-    // fallback
-  }
-
-  try {
     const current = getLocalTransactions();
-    const updated = [newItem, ...current.filter((i) => i.id !== newItem.id)];
+    const idx = current.findIndex((i) => i.id === newItem.id);
+    let updated: FinanceItem[];
+    if (idx >= 0) {
+      updated = [...current];
+      updated[idx] = newItem;
+    } else {
+      updated = [newItem, ...current];
+    }
     localStorage.setItem('berlyn_finance_tx', JSON.stringify(updated));
   } catch {
     // ignore
   }
 
   return newItem;
+}
+
+export function deleteTransaction(id: string): FinanceItem[] {
+  try {
+    const current = getLocalTransactions().filter((i) => i.id !== id);
+    localStorage.setItem('berlyn_finance_tx', JSON.stringify(current));
+    return current;
+  } catch {
+    return [];
+  }
 }

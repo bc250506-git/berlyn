@@ -11,19 +11,25 @@ import {
   Sparkles, 
   Coins, 
   Percent, 
-  RefreshCw, 
   BarChart3, 
   Calendar,
   X,
-  CheckCircle2
+  Pencil,
+  Trash2,
+  Info,
+  CheckCircle2,
+  HelpCircle
 } from 'lucide-react';
 import { FinanceItem, InvestmentAsset, CompoundInterestAccount, Currency, CoupleUser } from '@/types';
 import { 
   fetchFinanceData, 
   saveTransaction, 
+  deleteTransaction,
   saveCompoundAccount,
+  deleteCompoundAccount,
   convertCurrency, 
   calculate12MonthTrajectory,
+  calculateTotalMonthlyInterestTRY,
   CURRENCY_SYMBOLS,
   DEFAULT_KKTC_RATES,
   INITIAL_TRANSACTIONS,
@@ -35,9 +41,6 @@ import { formatDateDDMMYYYY } from '@/lib/date';
 import confetti from 'canvas-confetti';
 
 interface KKTCBankRateInfo {
-  source: string;
-  bankDate: string;
-  lastUpdated: string;
   rates: Record<Currency, number>;
 }
 
@@ -47,14 +50,8 @@ export default function FinancePage() {
   // Currency selection: Default is TRY
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>('TRY');
 
-  // KKTC Merkez Bankası Live Rates
-  const [bankInfo, setBankInfo] = useState<KKTCBankRateInfo>({
-    source: 'KKTC MB',
-    bankDate: '19.10.2026',
-    lastUpdated: '17.10.2026 11:34',
-    rates: DEFAULT_KKTC_RATES,
-  });
-  const [isRefreshingRates, setIsRefreshingRates] = useState(false);
+  // Background KKTC MB live rates (Silent auto-fetch)
+  const [liveRates, setLiveRates] = useState<Record<Currency, number>>(DEFAULT_KKTC_RATES);
 
   // Data states
   const [transactions, setTransactions] = useState<FinanceItem[]>(INITIAL_TRANSACTIONS);
@@ -62,11 +59,12 @@ export default function FinancePage() {
   const [compoundAccounts, setCompoundAccounts] = useState<CompoundInterestAccount[]>(INITIAL_COMPOUND_ACCOUNTS);
   const [selectedCompoundId, setSelectedCompoundId] = useState<string>(INITIAL_COMPOUND_ACCOUNTS[0]?.id || 'c-1');
 
-  // Tabs: overview | compound | simulation | transactions
-  const [activeTab, setActiveTab] = useState<'overview' | 'compound' | 'simulation' | 'transactions'>('overview');
+  // Tabs: compound | overview | simulation | transactions
+  const [activeTab, setActiveTab] = useState<'compound' | 'overview' | 'simulation' | 'transactions'>('compound');
 
-  // New Transaction Modal State
-  const [showAddTxModal, setShowAddTxModal] = useState(false);
+  // Transaction Modal State (Add or Edit)
+  const [showTxModal, setShowTxModal] = useState(false);
+  const [editingTxId, setEditingTxId] = useState<string | null>(null);
   const [txTitle, setTxTitle] = useState('');
   const [txAmount, setTxAmount] = useState('');
   const [txCurrency, setTxCurrency] = useState<Currency>('TRY');
@@ -74,40 +72,38 @@ export default function FinancePage() {
   const [txCategory, setTxCategory] = useState('Market & Yemek');
   const [txUser, setTxUser] = useState<CoupleUser | 'shared'>('shared');
 
-  // New Compound Account Modal State
-  const [showAddCompoundModal, setShowAddCompoundModal] = useState(false);
+  // Compound Account Modal State (Add or Edit)
+  const [showCompoundModal, setShowCompoundModal] = useState(false);
+  const [editingCompoundId, setEditingCompoundId] = useState<string | null>(null);
   const [cpName, setCpName] = useState('');
-  const [cpPrincipal, setCpPrincipal] = useState('200000');
+  const [cpPrincipal, setCpPrincipal] = useState('350000');
   const [cpCurrency, setCpCurrency] = useState<Currency>('TRY');
   const [cpRate, setCpRate] = useState('48');
   const [cpTax, setCpTax] = useState('10');
   const [cpNote, setCpNote] = useState('Aylık faiz anaparaya eklenerek katlanıyor');
 
-  // Simulation parameters (in TRY by default)
+  // Realistic Simulation parameters (in TRY)
   const [simMonthlyTRY, setSimMonthlyTRY] = useState<number>(35000); // 35,000 TRY/month
-  const [simAnnualReturn, setSimAnnualReturn] = useState<number>(30); // 30% balanced TRY yield
+  const [simAnnualReturn, setSimAnnualReturn] = useState<number>(25); // 25% net annual compound yield
 
-  // Fetch KKTC MB live rates
-  const loadRates = async () => {
-    setIsRefreshingRates(true);
-    try {
-      const res = await fetch('/api/finance/rates');
-      if (res.ok) {
-        const data = await res.json();
-        if (data.rates) {
-          setBankInfo(data);
-        }
-      }
-    } catch {
-      // ignore
-    } finally {
-      setIsRefreshingRates(false);
-    }
-  };
-
+  // Auto-fetch KKTC rates in background silently
   useEffect(() => {
-    loadRates();
-    const interval = setInterval(loadRates, 60000); // refresh every minute
+    const fetchRates = async () => {
+      try {
+        const res = await fetch('/api/finance/rates');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.rates) {
+            setLiveRates(data.rates);
+          }
+        }
+      } catch {
+        // silent fallback
+      }
+    };
+
+    fetchRates();
+    const interval = setInterval(fetchRates, 300000); // refresh every 5 mins in background
 
     fetchFinanceData().then((data) => {
       if (data.transactions) setTransactions(data.transactions);
@@ -121,38 +117,61 @@ export default function FinancePage() {
   }, []);
 
   const symbol = CURRENCY_SYMBOLS[selectedCurrency];
-  const liveRates = bankInfo.rates;
 
-  // Total Net Worth calculated in selected currency
+  // Total Monthly Compound Interest calculated from active accounts (in TRY then converted)
+  const totalMonthlyInterestTRY = calculateTotalMonthlyInterestTRY(compoundAccounts, liveRates);
+  const totalMonthlyInterestSelected = convertCurrency(totalMonthlyInterestTRY, 'TRY', selectedCurrency, liveRates);
+
+  // Total Net Worth
   const totalNetWorthTRY = assets.reduce((sum, a) => {
     return sum + convertCurrency(a.current_value, a.currency, 'TRY', liveRates);
   }, 0);
   const totalNetWorth = convertCurrency(totalNetWorthTRY, 'TRY', selectedCurrency, liveRates);
 
-  // Monthly Income & Expense
-  const monthlyIncome = transactions
+  // Monthly Income (Manual Transactions + Automatic Interest Income)
+  const manualMonthlyIncome = transactions
     .filter((t) => t.type === 'income')
     .reduce((sum, t) => sum + convertCurrency(t.amount, t.currency, selectedCurrency, liveRates), 0);
 
-  const monthlyExpense = transactions
+  const totalMonthlyIncome = manualMonthlyIncome + totalMonthlyInterestSelected;
+
+  // Monthly Expense
+  const totalMonthlyExpense = transactions
     .filter((t) => t.type === 'expense')
     .reduce((sum, t) => sum + convertCurrency(t.amount, t.currency, selectedCurrency, liveRates), 0);
 
-  const monthlySavings = monthlyIncome - monthlyExpense;
-  const savingsRate = monthlyIncome > 0 ? Math.round((monthlySavings / monthlyIncome) * 100) : 0;
+  // Monthly Investments
+  const totalMonthlyInvestments = transactions
+    .filter((t) => t.type === 'investment')
+    .reduce((sum, t) => sum + convertCurrency(t.amount, t.currency, selectedCurrency, liveRates), 0);
 
-  // 5-Year compound projection in selected currency
-  const calculate5YearProjection = (years: number) => {
+  const monthlySavings = totalMonthlyIncome - totalMonthlyExpense;
+  const savingsRate = totalMonthlyIncome > 0 ? Math.round((monthlySavings / totalMonthlyIncome) * 100) : 0;
+
+  // Realistic 5-Year Calculation Breakdown:
+  // 1. Principal saved directly from pocket: P + (PMT * 12 * years)
+  // 2. Compounded return on initial P and regular additions
+  const calculateRealistic5Year = (years: number) => {
     const r = simAnnualReturn / 100;
     const n = 12;
     const P = totalNetWorthTRY;
     const PMT = simMonthlyTRY;
 
+    // Direct out-of-pocket savings
+    const pocketPrincipal = P + (PMT * 12 * years);
+
+    // Compound interest on starting principal + monthly payments
     const compoundP = P * Math.pow(1 + r / n, n * years);
     const compoundPMT = PMT * ((Math.pow(1 + r / n, n * years) - 1) / (r / n));
     const totalTRY = compoundP + compoundPMT;
 
-    return convertCurrency(totalTRY, 'TRY', selectedCurrency, liveRates);
+    const interestProfitTRY = Math.max(0, totalTRY - pocketPrincipal);
+
+    return {
+      total: convertCurrency(totalTRY, 'TRY', selectedCurrency, liveRates),
+      pocketPrincipal: convertCurrency(pocketPrincipal, 'TRY', selectedCurrency, liveRates),
+      interestProfit: convertCurrency(interestProfitTRY, 'TRY', selectedCurrency, liveRates),
+    };
   };
 
   // Selected Compound Account Trajectory
@@ -162,12 +181,13 @@ export default function FinancePage() {
     ? calculate12MonthTrajectory(activeCompoundAccount)
     : null;
 
-  // Add Transaction Handler
-  const handleAddTx = async (e: React.FormEvent) => {
+  // Handle Save Transaction (Add or Edit)
+  const handleSaveTx = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!txTitle.trim() || !txAmount) return;
 
-    const newTx: Partial<FinanceItem> = {
+    const item: Partial<FinanceItem> = {
+      id: editingTxId || undefined,
       title: txTitle,
       amount: parseFloat(txAmount),
       currency: txCurrency,
@@ -178,22 +198,45 @@ export default function FinancePage() {
       recurring: false,
     };
 
-    const saved = await saveTransaction(newTx);
-    setTransactions([saved, ...transactions]);
-    setShowAddTxModal(false);
+    const saved = await saveTransaction(item);
+    if (editingTxId) {
+      setTransactions(transactions.map((t) => (t.id === saved.id ? saved : t)));
+    } else {
+      setTransactions([saved, ...transactions]);
+    }
+
+    setShowTxModal(false);
+    setEditingTxId(null);
     setTxTitle('');
     setTxAmount('');
-
-    confetti({ particleCount: 35, spread: 45, origin: { y: 0.6 } });
+    confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
-  // Add Compound Account Handler
-  const handleAddCompound = (e: React.FormEvent) => {
+  const handleEditTx = (tx: FinanceItem) => {
+    setEditingTxId(tx.id);
+    setTxTitle(tx.title);
+    setTxAmount(tx.amount.toString());
+    setTxCurrency(tx.currency);
+    setTxType(tx.type);
+    setTxCategory(tx.category);
+    setTxUser(tx.user);
+    setShowTxModal(true);
+  };
+
+  const handleDeleteTx = (id: string) => {
+    if (confirm('Bu işlemi silmek istediğinden emin misin?')) {
+      const updated = deleteTransaction(id);
+      setTransactions(updated);
+    }
+  };
+
+  // Handle Save Compound Account (Add or Edit)
+  const handleSaveCompound = (e: React.FormEvent) => {
     e.preventDefault();
     if (!cpName.trim() || !cpPrincipal || !cpRate) return;
 
-    const newAcc: CompoundInterestAccount = {
-      id: `c-${Date.now()}`,
+    const account: CompoundInterestAccount = {
+      id: editingCompoundId || `c-${Date.now()}`,
       name: cpName,
       principal: parseFloat(cpPrincipal),
       currency: cpCurrency,
@@ -204,44 +247,44 @@ export default function FinancePage() {
       note: cpNote,
     };
 
-    const updated = saveCompoundAccount(newAcc);
+    const updated = saveCompoundAccount(account);
     setCompoundAccounts(updated);
-    setSelectedCompoundId(newAcc.id);
-    setShowAddCompoundModal(false);
+    setSelectedCompoundId(account.id);
+    setShowCompoundModal(false);
+    setEditingCompoundId(null);
     setCpName('');
-
-    confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+    confetti({ particleCount: 40, spread: 50, origin: { y: 0.6 } });
   };
+
+  const handleEditCompound = (acc: CompoundInterestAccount) => {
+    setEditingCompoundId(acc.id);
+    setCpName(acc.name);
+    setCpPrincipal(acc.principal.toString());
+    setCpCurrency(acc.currency);
+    setCpRate(acc.annualRate.toString());
+    setCpTax(acc.withholdingTax.toString());
+    setCpNote(acc.note || '');
+    setShowCompoundModal(true);
+  };
+
+  const handleDeleteCompound = (id: string) => {
+    if (confirm('Bu faiz hesabını silmek istediğinden emin misin?')) {
+      const updated = deleteCompoundAccount(id);
+      setCompoundAccounts(updated);
+      if (updated.length > 0) {
+        setSelectedCompoundId(updated[0].id);
+      }
+    }
+  };
+
+  // Split transactions for clean separate presentation
+  const incomeList = transactions.filter((t) => t.type === 'income');
+  const expenseList = transactions.filter((t) => t.type === 'expense');
+  const investmentList = transactions.filter((t) => t.type === 'investment');
 
   return (
     <div className="space-y-4 animate-fade-in pb-16">
-      {/* 1. KKTC Merkez Bankası Live Rate Bar */}
-      <div className="bg-[#121824] border border-white/[0.08] rounded-2xl p-3 flex items-center justify-between text-xs">
-        <div className="space-y-0.5">
-          <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-semibold text-slate-300">KKTC Merkez Bankası Canlı Kuru</span>
-            <span>•</span>
-            <span>{bankInfo.lastUpdated}</span>
-          </div>
-          <div className="flex items-center gap-3 font-mono font-bold text-xs text-white pt-0.5">
-            <span>$1 = {bankInfo.rates.USD.toFixed(2)}₺</span>
-            <span className="text-slate-600">|</span>
-            <span>£1 = {bankInfo.rates.GBP.toFixed(2)}₺</span>
-          </div>
-        </div>
-
-        <button
-          onClick={loadRates}
-          disabled={isRefreshingRates}
-          className="p-2 rounded-xl bg-[#161e2c] border border-white/[0.08] text-slate-400 hover:text-white transition-colors cursor-pointer"
-          title="Kurları Yenile"
-        >
-          <RefreshCw className={`w-3.5 h-3.5 ${isRefreshingRates ? 'animate-spin text-rose-400' : ''}`} />
-        </button>
-      </div>
-
-      {/* 2. Top Net Worth Card & Currency Selector (Default: TRY) */}
+      {/* 1. Main Overview Card (Default: TRY, Currency Toggle: TRY, USD, GBP) */}
       <div className="card-cozy p-5 space-y-4">
         <div className="flex items-center justify-between">
           <span className="text-xs text-rose-400 font-bold uppercase tracking-wide flex items-center gap-1.5">
@@ -249,7 +292,7 @@ export default function FinancePage() {
             <span>Ortak Finansal Yuva</span>
           </span>
 
-          {/* Currency Toggle: TRY (Varsayılan), USD, GBP */}
+          {/* Currency Toggle */}
           <div className="flex items-center gap-1 bg-[#161e2c] p-1 rounded-xl border border-white/[0.08]">
             {(['TRY', 'USD', 'GBP'] as Currency[]).map((c) => (
               <button
@@ -267,7 +310,7 @@ export default function FinancePage() {
           </div>
         </div>
 
-        {/* Net Worth */}
+        {/* Total Net Worth */}
         <div>
           <span className="text-[11px] text-slate-400 font-medium">Toplam Ortak Varlığımız</span>
           <div className="text-3xl font-extrabold text-white tracking-tight font-mono mt-0.5">
@@ -275,43 +318,53 @@ export default function FinancePage() {
           </div>
         </div>
 
-        {/* Monthly Income / Expense */}
+        {/* Monthly Incomes & Expenses (Includes auto-calculated interest income!) */}
         <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06] text-xs">
           <div className="bg-[#161e2c] p-2.5 rounded-xl border border-white/[0.04]">
             <div className="flex items-center gap-1 text-[10px] text-emerald-400 font-semibold mb-0.5">
               <ArrowUpRight className="w-3 h-3" />
-              <span>Aylık Gelir</span>
+              <span>Aylık Toplam Gelir</span>
             </div>
             <div className="font-mono font-bold text-white text-xs">
-              +{symbol}{Math.round(monthlyIncome).toLocaleString()}
+              +{symbol}{Math.round(totalMonthlyIncome).toLocaleString()}
             </div>
           </div>
 
           <div className="bg-[#161e2c] p-2.5 rounded-xl border border-white/[0.04]">
             <div className="flex items-center gap-1 text-[10px] text-rose-400 font-semibold mb-0.5">
               <ArrowDownRight className="w-3 h-3" />
-              <span>Aylık Gider</span>
+              <span>Aylık Toplam Gider</span>
             </div>
             <div className="font-mono font-bold text-white text-xs">
-              -{symbol}{Math.round(monthlyExpense).toLocaleString()}
+              -{symbol}{Math.round(totalMonthlyExpense).toLocaleString()}
             </div>
           </div>
         </div>
 
-        {/* Savings indicator */}
+        {/* Indicator 1: Ortak Tasarruf Oranımız */}
         <div className="flex items-center justify-between text-[11px] bg-[#141b28] px-3 py-2 rounded-xl border border-white/[0.06]">
           <span className="text-slate-300 font-medium">Ortak Tasarruf Oranımız:</span>
-          <span className="text-emerald-400 font-mono font-bold">%{savingsRate} (Tasarruf: {symbol}{Math.round(monthlySavings).toLocaleString()})</span>
+          <span className="text-emerald-400 font-mono font-bold">
+            %{savingsRate} (Tasarruf: {symbol}{Math.round(monthlySavings).toLocaleString()})
+          </span>
+        </div>
+
+        {/* Indicator 2: Aylık Yatırım & Faiz Gelirimiz (Same design requested) */}
+        <div className="flex items-center justify-between text-[11px] bg-[#141b28] px-3 py-2 rounded-xl border border-white/[0.06]">
+          <span className="text-slate-300 font-medium">Aylık Yatırım & Faiz Gelirimiz:</span>
+          <span className="text-amber-400 font-mono font-bold">
+            +{symbol}{Math.round(totalMonthlyInterestSelected).toLocaleString()} / ay (Pasif Nakit Akışı)
+          </span>
         </div>
       </div>
 
-      {/* 3. Sub Tabs (Faiz Getirisi, Varlık Dağılımı, 5 Yıllık Projeksiyon, Gelir-Gider) */}
+      {/* 2. Sub Tabs Navigation */}
       <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
         {[
           { id: 'compound', label: '📈 Faiz Getirisi (Bileşik)' },
+          { id: 'transactions', label: 'Gelir & Giderler' },
           { id: 'overview', label: 'Varlık Dağılımı' },
           { id: 'simulation', label: '5 Yıl Gelecek' },
-          { id: 'transactions', label: 'Gelir & Giderler' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -328,23 +381,31 @@ export default function FinancePage() {
       </div>
 
       {/* ======================================================== */}
-      {/* TAB 1: FAİZ GETİRİSİ (BİLEŞİK FAİZ HESAPLAMA & TRAJECTORY) */}
+      {/* TAB 1: FAİZ GETİRİSİ (BİLEŞİK FAİZ & TRAJECTORY GRAFİĞİ) */}
       {/* ======================================================== */}
       {activeTab === 'compound' && (
         <div className="space-y-3">
-          <div className="card-cozy p-4 space-y-2">
+          {/* Header & Account Pills */}
+          <div className="card-cozy p-4 space-y-2.5">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-xs font-bold text-white flex items-center gap-1.5">
                   <Percent className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Bileşik Faiz Getirisi & Katlanma Motoru</span>
+                  <span>Bileşik Faiz Getirisi Motoru</span>
                 </h3>
                 <p className="text-[10px] text-slate-400">
-                  Faiz her ay anaparanın üzerine eklenerek büyür (Bileşik Kartopu)
+                  Faiz her ay anaparanın üzerine eklenerek katlanır (Bileşik Kartopu)
                 </p>
               </div>
               <button
-                onClick={() => setShowAddCompoundModal(true)}
+                onClick={() => {
+                  setEditingCompoundId(null);
+                  setCpName('');
+                  setCpPrincipal('350000');
+                  setCpRate('48');
+                  setCpTax('10');
+                  setShowCompoundModal(true);
+                }}
                 className="px-2.5 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 hover:bg-amber-500 hover:text-white text-[11px] font-semibold transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <Plus className="w-3 h-3" />
@@ -353,18 +414,18 @@ export default function FinancePage() {
             </div>
 
             {/* Account Selector Pills */}
-            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pt-2">
+            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pt-1">
               {compoundAccounts.map((acc) => (
                 <button
                   key={acc.id}
                   onClick={() => setSelectedCompoundId(acc.id)}
-                  className={`px-2.5 py-1 rounded-xl text-[11px] font-medium whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                     activeCompoundAccount?.id === acc.id
                       ? 'bg-amber-500 text-slate-900 font-bold'
                       : 'bg-[#161e2c] border border-white/[0.06] text-slate-400 hover:text-white'
                   }`}
                 >
-                  {acc.name} ({acc.annualRate}% {acc.currency})
+                  {acc.name} (%{acc.annualRate} {acc.currency})
                 </button>
               ))}
             </div>
@@ -372,22 +433,37 @@ export default function FinancePage() {
 
           {activeCompoundAccount && trajectory && (
             <div className="card-cozy p-5 space-y-4">
-              {/* Account Summary Stats */}
+              {/* Account Card Header with Edit/Delete */}
               <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Başlangıç Anaparası</span>
-                  <div className="font-mono text-lg font-bold text-white">
-                    {CURRENCY_SYMBOLS[activeCompoundAccount.currency]}
-                    {activeCompoundAccount.principal.toLocaleString()}
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-white">{activeCompoundAccount.name}</span>
+                    <button
+                      onClick={() => handleEditCompound(activeCompoundAccount)}
+                      className="text-slate-400 hover:text-amber-400"
+                      title="Hesabı Düzenle"
+                    >
+                      <Pencil className="w-3 h-3" />
+                    </button>
+                    {compoundAccounts.length > 1 && (
+                      <button
+                        onClick={() => handleDeleteCompound(activeCompoundAccount.id)}
+                        className="text-slate-400 hover:text-rose-400"
+                        title="Hesabı Sil"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    )}
                   </div>
-                  <span className="text-[10px] text-amber-400 font-medium">
-                    Yıllık %{activeCompoundAccount.annualRate} • Net Stopaj: %{activeCompoundAccount.withholdingTax}
-                  </span>
+                  <div className="text-[10px] text-amber-400 font-medium mt-0.5">
+                    Anapara: {CURRENCY_SYMBOLS[activeCompoundAccount.currency]}
+                    {activeCompoundAccount.principal.toLocaleString()} • Yıllık %{activeCompoundAccount.annualRate} • Net Stopaj: %{activeCompoundAccount.withholdingTax}
+                  </div>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[10px] text-slate-400 uppercase font-semibold">1 Yıl Sonu Toplam Bakiye</span>
-                  <div className="font-mono text-xl font-extrabold text-emerald-400">
+                  <span className="text-[10px] text-slate-400 uppercase font-semibold">1 Yıl Sonu Bakiye</span>
+                  <div className="font-mono text-lg font-extrabold text-emerald-400">
                     {CURRENCY_SYMBOLS[activeCompoundAccount.currency]}
                     {Math.round(trajectory.finalBalance).toLocaleString()}
                   </div>
@@ -398,7 +474,7 @@ export default function FinancePage() {
                 </div>
               </div>
 
-              {/* Monthly Passive Income Badge */}
+              {/* Passive Income Breakdown */}
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="bg-[#161e2c] p-2.5 rounded-xl border border-white/[0.04]">
                   <span className="text-[10px] text-slate-400 block">Aylık Ortalama Pasif Getiri</span>
@@ -415,7 +491,7 @@ export default function FinancePage() {
                 </div>
               </div>
 
-              {/* Visual 1-Year Monthly Trajectory Chart (Bars) */}
+              {/* 1-Year Monthly Trajectory Chart (Fixed Heights & Clear Render) */}
               <div className="space-y-2 pt-2">
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-300 font-bold flex items-center gap-1.5">
@@ -425,41 +501,52 @@ export default function FinancePage() {
                   <span className="text-[10px] text-slate-500 font-mono">12 Ay</span>
                 </div>
 
-                {/* Bar Graph Simulation */}
-                <div className="h-28 flex items-end justify-between gap-1 bg-[#141b28] p-3 rounded-2xl border border-white/[0.06]">
-                  {trajectory.points.map((pt) => {
-                    const maxBal = trajectory.finalBalance;
-                    const minBal = activeCompoundAccount.principal * 0.9;
-                    const heightPercent = Math.max(
-                      15,
-                      Math.round(((pt.endingBalance - minBal) / (maxBal - minBal)) * 100)
-                    );
+                {/* Explicit Height Bar Graph */}
+                <div className="bg-[#141b28] p-3 rounded-2xl border border-white/[0.06] space-y-2">
+                  <div className="h-28 flex items-end justify-between gap-1.5 w-full">
+                    {trajectory.points.map((pt) => {
+                      const maxBal = trajectory.finalBalance;
+                      const minBal = activeCompoundAccount.principal * 0.95;
+                      const ratio = (pt.endingBalance - minBal) / (maxBal - minBal);
+                      const heightPx = Math.max(16, Math.min(96, Math.round(ratio * 96)));
 
-                    return (
-                      <div key={pt.month} className="flex-1 flex flex-col items-center gap-1 group relative">
-                        {/* Tooltip on hover/touch */}
-                        <div className="hidden group-hover:block absolute bottom-full mb-1.5 p-1.5 bg-[#090d16] border border-white/20 rounded-lg text-[9px] font-mono whitespace-nowrap z-20 text-white shadow-xl">
-                          <div>Ay {pt.month}</div>
-                          <div className="text-emerald-400">+{Math.round(pt.monthlyInterest)} faiz</div>
-                          <div>{Math.round(pt.endingBalance)} top</div>
-                        </div>
-
-                        {/* Bar */}
+                      return (
                         <div
-                          className="w-full bg-gradient-to-t from-amber-500 to-rose-500 rounded-t-md transition-all group-hover:brightness-125"
-                          style={{ height: `${heightPercent}%` }}
-                        />
-                        <span className="text-[9px] text-slate-500 font-mono">{pt.month}</span>
-                      </div>
-                    );
-                  })}
+                          key={pt.month}
+                          className="flex-1 flex flex-col justify-end items-center h-full group relative"
+                        >
+                          {/* Tooltip */}
+                          <div className="hidden group-hover:block absolute bottom-full mb-1.5 p-1.5 bg-[#090d16] border border-white/20 rounded-lg text-[9px] font-mono whitespace-nowrap z-30 text-white shadow-xl pointer-events-none">
+                            <div className="font-bold">{pt.month}. Ay</div>
+                            <div className="text-emerald-400">+{Math.round(pt.monthlyInterest).toLocaleString()} faiz</div>
+                            <div>{Math.round(pt.endingBalance).toLocaleString()} bakiye</div>
+                          </div>
+
+                          {/* Bar with explicit px height */}
+                          <div
+                            className="w-full max-w-[18px] bg-gradient-to-t from-amber-600 via-amber-500 to-rose-500 rounded-t-md transition-all group-hover:brightness-125"
+                            style={{ height: `${heightPx}px` }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Month Numbers Row */}
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono pt-1 border-t border-white/[0.06]">
+                    {trajectory.points.map((pt) => (
+                      <span key={pt.month} className="flex-1 text-center">
+                        {pt.month}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Trajectory Table / Breakdown */}
-              <div className="space-y-1 pt-1">
-                <span className="text-[11px] font-bold text-slate-300">Aylık Bileşik Döküm (İlk 6 Ay & Yıl Sonu)</span>
-                <div className="space-y-1.5 text-[11px]">
+              {/* Trajectory Breakdown Summary */}
+              <div className="space-y-1.5 pt-1 text-[11px]">
+                <span className="font-bold text-slate-300">Aylık Bileşik İlerleme Dökümü</span>
+                <div className="space-y-1">
                   {[trajectory.points[0], trajectory.points[2], trajectory.points[5], trajectory.points[11]].map(
                     (pt) => (
                       <div
@@ -473,7 +560,7 @@ export default function FinancePage() {
                             {Math.round(pt.endingBalance).toLocaleString()}
                           </span>
                           <span className="text-[9px] text-emerald-400 font-mono block">
-                            (Bu ay +{Math.round(pt.monthlyInterest).toLocaleString()})
+                            (+{Math.round(pt.monthlyInterest).toLocaleString()} net faiz)
                           </span>
                         </div>
                       </div>
@@ -487,16 +574,202 @@ export default function FinancePage() {
       )}
 
       {/* ======================================================== */}
-      {/* TAB 2: VARLIK DAĞILIMI (PORTFÖY)                         */}
+      {/* TAB 2: GELİR & GİDERLER (AYRI BAŞLIKLAR & OTOMATİK FAİZ)  */}
+      {/* ======================================================== */}
+      {activeTab === 'transactions' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-xs font-bold text-white">Gelir, Gider & Yatırım Dökümü</span>
+            <button
+              onClick={() => {
+                setEditingTxId(null);
+                setTxTitle('');
+                setTxAmount('');
+                setShowTxModal(true);
+              }}
+              className="text-[11px] text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1 cursor-pointer"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Yeni İşlem</span>
+            </button>
+          </div>
+
+          {/* Section 1: GELİRLER */}
+          <div className="card-cozy p-4 space-y-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+              <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                <ArrowUpRight className="w-4 h-4" />
+                <span>Aylık Gelirlerimiz</span>
+              </span>
+              <span className="font-mono text-xs font-bold text-emerald-400">
+                +{symbol}{Math.round(totalMonthlyIncome).toLocaleString()}
+              </span>
+            </div>
+
+            {/* Automatic Compound Interest Income Row */}
+            {totalMonthlyInterestSelected > 0 && (
+              <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-between text-xs">
+                <div>
+                  <div className="font-bold text-amber-300 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Aylık Vadeli Faiz Getirisi</span>
+                  </div>
+                  <span className="text-[10px] text-amber-400/80">
+                    Faiz hesaplarından otomatik hesaplanan pasif getiri
+                  </span>
+                </div>
+                <div className="font-mono font-bold text-amber-300 text-xs">
+                  +{symbol}{Math.round(totalMonthlyInterestSelected).toLocaleString()}
+                </div>
+              </div>
+            )}
+
+            {/* Income items */}
+            <div className="space-y-1.5">
+              {incomeList.map((t) => (
+                <div
+                  key={t.id}
+                  className="p-2.5 rounded-xl bg-[#161e2c] border border-white/[0.04] flex items-center justify-between text-xs group"
+                >
+                  <div>
+                    <div className="font-bold text-white text-xs">{t.title}</div>
+                    <div className="text-[10px] text-slate-400">
+                      {t.user === 'berk' ? '🦁 Berk' : t.user === 'jaquilyn' ? '🌸 Jaq' : '🤝 Ortak'} • {t.category} • {formatDateDDMMYYYY(t.date)}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono font-bold text-emerald-400 text-xs">
+                      +{CURRENCY_SYMBOLS[t.currency]}{t.amount.toLocaleString()}
+                    </span>
+                    <button
+                      onClick={() => handleEditTx(t)}
+                      className="text-slate-500 hover:text-white p-1"
+                      title="Düzenle"
+                    >
+                      <Pencil className="w-3 h-3" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteTx(t.id)}
+                      className="text-slate-500 hover:text-rose-400 p-1"
+                      title="Sil"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 2: GİDERLER */}
+          <div className="card-cozy p-4 space-y-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+              <span className="text-xs font-bold text-rose-400 flex items-center gap-1.5">
+                <ArrowDownRight className="w-4 h-4" />
+                <span>Aylık Giderlerimiz</span>
+              </span>
+              <span className="font-mono text-xs font-bold text-rose-400">
+                -{symbol}{Math.round(totalMonthlyExpense).toLocaleString()}
+              </span>
+            </div>
+
+            <div className="space-y-1.5">
+              {expenseList.map((t) => (
+                <div
+                  key={t.id}
+                  className="p-2.5 rounded-xl bg-[#161e2c] border border-white/[0.04] flex items-center justify-between text-xs group"
+                >
+                  <div>
+                    <div className="font-bold text-white text-xs">{t.title}</div>
+                    <div className="text-[10px] text-slate-400">
+                      {t.user === 'berk' ? '🦁 Berk' : t.user === 'jaquilyn' ? '🌸 Jaq' : '🤝 Ortak'} • {t.category} • {formatDateDDMMYYYY(t.date)}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono font-bold text-rose-400 text-xs">
+                      -{CURRENCY_SYMBOLS[t.currency]}{t.amount.toLocaleString()}
+                    </span>
+                    <button
+                      onClick={() => handleEditTx(t)}
+                      className="text-slate-500 hover:text-white p-1"
+                      title="Düzenle"
+                    >
+                      <Pencil className="w-3 h-3" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteTx(t.id)}
+                      className="text-slate-500 hover:text-rose-400 p-1"
+                      title="Sil"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 3: YATIRIMLAR */}
+          <div className="card-cozy p-4 space-y-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+              <span className="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                <Coins className="w-4 h-4" />
+                <span>Yatırımlarımız & Birikim Aktarımları</span>
+              </span>
+              <span className="font-mono text-xs font-bold text-amber-400">
+                {symbol}{Math.round(totalMonthlyInvestments).toLocaleString()}
+              </span>
+            </div>
+
+            <div className="space-y-1.5">
+              {investmentList.map((t) => (
+                <div
+                  key={t.id}
+                  className="p-2.5 rounded-xl bg-[#161e2c] border border-white/[0.04] flex items-center justify-between text-xs group"
+                >
+                  <div>
+                    <div className="font-bold text-white text-xs">{t.title}</div>
+                    <div className="text-[10px] text-slate-400">
+                      {t.user === 'berk' ? '🦁 Berk' : t.user === 'jaquilyn' ? '🌸 Jaq' : '🤝 Ortak'} • {t.category} • {formatDateDDMMYYYY(t.date)}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono font-bold text-amber-400 text-xs">
+                      {CURRENCY_SYMBOLS[t.currency]}{t.amount.toLocaleString()}
+                    </span>
+                    <button
+                      onClick={() => handleEditTx(t)}
+                      className="text-slate-500 hover:text-white p-1"
+                      title="Düzenle"
+                    >
+                      <Pencil className="w-3 h-3" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteTx(t.id)}
+                      className="text-slate-500 hover:text-rose-400 p-1"
+                      title="Sil"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* TAB 3: VARLIK DAĞILIMI (PORTFÖY)                         */}
       {/* ======================================================== */}
       {activeTab === 'overview' && (
         <div className="space-y-3">
           <div className="flex items-center justify-between px-1">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <PieChart className="w-3.5 h-3.5 text-amber-400" />
-              <span>Yatırımlar & Portföyümüz</span>
+              <span>Varlık Dağılımı & Portföyümüz</span>
             </span>
-            <span className="text-[10px] text-slate-400 font-mono">{assets.length} Varlık Kalemi</span>
+            <span className="text-[10px] text-slate-400 font-mono">{assets.length} Kalem</span>
           </div>
 
           <div className="space-y-2.5">
@@ -551,17 +824,30 @@ export default function FinancePage() {
       )}
 
       {/* ======================================================== */}
-      {/* TAB 3: 5 YILLIK PROJEKSİYON                              */}
+      {/* TAB 4: 5 YILLIK PROJEKSİYON (ŞEFFAF VE GERÇEKÇİ HESAP)  */}
       {/* ======================================================== */}
       {activeTab === 'simulation' && (
         <div className="card-cozy p-5 space-y-4">
           <div className="space-y-1">
             <div className="flex items-center gap-1.5 text-xs text-amber-400 font-bold uppercase tracking-wide">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>5 Yıl Sonra Nerede Olacağız?</span>
+              <span>5 Yıllık Gelecek & Servet Projeksiyonu</span>
             </div>
             <p className="text-[11px] text-slate-400">
-              Aylık düzenli tasarruf ve bileşik büyüme ile 5 yıllık ortak servet projeksiyonu
+              Şeffaf matematiksel model: Cebimizden çıkan birikim ve bileşik getiri katkısı
+            </p>
+          </div>
+
+          {/* Mathematical Explanation Alert Box */}
+          <div className="p-3 rounded-2xl bg-[#161e2c] border border-white/[0.06] text-[11px] text-slate-300 space-y-1">
+            <div className="font-semibold text-amber-300 flex items-center gap-1">
+              <Info className="w-3.5 h-3.5" />
+              <span>Bu Rakamlar Neye Göre Hesaplanıyor?</span>
+            </div>
+            <p className="text-slate-400 leading-relaxed text-[10px]">
+              <strong>1. Cebimizden Çıkan Tasarruf:</strong> Mevcut anapara + (Aylık Tasarruf × 12 Ay × Yıl). Bu tutar sıfır riskli, kendi emeğimizle biriken paradır.
+              <br />
+              <strong>2. Bileşik Yatırım Getirisi:</strong> Her ay düzenli biriken paranın ve anaparanın seçtiğin yıllık getiri oranıyla (%{simAnnualReturn}) faiz ve fonlarda katlanarak ürettiği kârdır.
             </p>
           </div>
 
@@ -578,7 +864,7 @@ export default function FinancePage() {
               <input
                 type="range"
                 min="10000"
-                max="150000"
+                max="100000"
                 step="2500"
                 value={simMonthlyTRY}
                 onChange={(e) => setSimMonthlyTRY(Number(e.target.value))}
@@ -587,12 +873,12 @@ export default function FinancePage() {
             </div>
 
             <div>
-              <div className="text-[11px] text-slate-300 mb-1.5">Yıllık Ortalama Getiri Oranı:</div>
+              <div className="text-[11px] text-slate-300 mb-1.5">Yıllık Ortalama Net Getiri Oranı:</div>
               <div className="grid grid-cols-3 gap-1.5">
                 {[
-                  { label: 'Koruma (%20)', val: 20 },
-                  { label: 'Dengeli (%30)', val: 30 },
-                  { label: 'Bileşik (%45)', val: 45 },
+                  { label: 'Temkinli (%15)', val: 15 },
+                  { label: 'Dengeli (%25)', val: 25 },
+                  { label: 'Yüksek (%35)', val: 35 },
                 ].map((item) => (
                   <button
                     key={item.val}
@@ -610,30 +896,48 @@ export default function FinancePage() {
             </div>
           </div>
 
-          {/* Milestones */}
-          <div className="space-y-2 pt-1">
+          {/* Realistic Breakdown Milestones */}
+          <div className="space-y-2.5 pt-1">
             {[
-              { year: 1, title: '1. Yıl Sonu', badge: '🛡️ Güçlü Acil Fon & Yatırım İvmesi' },
-              { year: 2, title: '2. Yıl Sonu', badge: '✈️ Büyük Tatil & Güçlü Portföy' },
+              { year: 1, title: '1. Yıl Sonu', badge: '🛡️ Güçlü Acil Fon & Başlangıç' },
+              { year: 2, title: '2. Yıl Sonu', badge: '✈️ Büyük Tatil & Yatırım İvmesi' },
               { year: 3, title: '3. Yıl Sonu', badge: '🏠 Ortak Gayrimenkul / Ev Peşinatı' },
-              { year: 5, title: '5. Yıl Sonu', badge: '👑 Finansal Özgürlük & Rahat Yaşam' },
+              { year: 5, title: '5. Yıl Sonu', badge: '👑 Finansal Özgürlük Temeli' },
             ].map((milestone) => {
-              const amount = calculate5YearProjection(milestone.year);
+              const res = calculateRealistic5Year(milestone.year);
               return (
                 <div
                   key={milestone.year}
-                  className="p-3.5 rounded-2xl bg-[#141b28] border border-white/[0.06] flex items-center justify-between"
+                  className="p-3.5 rounded-2xl bg-[#141b28] border border-white/[0.06] space-y-1.5"
                 >
-                  <div>
-                    <span className="text-[10px] text-slate-400 font-semibold">{milestone.title}</span>
-                    <div className="text-[10px] text-amber-300/90 font-medium mt-0.5">
-                      {milestone.badge}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[11px] text-white font-bold">{milestone.title}</span>
+                      <span className="text-[10px] text-amber-300/90 font-medium block">
+                        {milestone.badge}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-mono text-base font-extrabold text-white">
+                        {symbol}{Math.round(res.total).toLocaleString()}
+                      </span>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="font-mono text-base font-extrabold text-white">
-                      {symbol}{Math.round(amount).toLocaleString()}
-                    </span>
+
+                  {/* Explicit breakdown between pocket savings and interest profit */}
+                  <div className="grid grid-cols-2 gap-2 text-[10px] pt-1.5 border-t border-white/[0.04]">
+                    <div>
+                      <span className="text-slate-500 block">Kendi Biriktirdiğimiz:</span>
+                      <span className="font-mono text-slate-300 font-semibold">
+                        {symbol}{Math.round(res.pocketPrincipal).toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-slate-500 block">Bileşik Getiri Kârı:</span>
+                      <span className="font-mono text-emerald-400 font-semibold">
+                        +{symbol}{Math.round(res.interestProfit).toLocaleString()}
+                      </span>
+                    </div>
                   </div>
                 </div>
               );
@@ -643,112 +947,34 @@ export default function FinancePage() {
       )}
 
       {/* ======================================================== */}
-      {/* TAB 4: GELİR & GİDERLER                                  */}
+      {/* MODAL 1: FAİZ HESABI EKLE / DÜZENLE                     */}
       {/* ======================================================== */}
-      {activeTab === 'transactions' && (
-        <div className="space-y-3">
-          <div className="flex items-center justify-between px-1">
-            <span className="text-xs font-bold text-white">Gelir & Gider Kayıtları</span>
-            <button
-              onClick={() => setShowAddTxModal(true)}
-              className="text-[11px] text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1 cursor-pointer"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Yeni İşlem</span>
-            </button>
-          </div>
-
-          <div className="space-y-2">
-            {transactions.map((t) => {
-              const isIncome = t.type === 'income';
-              const isInvest = t.type === 'investment';
-              const userLabel =
-                t.user === 'berk' ? '🦁 Berk' : t.user === 'jaquilyn' ? '🌸 Jaq' : '🤝 Ortak';
-
-              return (
-                <div
-                  key={t.id}
-                  className="card-cozy p-3.5 flex items-center justify-between text-xs"
-                >
-                  <div className="space-y-0.5">
-                    <div className="font-bold text-white text-xs">{t.title}</div>
-                    <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
-                      <span>{userLabel}</span>
-                      <span>•</span>
-                      <span>{t.category}</span>
-                      <span>•</span>
-                      <span>{formatDateDDMMYYYY(t.date)}</span>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <div
-                      className={`font-mono font-bold text-xs ${
-                        isIncome
-                          ? 'text-emerald-400'
-                          : isInvest
-                          ? 'text-amber-400'
-                          : 'text-rose-400'
-                      }`}
-                    >
-                      {isIncome ? '+' : '-'}{CURRENCY_SYMBOLS[t.currency]}{t.amount.toLocaleString()}
-                    </div>
-                    <span className="text-[9px] text-slate-500 font-mono capitalize">
-                      {t.type === 'investment' ? 'Yatırım' : t.type === 'income' ? 'Gelir' : 'Gider'}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Action CTA Button at bottom */}
-      <div className="grid grid-cols-2 gap-2 pt-1">
-        <button
-          onClick={() => setShowAddCompoundModal(true)}
-          className="py-2.5 rounded-2xl bg-[#161e2c] border border-amber-500/30 hover:border-amber-500 text-amber-300 font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-        >
-          <Percent className="w-3.5 h-3.5" />
-          <span>+ Faiz Hesabı</span>
-        </button>
-
-        <button
-          onClick={() => setShowAddTxModal(true)}
-          className="py-2.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-        >
-          <Plus className="w-3.5 h-3.5" />
-          <span>+ Gelir / Gider</span>
-        </button>
-      </div>
-
-      {/* ======================================================== */}
-      {/* MODAL 1: FAİZ HESABI EKLE (COMPOUND ACCOUNT MODAL)      */}
-      {/* ======================================================== */}
-      {showAddCompoundModal && (
+      {showCompoundModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-sm animate-fade-in">
           <div className="w-full max-w-md bg-[#121824] border-t sm:border border-white/[0.1] rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
                 <Percent className="w-4 h-4 text-amber-400" />
-                <span>Yeni Bileşik Faiz Hesabı Ekle</span>
+                <span>{editingCompoundId ? 'Faiz Hesabını Düzenle' : 'Yeni Bileşik Faiz Hesabı Ekle'}</span>
               </h3>
               <button
-                onClick={() => setShowAddCompoundModal(false)}
+                onClick={() => {
+                  setShowCompoundModal(false);
+                  setEditingCompoundId(null);
+                }}
                 className="p-1 rounded-full text-slate-400 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddCompound} className="space-y-3 text-xs">
+            <form onSubmit={handleSaveCompound} className="space-y-3 text-xs">
               <div>
                 <label className="block text-[11px] text-slate-400 mb-1">Hesap Adı / Banka</label>
                 <input
                   type="text"
                   required
-                  placeholder="Örn: Akbank Vadeli TRY, Sterlin Mevduatı..."
+                  placeholder="Örn: Akbank Vadeli TRY, Sterlin Fonu..."
                   value={cpName}
                   onChange={(e) => setCpName(e.target.value)}
                   className="w-full px-3 py-2 rounded-xl bg-[#0e1420] border border-white/[0.08] text-white focus:outline-none focus:border-amber-500"
@@ -761,7 +987,7 @@ export default function FinancePage() {
                   <input
                     type="number"
                     required
-                    placeholder="250000"
+                    placeholder="350000"
                     value={cpPrincipal}
                     onChange={(e) => setCpPrincipal(e.target.value)}
                     className="w-full px-3 py-2 rounded-xl bg-[#0e1420] border border-white/[0.08] text-white focus:outline-none focus:border-amber-500 font-mono"
@@ -808,7 +1034,7 @@ export default function FinancePage() {
               </div>
 
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">Not / Açıklama</label>
+                <label className="block text-[11px] text-slate-400 mb-1">Açıklama / Not</label>
                 <input
                   type="text"
                   placeholder="Faiz her ay anaparaya ekleniyor..."
@@ -822,7 +1048,7 @@ export default function FinancePage() {
                 type="submit"
                 className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs transition-colors mt-2 cursor-pointer"
               >
-                Hesabı Kaydet & Trajectory'yi Göster
+                {editingCompoundId ? 'Değişiklikleri Güncelle' : 'Hesabı Kaydet & Trajectory’yi Göster'}
               </button>
             </form>
           </div>
@@ -830,22 +1056,27 @@ export default function FinancePage() {
       )}
 
       {/* ======================================================== */}
-      {/* MODAL 2: GELİR / GİDER EKLE                             */}
+      {/* MODAL 2: GELİR / GİDER EKLE VEYA DÜZENLE                 */}
       {/* ======================================================== */}
-      {showAddTxModal && (
+      {showTxModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-sm animate-fade-in">
           <div className="w-full max-w-md bg-[#121824] border-t sm:border border-white/[0.1] rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-3">
-              <h3 className="text-sm font-bold text-white">Yeni Finans İşlemi Ekle</h3>
+              <h3 className="text-sm font-bold text-white">
+                {editingTxId ? 'İşlemi Düzenle' : 'Yeni Finans İşlemi Ekle'}
+              </h3>
               <button
-                onClick={() => setShowAddTxModal(false)}
+                onClick={() => {
+                  setShowTxModal(false);
+                  setEditingTxId(null);
+                }}
                 className="p-1 rounded-full text-slate-400 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddTx} className="space-y-3 text-xs">
+            <form onSubmit={handleSaveTx} className="space-y-3 text-xs">
               <div>
                 <label className="block text-[11px] text-slate-400 mb-1">Tür</label>
                 <div className="grid grid-cols-3 gap-1.5">
@@ -943,7 +1174,7 @@ export default function FinancePage() {
                 type="submit"
                 className="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs transition-colors mt-2 cursor-pointer"
               >
-                Kaydet
+                {editingTxId ? 'Değişiklikleri Güncelle' : 'Kaydet'}
               </button>
             </form>
           </div>
