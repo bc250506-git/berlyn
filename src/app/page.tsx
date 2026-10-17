@@ -16,19 +16,18 @@ import {
   ArrowRight,
   PiggyBank
 } from 'lucide-react';
-import { DualZoneWidget } from '@/components/DualZoneWidget';
 import { RelationshipTimeline } from '@/components/RelationshipTimeline';
 import { useCurrentUser } from '@/components/UserContext';
 import { USERS, CoupleUser } from '@/types';
 import confetti from 'canvas-confetti';
 
 export default function HomePage() {
-  const { currentUser, profile, partnerProfile } = useCurrentUser();
+  const { currentUser, profile } = useCurrentUser();
 
   // Daily Blind Question State
   const [dailyPromptAnswer, setDailyPromptAnswer] = useState('');
   const [berkAnswerSubmitted, setBerkAnswerSubmitted] = useState<string | null>(
-    'Kyrenia sahilinde yıldızların altında yürüdüğümüz ve gelecekteki evimizi konuştuğumuz o akşam.'
+    'Sahilde yıldızların altında yürüdüğümüz ve gelecekteki evimizi konuştuğumuz o akşam.'
   );
   const [jaquilynAnswerSubmitted, setJaquilynAnswerSubmitted] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -107,13 +106,10 @@ export default function HomePage() {
 
   return (
     <div className="space-y-4 animate-fade-in">
-      {/* 1. Partner Presence & Dual Zone (Girne ↔ Bulacan) */}
-      <DualZoneWidget />
-
-      {/* 2. Canlı İlişki Sayacı (Kalp Atışımız) */}
+      {/* 1. Canlı İlişki Sayacı (Kalp Atışımız) */}
       <RelationshipTimeline startDate="2026-03-01T00:00:00" />
 
-      {/* 3. Günün Sorusu & Kör Cevap (Günün En Önemli Etkileşimi) */}
+      {/* 2. Günün Sorusu & Kör Cevap (Günün En Önemli Etkileşimi) */}
       <div className="card-cozy p-5 space-y-4">
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-semibold text-rose-400 uppercase tracking-wide flex items-center gap-1.5">
@@ -127,7 +123,7 @@ export default function HomePage() {
           "Birlikte geçirdiğimiz anlar içinde senin için en unutulmaz, en özel olanı hangisi?"
         </h3>
 
-        {/* Kör Cevap Durumu (İki tarafın kartı) */}
+        {/* Kör Cevap Durumu */}
         <div className="grid grid-cols-2 gap-2.5 pt-1">
           {/* Berk */}
           <div className="p-3 rounded-2xl bg-[#161e2c] border border-white/[0.06]">
@@ -149,7 +145,7 @@ export default function HomePage() {
                   </p>
                 ) : (
                   <p className="text-slate-500 text-[11px] italic">
-                    🔒 Cevap kilitli (ikiniz de yazınca açılır)
+                    🔒 Cevap kilitli
                   </p>
                 )
               ) : (
@@ -178,7 +174,7 @@ export default function HomePage() {
                   </p>
                 ) : (
                   <p className="text-slate-500 text-[11px] italic">
-                    🔒 Cevap kilitli (ikiniz de yazınca açılır)
+                    🔒 Cevap kilitli
                   </p>
                 )
               ) : (
@@ -225,7 +221,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 4. Birbirimize Aşk Notları (Buzdolabı Post-it Samimiyeti) */}
+      {/* 3. Birbirimize Aşk Notları (Buzdolabı Post-it Samimiyeti) */}
       <div className="card-cozy p-5 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-semibold text-amber-400 uppercase tracking-wide flex items-center gap-1.5">
@@ -285,7 +281,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 5. Günlük Karar (Akşam Ne Yapıyoruz?) */}
+      {/* 4. Günlük Karar (Akşam Ne Yapıyoruz?) */}
       <div className="card-cozy p-5 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-semibold text-rose-400 uppercase tracking-wide flex items-center gap-1.5">
@@ -343,7 +339,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 6. Hızlı Kısayollar (Watchlist & Kumbara Özeti) */}
+      {/* 5. Hızlı Kısayollar (Film & Kumbara) */}
       <div className="grid grid-cols-2 gap-3 pt-1">
         <Link
           href="/media"

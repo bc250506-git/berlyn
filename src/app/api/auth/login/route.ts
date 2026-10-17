@@ -3,28 +3,41 @@ import { AUTH_COOKIE_NAME } from '@/lib/auth-constants';
 
 export async function POST(request: Request) {
   try {
-    const { user, password } = await request.json();
+    const body = await request.json();
+    const { user, password } = body;
 
-    if (user !== 'berk' && user !== 'jaquilyn') {
-      return NextResponse.json({ error: 'Invalid user profile' }, { status: 400 });
+    const berkPass = (process.env.BERK_PASS || 'berk123').trim();
+    const jaqPass = (process.env.JAQUILYN_PASS || 'jaquilyn123').trim();
+    const enteredPass = (password || '').trim();
+
+    let authenticatedUser: 'berk' | 'jaquilyn' | null = null;
+
+    if (user === 'berk' && enteredPass === berkPass) {
+      authenticatedUser = 'berk';
+    } else if (user === 'jaquilyn' && enteredPass === jaqPass) {
+      authenticatedUser = 'jaquilyn';
+    } else if (!user && enteredPass) {
+      // Direct password login without selecting name
+      if (enteredPass === berkPass) {
+        authenticatedUser = 'berk';
+      } else if (enteredPass === jaqPass) {
+        authenticatedUser = 'jaquilyn';
+      }
     }
 
-    const expectedPass =
-      user === 'berk'
-        ? process.env.BERK_PASS || 'berk123'
-        : process.env.JAQUILYN_PASS || 'jaquilyn123';
-
-    // Allow password check or frictionless login if no password supplied or matches
-    if (password && password.trim() !== expectedPass.trim()) {
-      return NextResponse.json({ error: 'Incorrect passphrase or PIN' }, { status: 401 });
+    if (!authenticatedUser) {
+      return NextResponse.json(
+        { error: 'Hatalı şifre girdiniz. Lütfen tekrar deneyin.' },
+        { status: 401 }
+      );
     }
 
-    const response = NextResponse.json({ success: true, user });
+    const response = NextResponse.json({ success: true, user: authenticatedUser });
 
     // Set HTTP-only secure cookie for 1 year
     response.cookies.set({
       name: AUTH_COOKIE_NAME,
-      value: user,
+      value: authenticatedUser,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
@@ -34,6 +47,6 @@ export async function POST(request: Request) {
 
     return response;
   } catch {
-    return NextResponse.json({ error: 'Failed to process login' }, { status: 500 });
+    return NextResponse.json({ error: 'Giriş işlemi başarısız oldu' }, { status: 500 });
   }
 }
