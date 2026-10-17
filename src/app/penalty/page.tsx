@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { formatDateDDMMYYYY } from '@/lib/date';
 import { createClient } from '@/lib/supabase/client';
+import { useConfirm } from '@/components/ConfirmModal';
 import confetti from 'canvas-confetti';
 
 export interface PenaltyEntry {
@@ -40,6 +41,7 @@ const DEFAULT_GOAL: PenaltyGoal = {
 };
 
 export default function PenaltyPage() {
+  const confirm = useConfirm();
   // 1. Penalties State
   const [penalties, setPenalties] = useState<PenaltyEntry[]>(() => {
     if (typeof window !== 'undefined') {
@@ -76,7 +78,6 @@ export default function PenaltyPage() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showGoalModal, setShowGoalModal] = useState(false);
   const [editingPenalty, setEditingPenalty] = useState<PenaltyEntry | null>(null);
-  const [deletingId, setDeletingId] = useState<string | null>(null);
   const [showRulesBox, setShowRulesBox] = useState(false);
 
   // 4. Add Fine Form State
@@ -239,6 +240,13 @@ export default function PenaltyPage() {
 
   // Handle Delete Fine
   const confirmDelete = async (id: string) => {
+    const ok = await confirm({
+      title: 'Delete Fine?',
+      message: 'Are you sure you want to delete this penalty log? The accumulated fund will be adjusted.',
+      confirmText: 'Delete',
+    });
+    if (!ok) return;
+
     const updated = penalties.filter((p) => p.id !== id);
     savePenalties(updated);
 
@@ -249,8 +257,6 @@ export default function PenaltyPage() {
     } catch (err) {
       console.warn('Supabase delete penalty error:', err);
     }
-
-    setDeletingId(null);
   };
 
   // Handle Open Goal Modal
@@ -430,7 +436,7 @@ export default function PenaltyPage() {
                     <Pencil className="w-3.5 h-3.5" />
                   </button>
                   <button
-                    onClick={() => setDeletingId(item.id)}
+                    onClick={() => confirmDelete(item.id)}
                     className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-white/[0.06] transition-colors cursor-pointer"
                     title="Delete fine"
                   >
@@ -727,42 +733,6 @@ export default function PenaltyPage() {
         </div>
       )}
 
-      {/* ============================================================================== */}
-      {/* 6. MODAL: DELETE CONFIRMATION */}
-      {/* ============================================================================== */}
-      {deletingId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="card-cozy bg-[#131b2a] border border-white/10 p-5 space-y-3.5 text-xs w-full max-w-xs rounded-2xl shadow-2xl text-center animate-scale-in">
-            <div className="w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
-              <Trash2 className="w-5 h-5" />
-            </div>
-
-            <div>
-              <h4 className="font-bold text-white text-sm">Delete Fine?</h4>
-              <p className="text-[11px] text-slate-400 mt-1">
-                Are you sure you want to delete this penalty log? The accumulated fund will be adjusted.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 pt-1">
-              <button
-                type="button"
-                onClick={() => setDeletingId(null)}
-                className="flex-1 py-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 font-medium text-xs transition-colors cursor-pointer"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={() => confirmDelete(deletingId)}
-                className="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs transition-colors cursor-pointer shadow-lg shadow-rose-600/25"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

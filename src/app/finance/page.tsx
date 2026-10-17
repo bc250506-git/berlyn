@@ -58,11 +58,13 @@ import {
   INITIAL_COMPOUND_ACCOUNTS
 } from '@/lib/finance-service';
 import { useCurrentUser } from '@/components/UserContext';
+import { useConfirm } from '@/components/ConfirmModal';
 import { formatDateDDMMYYYY, MONTH_NAMES_EN } from '@/lib/date';
 import confetti from 'canvas-confetti';
 
 export default function FinancePage() {
   const { currentUser } = useCurrentUser();
+  const confirm = useConfirm();
 
   // Currency selection: Default is TRY
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>('TRY');
@@ -428,8 +430,13 @@ export default function FinancePage() {
     setShowTxModal(true);
   };
 
-  const handleDeleteTx = (id: string) => {
-    if (confirm('Are you sure you want to delete this transaction?')) {
+  const handleDeleteTx = async (id: string) => {
+    const ok = await confirm({
+      title: 'Delete Transaction?',
+      message: 'Are you sure you want to delete this transaction from your records?',
+      confirmText: 'Delete',
+    });
+    if (ok) {
       const updated = deleteTransaction(id);
       setTransactions(updated);
     }
@@ -460,8 +467,13 @@ export default function FinancePage() {
     confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
-  const handleDeleteRecurring = (id: string) => {
-    if (confirm('Are you sure you want to delete this recurring payment?')) {
+  const handleDeleteRecurring = async (id: string) => {
+    const ok = await confirm({
+      title: 'Delete Recurring Payment?',
+      message: 'Are you sure you want to delete this recurring bill / payment?',
+      confirmText: 'Delete',
+    });
+    if (ok) {
       const updated = deleteRecurringPayment(id);
       setRecurringPayments(updated);
     }
@@ -514,8 +526,13 @@ export default function FinancePage() {
     confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
-  const handleDeleteAsset = (id: string) => {
-    if (confirm('Are you sure you want to remove this asset from your portfolio?')) {
+  const handleDeleteAsset = async (id: string) => {
+    const ok = await confirm({
+      title: 'Remove Asset?',
+      message: 'Are you sure you want to remove this asset from your portfolio?',
+      confirmText: 'Remove',
+    });
+    if (ok) {
       const updated = deleteAsset(id);
       setAssets(updated);
     }
@@ -564,8 +581,13 @@ export default function FinancePage() {
     setShowCompoundModal(true);
   };
 
-  const handleDeleteCompound = (id: string) => {
-    if (confirm('Are you sure you want to delete this savings account?')) {
+  const handleDeleteCompound = async (id: string) => {
+    const ok = await confirm({
+      title: 'Delete Savings Account?',
+      message: 'Are you sure you want to delete this compound savings account?',
+      confirmText: 'Delete',
+    });
+    if (ok) {
       const updated = deleteCompoundAccount(id);
       setCompoundAccounts(updated);
       if (updated.length > 0) {

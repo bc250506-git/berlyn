@@ -23,6 +23,7 @@ import {
   Pencil
 } from 'lucide-react';
 import { BucketCategory, BucketItem } from '@/types';
+import { useConfirm } from '@/components/ConfirmModal';
 
 export const CATEGORY_CONFIG: Record<BucketCategory, {
   label: string;
@@ -284,6 +285,7 @@ const WEEKDAYS = [
 ];
 
 export default function BucketListPage() {
+  const confirm = useConfirm();
   const [items, setItems] = useState<BucketItem[]>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('berlyn_bucket_list_v2');
@@ -380,8 +382,15 @@ export default function BucketListPage() {
     }));
   };
 
-  const deleteItem = (id: string) => {
-    setItems(items.filter(item => item.id !== id));
+  const deleteItem = async (id: string) => {
+    const ok = await confirm({
+      title: 'Delete Dream?',
+      message: 'Are you sure you want to remove this dream item from your bucket list?',
+      confirmText: 'Delete',
+    });
+    if (ok) {
+      setItems(items.filter(item => item.id !== id));
+    }
   };
 
   const toggleDay = (day: string) => {

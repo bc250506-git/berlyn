@@ -30,6 +30,7 @@ import {
 import { RelationshipTimeline } from '@/components/RelationshipTimeline';
 import { PhotoMemoryWidget } from '@/components/PhotoMemoryWidget';
 import { useCurrentUser } from '@/components/UserContext';
+import { useConfirm } from '@/components/ConfirmModal';
 import { USERS, CoupleUser } from '@/types';
 import { 
   fetchFinanceData, 
@@ -79,6 +80,7 @@ interface HomeAgendaTask {
 
 export default function HomePage() {
   const { currentUser, profile } = useCurrentUser();
+  const confirm = useConfirm();
   const activeUser = currentUser === 'jaquilyn' ? 'jaquilyn' : 'berk';
   const partnerUser: CoupleUser = activeUser === 'berk' ? 'jaquilyn' : 'berk';
   const partnerName = activeUser === 'berk' ? 'Jaquilyn' : 'Berk';
@@ -349,6 +351,13 @@ export default function HomePage() {
 
   // Handle Delete Choice
   const handleDeleteChoice = async (choiceId: string) => {
+    const ok = await confirm({
+      title: 'Delete Question?',
+      message: 'Are you sure you want to delete this prompt question?',
+      confirmText: 'Delete',
+    });
+    if (!ok) return;
+
     try {
       setChoices((prev) => prev.filter((c) => c.id !== choiceId));
       if (activeChoiceIndex >= choices.length - 1 && activeChoiceIndex > 0) {

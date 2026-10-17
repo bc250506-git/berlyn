@@ -25,6 +25,7 @@ import {
 import { MediaItem, MediaType, WatchStatus, MediaMood, CoupleUser } from '@/types';
 import { fetchMediaItems, saveMediaItem, deleteMediaItem, INITIAL_MEDIA_ITEMS } from '@/lib/media-service';
 import { useCurrentUser } from '@/components/UserContext';
+import { useConfirm } from '@/components/ConfirmModal';
 import { formatDateDDMMYYYY } from '@/lib/date';
 import confetti from 'canvas-confetti';
 
@@ -41,6 +42,7 @@ const MOOD_OPTIONS = [
 
 export default function MediaPage() {
   const { currentUser } = useCurrentUser();
+  const confirm = useConfirm();
   const [items, setItems] = useState<MediaItem[]>(INITIAL_MEDIA_ITEMS);
   const [statusFilter, setStatusFilter] = useState<'all' | WatchStatus>('completed');
   const [searchQuery, setSearchQuery] = useState('');
@@ -396,7 +398,12 @@ export default function MediaPage() {
 
   // Delete Media Item
   const handleDeleteItem = async (id: string) => {
-    if (confirm('Are you sure you want to delete this title from your list?')) {
+    const ok = await confirm({
+      title: 'Delete from Watchlist?',
+      message: 'Are you sure you want to delete this title from your list?',
+      confirmText: 'Delete',
+    });
+    if (ok) {
       await deleteMediaItem(id);
       setItems(items.filter((i) => i.id !== id));
     }

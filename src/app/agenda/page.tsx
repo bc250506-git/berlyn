@@ -18,6 +18,7 @@ import {
   Tag
 } from 'lucide-react';
 import { useCurrentUser } from '@/components/UserContext';
+import { useConfirm } from '@/components/ConfirmModal';
 
 export interface AgendaTask {
   id: string;
@@ -52,6 +53,7 @@ const TIMEFRAME_LABELS = {
 
 export default function AgendaPage() {
   const { currentUser } = useCurrentUser();
+  const confirm = useConfirm();
   const [tasks, setTasks] = useState<AgendaTask[]>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('berlyn_agenda_tasks');
@@ -122,8 +124,15 @@ export default function AgendaPage() {
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
   };
 
-  const deleteTask = (id: string) => {
-    setTasks(tasks.filter(t => t.id !== id));
+  const deleteTask = async (id: string) => {
+    const ok = await confirm({
+      title: 'Delete Task?',
+      message: 'Are you sure you want to delete this task from your agenda?',
+      confirmText: 'Delete',
+    });
+    if (ok) {
+      setTasks(tasks.filter(t => t.id !== id));
+    }
   };
 
   const handleAddTask = (e: React.FormEvent) => {

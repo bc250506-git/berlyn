@@ -22,6 +22,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { useCurrentUser } from './UserContext';
+import { useConfirm } from './ConfirmModal';
 import confetti from 'canvas-confetti';
 
 export interface PhotoMemory {
@@ -34,6 +35,7 @@ export interface PhotoMemory {
 
 export function PhotoMemoryWidget() {
   const { currentUser } = useCurrentUser();
+  const confirm = useConfirm();
   const [memories, setMemories] = useState<PhotoMemory[]>([]);
   const [activePhoto, setActivePhoto] = useState<PhotoMemory | null>(null);
 
@@ -224,7 +226,12 @@ export function PhotoMemoryWidget() {
   // Delete a memory
   const handleDeleteMemory = async (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!confirm('Are you sure you want to delete this photo from your sanctuary?')) return;
+    const ok = await confirm({
+      title: 'Delete Photo?',
+      message: 'Are you sure you want to delete this photo from your sanctuary?',
+      confirmText: 'Delete',
+    });
+    if (!ok) return;
 
     try {
       await fetch(`/api/memories?id=${id}`, { method: 'DELETE' });
