@@ -35,8 +35,8 @@ interface Message {
 interface PartnerPresenceState {
   is_online: boolean; // 1. Sistemde mi
   is_in_chat: boolean; // 2. Chat'te mi
-  is_typing: boolean; // 3. Yazıyor mu
-  last_seen_message_id: string | null; // 4. Gördü mü
+  is_typing: boolean; // Typing status
+  last_seen_message_id: string | null; // Read receipt
   last_seen_message_at: number | null;
 }
 
@@ -467,11 +467,11 @@ export default function MessagesPage() {
   const formatRemainingTime = (expiresAt?: number): string => {
     if (!expiresAt) return '';
     const diffMs = expiresAt - Date.now();
-    if (diffMs <= 0) return 'Süresi doldu';
+    if (diffMs <= 0) return 'Expired';
     const hours = Math.floor(diffMs / (1000 * 60 * 60));
     const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    if (hours > 0) return `${hours}s ${mins}dk kaldı`;
-    return `${mins}dk kaldı`;
+    if (hours > 0) return `${hours}h ${mins}m left`;
+    return `${mins}m left`;
   };
 
   // Determine if partner has seen the latest message sent by active user
@@ -523,14 +523,14 @@ export default function MessagesPage() {
 
           {/* 4 Net States */}
           <div className="flex items-center gap-1 text-[8.5px]">
-            {/* 1. Sistem */}
+            {/* 1. System */}
             <div 
               className={`px-1.5 py-0.5 rounded border font-medium flex items-center gap-0.5 ${
                 partnerPresence.is_online 
                   ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300' 
                   : 'bg-white/[0.03] border-white/[0.05] text-slate-400'
               }`}
-              title="Platform Durumu"
+              title="Platform Status"
             >
               <span className={`w-1 h-1 rounded-full ${partnerPresence.is_online ? 'bg-emerald-400' : 'bg-slate-500'}`} />
               <span>{partnerPresence.is_online ? 'Online' : 'Offline'}</span>
@@ -545,12 +545,12 @@ export default function MessagesPage() {
                   ? 'bg-blue-500/10 border-blue-500/20 text-blue-300' 
                   : 'bg-white/[0.03] border-white/[0.05] text-slate-500'
               }`}
-              title="Chat Durumu"
+              title="Chat Room Status"
             >
-              <span>{partnerPresence.is_in_chat ? 'Odada 💬' : partnerPresence.is_online ? 'Sitede 📱' : 'Dışarıda'}</span>
+              <span>{partnerPresence.is_in_chat ? 'In Chat 💬' : partnerPresence.is_online ? 'Online 📱' : 'Away'}</span>
             </div>
 
-            {/* 3. Gördü mü */}
+            {/* 3. Seen receipt */}
             <div 
               className={`px-1.5 py-0.5 rounded border font-medium ${
                 !lastMyMessage 
@@ -559,21 +559,21 @@ export default function MessagesPage() {
                   ? 'bg-sky-500/15 border-sky-500/25 text-sky-300' 
                   : 'bg-amber-500/10 border-amber-500/20 text-amber-300'
               }`}
-              title="Son Mesaj Okunma Durumu"
+              title="Last Message Read Status"
             >
-              <span>{!lastMyMessage ? '—' : isLastMessageSeen ? 'Gördü 👁️' : 'İletildi ⏳'}</span>
+              <span>{!lastMyMessage ? '—' : isLastMessageSeen ? 'Seen 👁️' : 'Sent ⏳'}</span>
             </div>
 
-            {/* 4. Yazıyor mu */}
+            {/* 4. Typing indicator */}
             <div 
               className={`px-1.5 py-0.5 rounded border font-medium ${
                 partnerPresence.is_typing 
                   ? 'bg-pink-500/20 border-pink-500/40 text-pink-300 font-bold animate-pulse' 
                   : 'bg-white/[0.03] border-white/[0.05] text-slate-500'
               }`}
-              title="Yazıyor mu"
+              title="Typing Status"
             >
-              <span>{partnerPresence.is_typing ? 'Yazıyor ✍️' : 'Duruyor'}</span>
+              <span>{partnerPresence.is_typing ? 'Typing ✍️' : 'Idle'}</span>
             </div>
           </div>
         </div>
@@ -617,7 +617,7 @@ export default function MessagesPage() {
                       <span>•</span>
                       <span className="text-amber-400 text-[9px] flex items-center gap-0.5 font-normal">
                         <Pencil className="w-2 h-2" />
-                        düzenlendi
+                        edited
                       </span>
                     </>
                   )}
@@ -651,7 +651,7 @@ export default function MessagesPage() {
                         >
                           <img
                             src={msg.photo_url || ''}
-                            alt="Süreli Fotoğraf"
+                            alt="Ephemeral Photo"
                             className="w-full object-cover group-hover:scale-102 transition-transform duration-300"
                           />
                           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -673,7 +673,7 @@ export default function MessagesPage() {
                         </div>
 
                         {/* Caption if provided */}
-                        {msg.text && msg.text !== '📷 Süreli Fotoğraf' && (
+                        {msg.text && !msg.text.startsWith('📷') && (
                           <div className="p-2.5 bg-[#121824] border-t border-white/[0.08] text-xs text-slate-200">
                             <p className="whitespace-pre-wrap">{msg.text}</p>
                           </div>
@@ -688,12 +688,12 @@ export default function MessagesPage() {
                           {isMsgSeen ? (
                             <>
                               <CheckCheck className="w-3 h-3 text-sky-400" />
-                              <span className="text-sky-300 text-[8px]">Görüldü</span>
+                              <span className="text-sky-300 text-[8px]">Seen</span>
                             </>
                           ) : (
                             <>
                               <Check className="w-3 h-3 text-slate-400" />
-                              <span className="text-slate-400 text-[8px]">İletildi</span>
+                              <span className="text-slate-400 text-[8px]">Sent</span>
                             </>
                           )}
                         </span>
@@ -708,7 +708,7 @@ export default function MessagesPage() {
                     <button
                       onClick={() => handleOpenEdit(msg)}
                       className="opacity-0 group-hover:opacity-100 hover:text-amber-400 text-slate-500 transition-opacity p-1 cursor-pointer"
-                      title="Mesajı Düzenle"
+                      title="Edit Message"
                     >
                       <Pencil className="w-3 h-3" />
                     </button>
@@ -732,7 +732,7 @@ export default function MessagesPage() {
                     <div className={`flex items-center gap-1 mt-0.5 text-[9px] ${isMe ? 'justify-end text-slate-400' : 'justify-start text-slate-500'}`}>
                       {msg.isEdited && (
                         <span className="text-[8px] text-amber-400/80 italic mr-0.5">
-                          düzenlendi
+                          edited
                         </span>
                       )}
                       {isMe && (
@@ -740,12 +740,12 @@ export default function MessagesPage() {
                           {isMsgSeen ? (
                             <>
                               <CheckCheck className="w-3 h-3 text-sky-400" />
-                              <span className="text-sky-300 text-[8px]">Görüldü</span>
+                              <span className="text-sky-300 text-[8px]">Seen</span>
                             </>
                           ) : (
                             <>
                               <Check className="w-3 h-3 text-slate-400" />
-                              <span className="text-slate-400 text-[8px]">İletildi</span>
+                              <span className="text-slate-400 text-[8px]">Sent</span>
                             </>
                           )}
                         </span>
@@ -753,7 +753,7 @@ export default function MessagesPage() {
                       <button
                         onClick={() => handleOpenEdit(msg)}
                         className="opacity-0 group-hover:opacity-100 hover:text-amber-400 text-slate-500 transition-opacity ml-1 cursor-pointer p-0.5 rounded hover:bg-white/[0.05]"
-                        title="Mesajı Düzenle"
+                        title="Edit Message"
                       >
                         <Pencil className="w-2.5 h-2.5" />
                       </button>
@@ -771,7 +771,7 @@ export default function MessagesPage() {
       {partnerPresence.is_typing && (
         <div className="flex items-center gap-2 px-3.5 py-1 bg-pink-500/10 border-t border-pink-500/20 text-xs text-pink-300 animate-fade-in shrink-0">
           <span className="text-sm">{partnerAvatar}</span>
-          <span className="font-semibold">{partnerName} yazıyor</span>
+          <span className="font-semibold">{partnerName} is typing</span>
           <span className="flex gap-0.5 items-center">
             <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-bounce" style={{ animationDelay: '0ms' }} />
             <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -814,7 +814,7 @@ export default function MessagesPage() {
           onClick={() => photoInputRef.current?.click()}
           disabled={isSending || isUploadingPhoto}
           className="p-2.5 rounded-xl bg-[#161f2e] hover:bg-purple-500/15 border border-white/[0.08] hover:border-purple-500/30 text-purple-400 hover:text-purple-300 transition-all cursor-pointer active:scale-95 disabled:opacity-50 shrink-0"
-          title="Süreli Fotoğraf Gönder (12 saat sonra silinir)"
+          title="Send Ephemeral Photo (Auto-deletes after 12 hours)"
         >
           <Camera className="w-4 h-4" />
         </button>
@@ -847,7 +847,7 @@ export default function MessagesPage() {
                   <Pencil className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold text-white">Mesajı Düzenle</h3>
+                  <h3 className="text-xs font-bold text-white">Edit Message</h3>
                   <p className="text-[10px] text-slate-400">
                     {editingMessage.sender === 'berk' ? '🦁 Berk' : '🌸 Jaquilyn'} • {editingMessage.timestamp}
                   </p>
@@ -856,7 +856,7 @@ export default function MessagesPage() {
               <button
                 onClick={() => setEditingMessage(null)}
                 className="p-1 rounded-full text-slate-400 hover:text-white cursor-pointer transition-colors"
-                title="Kapat"
+                title="Close"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -872,7 +872,7 @@ export default function MessagesPage() {
             >
               <div>
                 <label className="block text-[11px] text-slate-400 font-medium mb-1.5">
-                  Mesaj Metni
+                  Message Text
                 </label>
                 <textarea
                   rows={4}
@@ -885,11 +885,11 @@ export default function MessagesPage() {
                       handleSaveEdit();
                     }
                   }}
-                  placeholder="Mesajınızı düzenleyin..."
+                  placeholder="Edit your message..."
                   className="w-full px-3.5 py-2.5 rounded-xl bg-[#161f2e] border border-white/[0.1] text-white text-xs focus:outline-none focus:border-amber-500 resize-none leading-relaxed"
                 />
                 <p className="text-[10px] text-slate-500 mt-1">
-                  İpucu: Enter ile hızlıca kaydedebilir, Shift+Enter ile alt satıra geçebilirsiniz.
+                  Tip: Press Enter to save, Shift+Enter for new line.
                 </p>
               </div>
 
@@ -899,7 +899,7 @@ export default function MessagesPage() {
                   onClick={() => setEditingMessage(null)}
                   className="px-3.5 py-1.5 rounded-xl text-slate-400 hover:text-white text-xs font-medium cursor-pointer"
                 >
-                  İptal
+                  Cancel
                 </button>
                 <button
                   type="submit"
@@ -909,12 +909,12 @@ export default function MessagesPage() {
                   {isSavingEdit ? (
                     <>
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Kaydediliyor...</span>
+                      <span>Saving...</span>
                     </>
                   ) : (
                     <>
                       <Check className="w-3.5 h-3.5" />
-                      <span>Kaydet</span>
+                      <span>Save</span>
                     </>
                   )}
                 </button>
@@ -936,13 +936,13 @@ export default function MessagesPage() {
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <span>Süreli Fotoğraf Gönder</span>
+                    <span>Send Ephemeral Photo</span>
                     <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold">
-                      12 Saat
+                      12 Hours
                     </span>
                   </h3>
                   <p className="text-[10px] text-slate-400">
-                    Otomatik WebP dönüştürme & 12 saat sonra silinir
+                    Auto WebP optimization & disappears in 12 hours
                   </p>
                 </div>
               </div>
@@ -954,7 +954,7 @@ export default function MessagesPage() {
                 }}
                 disabled={isUploadingPhoto}
                 className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/[0.05] cursor-pointer transition-colors"
-                title="Kapat"
+                title="Close"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -967,7 +967,7 @@ export default function MessagesPage() {
                 {photoPreview ? (
                   <img
                     src={photoPreview}
-                    alt="Önizleme"
+                    alt="Preview"
                     className="max-h-[260px] w-full object-contain"
                   />
                 ) : (
@@ -976,10 +976,10 @@ export default function MessagesPage() {
                       <Camera className="w-6 h-6" />
                     </div>
                     <p className="text-xs font-medium text-slate-200">
-                      iPhone Fotoğrafı (HEIC / HEIF) Algılandı
+                      iPhone Photo (HEIC / HEIF) Detected
                     </p>
                     <p className="text-[10px] text-purple-300">
-                      Yüklenirken otomatik olarak süper hafif WebP formatına çevrilecek
+                      Automatically converted to ultra-lightweight WebP format
                     </p>
                   </div>
                 )}
@@ -995,25 +995,25 @@ export default function MessagesPage() {
               <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 space-y-1.5">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-purple-300">
                   <Clock className="w-3.5 h-3.5" />
-                  <span>12 Saatlik Süreli Fotoğraf Koruması</span>
+                  <span>12-Hour Ephemeral Photo Protection</span>
                 </div>
                 <ul className="text-[10px] text-slate-300 space-y-1 pl-4 list-disc">
-                  <li>Supabase yerinden yememesi için otomatik WebP sıkıştırması yapılır.</li>
-                  <li>12 saat sonra fotoğraf sunucudan ve chatten tamamen silinir.</li>
-                  <li>Sohbette boşluk kalmaması için şık bir <b>&quot;Photo was sent&quot;</b> ibaresi bırakılır.</li>
+                  <li>Automatic WebP compression to save storage and bandwidth.</li>
+                  <li>Permanently deleted from the server and chat room after 12 hours.</li>
+                  <li>A sleek <b>&quot;Photo was sent&quot;</b> placeholder keeps the timeline seamless.</li>
                 </ul>
               </div>
 
               {/* Optional Caption */}
               <div>
                 <label className="block text-[11px] text-slate-400 font-medium mb-1">
-                  Fotoğraf Notu (İsteğe Bağlı)
+                  Photo Note / Caption (Optional)
                 </label>
                 <input
                   type="text"
                   value={photoCaption}
                   onChange={(e) => setPhotoCaption(e.target.value)}
-                  placeholder="Fotoğraf hakkında bir şeyler yaz..."
+                  placeholder="Write something about this photo..."
                   className="w-full px-3.5 py-2.5 rounded-xl bg-[#161f2e] border border-white/[0.1] text-white text-xs placeholder-slate-500 focus:outline-none focus:border-purple-500"
                 />
               </div>
@@ -1030,7 +1030,7 @@ export default function MessagesPage() {
                   disabled={isUploadingPhoto}
                   className="px-3.5 py-2 rounded-xl text-slate-400 hover:text-white text-xs font-medium cursor-pointer"
                 >
-                  Vazgeç
+                  Cancel
                 </button>
                 <button
                   type="button"
@@ -1041,12 +1041,12 @@ export default function MessagesPage() {
                   {isUploadingPhoto ? (
                     <>
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>WebP Çevriliyor & Gönderiliyor...</span>
+                      <span>Optimizing & Sending...</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-3.5 h-3.5" />
-                      <span>WebP Olarak Gönder</span>
+                      <span>Send Ephemeral Photo</span>
                     </>
                   )}
                 </button>
@@ -1069,12 +1069,12 @@ export default function MessagesPage() {
           >
             <div className="flex items-center gap-2 text-white text-xs font-medium">
               <Camera className="w-4 h-4 text-purple-400" />
-              <span>Süreli Fotoğraf Önizleme (12h)</span>
+              <span>Ephemeral Photo Preview (12h)</span>
             </div>
             <button
               onClick={() => setSelectedFullPhoto(null)}
               className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer transition-colors"
-              title="Kapat"
+              title="Close"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1086,7 +1086,7 @@ export default function MessagesPage() {
           >
             <img
               src={selectedFullPhoto}
-              alt="Büyük Süreli Fotoğraf"
+              alt="Ephemeral Photo Large"
               className="max-h-[80vh] w-auto max-w-full object-contain"
             />
           </div>

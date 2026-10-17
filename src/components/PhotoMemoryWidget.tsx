@@ -366,7 +366,7 @@ export function PhotoMemoryWidget() {
             <div className="flex items-center justify-between p-5 pb-3.5 border-b border-white/[0.08] bg-[#121824] shrink-0">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Camera className="w-4 h-4 text-rose-400" />
-                <span>Bulk Photo Upload (Toplu Ekleme)</span>
+                <span>Bulk Photo Upload</span>
               </h3>
               {!isUploading && (
                 <button

@@ -322,12 +322,12 @@ export default function PenaltyPage() {
         {showRulesBox && (
           <div className="p-3.5 rounded-2xl bg-[#0c111a] border border-purple-500/20 text-left text-xs text-slate-300 space-y-2 animate-fade-in">
             <div className="flex items-center justify-between text-purple-400 font-semibold text-[11px] uppercase tracking-wider">
-              <span>Ceza Kuralları & Rehberi</span>
+              <span>Penalty Rules & Guide</span>
               <button 
                 onClick={openGoalModal} 
                 className="text-[10px] text-slate-400 hover:text-white underline cursor-pointer"
               >
-                Düzenle
+                Edit
               </button>
             </div>
             <div className="whitespace-pre-line text-slate-300/90 text-xs leading-relaxed font-sans">
@@ -369,7 +369,7 @@ export default function PenaltyPage() {
           {isGoalReached && (
             <div className="pt-2 border-t border-white/[0.06] text-center">
               <span className="text-xs font-semibold text-emerald-400 flex items-center justify-center gap-1.5">
-                🎉 Hedefe Ulaşıldı! Tarihi bir akşam yemeği hak ettiniz!
+                🎉 Target Reached! Time for an unforgettable luxury dinner!
               </span>
             </div>
           )}
@@ -692,7 +692,7 @@ export default function PenaltyPage() {
             {/* Description & Rules Textarea */}
             <div className="space-y-1">
               <label className="text-[11px] text-slate-300 font-medium">
-                Description & Penalty Rules (Ceza Kuralları)
+                Description & Penalty Rules
               </label>
               <textarea
                 rows={5}
@@ -703,7 +703,7 @@ export default function PenaltyPage() {
                 className="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1420] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-purple-500 transition-colors leading-relaxed font-sans resize-none"
               />
               <span className="text-[10px] text-slate-500">
-                İlk satır ana sayfadaki kart açıklamasında görünür; alt satırlar ceza kurallarıdır.
+                The first line appears on the homepage card subtitle; following lines are specific rules.
               </span>
             </div>
 

@@ -99,7 +99,7 @@ export async function POST(request: Request) {
     const newMessage = {
       id: `msg-${now}-${Math.random().toString(36).substring(2, 7)}`,
       sender: sender === 'jaquilyn' ? 'jaquilyn' : 'berk',
-      text: caption.trim() || '📷 Süreli Fotoğraf',
+      text: caption.trim() || '📷 Ephemeral Photo',
       photo_url: photoUrl,
       is_ephemeral_photo: true,
       expires_at: expiresAt,

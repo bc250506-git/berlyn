@@ -870,7 +870,7 @@ export default function FinancePage() {
             <div className="space-y-1.5">
               {incomeList.length === 0 && unloggedMonthlyInterestSelected === 0 && (
                 <div className="p-5 rounded-xl border border-dashed border-white/[0.06] text-center text-slate-500 text-xs">
-                  Henüz bu aya ait gelir kaydı bulunmuyor. ✨
+                  No income recorded for this month yet. ✨
                 </div>
               )}
               {incomeList.map((t) => (
@@ -959,7 +959,7 @@ export default function FinancePage() {
             <div className="space-y-1.5">
               {expenseList.length === 0 && (
                 <div className="p-5 rounded-xl border border-dashed border-white/[0.06] text-center text-slate-500 text-xs">
-                  Henüz bu aya ait gider kaydı bulunmuyor. ✨
+                  No expenses recorded for this month yet. ✨
                 </div>
               )}
               {expenseList.map((t) => (
