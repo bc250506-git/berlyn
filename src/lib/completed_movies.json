@@ -1,0 +1,2282 @@
+[
+  {
+    "id": "m-1",
+    "title": "Iron Man",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8.1,
+    "jaquilyn_rating": 7.6,
+    "added_by": "berk",
+    "year": 2008,
+    "imdb_rating": "7.9",
+    "imdb_id": "tt0371746",
+    "plot": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-2",
+    "title": "Iron Man 2",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYWYyOGQzOGYtMGQ1My00ZWYxLTgzZjktZWYzN2IwYjkxYzM0XkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.9,
+    "jaquilyn_rating": 6.9,
+    "added_by": "jaquilyn",
+    "year": 2010,
+    "imdb_rating": "6.9",
+    "imdb_id": "tt1228705",
+    "plot": "With the world now aware of his identity as Iron Man, Tony Stark must contend with both his declining health and a vengeful madman with ties to his father's legacy.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-3",
+    "title": "Iron Man 3",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjIzMzAzMjQyM15BMl5BanBnXkFtZTcwNzM2NjcyOQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.8,
+    "jaquilyn_rating": 7.4,
+    "added_by": "berk",
+    "year": 2013,
+    "imdb_rating": "7.1",
+    "imdb_id": "tt1300854",
+    "plot": "When Tony Stark's world is torn apart by a formidable terrorist called the Mandarin, he starts an odyssey of rebuilding and retribution.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-4",
+    "title": "Thor",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNjRhNGZjZjEtYTQzYS00OWUxLThjNGEtMTIwMTE2ZDFlZTZkXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.7,
+    "jaquilyn_rating": 6.9,
+    "added_by": "jaquilyn",
+    "year": 2011,
+    "imdb_rating": "7.0",
+    "imdb_id": "tt0800369",
+    "plot": "The powerful but arrogant god Thor is cast out of Asgard to live amongst humans in Midgard (Earth), where he soon becomes one of their finest defenders.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-5",
+    "title": "The Avengers",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8.3,
+    "jaquilyn_rating": 8,
+    "added_by": "berk",
+    "year": 2012,
+    "imdb_rating": "8.0",
+    "imdb_id": "tt0848228",
+    "plot": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-6",
+    "title": "Guardians of the Galaxy",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BM2ZmNjQ2MzAtNDlhNi00MmQyLWJhZDMtNmJiMjFlOWY4MzcxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 8.2,
+    "jaquilyn_rating": 7.6,
+    "added_by": "jaquilyn",
+    "year": 2014,
+    "imdb_rating": "8.0",
+    "imdb_id": "tt2015381",
+    "plot": "A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-7",
+    "title": "Avengers: Age of Ultron",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BODBhYTg1NGQtNGVmNS00ZTdiLThjYTYtZDFkNzRiNTZmNDZjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7.5,
+    "jaquilyn_rating": 7.6,
+    "added_by": "berk",
+    "year": 2015,
+    "imdb_rating": "7.3",
+    "imdb_id": "tt2395427",
+    "plot": "When Tony Stark and Bruce Banner try to jump-start a dormant peacekeeping program called Ultron, things go horribly wrong and it's up to Earth's mightiest heroes to stop the villainous Ultron from enacting his terrible plan.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-8",
+    "title": "Captain America: Civil War",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8.2,
+    "jaquilyn_rating": 7.5,
+    "added_by": "jaquilyn",
+    "year": 2016,
+    "imdb_rating": "7.8",
+    "imdb_id": "tt3498820",
+    "plot": "Political involvement in the Avengers' affairs causes a rift between Captain America and Iron Man.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-9",
+    "title": "Spider-Man: Homecoming",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BODY2MTAzOTQ4M15BMl5BanBnXkFtZTgwNzg5MTE0MjI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7.7,
+    "jaquilyn_rating": 7,
+    "added_by": "berk",
+    "year": 2017,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt2250912",
+    "plot": "Peter Parker tries to stop Adrian 'The Vulture' Toomes from selling weapons made with advanced Chitauri technology while trying to balance his life as an ordinary high school student.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-10",
+    "title": "Doctor Strange",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 7.8,
+    "jaquilyn_rating": 7.2,
+    "added_by": "jaquilyn",
+    "year": 2016,
+    "imdb_rating": "7.5",
+    "imdb_id": "tt1211837",
+    "plot": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-11",
+    "title": "Avengers: Infinity War",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8.4,
+    "jaquilyn_rating": 8.6,
+    "added_by": "berk",
+    "year": 2018,
+    "imdb_rating": "8.4",
+    "imdb_id": "tt4154756",
+    "plot": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-12",
+    "title": "Avengers: Endgame",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8.5,
+    "jaquilyn_rating": 8.7,
+    "added_by": "jaquilyn",
+    "year": 2019,
+    "imdb_rating": "8.4",
+    "imdb_id": "tt4154796",
+    "plot": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-13",
+    "title": "Spider-Man: Far from Home",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMzNhNTE0NWQtN2E1Ny00NjcwLTg1YTctMGY1NmMwODJmY2NmXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 7.2,
+    "jaquilyn_rating": 7.7,
+    "added_by": "berk",
+    "year": 2019,
+    "imdb_rating": "7.3",
+    "imdb_id": "tt6320628",
+    "plot": "Peter Parker heads to Europe hoping for a normal summer, but elemental attacks and a mysterious new hero pull him back into a dangerous fight he isn't ready to embrace.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-14",
+    "title": "Spider-Man: No Way Home",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 7.9,
+    "jaquilyn_rating": 8.3,
+    "added_by": "jaquilyn",
+    "year": 2021,
+    "imdb_rating": "8.1",
+    "imdb_id": "tt10872600",
+    "plot": "Peter Parker turns to Doctor Strange after his identity destroys the life he knows, but a magical mistake draws powerful outsiders into his world and forces him to confront what being Spider Man really means.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-15",
+    "title": "Doctor Strange in the Multiverse of Madness",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BN2YxZGRjMzYtZjE1ZC00MDI0LThjZmQtZTZmMzVmMmQ2NzBmXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.9,
+    "jaquilyn_rating": 6.8,
+    "added_by": "berk",
+    "year": 2022,
+    "imdb_rating": "6.8",
+    "imdb_id": "tt9419884",
+    "plot": "Doctor Strange teams up with a mysterious teenage girl who can travel across multiverses, to battle other-universe versions of himself which threaten to wipe out the multiverse. They seek help from the Scarlet Witch, Wong and others.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-16",
+    "title": "The Amazing Spider-Man",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjMyOTM4MDMxNV5BMl5BanBnXkFtZTcwNjIyNzExOA@@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7.1,
+    "jaquilyn_rating": 6.8,
+    "added_by": "jaquilyn",
+    "year": 2012,
+    "imdb_rating": "7.0",
+    "imdb_id": "tt0948470",
+    "plot": "After Peter Parker is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the machinations of a mysterious reptilian foe.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-17",
+    "title": "The Amazing Spider-Man 2",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOTA5NDYxNTg0OV5BMl5BanBnXkFtZTgwODE5NzU1MTE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.6,
+    "jaquilyn_rating": 6.4,
+    "added_by": "berk",
+    "year": 2014,
+    "imdb_rating": "6.6",
+    "imdb_id": "tt1872181",
+    "plot": "When New York is put under siege by Oscorp, it is up to Spider-Man to save the city he swore to protect as well as his loved ones.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-18",
+    "title": "Venom",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNTYwMDg5MDItNjhmZi00NmVmLThjNWItMmNkMjVkMWRhNzI2XkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.6,
+    "jaquilyn_rating": 6.9,
+    "added_by": "jaquilyn",
+    "year": 2018,
+    "imdb_rating": "6.6",
+    "imdb_id": "tt1270797",
+    "plot": "A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-19",
+    "title": "Venom: Let There Be Carnage",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZGIxMTU1MjItM2FmMi00YmFiLTgwNDMtMTczYmVjYTBhNGZhXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6,
+    "jaquilyn_rating": 5.8,
+    "added_by": "berk",
+    "year": 2021,
+    "imdb_rating": "5.9",
+    "imdb_id": "tt7097896",
+    "plot": "Eddie Brock attempts to reignite his career by interviewing serial killer Cletus Kasady, who becomes the host of the symbiote Carnage and escapes prison after a failed execution.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-20",
+    "title": "X-Men: First Class",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTg5OTMxNzk4Nl5BMl5BanBnXkFtZTcwOTk1MjAwNQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8,
+    "jaquilyn_rating": 7.3,
+    "added_by": "jaquilyn",
+    "year": 2011,
+    "imdb_rating": "7.7",
+    "imdb_id": "tt1270798",
+    "plot": "In the 1960s, superpowered humans Charles Xavier and Erik Lensherr work together to find others like them, but Erik's vengeful pursuit of an ambitious mutant who ruined his life causes a schism to divide them.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-21",
+    "title": "X-Men Origins: Wolverine",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZjQwOGEzNjUtNDgwYS00NzUzLWJhZjAtNmFlNzY2YTQyOTllXkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.6,
+    "jaquilyn_rating": 6.8,
+    "added_by": "berk",
+    "year": 2009,
+    "imdb_rating": "6.5",
+    "imdb_id": "tt0458525",
+    "plot": "The early years of James Logan, featuring his rivalry with his brother Victor Creed, his service in the special forces team Weapon X, and his experimentation into the metal-lined mutant Wolverine.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-22",
+    "title": "X-Men",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNzNjZjQwOTAtNWQ3NC00MmJlLThlZDEtZmUyMWQ3NmE4Y2Y5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7.6,
+    "jaquilyn_rating": 7.4,
+    "added_by": "jaquilyn",
+    "year": 2000,
+    "imdb_rating": "7.3",
+    "imdb_id": "tt0120903",
+    "plot": "In a world where mutants (evolved super-powered humans) exist and are discriminated against, two groups form for an inevitable clash: the supremacist Brotherhood, and the pacifist X-Men.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-23",
+    "title": "X-Men: Days of Future Past",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNzNiYWE4NjMtMTU4OS00NmM4LWE4ZjAtYmE5OTA5NjkzODExXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7.9,
+    "jaquilyn_rating": 8.2,
+    "added_by": "berk",
+    "year": 2014,
+    "imdb_rating": "7.9",
+    "imdb_id": "tt1877832",
+    "plot": "The X-Men send Wolverine to the past in a desperate effort to change history and prevent an event that results in doom for both humans and mutants.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-24",
+    "title": "Deadpool 2",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNGY3N2ZhYmMtYTlmYi00ZWIzLWJiZWMtMjgxMjljYTk3MDAwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 7.3,
+    "jaquilyn_rating": 7.5,
+    "added_by": "jaquilyn",
+    "year": 2018,
+    "imdb_rating": "7.6",
+    "imdb_id": "tt5463162",
+    "plot": "Foul-mouthed mutant mercenary Wade Wilson (a.k.a. Deadpool) assembles a team of fellow mutant rogues to protect a young boy with abilities from the brutal, time-traveling cyborg Cable.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-25",
+    "title": "Deadpool & Wolverine",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 7.6,
+    "jaquilyn_rating": 7.4,
+    "added_by": "berk",
+    "year": 2024,
+    "imdb_rating": "7.5",
+    "imdb_id": "tt6263850",
+    "plot": "Deadpool is offered a place in the Marvel Cinematic Universe by the Time Variance Authority, but instead recruits a variant of Wolverine to save his universe from extinction.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-26",
+    "title": "Batman Begins",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMzA2NDQzZDEtNDU5Ni00YTlkLTg2OWEtYmQwM2Y1YTBjMjFjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Crime"
+    ],
+    "moods": [
+      "cozy"
+    ],
+    "berk_rating": 8,
+    "jaquilyn_rating": 8.4,
+    "added_by": "jaquilyn",
+    "year": 2005,
+    "imdb_rating": "8.2",
+    "imdb_id": "tt0372784",
+    "plot": "After witnessing his parents' death, billionaire Bruce Wayne learns the art of fighting to confront injustice. When he returns to Gotham as Batman, he must stop a secret society that intends to destroy the city.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-27",
+    "title": "The Dark Knight",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 9.5,
+    "jaquilyn_rating": 8.9,
+    "added_by": "berk",
+    "year": 2008,
+    "imdb_rating": "9.1",
+    "imdb_id": "tt0468569",
+    "plot": "When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman, James Gordon and Harvey Dent must work together to put an end to the madness.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-28",
+    "title": "The Dark Knight Rises",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 8.4,
+    "jaquilyn_rating": 8.3,
+    "added_by": "jaquilyn",
+    "year": 2012,
+    "imdb_rating": "8.4",
+    "imdb_id": "tt1345836",
+    "plot": "Bane, an imposing terrorist, attacks Gotham City and disrupts its eight-year-long period of peace. This forces Bruce Wayne to come out of hiding and don the cape and cowl of Batman again.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-29",
+    "title": "Star Wars: Episode I - The Phantom Menace",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BODVhNGIxOGItYWNlMi00YTA0LWI3NTctZmQxZGUwZDEyZWI4XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.3,
+    "jaquilyn_rating": 6.5,
+    "added_by": "berk",
+    "year": 1999,
+    "imdb_rating": "6.5",
+    "imdb_id": "tt0120915",
+    "plot": "Two Jedi escape a hostile blockade to find allies and come across a young boy who may bring balance to the Force, but the long-dormant Sith resurface to claim their former glory.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-30",
+    "title": "Star Wars: Episode II - Attack of the Clones",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNTgxMjY2YzUtZmVmNC00YjAwLWJlODMtNDBhNzllNzIzMjgxXkEyXkFqcGc@._V1_QL75_UX380_CR0,7,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.4,
+    "jaquilyn_rating": 6.7,
+    "added_by": "jaquilyn",
+    "year": 2002,
+    "imdb_rating": "6.6",
+    "imdb_id": "tt0121765",
+    "plot": "Ten years after initially meeting, Anakin Skywalker shares a forbidden romance with Padmé Amidala, while Obi-Wan Kenobi discovers a secret clone army crafted for the Jedi.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-31",
+    "title": "Star Wars: Episode IV - A New Hope",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOGUwMDk0Y2MtNjBlNi00NmRiLTk2MWYtMGMyMDlhYmI4ZDBjXkEyXkFqcGc@._V1_QL75_UX380_CR0,9,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 8.7,
+    "jaquilyn_rating": 8.4,
+    "added_by": "berk",
+    "year": 1977,
+    "imdb_rating": "8.6",
+    "imdb_id": "tt0076759",
+    "plot": "A farmboy joins forces with various allies to save their galaxy from the evil Empire's planet-destroying battle station, while also rescuing the princess leading the rebellion against them.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-32",
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTkxNGFlNDktZmJkNC00MDdhLTg0MTEtZjZiYWI3MGE5NWIwXkEyXkFqcGc@._V1_QL75_UX380_CR0,15,380,562_.jpg",
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 8.7,
+    "jaquilyn_rating": 9.1,
+    "added_by": "jaquilyn",
+    "year": 1980,
+    "imdb_rating": "8.7",
+    "imdb_id": "tt0080684",
+    "plot": "After the Empire overpowers the Rebel Alliance, Luke Skywalker begins training with Jedi Master Yoda, while Darth Vader and bounty hunter Boba Fett pursue his friends across the galaxy.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-33",
+    "title": "Star Wars: Episode VI - Return of the Jedi",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNWEwOTI0MmUtMGNmNy00ODViLTlkZDQtZTg1YmQ3MDgyNTUzXkEyXkFqcGc@._V1_QL75_UX380_CR0,13,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 8.6,
+    "jaquilyn_rating": 8.2,
+    "added_by": "berk",
+    "year": 1983,
+    "imdb_rating": "8.3",
+    "imdb_id": "tt0086190",
+    "plot": "After rescuing Han Solo from Jabba the Hutt, the Rebel Alliance attempts to destroy the second Death Star while Luke struggles to help Darth Vader back from the dark side.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-34",
+    "title": "Bumblebee",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjUwNjU5NDMyNF5BMl5BanBnXkFtZTgwNzgxNjM2NzM@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.9,
+    "jaquilyn_rating": 6.8,
+    "added_by": "jaquilyn",
+    "year": 2018,
+    "imdb_rating": "6.7",
+    "imdb_id": "tt4701182",
+    "plot": "Bumblebee teams up with a teenage girl to protect the world while the Decepticons hunt him with the help of a secret agency.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-35",
+    "title": "Transformers",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZjM3ZDA2YmItMzhiMi00ZGI3LTg3ZGQtOTk3Nzk0MDY0ZDZhXkEyXkFqcGc@._V1_QL75_UY562_CR11,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7,
+    "jaquilyn_rating": 7.1,
+    "added_by": "berk",
+    "year": 2007,
+    "imdb_rating": "7.1",
+    "imdb_id": "tt0418279",
+    "plot": "An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, with a clue to the ultimate power held by a teenager.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-36",
+    "title": "Transformers: Revenge of the Fallen",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNjk4OTczOTk0NF5BMl5BanBnXkFtZTcwNjQ0NzMzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 5.7,
+    "jaquilyn_rating": 6.1,
+    "added_by": "jaquilyn",
+    "year": 2009,
+    "imdb_rating": "6.0",
+    "imdb_id": "tt1055369",
+    "plot": "Sam Witwicky leaves the Autobots behind for a normal life. But when his mind is filled with cryptic symbols, the Decepticons target him and he is dragged back into the Transformers' war.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-37",
+    "title": "Transformers: Dark of the Moon",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTkwOTY0MTc1NV5BMl5BanBnXkFtZTcwMDQwNjA2NQ@@._V1_QL75_UX380_CR0,3,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 6.4,
+    "jaquilyn_rating": 6.2,
+    "added_by": "berk",
+    "year": 2011,
+    "imdb_rating": "6.2",
+    "imdb_id": "tt1399103",
+    "plot": "The Autobots learn of a Cybertronian spacecraft hidden on the moon, and race against the Decepticons to reach it and to learn its secrets.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-38",
+    "title": "Pirates of the Caribbean: The Curse of the Black Pearl",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNDhlMzEyNzItMTA5Mi00YWRhLThlNTktYTQyMTA0MDIyNDEyXkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 8.1,
+    "jaquilyn_rating": 8,
+    "added_by": "jaquilyn",
+    "year": 2003,
+    "imdb_rating": "8.1",
+    "imdb_id": "tt0325980",
+    "plot": "An intrepid blacksmith teams up with an eccentric pirate captain to save his love from an undead pirate crew.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-39",
+    "title": "Pirates of the Caribbean: Dead Man's Chest",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTcwODc1MTMxM15BMl5BanBnXkFtZTYwMDg1NzY3._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 7.4,
+    "jaquilyn_rating": 7.3,
+    "added_by": "berk",
+    "year": 2006,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt0383574",
+    "plot": "Jack Sparrow races to recover the heart of Davy Jones to avoid enslaving his soul to Jones' service, as other friends and foes seek the heart for their own agenda as well.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-40",
+    "title": "Pirates of the Caribbean: At World's End",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjIyNjkxNzEyMl5BMl5BanBnXkFtZTYwMjc3MDE3._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.8,
+    "jaquilyn_rating": 7.5,
+    "added_by": "jaquilyn",
+    "year": 2007,
+    "imdb_rating": "7.2",
+    "imdb_id": "tt0449088",
+    "plot": "Will Turner, Elizabeth Swann, Hector Barbossa, and the crew of the Black Pearl try and rescue Jack from Davy Jones's locker, and prepare to fight Lord Cutler Beckett, who controls Davy Jones and the Flying Dutchman.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-41",
+    "title": "Pirates of the Caribbean: On Stranger Tides",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjE5MjkwODI3Nl5BMl5BanBnXkFtZTcwNjcwMDk4NA@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.3,
+    "jaquilyn_rating": 6.8,
+    "added_by": "berk",
+    "year": 2011,
+    "imdb_rating": "6.6",
+    "imdb_id": "tt1298650",
+    "plot": "Jack Sparrow and Barbossa embark on a quest to find the elusive fountain of youth, only to discover that Blackbeard and his daughter are after it too.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-42",
+    "title": "Saw",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZTE5MzFlMTktMzBkOC00ZjMxLThmOTAtOGU3ZGEwZGRlNDdjXkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 7.5,
+    "jaquilyn_rating": 7.3,
+    "added_by": "jaquilyn",
+    "year": 2004,
+    "imdb_rating": "7.6",
+    "imdb_id": "tt0387564",
+    "plot": "Two men awaken to find themselves on the opposite sides of a dead body, each with specific instructions to kill the other, escape or face the consequences. These two are the latest contestants in Jigsaw's games.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-43",
+    "title": "Saw II",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZGVlNjk3MmItZmUzNy00MzcyLWIzOTktZjllYWU5MDAyMjM1XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.5,
+    "jaquilyn_rating": 7,
+    "added_by": "berk",
+    "year": 2005,
+    "imdb_rating": "6.6",
+    "imdb_id": "tt0432348",
+    "plot": "A detective and his team must rescue eight people trapped in a factory by a man known as Jigsaw.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-44",
+    "title": "Saw III",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BODQ4YTAwZTItZGFjZi00YjNiLTllYzUtYWY3OWM2OTQzODVkXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.4,
+    "jaquilyn_rating": 6.6,
+    "added_by": "jaquilyn",
+    "year": 2006,
+    "imdb_rating": "6.2",
+    "imdb_id": "tt0489270",
+    "plot": "Jigsaw abducts a doctor in order to keep himself alive while he watches his new apprentice put an unlucky citizen named Jeff through a brutal test.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-45",
+    "title": "Saw IV",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNjc0NjUyNzg3MF5BMl5BanBnXkFtZTYwODMxOTM3._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.2,
+    "jaquilyn_rating": 6.2,
+    "added_by": "berk",
+    "year": 2007,
+    "imdb_rating": "5.9",
+    "imdb_id": "tt0890870",
+    "plot": "Despite Jigsaw's death, and in order to save the lives of two of his colleagues, Lieutenant Rigg is forced to take part in a new game, which promises to test him to the limit.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-46",
+    "title": "Saw V",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNWViYzg3YzItYzQxNS00MTE1LWJkNTMtMTM3OGI4ODAxOTMwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 5.7,
+    "jaquilyn_rating": 5.8,
+    "added_by": "jaquilyn",
+    "year": 2008,
+    "imdb_rating": "5.8",
+    "imdb_id": "tt1132626",
+    "plot": "Following Jigsaw's grisly demise, Mark Hoffman is commended as a hero, but Agent Strahm is suspicious, and delves into Hoffman's past. Meanwhile, another group of people are put through a series of gruesome tests.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-47",
+    "title": "Saw VI",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTU0NDA3MTM4M15BMl5BanBnXkFtZTcwOTY4Njg3Mg@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.3,
+    "jaquilyn_rating": 6.3,
+    "added_by": "berk",
+    "year": 2009,
+    "imdb_rating": "6.1",
+    "imdb_id": "tt1233227",
+    "plot": "Agent Strahm is dead, and FBI agent Erickson draws nearer to Hoffman. Meanwhile, a pair of insurance executives find themselves in another game set by Jigsaw.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-48",
+    "title": "Saw 3D",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjI0NTEwNTgwNF5BMl5BanBnXkFtZTcwMDM5MTU5Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 5.6,
+    "jaquilyn_rating": 5.7,
+    "added_by": "jaquilyn",
+    "year": 2010,
+    "imdb_rating": "5.5",
+    "imdb_id": "tt1477076",
+    "plot": "As a deadly battle rages over Jigsaw's brutal legacy, a group of Jigsaw survivors gathers to seek the support of self-help guru and fellow survivor Bobby Dagen, a man whose own dark secrets unleash a new wave of terror.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-49",
+    "title": "Scream",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjA2NjU5MTg5OF5BMl5BanBnXkFtZTgwOTkyMzQxMDE@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 7.6,
+    "jaquilyn_rating": 7.3,
+    "added_by": "berk",
+    "year": 1996,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt0117571",
+    "plot": "In the small town of Woodsboro, California, a masked killer known as Ghostface begins murdering high school students, and a group of friends must use their knowledge of horror movies to unmask the killer.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-50",
+    "title": "Scream 2",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BODE5YWJkMDMtN2ZiNC00MjI5LTkxYTgtOTkyZjUwMjU0YThiXkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.7,
+    "jaquilyn_rating": 6.7,
+    "added_by": "jaquilyn",
+    "year": 1997,
+    "imdb_rating": "6.4",
+    "imdb_id": "tt0120082",
+    "plot": "A year after the Woodsboro murders, the survivors try to move on at Windsor College in Ohio-but when a new Ghostface killer starts a campus killing spree, they must face terror all over again.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-51",
+    "title": "Scream 4",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTk5OTcxNTUyNF5BMl5BanBnXkFtZTcwMDczMzE0NA@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.1,
+    "jaquilyn_rating": 6.1,
+    "added_by": "berk",
+    "year": 2011,
+    "imdb_rating": "6.3",
+    "imdb_id": "tt1262416",
+    "plot": "Ten years after the original Woodsboro murders, one of the survivors returns home to promote their new book about surviving trauma, only for a new Ghostface killer to emerge, targeting a new group of teens.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-52",
+    "title": "Scream VI",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZDZkYzk3YTEtYTQ5MS00MzQ5LTg0NjUtOTgzODA5N2EyYTQ1XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.1,
+    "jaquilyn_rating": 6.4,
+    "added_by": "jaquilyn",
+    "year": 2023,
+    "imdb_rating": "6.4",
+    "imdb_id": "tt17663992",
+    "plot": "After surviving the latest Woodsboro murders, a group of teens move to New York City, hoping for a fresh start, only to find a new killer picking up where the last Ghostface killer left off.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-53",
+    "title": "Scream 7",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMzk2YzRjYmItNTA5Mi00ODczLTljYzUtOWE1ZDFkODhlZWJlXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 5.5,
+    "jaquilyn_rating": 5.2,
+    "added_by": "berk",
+    "year": 2026,
+    "imdb_rating": "5.5",
+    "imdb_id": "tt27047903",
+    "plot": "Sidney fights to protect her daughter when Ghostface stalks their quiet Indiana town, forcing a survivor's family to confront old trauma, media spectacle, and a killer who weaponizes deep-fakes.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-54",
+    "title": "The Fast and the Furious",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZGRiMDE1NTMtMThmZS00YjE4LWI1ODQtNjRkZGZlOTg2MGE1XkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 6.8,
+    "jaquilyn_rating": 7.1,
+    "added_by": "jaquilyn",
+    "year": 2001,
+    "imdb_rating": "6.8",
+    "imdb_id": "tt0232500",
+    "plot": "An undercover Los Angeles police officer infiltrates an illegal street racing crew suspected of high-speed cargo hijackings.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-55",
+    "title": "2 Fast 2 Furious",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOTQzYzEwNWMtOTAwYy00YWYwLWE1NTEtZTkxOGQxZTM0M2VhXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 6.2,
+    "jaquilyn_rating": 5.6,
+    "added_by": "berk",
+    "year": 2003,
+    "imdb_rating": "6.0",
+    "imdb_id": "tt0322259",
+    "plot": "Former cop Brian O'Conner is called upon to bust a dangerous criminal and he recruits the help of a former childhood friend and street racer who has a chance to redeem himself.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-56",
+    "title": "The Fast and the Furious: Tokyo Drift",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZGNmMDQxNTQtODMzNS00Y2IzLWFiYjMtZmI5YzdmYmE5YmUxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 5.9,
+    "jaquilyn_rating": 6.2,
+    "added_by": "jaquilyn",
+    "year": 2006,
+    "imdb_rating": "6.1",
+    "imdb_id": "tt0463985",
+    "plot": "A teenager becomes a major competitor in the world of drift racing after moving in with his father in Tokyo, Japan to avoid a jail sentence in North America.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-57",
+    "title": "John Wick: Chapter 3 - Parabellum",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYjdlNWFlZjEtM2U0NS00ZWU5LTk1M2EtZmQxNWFiZjk0MGM5XkEyXkFqcGc@._V1_QL75_UX380_CR0,12,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 7,
+    "jaquilyn_rating": 7.4,
+    "added_by": "berk",
+    "year": 2019,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt6146586",
+    "plot": "John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-58",
+    "title": "John Wick: Chapter 4",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BY2Q2ZmI5ZjUtNWVhMC00YzJkLTlmYjMtY2RmZDhkNzEzYjZhXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 7.6,
+    "jaquilyn_rating": 7.7,
+    "added_by": "jaquilyn",
+    "year": 2023,
+    "imdb_rating": "7.6",
+    "imdb_id": "tt10366206",
+    "plot": "John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-59",
+    "title": "The Hangover",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNDI2MzBhNzgtOWYyOS00NDM2LWE0OGYtOGQ0M2FjMTI2NTllXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Comedy"
+    ],
+    "moods": [
+      "comedy"
+    ],
+    "berk_rating": 7.8,
+    "jaquilyn_rating": 7.8,
+    "added_by": "berk",
+    "year": 2009,
+    "imdb_rating": "7.7",
+    "imdb_id": "tt1119646",
+    "plot": "Three buddies wake up from a bachelor party in Las Vegas with no memory of the previous night and the bachelor missing. They must make their way around the city in order to find their friend in time for his wedding.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-60",
+    "title": "The Hangover Part II",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTM2MTM4MzY2OV5BMl5BanBnXkFtZTcwNjQ3NzI4NA@@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Comedy"
+    ],
+    "moods": [
+      "comedy"
+    ],
+    "berk_rating": 6.3,
+    "jaquilyn_rating": 6.5,
+    "added_by": "jaquilyn",
+    "year": 2011,
+    "imdb_rating": "6.5",
+    "imdb_id": "tt1411697",
+    "plot": "Two years after the bachelor party in Las Vegas, Phil, Stu, Alan, and Doug jet to Thailand for Stu's wedding, but Stu's plan for subdued pre-wedding brunch goes seriously awry.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-61",
+    "title": "The Hangover Part III",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTA0NjE1MzMzODheQTJeQWpwZ15BbWU3MDY4MTQ3Mzk@._V1_QL75_UX380_CR0,12,380,562_.jpg",
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "moods": [
+      "comedy"
+    ],
+    "berk_rating": 6.2,
+    "jaquilyn_rating": 5.9,
+    "added_by": "berk",
+    "year": 2013,
+    "imdb_rating": "5.9",
+    "imdb_id": "tt1951261",
+    "plot": "When one of their own is kidnapped by an angry gangster, the Wolf Pack must track down Mr. Chow, who has escaped from prison and is on the run.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-62",
+    "title": "Now You See Me",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTY0NDY3MDMxN15BMl5BanBnXkFtZTcwOTM5NzMzOQ@@._V1_QL75_UX380_CR0,15,380,562_.jpg",
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 7.1,
+    "jaquilyn_rating": 7,
+    "added_by": "jaquilyn",
+    "year": 2013,
+    "imdb_rating": "7.2",
+    "imdb_id": "tt1670345",
+    "plot": "An FBI agent and an Interpol detective track a team of illusionists who pull off bank heists during their performances, and reward their audiences with the money.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-63",
+    "title": "Now You See Me 2",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOTVjNTA0ZWEtNzU2Ny00Njg1LWE1MmEtZTUyZGQzYTVlY2Q5XkEyXkFqcGc@._V1_QL75_UX380_CR0,5,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 6.8,
+    "jaquilyn_rating": 6.6,
+    "added_by": "berk",
+    "year": 2016,
+    "imdb_rating": "6.4",
+    "imdb_id": "tt3110958",
+    "plot": "The Four Horsemen resurface, and are forcibly recruited by a tech genius to pull off their most impossible heist yet.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-64",
+    "title": "Tron: Legacy",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTk4NTk4MTk1OF5BMl5BanBnXkFtZTcwNTE2MDIwNA@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.9,
+    "jaquilyn_rating": 6.5,
+    "added_by": "jaquilyn",
+    "year": 2010,
+    "imdb_rating": "6.8",
+    "imdb_id": "tt1104001",
+    "plot": "The son of a computer programmer goes looking for his father and ends up inside the digital world that his father designed. He meets his father's corrupted creation and a unique ally who was born inside the digital world.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-65",
+    "title": "Tron: Ares",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYzNlY2RiYWEtMDA0YS00MTZkLWI5YmUtMDNiZDZlN2E4MTVlXkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 6.1,
+    "jaquilyn_rating": 6,
+    "added_by": "berk",
+    "year": 2025,
+    "imdb_rating": "6.1",
+    "imdb_id": "tt6604188",
+    "plot": "A highly sophisticated program, Ares, is sent from the digital world into the real world on a dangerous mission.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-66",
+    "title": "Ponyo",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZDkzMzQ5ZmQtOTA3MC00MjhiLTk5M2UtNzk0MjEzZmVjN2UxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.9,
+    "jaquilyn_rating": 7.6,
+    "added_by": "jaquilyn",
+    "year": 2009,
+    "imdb_rating": "7.6",
+    "imdb_id": "tt0876563",
+    "plot": "A five-year-old boy develops a relationship with Ponyo, a young goldfish princess who longs to become a human after falling in love with him.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-67",
+    "title": "The Secret World of Arrietty",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTAxNjk3OTYyODReQTJeQWpwZ15BbWU3MDgyODY2OTY@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Drama"
+    ],
+    "moods": [
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.8,
+    "jaquilyn_rating": 7.4,
+    "added_by": "berk",
+    "year": 2012,
+    "imdb_rating": "7.6",
+    "imdb_id": "tt1568921",
+    "plot": "The Clock family consists of three four-inch-tall people who live incognito among humans, borrowing only what they need to survive. Their quiet life changes when their teenage daughter, Arrietty, is discovered.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-68",
+    "title": "Zootopia",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOTMyMjEyNzIzMV5BMl5BanBnXkFtZTgwNzIyNjU0NzE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure"
+    ],
+    "moods": [
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 8,
+    "jaquilyn_rating": 8.4,
+    "added_by": "jaquilyn",
+    "year": 2016,
+    "imdb_rating": "8.0",
+    "imdb_id": "tt2948356",
+    "plot": "In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-69",
+    "title": "Zootopia 2",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYjg1Mjc3MjQtMTZjNy00YWVlLWFhMWEtMWI3ZTgxYjJmNmRlXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.3,
+    "jaquilyn_rating": 7.2,
+    "added_by": "berk",
+    "year": 2025,
+    "imdb_rating": "7.3",
+    "imdb_id": "tt26443597",
+    "plot": "Brave rabbit cop Judy Hopps and her friend, the fox Nick Wilde, team up again to crack a new case, the most perilous and intricate of their careers.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-70",
+    "title": "Fantastic Mr. Fox",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYTA1ZTIxZDUtNGFjYS00YTc5LTgzNDMtZWNjYjBlMzI2OTk3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.7,
+    "jaquilyn_rating": 7.9,
+    "added_by": "jaquilyn",
+    "year": 2009,
+    "imdb_rating": "7.9",
+    "imdb_id": "tt0432283",
+    "plot": "An urbane fox cannot resist returning to his farm raiding ways and then must help his community survive the farmers' retaliation.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-71",
+    "title": "Puss in Boots: The Last Wish",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMzg0MWUzMjctYjVlOS00NzVjLWIwZDMtNzg1YzNkYzdjNTMwXkEyXkFqcGc@._V1_QL75_UX380_CR0,7,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure"
+    ],
+    "moods": [
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.6,
+    "jaquilyn_rating": 8.2,
+    "added_by": "berk",
+    "year": 2022,
+    "imdb_rating": "7.9",
+    "imdb_id": "tt3915174",
+    "plot": "When Puss in Boots discovers that his passion for adventure has taken its toll and he has burned through eight of his nine lives, he launches an epic journey to restore them by finding the mythical Last Wish.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-72",
+    "title": "The Wild Robot",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZWNiZjVlZTUtNGUwYi00MjJmLTg2MDctNWEzYTJiMzY1ODc4XkEyXkFqcGc@._V1_QL75_UX380_CR0,20,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Family"
+    ],
+    "moods": [
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.9,
+    "jaquilyn_rating": 8.5,
+    "added_by": "jaquilyn",
+    "year": 2024,
+    "imdb_rating": "8.1",
+    "imdb_id": "tt29623480",
+    "plot": "A sentient robot stranded on an uninhabited island raises an orphaned gosling while trying to fit in with the local wildlife.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-73",
+    "title": "Sonic the Hedgehog 3",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjZjNjE5NDEtOWJjYS00Mjk2LWI1ZDYtOWI1ZWI3MzRjM2UzXkEyXkFqcGc@._V1_QL75_UX380_CR0,8,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 7.2,
+    "jaquilyn_rating": 6.9,
+    "added_by": "berk",
+    "year": 2024,
+    "imdb_rating": "6.9",
+    "imdb_id": "tt18259086",
+    "plot": "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before. With their abilities outmatched, Team Sonic must seek out an unlikely alliance.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-74",
+    "title": "The Boy, the Mole, the Fox and the Horse",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZDg4MjI3NGMtOTcwMC00ZWQ0LWI0YjMtNDA0YmZjN2FlYzg2XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Short",
+      "Adventure"
+    ],
+    "moods": [
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 7.9,
+    "jaquilyn_rating": 7.9,
+    "added_by": "jaquilyn",
+    "year": 2022,
+    "imdb_rating": "7.8",
+    "imdb_id": "tt22667880",
+    "plot": "Follows a boy, a mole, a fox and a horse, as they create an unexpected friendship and travel together in the boy's search for home.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-75",
+    "title": "Pan's Labyrinth",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOTc1NTAxMWItMWFlNy00MmU2LTkwMTMtNzMwOTg5OTQ5YTFiXkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "War"
+    ],
+    "moods": [
+      "cozy"
+    ],
+    "berk_rating": 8.4,
+    "jaquilyn_rating": 8.1,
+    "added_by": "berk",
+    "year": 2007,
+    "imdb_rating": "8.2",
+    "imdb_id": "tt0457430",
+    "plot": "In 1944 Francoist Spain, an imaginative young girl meets a faun who tells her she's a princess and that she must prove her worthiness by completing three dangerous tasks.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-76",
+    "title": "The Odyssey",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNTcyNmJlZmQtNDUwYy00NDBjLTg1NGQtYTY2Y2UxMWM3NmI1XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 8.3,
+    "jaquilyn_rating": 8.6,
+    "added_by": "jaquilyn",
+    "year": 2026,
+    "imdb_rating": "8.4",
+    "imdb_id": "tt33764258",
+    "plot": "After the Trojan War, Odysseus faces a dangerous voyage back to Ithaca, meeting creatures like the Cyclops Polyphemus, Sirens, and Calypso along the way.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-77",
+    "title": "Project Hail Mary",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNTkwNzJiYTctNzI3NC00NjE1LTlhYjktY2Q5MTdmMWFmNzcxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 8.3,
+    "jaquilyn_rating": 8.5,
+    "added_by": "berk",
+    "year": 2026,
+    "imdb_rating": "8.2",
+    "imdb_id": "tt12042730",
+    "plot": "A science teacher wakes up alone on a spaceship. As his memory returns, he uncovers a mission to stop a mysterious substance killing Earth's sun, and realizes that an unexpected friendship may be the key.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-78",
+    "title": "The Sheep Detectives",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNTFmZWI4YmMtNmQ0ZC00ZGQwLTk1OWEtZjAyZmIzOGY0MGFiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Comedy",
+      "Family",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller",
+      "comedy",
+      "cozy"
+    ],
+    "berk_rating": 7.5,
+    "jaquilyn_rating": 7.4,
+    "added_by": "jaquilyn",
+    "year": 2026,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt32565993",
+    "plot": "Every night a shepherd reads aloud a murder mystery, pretending his sheep can understand. When he is found dead, the sheep realize at once that it was a murder and think they know everything about how to go about solving it.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-79",
+    "title": "The 40-Year-Old Virgin",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMzFiNzU2NjQtZTcwZC00Nzc3LTk3NjEtMDZmMDhmYjQ4NTAwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "moods": [
+      "romantic",
+      "comedy"
+    ],
+    "berk_rating": 7.2,
+    "jaquilyn_rating": 7.1,
+    "added_by": "berk",
+    "year": 2005,
+    "imdb_rating": "7.1",
+    "imdb_id": "tt0405422",
+    "plot": "Guided by his buddies, a nerdy guy who's never \"done the deed\" only finds the pressure mounting when he meets a single mother.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-80",
+    "title": "The Electric State",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZDU5YWE3MmItMGI0Ny00MWQ4LWE3NDktMjRkNDk5YmFjYTk2XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action"
+    ],
+    "berk_rating": 5.6,
+    "jaquilyn_rating": 6.3,
+    "added_by": "jaquilyn",
+    "year": 2025,
+    "imdb_rating": "5.9",
+    "imdb_id": "tt7766378",
+    "plot": "An orphaned teen hits the road with a mysterious robot to find her long-lost brother, teaming up with a smuggler and his wisecracking sidekick.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-81",
+    "title": "28 Days Later",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYTU3MDQxN2EtNjI5ZC00NDAyLTgwMTctODgxYjRlNWFmOGQyXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "thriller",
+      "mind_bending"
+    ],
+    "berk_rating": 7.1,
+    "jaquilyn_rating": 7.2,
+    "added_by": "berk",
+    "year": 2003,
+    "imdb_rating": "7.5",
+    "imdb_id": "tt0289043",
+    "plot": "Four weeks after a mysterious, incurable virus spreads throughout the United Kingdom, a handful of survivors try to find sanctuary.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-82",
+    "title": "Sherlock Holmes: A Game of Shadows",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTQwMzQ5Njk1MF5BMl5BanBnXkFtZTcwNjIxNzIxNw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Mystery"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 7.5,
+    "jaquilyn_rating": 7.4,
+    "added_by": "jaquilyn",
+    "year": 2011,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt1515091",
+    "plot": "Detective Sherlock Holmes is on the trail of criminal mastermind Professor Moriarty, who is carrying out a string of random crimes across Europe.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-83",
+    "title": "Frankenstein",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYzYzNDYxMTQtMTU4OS00MTdlLThhMTQtZjI4NGJmMTZmNmRiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 7.8,
+    "jaquilyn_rating": 7.2,
+    "added_by": "berk",
+    "year": 2025,
+    "imdb_rating": "7.4",
+    "imdb_id": "tt1312221",
+    "plot": "Dr. Victor Frankenstein, a brilliant but egotistical scientist, brings a creature to life in a monstrous experiment that ultimately leads to the undoing of both the creator and his tragic creation.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-84",
+    "title": "Talk to Me",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BY2I2NzJmY2YtYTM3Ni00ZGJhLThkZTItODFhMzhlZjZkMDQ5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.7,
+    "jaquilyn_rating": 6.7,
+    "added_by": "jaquilyn",
+    "year": 2023,
+    "imdb_rating": "7.1",
+    "imdb_id": "tt10638522",
+    "plot": "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-85",
+    "title": "Kill Bill: Vol. 1",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZmMyYzJlZmYtY2I3NC00NjAyLTkyZWItZjdjZDI1YTYyYTEwXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller",
+      "action"
+    ],
+    "berk_rating": 8.4,
+    "jaquilyn_rating": 8.6,
+    "added_by": "berk",
+    "year": 2003,
+    "imdb_rating": "8.2",
+    "imdb_id": "tt0266697",
+    "plot": "After waking from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-86",
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "romantic",
+      "mind_bending"
+    ],
+    "berk_rating": 8.3,
+    "jaquilyn_rating": 8.3,
+    "added_by": "jaquilyn",
+    "year": 2004,
+    "imdb_rating": "8.3",
+    "imdb_id": "tt0338013",
+    "plot": "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories forever.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-87",
+    "title": "The Truman Show",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNzA3ZjZlNzYtMTdjMy00NjMzLTk5ZGYtMTkyYzNiOGM1YmM3XkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "moods": [
+      "comedy"
+    ],
+    "berk_rating": 8.6,
+    "jaquilyn_rating": 8.2,
+    "added_by": "berk",
+    "year": 1998,
+    "imdb_rating": "8.2",
+    "imdb_id": "tt0120382",
+    "plot": "An insurance salesman begins to suspect that his whole life is actually some sort of reality TV show.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-88",
+    "title": "Fight Club",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 8.8,
+    "jaquilyn_rating": 9.2,
+    "added_by": "jaquilyn",
+    "year": 1999,
+    "imdb_rating": "8.8",
+    "imdb_id": "tt0137523",
+    "plot": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-89",
+    "title": "Don't Breathe",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BNjAxOTJkMmEtNjg4MC00ODk3LTkwYmUtNjM3YzE5YTk1YTFjXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Crime",
+      "Horror",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 7.4,
+    "jaquilyn_rating": 6.8,
+    "added_by": "berk",
+    "year": 2016,
+    "imdb_rating": "7.1",
+    "imdb_id": "tt4160708",
+    "plot": "Three delinquents break into the house of a war veteran who is blind to steal his money. However, they discover that the man is not as defenseless as he seems.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-90",
+    "title": "Scary Movie",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZGRmMGRhOWMtOTk3Ni00OTRjLTkyYTAtYzA1M2IzMGE3NGRkXkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "genres": [
+      "Comedy"
+    ],
+    "moods": [
+      "comedy"
+    ],
+    "berk_rating": 6.1,
+    "jaquilyn_rating": 6.3,
+    "added_by": "jaquilyn",
+    "year": 2000,
+    "imdb_rating": "6.3",
+    "imdb_id": "tt0175142",
+    "plot": "A year after disposing of the body of a man they accidentally killed, a group of dumb teenagers are stalked by a bumbling serial killer.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-91",
+    "title": "Obsession",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BYzc1NWUwMDgtNGZlMS00ZmYzLWIzMzktNmMxMmY1MTUzNWExXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 7.5,
+    "jaquilyn_rating": 8.2,
+    "added_by": "berk",
+    "year": 2026,
+    "imdb_rating": "7.8",
+    "imdb_id": "tt37287335",
+    "plot": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-92",
+    "title": "Final Destination",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjE1MjlmOWYtYzdjMS00OTgwLThjMDctZWU4N2FkZjgyNTJiXkEyXkFqcGc@._V1_QL75_UY562_CR2,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.3,
+    "jaquilyn_rating": 6.9,
+    "added_by": "jaquilyn",
+    "year": 2000,
+    "imdb_rating": "6.7",
+    "imdb_id": "tt0195714",
+    "plot": "After getting a premonition about a plane crash on his school trip, Alex, a student, saves a few of his classmates. However, their situation gets complicated when death starts chasing them.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-93",
+    "title": "The Autopsy of Jane Doe",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMjA2MTEzMzkzM15BMl5BanBnXkFtZTgwMjM2MTM5MDI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6.9,
+    "jaquilyn_rating": 7,
+    "added_by": "berk",
+    "year": 2016,
+    "imdb_rating": "6.8",
+    "imdb_id": "tt3289956",
+    "plot": "After a massacre, Sheriff Burke delivers an unidentified body to Tommy Tilden and Austin Tilden. As they perform an autopsy, impossible discoveries emerge. Each new finding deepens a mystery that threatens their survival.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-94",
+    "title": "A Bronx Tale",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BZTZiZWFjY2UtMDYzOS00N2JhLTk5YmYtMGQ1Yjk5ZWYzZjI4XkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "moods": [
+      "cozy"
+    ],
+    "berk_rating": 7.5,
+    "jaquilyn_rating": 7.5,
+    "added_by": "jaquilyn",
+    "year": 1993,
+    "imdb_rating": "7.8",
+    "imdb_id": "tt0106489",
+    "plot": "An intense drama about a boy torn between his tough, hard-working father and a violent yet charismatic crime boss.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-95",
+    "title": "Lyle, Lyle, Crocodile",
+    "type": "anime",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMDkyOTM5MmYtZWU0ZC00MmU0LWIyN2UtZDAzNGRiZDZmN2MwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "moods": [
+      "comedy",
+      "action",
+      "cozy"
+    ],
+    "berk_rating": 6.3,
+    "jaquilyn_rating": 5.8,
+    "added_by": "berk",
+    "year": 2022,
+    "imdb_rating": "6.1",
+    "imdb_id": "tt14668630",
+    "plot": "Feature film based on the children's book about a crocodile that lives in New York City.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-96",
+    "title": "Chappie",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMTUyNTI4NTIwNl5BMl5BanBnXkFtZTgwMjQ4MTI0NDE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "moods": [
+      "action"
+    ],
+    "berk_rating": 6.9,
+    "jaquilyn_rating": 6.9,
+    "added_by": "jaquilyn",
+    "year": 2015,
+    "imdb_rating": "6.8",
+    "imdb_id": "tt1823672",
+    "plot": "In the near future, crime is patrolled by a mechanized police force. When one police droid, Chappie, is stolen and given new programming, he becomes the first robot with the ability to think and feel for himself.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-97",
+    "title": "The Conjuring: Last Rites",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BM2VmMzRkYzgtMzg2ZC00OTFkLTkwMTYtNTMxNjM2YzI1MjgyXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "moods": [
+      "thriller"
+    ],
+    "berk_rating": 6,
+    "jaquilyn_rating": 5.9,
+    "added_by": "berk",
+    "year": 2025,
+    "imdb_rating": "6.2",
+    "imdb_id": "tt22898462",
+    "plot": "Paranormal investigators Ed and Lorraine Warren take on one last terrifying case involving mysterious entities they must confront.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "m-98",
+    "title": "The Hunger Games",
+    "type": "movie",
+    "status": "completed",
+    "poster_url": "https://m.media-amazon.com/images/M/MV5BMWI1OGM4YjQtNmIxNi00YmE2LWJkNTAtY2Q0YjU4NTI5NWQyXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "moods": [
+      "mind_bending",
+      "action"
+    ],
+    "berk_rating": 7.1,
+    "jaquilyn_rating": 7.5,
+    "added_by": "jaquilyn",
+    "year": 2012,
+    "imdb_rating": "7.2",
+    "imdb_id": "tt1392170",
+    "plot": "Katniss Everdeen voluntarily takes her younger sister's place in the Hunger Games: a televised competition in which two teenagers from each of the twelve Districts of Panem are chosen at random to fight to the death.",
+    "created_at": "2026-03-01T00:00:00.000Z"
+  }
+]

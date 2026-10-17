@@ -18,24 +18,24 @@ interface PromptItem {
 const SAMPLE_PROMPTS: PromptItem[] = [
   {
     id: '1',
-    category: 'Hatıralar',
-    question: 'Birlikte geçirdiğimiz anlar içinde senin için en unutulmaz, en özel olanı hangisi?',
-    berkAnswer: 'Sahilde yıldızların altında yürüdüğümüz ve gelecekteki evimizi konuştuğumuz o akşam.',
-    jaqAnswer: 'İlk kez el ele tutuşup saatlerce hiç susmadan konuştuğumuz an ❤️',
-    answeredDate: '15.10.2026',
+    category: 'Memories',
+    question: 'Out of all the moments we have spent together, which one is the most unforgettable and special for you?',
+    berkAnswer: null,
+    jaqAnswer: null,
+    answeredDate: null,
   },
   {
     id: '2',
-    category: 'Gelecek',
-    question: 'Gelecekteki ortak evimizde en çok vakit geçirmek istediğin köşe neresi?',
-    berkAnswer: 'Geniş bir kahve köşesi ve birlikte film izleyeceğimiz rahat bir koltuk.',
+    category: 'Future',
+    question: 'In our future shared home, where do you want to spend the most time together?',
+    berkAnswer: null,
     jaqAnswer: null,
     answeredDate: null,
   },
   {
     id: '3',
-    category: 'Derin Aşk',
-    question: 'Bugün bende en çok takdir ettiğin veya seni mutlu eden şey ne oldu?',
+    category: 'Deep Love',
+    question: 'What is something you appreciated or that made you smile about me today?',
     berkAnswer: null,
     jaqAnswer: null,
     answeredDate: null,
@@ -77,10 +77,10 @@ export default function QuizzesPage() {
       <div className="card-cozy p-4 space-y-1">
         <h1 className="text-base font-bold text-white flex items-center gap-1.5">
           <HelpCircle className="w-4 h-4 text-rose-400" />
-          <span>Pop-up Quizler & Kör Cevaplar</span>
+          <span>Daily Quizzes & Blind Answers</span>
         </h1>
         <p className="text-[11px] text-slate-400">
-          İkiniz de yazana kadar birbirinizin cevabı kilitli kalır, ardından kilit açılır!
+          Answers stay secret and locked until both of you submit, then the answers reveal!
         </p>
       </div>
 
@@ -98,10 +98,10 @@ export default function QuizzesPage() {
                 {bothAnswered ? (
                   <span className="text-emerald-400 font-semibold flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" />
-                    Cevaplandı
+                    Both Answered
                   </span>
                 ) : (
-                  <span className="text-slate-500">Kilitli 🔒</span>
+                  <span className="text-slate-500">Locked 🔒</span>
                 )}
               </div>
 
@@ -114,10 +114,10 @@ export default function QuizzesPage() {
                     bothAnswered || isRevealed ? (
                       <p className="text-[11px] text-slate-200 italic">"{p.berkAnswer}"</p>
                     ) : (
-                      <p className="text-[10px] text-slate-500 italic">🔒 Yazdı (Kilitli)</p>
+                      <p className="text-[10px] text-slate-500 italic">🔒 Submitted (Locked)</p>
                     )
                   ) : (
-                    <p className="text-[10px] text-slate-600 italic">Henüz yazmadı</p>
+                    <p className="text-[10px] text-slate-600 italic">Waiting to reply...</p>
                   )}
                 </div>
 
@@ -127,10 +127,10 @@ export default function QuizzesPage() {
                     bothAnswered || isRevealed ? (
                       <p className="text-[11px] text-slate-200 italic">"{p.jaqAnswer}"</p>
                     ) : (
-                      <p className="text-[10px] text-slate-500 italic">🔒 Yazdı (Kilitli)</p>
+                      <p className="text-[10px] text-slate-500 italic">🔒 Submitted (Locked)</p>
                     )
                   ) : (
-                    <p className="text-[10px] text-slate-600 italic">Henüz yazmadı</p>
+                    <p className="text-[10px] text-slate-600 italic">Waiting to reply...</p>
                   )}
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function QuizzesPage() {
                 <div className="pt-2 border-t border-white/[0.04] flex gap-2">
                   <input
                     type="text"
-                    placeholder="Gizli cevabını buraya yaz..."
+                    placeholder="Type your secret answer here..."
                     value={activeAnswerInput[p.id] || ''}
                     onChange={(e) =>
                       setActiveAnswerInput({ ...activeAnswerInput, [p.id]: e.target.value })
@@ -150,22 +150,22 @@ export default function QuizzesPage() {
                     onClick={() => handleAnswerSubmit(p.id)}
                     className="px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs transition-colors cursor-pointer"
                   >
-                    Gönder
+                    Submit
                   </button>
                 </div>
               ) : (
                 <div className="pt-2 border-t border-white/[0.04] flex items-center justify-between text-xs">
                   <span className="text-[10px] text-slate-400">
-                    Cevaplar açık • {p.answeredDate || formatDateDDMMYYYY(new Date())}
+                    Answers revealed • {p.answeredDate || formatDateDDMMYYYY(new Date())}
                   </span>
                   <button
                     onClick={() =>
                       setRevealedIds((prev) => ({ ...prev, [p.id]: !prev[p.id] }))
                     }
-                    className="text-slate-400 hover:text-white flex items-center gap-1 text-[11px]"
+                    className="text-slate-400 hover:text-white flex items-center gap-1 text-[11px] cursor-pointer"
                   >
                     {isRevealed ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
-                    <span>{isRevealed ? 'Gizle' : 'Göster'}</span>
+                    <span>{isRevealed ? 'Hide' : 'Reveal'}</span>
                   </button>
                 </div>
               )}

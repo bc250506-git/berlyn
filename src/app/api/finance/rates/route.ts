@@ -67,7 +67,7 @@ export async function GET() {
     const lastUpdated = `${day}.${month}.${year} ${hours}:${mins}`;
 
     cachedRates = {
-      source: 'KKTC Merkez Bankası (mb.gov.ct.tr)',
+      source: 'Central Bank of TRNC (mb.gov.ct.tr)',
       bankDate: bankDate.replace(/\//g, '.'),
       lastUpdated,
       rates: {
@@ -89,7 +89,7 @@ export async function GET() {
     const mins = String(nowD.getMinutes()).padStart(2, '0');
 
     const fallback: KKTCExchangeRates = {
-      source: 'KKTC Merkez Bankası (mb.gov.ct.tr)',
+      source: 'Central Bank of TRNC (mb.gov.ct.tr)',
       bankDate: `${day}.${month}.${year}`,
       lastUpdated: `${day}.${month}.${year} ${hours}:${mins}`,
       rates: {

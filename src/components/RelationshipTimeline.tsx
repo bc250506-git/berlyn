@@ -76,41 +76,47 @@ export function RelationshipTimeline({
   }, [startDate]);
 
   const formattedDate = formatDateDDMMYYYY(startDate);
+  const totalWeeks = Math.floor(elapsed.totalDays / 7);
+  const totalHours = elapsed.totalDays * 24 + elapsed.hours;
 
   return (
-    <div className="card-cozy p-5 relative overflow-hidden">
-      {/* Subtle warm corner accent */}
+    <div className="card-cozy p-5 relative overflow-hidden bg-gradient-to-br from-[#131926] via-[#161d2d] to-[#121722] border border-rose-500/20">
+      {/* Top Banner */}
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[11px] font-medium tracking-wide text-rose-400/90 uppercase flex items-center gap-1.5">
+        <span className="text-[11px] font-semibold tracking-wider text-rose-400 uppercase flex items-center gap-1.5">
           <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
-          <span>Aşk Zamanı • {formattedDate}'den beri</span>
-        </span>
-        <span className="text-[10px] text-slate-500 font-mono">
-          {elapsed.months} ay {elapsed.days} gün
+          <span>Our Love Journey • Since {formattedDate}</span>
         </span>
       </div>
 
-      <div className="flex items-baseline justify-between gap-2">
+      <div className="flex items-end justify-between gap-3">
+        {/* Main Days Counter */}
         <div>
-          <div className="text-3xl font-extrabold tracking-tight text-white flex items-baseline gap-1.5">
-            <span className="text-love-gradient text-4xl font-black font-mono">
+          <div className="text-3xl font-extrabold tracking-tight text-white flex items-baseline gap-2">
+            <span className="text-love-gradient text-4xl sm:text-5xl font-black font-mono">
               {elapsed.totalDays}
             </span>
-            <span className="text-slate-300 text-lg font-bold">Gündür Birlikteyiz</span>
+            <span className="text-slate-200 text-lg font-bold">Days Together</span>
           </div>
+          <p className="text-[11px] text-slate-400 mt-0.5">Every single moment with you is precious</p>
         </div>
 
-        {/* Live second ticker */}
-        <div className="bg-[#182030] border border-white/[0.06] rounded-xl px-2.5 py-1.5 text-right">
-          <div className="font-mono text-xs font-bold text-white tracking-widest">
-            {String(elapsed.hours).padStart(2, '0')}:{String(elapsed.minutes).padStart(2, '0')}:
-            <span className="text-rose-400">{String(elapsed.seconds).padStart(2, '0')}</span>
+        {/* Multiple scales of our time together (Replacing the live digital clock) */}
+        <div className="flex flex-col items-end gap-1.5">
+          <div className="flex items-center gap-1.5">
+            <span className="px-2 py-1 rounded-xl bg-purple-500/15 border border-purple-500/25 text-purple-300 font-mono text-[11px] font-bold">
+              ~{totalWeeks} weeks
+            </span>
+            <span className="px-2 py-1 rounded-xl bg-amber-500/15 border border-amber-500/25 text-amber-300 font-mono text-[11px] font-bold">
+              {(elapsed.totalDays / 30.44).toFixed(1)} months
+            </span>
           </div>
-          <div className="text-[9px] text-slate-400 uppercase font-medium mt-0.5">
-            Saat : Dk : Sn
-          </div>
+          <span className="text-[10px] text-slate-400 font-mono">
+            ~{totalHours.toLocaleString()} hours of happiness ✨
+          </span>
         </div>
       </div>
     </div>
   );
 }
+

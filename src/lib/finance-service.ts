@@ -1,5 +1,13 @@
 import { createClient } from './supabase/client';
-import { FinanceItem, InvestmentAsset, CompoundInterestAccount, Currency, CoupleUser } from '@/types';
+import { 
+  FinanceItem, 
+  InvestmentAsset, 
+  CompoundInterestAccount, 
+  RecurringPayment,
+  Currency, 
+  CoupleUser,
+  FinancePayer 
+} from '@/types';
 
 // Default KKTC MB Official Rates (Base: TRY)
 export const DEFAULT_KKTC_RATES: Record<Currency, number> = {
@@ -26,118 +34,13 @@ export function convertCurrency(
   return finalAmount;
 }
 
-export const INITIAL_TRANSACTIONS: FinanceItem[] = [
-  {
-    id: 'f-1',
-    type: 'income',
-    title: 'Berk Maaş / Gelir',
-    amount: 155000,
-    currency: 'TRY',
-    category: 'Maaş',
-    user: 'berk',
-    date: '2026-10-01',
-    recurring: true,
-  },
-  {
-    id: 'f-2',
-    type: 'income',
-    title: 'Jaquilyn Gelir',
-    amount: 2200,
-    currency: 'USD',
-    category: 'Maaş',
-    user: 'jaquilyn',
-    date: '2026-10-01',
-    recurring: true,
-  },
-  {
-    id: 'f-3',
-    type: 'expense',
-    title: 'Kira & Ortak Ev Masrafı',
-    amount: 45000,
-    currency: 'TRY',
-    category: 'Ev & Yaşam',
-    user: 'shared',
-    date: '2026-10-05',
-    recurring: true,
-  },
-  {
-    id: 'f-4',
-    type: 'expense',
-    title: 'Market & Haftalık Mutfak',
-    amount: 12500,
-    currency: 'TRY',
-    category: 'Market & Yemek',
-    user: 'shared',
-    date: '2026-10-10',
-    recurring: false,
-  },
-  {
-    id: 'f-5',
-    type: 'investment',
-    title: 'Fiziki Altın & Birikim Alımı',
-    amount: 30000,
-    currency: 'TRY',
-    category: 'Yatırım',
-    user: 'shared',
-    date: '2026-10-08',
-    recurring: true,
-  },
-];
+export const INITIAL_TRANSACTIONS: FinanceItem[] = [];
 
-export const INITIAL_ASSETS: InvestmentAsset[] = [
-  {
-    id: 'a-1',
-    name: 'Fiziki Altın Birikimi',
-    category: 'gold',
-    current_value: 650000,
-    currency: 'TRY',
-    target_value: 1200000,
-    monthly_contribution: 25000,
-  },
-  {
-    id: 'a-2',
-    name: 'Bileşik Faizli Vadeli Hesap (TRY)',
-    category: 'cash_savings',
-    current_value: 350000,
-    currency: 'TRY',
-    target_value: 1000000,
-    monthly_contribution: 20000,
-  },
-  {
-    id: 'a-3',
-    name: 'Sterlin Birikim Fonu (GBP)',
-    category: 'cash_savings',
-    current_value: 6000,
-    currency: 'GBP',
-    target_value: 20000,
-    monthly_contribution: 400,
-  },
-];
+export const INITIAL_RECURRING_PAYMENTS: RecurringPayment[] = [];
 
-export const INITIAL_COMPOUND_ACCOUNTS: CompoundInterestAccount[] = [
-  {
-    id: 'c-1',
-    name: 'TRY Yüksek Getirili Vadeli Hesap',
-    principal: 350000,
-    currency: 'TRY',
-    annualRate: 48, // %48 yıllık
-    compoundingFrequency: 'monthly',
-    startDate: '2026-03-01',
-    withholdingTax: 10, // %10 stopaj
-    note: 'Faiz her ay anaparaya eklenerek katlanıyor',
-  },
-  {
-    id: 'c-2',
-    name: 'İngiliz Sterlini (GBP) Vadeli Fon',
-    principal: 6000,
-    currency: 'GBP',
-    annualRate: 5.5,
-    compoundingFrequency: 'monthly',
-    startDate: '2026-04-15',
-    withholdingTax: 0,
-    note: 'KKTC bankası döviz mevduatı',
-  },
-];
+export const INITIAL_ASSETS: InvestmentAsset[] = [];
+
+export const INITIAL_COMPOUND_ACCOUNTS: CompoundInterestAccount[] = [];
 
 export interface MonthlyTrajectoryPoint {
   month: number;
@@ -171,7 +74,7 @@ export function calculate12MonthTrajectory(account: CompoundInterestAccount): {
 
     points.push({
       month: m,
-      label: `${m}. Ay`,
+      label: `Month ${m}`,
       startingBalance: start,
       monthlyInterest: interest,
       endingBalance: currentBalance,
@@ -194,9 +97,17 @@ export function calculate12MonthTrajectory(account: CompoundInterestAccount): {
 
 export function calculateTotalMonthlyInterestTRY(
   accounts: CompoundInterestAccount[],
-  rates: Record<Currency, number> = DEFAULT_KKTC_RATES
+  rates: Record<Currency, number> = DEFAULT_KKTC_RATES,
+  targetYearMonth?: string // YYYY-MM
 ): number {
   return accounts.reduce((sum, acc) => {
+    // If target month is given, do not count accounts that haven't started yet!
+    if (targetYearMonth && acc.startDate) {
+      const accMonth = acc.startDate.slice(0, 7);
+      if (accMonth > targetYearMonth) {
+        return sum;
+      }
+    }
     const traj = calculate12MonthTrajectory(acc);
     const inTRY = convertCurrency(traj.monthlyAveragePassiveIncome, acc.currency, 'TRY', rates);
     return sum + inTRY;
@@ -205,24 +116,21 @@ export function calculateTotalMonthlyInterestTRY(
 
 export async function fetchFinanceData(): Promise<{
   transactions: FinanceItem[];
+  recurringPayments: RecurringPayment[];
   assets: InvestmentAsset[];
   compoundAccounts: CompoundInterestAccount[];
 }> {
   try {
-    const supabase = createClient();
-    const [txRes, assetRes] = await Promise.all([
-      supabase.from('finance_items').select('*').order('date', { ascending: false }),
-      supabase.from('investment_assets').select('*'),
-    ]);
-
-    const tx = txRes.data && txRes.data.length > 0 ? (txRes.data as FinanceItem[]) : getLocalTransactions();
-    const assets = assetRes.data && assetRes.data.length > 0 ? (assetRes.data as InvestmentAsset[]) : getLocalAssets();
+    const tx = getLocalTransactions();
+    const recurringPayments = getLocalRecurringPayments();
+    const assets = getLocalAssets();
     const compoundAccounts = getLocalCompoundAccounts();
 
-    return { transactions: tx, assets, compoundAccounts };
+    return { transactions: tx, recurringPayments, assets, compoundAccounts };
   } catch {
     return {
       transactions: getLocalTransactions(),
+      recurringPayments: getLocalRecurringPayments(),
       assets: getLocalAssets(),
       compoundAccounts: getLocalCompoundAccounts(),
     };
@@ -238,12 +146,75 @@ export function getLocalTransactions(): FinanceItem[] {
   }
 }
 
+export function getLocalRecurringPayments(): RecurringPayment[] {
+  try {
+    const local = localStorage.getItem('berlyn_finance_recurring');
+    return local ? JSON.parse(local) : INITIAL_RECURRING_PAYMENTS;
+  } catch {
+    return INITIAL_RECURRING_PAYMENTS;
+  }
+}
+
+export function saveRecurringPayment(item: RecurringPayment): RecurringPayment[] {
+  try {
+    const current = getLocalRecurringPayments();
+    const idx = current.findIndex((i) => i.id === item.id);
+    let updated: RecurringPayment[];
+    if (idx >= 0) {
+      updated = [...current];
+      updated[idx] = item;
+    } else {
+      updated = [item, ...current];
+    }
+    localStorage.setItem('berlyn_finance_recurring', JSON.stringify(updated));
+    return updated;
+  } catch {
+    return [item];
+  }
+}
+
+export function deleteRecurringPayment(id: string): RecurringPayment[] {
+  try {
+    const updated = getLocalRecurringPayments().filter((i) => i.id !== id);
+    localStorage.setItem('berlyn_finance_recurring', JSON.stringify(updated));
+    return updated;
+  } catch {
+    return [];
+  }
+}
+
 export function getLocalAssets(): InvestmentAsset[] {
   try {
     const local = localStorage.getItem('berlyn_finance_assets');
     return local ? JSON.parse(local) : INITIAL_ASSETS;
   } catch {
     return INITIAL_ASSETS;
+  }
+}
+
+export function saveAsset(asset: InvestmentAsset): InvestmentAsset[] {
+  try {
+    const assets = getLocalAssets();
+    const idx = assets.findIndex((a) => a.id === asset.id);
+    if (idx >= 0) {
+      assets[idx] = asset;
+    } else {
+      assets.unshift(asset);
+    }
+    localStorage.setItem('berlyn_finance_assets', JSON.stringify(assets));
+    return assets;
+  } catch {
+    return [asset];
+  }
+}
+
+export function deleteAsset(id: string): InvestmentAsset[] {
+  try {
+    const assets = getLocalAssets().filter((a) => a.id !== id);
+    localStorage.setItem('berlyn_finance_assets', JSON.stringify(assets));
+    return assets;
+  } catch {
+    return [];
   }
 }
 
@@ -286,13 +257,15 @@ export async function saveTransaction(item: Partial<FinanceItem>): Promise<Finan
   const newItem: FinanceItem = {
     id: item.id || `f-${Date.now()}`,
     type: item.type || 'expense',
-    title: item.title || 'İşlem',
+    title: item.title || 'Transaction',
     amount: Number(item.amount) || 0,
     currency: item.currency || 'TRY',
-    category: item.category || 'Genel',
+    category: item.category || 'General',
     user: item.user || 'shared',
     date: item.date || new Date().toISOString().split('T')[0],
     recurring: Boolean(item.recurring),
+    isInterest: Boolean(item.isInterest),
+    compoundAccountId: item.compoundAccountId,
   };
 
   try {
@@ -322,3 +295,55 @@ export function deleteTransaction(id: string): FinanceItem[] {
     return [];
   }
 }
+
+export function ensureMonthlyInterestTransactions(
+  transactions: FinanceItem[],
+  compoundAccounts: CompoundInterestAccount[],
+  targetMonthTag: string
+): FinanceItem[] {
+  let updated = [...transactions];
+  let changed = false;
+
+  compoundAccounts.forEach((acc) => {
+    if (!acc.startDate || acc.startDate.slice(0, 7) > targetMonthTag) return;
+
+    // Check if an interest transaction already exists for this account in this target month
+    const existing = updated.find(
+      (t) => (t.compoundAccountId === acc.id || t.title.includes(acc.name)) &&
+             t.date?.startsWith(targetMonthTag)
+    );
+
+    if (!existing) {
+      const grossMonthly = (acc.principal * (acc.annualRate / 100)) / 12;
+      const netMonthly = Math.round(grossMonthly * (1 - (acc.withholdingTax || 0) / 100));
+      if (netMonthly > 0) {
+        const dayStr = acc.startDate.split('-')[2] || '01';
+        const newInterestTx: FinanceItem = {
+          id: `interest-${acc.id}-${targetMonthTag}`,
+          type: 'income',
+          title: `Interest Yield: ${acc.name}`,
+          amount: netMonthly,
+          currency: acc.currency,
+          category: 'Passive Income',
+          user: 'shared',
+          date: `${targetMonthTag}-${dayStr}`,
+          isInterest: true,
+          compoundAccountId: acc.id,
+        };
+        updated.push(newInterestTx);
+        changed = true;
+      }
+    }
+  });
+
+  if (changed && typeof window !== 'undefined') {
+    try {
+      localStorage.setItem('berlyn_finance_tx', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  }
+
+  return changed ? updated : transactions;
+}
+

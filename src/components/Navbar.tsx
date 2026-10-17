@@ -9,12 +9,15 @@ import {
   HelpCircle, 
   Wallet, 
   Compass, 
-  CheckSquare, 
+  CalendarDays, 
   PiggyBank, 
   Home,
+  MessageCircle,
+  LayoutGrid,
   X,
   ChevronRight,
-  LogOut
+  LogOut,
+  Sparkles
 } from 'lucide-react';
 import { useCurrentUser } from './UserContext';
 
@@ -23,24 +26,52 @@ export function Navbar() {
   const { currentUser, profile, logout } = useCurrentUser();
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
-  // Bottom primary tabs
-  const mainTabs = [
-    { href: '/', label: 'Evimiz', icon: Home },
-    { href: '/media', label: 'Film & Dizi', icon: Film },
-    { href: '/quizzes', label: 'Quiz & Soru', icon: HelpCircle },
-    { href: '/finance', label: 'Finans', icon: Wallet },
+  // Position 1: Messages
+  // Position 2: Agenda
+  // Position 3: Home (Center, Elevated & Featured)
+  // Position 4: Finance
+  // Position 5: More Drawer
+
+  // Secondary items inside "More" Drawer
+  const secondaryTabs = [
+    { 
+      href: '/media', 
+      label: 'Watchlist (Movies & Series)', 
+      icon: Film, 
+      desc: 'Shared movie & show watchlist for cozy nights' 
+    },
+    { 
+      href: '/quizzes', 
+      label: 'Quizzes & Questions', 
+      icon: HelpCircle, 
+      desc: 'Fun blind questions & couple compatibility trivia' 
+    },
+    { 
+      href: '/bucket-list', 
+      label: 'Lifetime Bucket List', 
+      icon: Sparkles, 
+      desc: '100 dreams & milestones to achieve before we die' 
+    },
+    { 
+      href: '/penalty', 
+      label: 'Penalty & Swear Jar', 
+      icon: PiggyBank, 
+      desc: 'Fun fine pool for luxury date nights' 
+    },
+    { 
+      href: '/travel', 
+      label: 'Travel & Visa Matcher', 
+      icon: Compass, 
+      desc: 'Dual TR & PH passport visa-free destinations' 
+    },
   ];
 
-  // Secondary tabs inside "Diğer"
-  const secondaryTabs = [
-    { href: '/travel', label: 'TR & PH Vize & Geziler', icon: Compass, desc: 'Ortak vizesiz ülkeler ve tatil rotaları' },
-    { href: '/agenda', label: 'Ajanda & Bucket List', icon: CheckSquare, desc: 'Hayat hedefleri ve hatıra fotoğrafları' },
-    { href: '/penalty', label: 'Ceza & Küfür Kumbarası', icon: PiggyBank, desc: 'Biriken fon ve akşam yemeği ödülü' },
-  ];
+  const isHome = pathname === '/';
+  const isMoreActive = secondaryTabs.some(t => t.href === pathname);
 
   return (
     <>
-      {/* 1. Top Minimal Bar - Clean & Distraction-Free */}
+      {/* 1. Top Minimal Bar */}
       <header className="sticky top-0 z-40 w-full bg-[#0b0f17]/95 backdrop-blur-md border-b border-white/[0.08]">
         <div className="max-w-md mx-auto px-4 h-13 flex items-center justify-between">
           {/* Logo */}
@@ -50,15 +81,24 @@ export function Navbar() {
             </div>
             <div className="flex items-baseline gap-1.5">
               <span className="text-base font-bold tracking-tight text-white">Berlyn</span>
-              <span className="text-[10px] text-rose-400 font-medium">• Bizim Evimiz</span>
+              <span className="text-[10px] text-rose-400 font-medium">• Our Home</span>
             </div>
           </Link>
 
-          {/* Simple greeting indicator with subtle logout */}
+          {/* Active user indicator & Lock / Switch button */}
           {profile && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-400">
-              <span className="text-sm">{profile.avatar}</span>
-              <span className="font-medium text-slate-300">{profile.name}</span>
+            <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 text-xs bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
+                <span className="text-sm">{profile.avatar}</span>
+                <span className="font-semibold text-slate-200">{profile.name}</span>
+              </div>
+              <button
+                onClick={logout}
+                className="p-1.5 rounded-full text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors cursor-pointer"
+                title="Lock session & Switch User"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
             </div>
           )}
         </div>
@@ -66,74 +106,140 @@ export function Navbar() {
 
       {/* 2. Mobile-First Bottom Navigation Bar (Fixed) */}
       <nav className="fixed bottom-0 left-0 right-0 z-40 bg-[#0d121c]/95 backdrop-blur-lg border-t border-white/[0.08] pb-[env(safe-area-inset-bottom,8px)]">
-        <div className="max-w-md mx-auto px-3 py-1 flex items-center justify-around">
-          {mainTabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = pathname === tab.href;
-            return (
-              <Link
-                key={tab.href}
-                href={tab.href}
-                className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all cursor-pointer ${
-                  isActive
-                    ? 'text-rose-400 font-semibold'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <Icon className={`w-5 h-5 mb-0.5 ${isActive ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
-                <span className="text-[10px] tracking-tight">{tab.label}</span>
-              </Link>
-            );
-          })}
-
-          {/* "Diğer" tab */}
-          <button
-            onClick={() => setShowMoreMenu(true)}
-            className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all cursor-pointer ${
-              secondaryTabs.some(t => t.href === pathname)
+        <div className="max-w-md mx-auto px-2 py-1 flex items-end justify-between">
+          
+          {/* 1. Messages */}
+          <Link
+            href="/messages"
+            className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-xl transition-all cursor-pointer min-w-[58px] ${
+              pathname === '/messages'
                 ? 'text-rose-400 font-semibold'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Compass className="w-5 h-5 mb-0.5 stroke-[1.7]" />
-            <span className="text-[10px] tracking-tight">Diğer</span>
+            <MessageCircle className={`w-5 h-5 mb-0.5 ${pathname === '/messages' ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
+            <span className="text-[10px] tracking-tight">Messages</span>
+          </Link>
+
+          {/* 2. Agenda */}
+          <Link
+            href="/agenda"
+            className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-xl transition-all cursor-pointer min-w-[58px] ${
+              pathname === '/agenda'
+                ? 'text-rose-400 font-semibold'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <CalendarDays className={`w-5 h-5 mb-0.5 ${pathname === '/agenda' ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
+            <span className="text-[10px] tracking-tight">Agenda</span>
+          </Link>
+
+          {/* 3. Center Home Button (Elevated, Larger & Distinct) */}
+          <Link
+            href="/"
+            className="flex flex-col items-center justify-center cursor-pointer -mt-5 px-1 min-w-[68px] group"
+          >
+            <div
+              className={`w-13 h-13 rounded-2xl p-[2px] transition-all duration-300 ring-4 ring-[#0d121c] shadow-lg group-hover:scale-105 active:scale-95 flex items-center justify-center ${
+                isHome
+                  ? 'bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-400 shadow-rose-500/40'
+                  : 'bg-gradient-to-tr from-white/20 via-white/10 to-rose-500/30 group-hover:from-rose-500 group-hover:to-amber-500'
+              }`}
+            >
+              <div
+                className={`w-full h-full rounded-[14px] flex items-center justify-center transition-colors ${
+                  isHome
+                    ? 'bg-gradient-to-tr from-rose-600 to-rose-500 text-white'
+                    : 'bg-[#121824] group-hover:bg-[#161f2e] text-slate-300 group-hover:text-white'
+                }`}
+              >
+                <Home className={`w-6 h-6 ${isHome ? 'stroke-[2.4] text-white' : 'stroke-[1.8]'}`} />
+              </div>
+            </div>
+            <span
+              className={`text-[10px] tracking-tight font-bold mt-0.5 transition-colors ${
+                isHome ? 'text-rose-400' : 'text-slate-400 group-hover:text-slate-200'
+              }`}
+            >
+              Home
+            </span>
+          </Link>
+
+          {/* 4. Finance */}
+          <Link
+            href="/finance"
+            className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-xl transition-all cursor-pointer min-w-[58px] ${
+              pathname === '/finance'
+                ? 'text-rose-400 font-semibold'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Wallet className={`w-5 h-5 mb-0.5 ${pathname === '/finance' ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
+            <span className="text-[10px] tracking-tight">Finance</span>
+          </Link>
+
+          {/* 5. More */}
+          <button
+            onClick={() => setShowMoreMenu(true)}
+            className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-xl transition-all cursor-pointer min-w-[58px] ${
+              isMoreActive
+                ? 'text-rose-400 font-semibold'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <LayoutGrid className={`w-5 h-5 mb-0.5 ${isMoreActive ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
+            <span className="text-[10px] tracking-tight">More</span>
           </button>
+
         </div>
       </nav>
 
-      {/* 3. "Diğer" Drawer (Bottom Sheet) */}
+      {/* 3. "More" Drawer (Bottom Sheet) */}
       {showMoreMenu && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md bg-[#121824] border-t sm:border border-white/[0.1] rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-3">
+          <div className="w-full max-w-md bg-[#121824] border-t sm:border border-white/[0.1] rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[85vh] flex flex-col overflow-hidden">
+            {/* Sticky Header */}
+            <div className="sticky top-0 z-20 flex items-center justify-between p-5 pb-3.5 border-b border-white/[0.08] bg-[#121824] shrink-0">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Compass className="w-4 h-4 text-rose-400" />
-                Diğer Yaşam Alanlarımız
+                <LayoutGrid className="w-4 h-4 text-rose-400" />
+                More Spaces
               </h3>
               <button
                 onClick={() => setShowMoreMenu(false)}
-                className="p-1 rounded-full text-slate-400 hover:text-white"
+                className="p-1 rounded-full text-slate-400 hover:text-white cursor-pointer transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
+            {/* Scrollable Content */}
+            <div className="p-5 pt-3.5 overflow-y-auto flex-1">
+
             <div className="space-y-2 mb-4">
               {secondaryTabs.map((item) => {
                 const Icon = item.icon;
+                const isSelected = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setShowMoreMenu(false)}
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-[#161e2c] border border-white/[0.06] hover:border-rose-500/30 transition-all text-left group"
+                    className={`flex items-center justify-between p-3.5 rounded-2xl border transition-all text-left group ${
+                      isSelected
+                        ? 'bg-rose-500/10 border-rose-500/30'
+                        : 'bg-[#161e2c] border-white/[0.06] hover:border-rose-500/30'
+                    }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
+                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center border ${
+                        isSelected 
+                          ? 'bg-rose-500 text-white border-rose-400' 
+                          : 'bg-rose-500/10 border-rose-500/20 text-rose-400'
+                      }`}>
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-semibold text-white group-hover:text-rose-300">
+                        <div className={`text-xs font-semibold ${isSelected ? 'text-rose-300' : 'text-white group-hover:text-rose-300'}`}>
                           {item.label}
                         </div>
                         <div className="text-[11px] text-slate-400">{item.desc}</div>
@@ -155,8 +261,9 @@ export function Navbar() {
                 className="w-full py-2.5 rounded-xl bg-[#161e2c] hover:bg-rose-500/10 text-slate-400 hover:text-rose-300 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
-                <span>Çıkış Yap</span>
+                <span>Log Out</span>
               </button>
+            </div>
             </div>
           </div>
         </div>

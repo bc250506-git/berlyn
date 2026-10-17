@@ -31,3 +31,7 @@ export function formatDateTimeDDMMYYYY(dateInput: string | number | Date | null 
 
   return `${day}.${month}.${year} ${hours}:${mins}`;
 }
+export const MONTH_NAMES_EN = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];

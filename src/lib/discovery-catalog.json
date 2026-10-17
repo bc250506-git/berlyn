@@ -1,0 +1,1213 @@
+[
+  {
+    "title": "Dune: Part Two",
+    "year": 2024,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family."
+  },
+  {
+    "title": "Blade Runner 2049",
+    "year": 2017,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Drama",
+      "Sci-Fi",
+      "Mystery"
+    ],
+    "imdb_rating": "8.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard."
+  },
+  {
+    "title": "Arrival",
+    "year": 2016,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "7.9",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_QL75_UX380_CR0,16,380,562_.jpg",
+    "plot": "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecraft appear around the world."
+  },
+  {
+    "title": "The Matrix",
+    "year": 1999,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth."
+  },
+  {
+    "title": "Dark",
+    "year": 2017,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUzNjQ2MTY5NV5BMl5BanBnXkFtZTgwOTAzNTQxNDM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A family saga with a supernatural twist, set in a German town where the disappearance of two young children exposes the relationships among four families."
+  },
+  {
+    "title": "Severance",
+    "year": 2022,
+    "type": "series",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "Mark leads a team of office workers whose memories have been surgically divided between their work and personal lives."
+  },
+  {
+    "title": "Shutter Island",
+    "year": 2010,
+    "type": "movie",
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2FjNWExYzEtY2YzOC00YjNlLTllMTQtNmIwM2Q1YzBhOWM1XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane."
+  },
+  {
+    "title": "Parasite",
+    "year": 2019,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan."
+  },
+  {
+    "title": "Prisoners",
+    "year": 2013,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTg0NTIzMjQ1NV5BMl5BanBnXkFtZTcwNDc3MzM5OQ@@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "plot": "When Keller Dover's daughter and her friend go missing, he takes matters into his own hands as the police pursue multiple leads."
+  },
+  {
+    "title": "Mindhunter",
+    "year": 2017,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTk4NDA4MGMtNjliOC00MjExLWI1YzctOTc4NWIxM2I1YjM5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "In the late 1970s two FBI agents expand criminal science by delving into the psychology of murder."
+  },
+  {
+    "title": "Gone Girl",
+    "year": 2014,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTk0MDQ3MzAzOV5BMl5BanBnXkFtZTgwNzU1NzE3MjE@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him."
+  },
+  {
+    "title": "La La Land",
+    "year": 2016,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "imdb_rating": "8.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDllYjliOTUtMDJjZC00ODIzLWJmNGMtOWI2NzQxMjA2NzdlXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future."
+  },
+  {
+    "title": "About Time",
+    "year": 2013,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "imdb_rating": "7.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTA1ODUzMDA3NzFeQTJeQWpwZ15BbWU3MDgxMTYxNTk@._V1_QL75_UX380_CR0,20,380,562_.jpg",
+    "plot": "At the age of 21, Tim discovers he can travel in time and change what happens and has happened in his own life."
+  },
+  {
+    "title": "Your Name (Kimi no Na wa)",
+    "year": 2016,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "imdb_rating": "8.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzY1OWZiN2YtMWU3My00M2YyLWI1M2EtNTljMTMwMzM5NDQ0XkEyXkFqcGc@._V1_QL75_UY562_CR318,0,380,562_.jpg",
+    "plot": "Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?"
+  },
+  {
+    "title": "Normal People",
+    "year": 2020,
+    "type": "series",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWUzNjQ2YmYtNWI3Yi00NzNmLWJjYWYtMDFiM2RjYjNjZWZmXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "Follows Marianne and Connell, from different backgrounds but the same small town in Ireland, as they weave in and out of each other's romantic lives."
+  },
+  {
+    "title": "Before Sunrise",
+    "year": 1995,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDZhZmI1ZTUtYWI3NC00NTMwLTk3NWMtNDc0OGNjM2I0ZjlmXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "plot": "A young man and woman meet on a train in Europe, and wind up spending one evening together in Vienna."
+  },
+  {
+    "title": "Spirited Away",
+    "year": 2001,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Family",
+      "Fantasy"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTEyNmEwOWUtYzkyOC00ZTQ4LTllZmUtMjk0Y2YwOGUzYjRiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits."
+  },
+  {
+    "title": "Howl's Moving Castle",
+    "year": 2004,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Family",
+      "Fantasy"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTY1OTg0MjE3MV5BMl5BanBnXkFtZTcwNTUxMTkyMQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent wizard."
+  },
+  {
+    "title": "Paddington 2",
+    "year": 2017,
+    "type": "movie",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Family",
+      "Fantasy"
+    ],
+    "imdb_rating": "7.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTk1YzlhMTUtZmU5MC00NmRmLTlkZjItYzQ0NTY4Y2NiNzc4XkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "plot": "Paddington, now happily settled with the Brown family, picks up a series of odd jobs to buy the perfect present for his Aunt Lucy's 100th birthday."
+  },
+  {
+    "title": "Ted Lasso",
+    "year": 2020,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Sport"
+    ],
+    "imdb_rating": "8.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2ZlYTU0YWUtMzY4OC00N2JkLTk1ZGQtN2UxNWJhMTBkMzM4XkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+    "plot": "An American college football coach is hired to manage a British soccer team. What he lacks in knowledge, he makes up for with optimism and biscuits."
+  },
+  {
+    "title": "Good Will Hunting",
+    "year": 1997,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDdjZGQ5YzEtNTc2My00Mjc0LWFlMTctYzkwMzZlNzdiZWYzXkEyXkFqcGc@._V1_QL75_UX380_CR0,9,380,562_.jpg",
+    "plot": "Will Hunting, a janitor at M.I.T., has a gift for mathematics, but needs help from a psychologist to find direction in his life."
+  },
+  {
+    "title": "Interstellar",
+    "year": 2014,
+    "type": "movie",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft along with a team of researchers."
+  },
+  {
+    "title": "The Bear",
+    "year": 2022,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjk2NWI5OTctODcwYy00NGRmLWFmN2YtOTZiNzFiYjVlODBkXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "A young chef from the fine dining world returns home to Chicago to run his family's Italian beef sandwich shop."
+  },
+  {
+    "title": "Knives Out",
+    "year": 2019,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "imdb_rating": "7.9",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDU5ZTRkYmItZjg0Mi00ZTQwLThjMWItNWM3MTMxMzVjZmVjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A detective investigates the death of the patriarch of an eccentric, combative family."
+  },
+  {
+    "title": "The Nice Guys",
+    "year": 2016,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime",
+      "Mystery"
+    ],
+    "imdb_rating": "7.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2YwNWZlZGEtYTEyZi00NjdjLWEwM2ItM2Q2MDMwZjkzMjk0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A mismatched pair of private eyes investigate the apparent suicide of a fading porn star in 1970s Los Angeles."
+  },
+  {
+    "title": "Fleabag",
+    "year": 2016,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjA4MzU5NzQxNV5BMl5BanBnXkFtZTgwOTg3MDA5NzM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A dry-witted woman, known only as Fleabag, has no filter as she navigates life and love in London while trying to cope with tragedy."
+  },
+  {
+    "title": "Spider-Man: Across the Spider-Verse",
+    "year": 2023,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNThiZjA3MjItZGY5Ni00ZmJhLWEwN2EtOTBlYTA4Y2E0M2ZmXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "plot": "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence."
+  },
+  {
+    "title": "Gladiator",
+    "year": 2000,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery."
+  },
+  {
+    "title": "The Boys",
+    "year": 2019,
+    "type": "series",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjU4OWNiYzQtMzc1NS00NjZlLTgyYTctZWY4ZmEzMTkxYjA4XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers."
+  },
+  {
+    "title": "Arcane",
+    "year": 2021,
+    "type": "series",
+    "genres": [
+      "Animation",
+      "Action",
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "imdb_rating": "9.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjA2NzhlMDItNWRmZC00MzRjLWE3ZjAtZjBlZDAwOWY2ODdjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Set in the utopian region of Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions."
+  },
+  {
+    "title": "Back to the Future",
+    "year": 1985,
+    "type": "movie",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmM3ZjE0NzctNjBiOC00MDZmLTgzMTUtNGVlOWFlOTNiZDJiXkEyXkFqcGc@._V1_QL75_UX380_CR0,14,380,562_.jpg",
+    "plot": "Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean."
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "year": 2001,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "imdb_rating": "8.9",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "plot": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth."
+  },
+  {
+    "title": "Friends",
+    "year": 1994,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "imdb_rating": "8.9",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTU2YmM5ZjctOGVlMC00YTczLTljM2MtYjhlNGI5YWMyZjFkXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan."
+  },
+  {
+    "title": "Inception",
+    "year": 2010,
+    "type": "movie",
+    "genres": [
+      "Adventure",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "imdb_rating": "8.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO, but his tragic past may doom the project and his team to disaster."
+  },
+  {
+    "title": "Tenet",
+    "year": 2020,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "imdb_rating": "7.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTIzNDIxMzktMzlkMi00MmUyLWFmMjQtZDgwMjBmOGJmNTI3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Armed with only the word \"Tenet,\" and fighting for the survival of the entire world, CIA operative, The Protagonist, journeys through a twilight world of international espionage on a global mission that unfolds beyond real time."
+  },
+  {
+    "title": "Ex Machina",
+    "year": 2015,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "imdb_rating": "7.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUxNzc0OTIxMV5BMl5BanBnXkFtZTgwNDI3NzU2NDE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A young programmer is selected to participate in a ground-breaking experiment in synthetic intelligence by evaluating the human qualities of a highly advanced humanoid A.I."
+  },
+  {
+    "title": "The Prestige",
+    "year": 2006,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2Y0YmM5MWYtZTYzNi00ZjU5LTlmOGYtZDQ4ODQyMjAzNjQ2XkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+    "plot": "Two magicians dismantle their lives to outmaneuver each other following a shared tragedy. They chase the ultimate illusion across Victorian London, sacrificing sanity and safety to master a teleportation feat that defies all logic."
+  },
+  {
+    "title": "Everything Everywhere All at Once",
+    "year": 2022,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "imdb_rating": "7.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOWNmMzAzZmQtNDQ1NC00Nzk5LTkyMmUtNGI2N2NkOWM4MzEyXkEyXkFqcGc@._V1_QL75_UY562_CR4,0,380,562_.jpg",
+    "plot": "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led."
+  },
+  {
+    "title": "Westworld",
+    "year": 2016,
+    "type": "series",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjM2MTA5NjIwNV5BMl5BanBnXkFtZTgwNjI2OTMxNTM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "At the intersection of the near future and the reimagined past, waits a world in which every human appetite can be indulged without consequence."
+  },
+  {
+    "title": "Black Mirror",
+    "year": 2011,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODcxMWI2NDMtYTc3NC00OTZjLWFmNmUtM2NmY2I1ODkxYzczXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Featuring stand-alone dramas -- sharp, suspenseful, satirical tales that explore techno-paranoia -- \"Black Mirror\" is a contemporary reworking of \"The Twilight Zone\" with stories that tap into the collective unease about the moder..."
+  },
+  {
+    "title": "Stranger Things",
+    "year": 2016,
+    "type": "series",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjEzMDAxOTUyMV5BMl5BanBnXkFtZTgwNzAxMzYzOTE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "In 1980s Indiana, a group of young friends witness supernatural forces and secret government exploits. As they search for answers, the children unravel a series of extraordinary mysteries."
+  },
+  {
+    "title": "Zodiac",
+    "year": 2007,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "imdb_rating": "7.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDFkMTRkZmQtM2I0NC00NjJjLWJlMDctNTNiZWYxYzhjZDZiXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "Between 1968 and 1983, a San Francisco cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified individual who terrorizes Northern California with a killing spree."
+  },
+  {
+    "title": "Se7en",
+    "year": 2016,
+    "type": "movie",
+    "genres": [
+      "Short",
+      "Comedy",
+      "Horror"
+    ],
+    "imdb_rating": "6.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTU5MTFlYmItMGI4Ni00OTJkLTlmZTUtNzcyNzcxM2Y4MWI0XkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SX300.jpg",
+    "plot": "Short student film."
+  },
+  {
+    "title": "Gone Baby Gone",
+    "year": 2007,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "imdb_rating": "7.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTlmNmU2NDgtZDU1OS00OTFhLWJlNTgtMWE2OGQ1OTg1MGM4XkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "Two Boston area detectives investigate a little girl's kidnapping, which ultimately turns into a crisis both professionally and personally."
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "year": 1991,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Horror"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "A young FBI cadet is aided by a manipulative cannibal killer in her pursuit of a madman who skins his victims."
+  },
+  {
+    "title": "Prison Break",
+    "year": 2005,
+    "type": "series",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "imdb_rating": "8.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjE0ODQxNjI2MV5BMl5BanBnXkFtZTYwNTgzMzg3._V1_QL75_UY562_CR13,0,380,562_.jpg",
+    "plot": "A structural engineer installs himself in a prison his company helped design, to save his falsely accused brother from a death sentence by breaking both of them out from the inside."
+  },
+  {
+    "title": "Sherlock",
+    "year": 2010,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "imdb_rating": "9.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjRhZDdjMDYtMTg5Yy00NGI4LWI3ZDgtYjNkNDc4MzJkNDRjXkEyXkFqcGc@._V1_QL75_UY562_CR22,0,380,562_.jpg",
+    "plot": "In modern-day London, brilliant but eccentric detective Sherlock Holmes teams with war veteran Dr. John Watson to crack baffling crimes, outwit formidable foes, and aid Scotland Yard with razor-sharp deduction."
+  },
+  {
+    "title": "True Detective",
+    "year": 2014,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "imdb_rating": "8.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjgwYzA1NWMtNDYyZi00ZGQyLWI5NTktMDYwZjE2OTIwZWEwXkEyXkFqcGc@._V1_QL75_UY562_CR11,0,380,562_.jpg",
+    "plot": "Anthology series in which police investigations unearth the personal and professional secrets of those involved, both within and outside the law."
+  },
+  {
+    "title": "Fargo",
+    "year": 1996,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjg4MWE0MjEtODFhNy00MjA5LTg5ODktMzgwNWFmZTAwNjBlXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "A car salesman's inept crime falls apart due to his and his henchmen's bungling and the persistent police work of a dogged detective."
+  },
+  {
+    "title": "Before Sunset",
+    "year": 2004,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjAwNTM5Ml5BMl5BanBnXkFtZTYwNDM0MTc3._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "Nine years after Jesse and Celine first met, they encounter each other again on the French leg of Jesse's book tour."
+  },
+  {
+    "title": "Before Midnight",
+    "year": 2013,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "7.9",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjA5NzgxODE2NF5BMl5BanBnXkFtZTcwNTI1NTI0OQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "We meet Jesse and Celine nine years on in Greece. Almost two decades have passed since their first meeting on that train bound for Vienna."
+  },
+  {
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "year": 2004,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories forever."
+  },
+  {
+    "title": "Pride & Prejudice",
+    "year": 2005,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "7.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTA1NDQ3NTcyOTNeQTJeQWpwZ15BbWU3MDA0MzA4MzE@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "plot": "When Elizabeth Bennet meets the handsome Mr. Darcy, she believes he is the last man she could ever marry, but as their lives become intertwined, she finds herself captivated by the man she has sworn to hate forever."
+  },
+  {
+    "title": "The Notebook",
+    "year": 2004,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "7.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjE0ZjgzMzYtMTAxYi00NGMzLThmZDktNzFlMzA2MWRmYWQ0XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "An elderly man reads to a woman with dementia the story of two young lovers whose romance is threatened by the difference in their respective social classes."
+  },
+  {
+    "title": "Past Lives",
+    "year": 2023,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "7.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjQyMTNhNjUtN2VmYy00NWRhLTkwOTctMGVmNTBmNDIxYjZhXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Nora and Hae Sung, two deeply connected childhood friends, are wrested apart after Nora's family emigrates from South Korea. Twenty years later, they are reunited for one fateful week as they confront notions of love and destiny."
+  },
+  {
+    "title": "One Day",
+    "year": 2011,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "7.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTQ3NTg2MDI3NF5BMl5BanBnXkFtZTcwMjc5MTA1NA@@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+    "plot": "After spending the night together on the eve of their college graduation, Dexter and Emma are shown each year on the same date to see where they are in their lives. They are sometimes together, and sometimes not."
+  },
+  {
+    "title": "Ratatouille",
+    "year": 2007,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTMzODU0NTkxMF5BMl5BanBnXkFtZTcwMjQ4MzMzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous Paris restaurant."
+  },
+  {
+    "title": "WALL-E: Treasures and Trinkets",
+    "year": 2008,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Short"
+    ],
+    "imdb_rating": "8.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzk0ZGMzMDYtMDJkYS00NTdhLWJlZWUtMTdhOTJkOTM3NDUwXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "A robot named WALL-E is on a uninhabitable earth by itself but when the human space ship comes and drops of a new robot named Eva on search for a plant. Eva meets WALL-E witch WALL-E shows Eva a plant. the humans come back to take..."
+  },
+  {
+    "title": "Up",
+    "year": 2009,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "imdb_rating": "8.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNmI1ZTc5MWMtMDYyOS00ZDc2LTkzOTAtNjQ4NWIxNjYyNDgzXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "plot": "A grumpy old man turns his house into an airship using balloons and flies off to South America with a young stowaway."
+  },
+  {
+    "title": "Coco",
+    "year": 2017,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Drama"
+    ],
+    "imdb_rating": "8.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDIyM2E2NTAtMzlhNy00ZGUxLWI1NjgtZDY5MzhiMDc5NGU3XkEyXkFqcGc@._V1_QL75_UY562_CR7,0,380,562_.jpg",
+    "plot": "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer."
+  },
+  {
+    "title": "Soul",
+    "year": 2020,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "imdb_rating": "8.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTZkYjA5MDEtMjY1ZC00ODk5LThjOTUtZDYxODEzYWNjMTU2XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Joe is a middle-school band teacher whose life hasn't quite gone the way he expected. His true passion is jazz. But when he travels to another realm to help someone find their passion, he soon discovers what it means to have soul."
+  },
+  {
+    "title": "My Neighbor Totoro",
+    "year": 1990,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWM3MDE3YjEtMzIzZC00ODE5LTgxNTItNmUyMTBkM2M2NmNiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "When two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby."
+  },
+  {
+    "title": "Princess Mononoke",
+    "year": 1997,
+    "type": "anime",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "imdb_rating": "8.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTcyN2Y0MDYtMGI1NC00MWQ1LWFhZGMtN2U4NTcxZGYyNjljXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "After a deadly curse forces him from home, young warrior Ashitaka journeys west and is drawn into a conflict between ancient forest spirits, an iron town, and a wolf-raised girl."
+  },
+  {
+    "title": "Amélie",
+    "year": 2002,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTNmYzY0MWQtZGZmNy00Y2Y4LWFmMDQtMTZjYTdiYzEwZGQ2XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "Despite being caught in her imaginative world, young waitress Amelie decides to help people find happiness. Her quest to spread joy leads her on a journey during which she finds true love."
+  },
+  {
+    "title": "Modern Family",
+    "year": 2009,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzFlOWFjNzQtODViNC00NzgzLThhZmItZTc1N2VlZDgwODUwXkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+    "plot": "Three different, but related, families face trials and tribulations in their own uniquely comedic ways."
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "type": "movie",
+    "genres": [
+      "Drama"
+    ],
+    "imdb_rating": "9.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "After a banker is sentenced to life in Shawshank Prison, he forms an unlikely friendship with a seasoned inmate and clings to hope amid cruelty and corruption."
+  },
+  {
+    "title": "Forrest Gump",
+    "year": 1994,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_QL75_UY562_CR4,0,380,562_.jpg",
+    "plot": "The history of the United States from the 1950s to the '70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart."
+  },
+  {
+    "title": "The Green Mile",
+    "year": 1999,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Fantasy"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A death row guard learns that a gentle giant in his charge possesses a mysterious gift."
+  },
+  {
+    "title": "Schindler's List",
+    "year": 1994,
+    "type": "movie",
+    "genres": [
+      "Biography",
+      "Drama",
+      "History"
+    ],
+    "imdb_rating": "9.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjM1ZDQxYWUtMzQyZS00MTE1LWJmZGYtNGUyNTdlYjM3ZmVmXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis."
+  },
+  {
+    "title": "Aftersun",
+    "year": 2022,
+    "type": "movie",
+    "genres": [
+      "Drama"
+    ],
+    "imdb_rating": "7.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZWU5Y2MyZjQtNGVjYi00ZDRkLTk1MGYtYmNlMzI0MTFmNDU2XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Sophie reflects on the shared joy and private melancholy of a holiday she took with her father twenty years earlier. Memories real and imagined fill the gaps between as she tries to reconcile the father she knew with the man she d..."
+  },
+  {
+    "title": "Manchester by the Sea",
+    "year": 2016,
+    "type": "movie",
+    "genres": [
+      "Drama"
+    ],
+    "imdb_rating": "7.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTYxMjk0NDg4Ml5BMl5BanBnXkFtZTgwODcyNjA5OTE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A depressed uncle is asked to take care of his teenage nephew after the boy's father dies."
+  },
+  {
+    "title": "This Is Us",
+    "year": 2016,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzk4YzY2ZjUtNTQ2YS00MWQ5LTgzZjctZTRlMmZlMzNjNDc3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A heartwarming and emotional story about a unique set of triplets, their struggles, and their wonderful parents."
+  },
+  {
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "The owner of an aging high-class hotel regales a writer with tales of serving as a lobby boy under an exceptional concierge in the hotel's glory years."
+  },
+  {
+    "title": "Superbad",
+    "year": 2007,
+    "type": "movie",
+    "genres": [
+      "Comedy"
+    ],
+    "imdb_rating": "7.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjk0MzdlZGEtNTRkOC00ZDRiLWJkYjAtMzUzYTRiNzk1YTViXkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+    "plot": "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry."
+  },
+  {
+    "title": "Crazy, Stupid, Love",
+    "year": 2022,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "imdb_rating": "7.3",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzI1OGZhM2ItMmFhNS00YWViLTljMzUtYmU1Y2ZiNWFhOTUwXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+    "plot": "Surya goes to Yogyakarta by night bus and sits next to Asti, whom he saves from pranksters. Unexpectedly, the meeting with Asti changes Surya's life, both in love and in his relationship with his parents."
+  },
+  {
+    "title": "What We Do in the Shadows",
+    "year": 2015,
+    "type": "movie",
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Thriller"
+    ],
+    "imdb_rating": "7.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGFhNjkyZDYtOTc4Yi00OWM4LTg4ZTktNjIzNDA5NGE5YTYwXkEyXkFqcGc@._V1_QL75_UY562_CR3,0,380,562_.jpg",
+    "plot": "Viago, Deacon, and Vladislav are vampires who are struggling with the mundane aspects of modern life, like paying rent, keeping up with the chore wheel, trying to get into nightclubs, and overcoming flatmate conflicts."
+  },
+  {
+    "title": "Brooklyn Nine-Nine",
+    "year": 2013,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "imdb_rating": "8.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzBiODQxZTUtNjc0MC00Yzc1LThmYTMtN2YwYTU3NjgxMmI4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "Comedy series following the exploits of Det. Jake Peralta and his diverse, lovable colleagues as they police the NYPD's 99th Precinct."
+  },
+  {
+    "title": "The Office",
+    "year": 2005,
+    "type": "series",
+    "genres": [
+      "Comedy"
+    ],
+    "imdb_rating": "9.0",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjQwYzBlYzUtZjhhOS00ZDQ0LWE0NzAtYTk4MjgzZTNkZWEzXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, tedium and romance."
+  },
+  {
+    "title": "Parks and Recreation",
+    "year": 2009,
+    "type": "series",
+    "genres": [
+      "Comedy"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDlhMzAwNTAtNTk2NS00MTdkLWE3ZWYtMDU0MTFiYmU2ZTc0XkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "The absurd antics of an Indiana town's public officials as they pursue sundry projects to make their city a better place."
+  },
+  {
+    "title": "The Dark Knight",
+    "year": 2008,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "imdb_rating": "9.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman, James Gordon and Harvey Dent must work together to put an end to the madness."
+  },
+  {
+    "title": "Avengers: Infinity War",
+    "year": 2018,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe."
+  },
+  {
+    "title": "Mad Max: Fury Road",
+    "year": 2015,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.1",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDRkODJhOTgtOTc1OC00NTgzLTk4NjItNDgxZDY4YjlmNDY2XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshipper and a drifter named Max."
+  },
+  {
+    "title": "Top Gun: Maverick",
+    "year": 2022,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDBkZDNjMWEtOTdmMi00NmExLTg5MmMtNTFlYTJlNWY5YTdmXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "The story involves Maverick confronting his past while training a group of younger Top Gun graduates, including the son of his deceased best friend, for a dangerous mission."
+  },
+  {
+    "title": "John Wick",
+    "year": 2014,
+    "type": "movie",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "imdb_rating": "7.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "John Wick is a former hitman grieving the loss of his true love. When his home is broken into, robbed, and his dog killed, he is forced to return to action to exact revenge."
+  },
+  {
+    "title": "Loki",
+    "year": 2021,
+    "type": "series",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzA2YjM2ZWQtYTZhMS00OTI3LTlhYzQtZjBiZWZkMDdlNjA5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.”"
+  },
+  {
+    "title": "Daredevil",
+    "year": 2015,
+    "type": "series",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "imdb_rating": "8.6",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "A blind lawyer by day, vigilante by night. Matt Murdock fights the crime of New York as Daredevil."
+  },
+  {
+    "title": "Peaky Blinders",
+    "year": 2013,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "imdb_rating": "8.7",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOGM0NGY3ZmItOGE2ZC00OWIxLTk0N2EtZWY4Yzg3ZDlhNGI3XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "A gangster family epic set in 1919 Birmingham, England; centered on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby."
+  },
+  {
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "imdb_rating": "8.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_QL75_UY562_CR3,0,380,562_.jpg",
+    "plot": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+  },
+  {
+    "title": "The Godfather",
+    "year": 1972,
+    "type": "movie",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "imdb_rating": "9.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_QL75_UY562_CR8,0,380,562_.jpg",
+    "plot": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+  },
+  {
+    "title": "Jurassic Park",
+    "year": 1993,
+    "type": "movie",
+    "genres": [
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "imdb_rating": "8.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "An industrialist invites some experts to visit his theme park of cloned dinosaurs. After a power failure, the creatures run loose, putting everyone's lives, including his grandchildren's, in danger."
+  },
+  {
+    "title": "Raiders of the Lost Ark",
+    "year": 1981,
+    "type": "movie",
+    "genres": [
+      "Adventure"
+    ],
+    "imdb_rating": "8.4",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOGNhMjg2ZjgtYzk4Ni00MTViLTg1MmUtYzM2MDZiYjZlMmU3XkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "plot": "In 1936, archaeologist Indiana Jones is tasked by Army Intelligence to help locate a legendary ancient power, the Ark of Covenant, before the Nazis get it first."
+  },
+  {
+    "title": "Casablanca",
+    "year": 1943,
+    "type": "movie",
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "imdb_rating": "8.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNWEzN2U1YTYtYTQyMS00NTVkLWE2NGQtZWFlMmM0MDNjMmRiXkEyXkFqcGc@._V1_QL75_UX380_CR0,5,380,562_.jpg",
+    "plot": "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco."
+  },
+  {
+    "title": "Breaking Bad",
+    "year": 2008,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "imdb_rating": "9.5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOWE4NTc3YmYtNmU2Mi00ZjhkLWE1MTItZmM1M2U1ODU3YjFlXkEyXkFqcGc@._V1_QL75_UY562_CR2,0,380,562_.jpg",
+    "plot": "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student to secure his family's future."
+  },
+  {
+    "title": "The Sopranos",
+    "year": 1999,
+    "type": "series",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "imdb_rating": "9.2",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjYwNWQwOTMtMzYwOS00NTcxLWFhNTYtNGQ4YjdmYTcyNDFkXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "plot": "New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek professional psychiatric counseling."
+  },
+  {
+    "title": "Succession",
+    "year": 2018,
+    "type": "series",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "imdb_rating": "8.8",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTY4YTVkY2QtMjRmOS00YzliLWIxOWQtMTdkOTVkN2UzODNmXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "plot": "The Roy family is known for controlling the biggest media and entertainment company in the world. However, their world changes when their father steps down from the company."
+  }
+]

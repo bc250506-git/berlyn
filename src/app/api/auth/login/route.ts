@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
     if (!authenticatedUser) {
       return NextResponse.json(
-        { error: 'Hatalı şifre girdiniz. Lütfen tekrar deneyin.' },
+        { error: 'Invalid password. Please try again.' },
         { status: 401 }
       );
     }
@@ -47,6 +47,6 @@ export async function POST(request: Request) {
 
     return response;
   } catch {
-    return NextResponse.json({ error: 'Giriş işlemi başarısız oldu' }, { status: 500 });
+    return NextResponse.json({ error: 'Authentication failed. Please try again.' }, { status: 500 });
   }
 }

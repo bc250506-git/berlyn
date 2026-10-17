@@ -16,12 +16,19 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Berlyn — Our Space & Digital Sanctuary',
-  description: 'Private digital sanctuary, couple timeline, watchlist, and life hub for Berk & Jaquilyn.',
+  title: 'Berlyn — Our Space & Home',
+  description: 'Private digital home, couple timeline, watchlist, and life hub for Berk & Jaquilyn.',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
   },
 };
+
+export const instant = false;
 
 export default function RootLayout({
   children,

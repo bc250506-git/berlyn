@@ -5,21 +5,21 @@ import { Compass, CheckCircle2, Plane, Globe, Shield, MapPin } from 'lucide-reac
 import { formatDateDDMMYYYY } from '@/lib/date';
 
 const VISA_FREE_COUNTRIES = [
-  { name: 'Japonya', code: 'JP', trVisa: 'Vizesiz (90 gün)', phVisa: 'e-Vize / Kolay', bothStatus: 'Kolay / Popüler 🌸' },
-  { name: 'Tayland', code: 'TH', trVisa: 'Vizesiz (60 gün)', phVisa: 'Vizesiz (30 gün)', bothStatus: 'İkisi de Vizesiz! 🌴' },
-  { name: 'Güney Kore', code: 'KR', trVisa: 'K-ETA (e-Vize)', phVisa: 'e-Vize', bothStatus: 'e-Vize ile Kolay 🇰🇷' },
-  { name: 'Endonezya (Bali)', code: 'ID', trVisa: 'Kapıda Vize (VoA)', phVisa: 'Vizesiz (30 gün)', bothStatus: 'İkisi de Çok Kolay 🏖️' },
-  { name: 'Singapur', code: 'SG', trVisa: 'Vizesiz (30 gün)', phVisa: 'Vizesiz (30 gün)', bothStatus: 'İkisi de Vizesiz! 🏙️' },
-  { name: 'Maldivler', code: 'MV', trVisa: 'Ücretsiz Kapıda Vize', phVisa: 'Ücretsiz Kapıda Vize', bothStatus: 'İkisi de Vizesiz! 🌊' },
-  { name: 'Karadağ (Montenegro)', code: 'ME', trVisa: 'Vizesiz (90 gün)', phVisa: 'Vize Gerekli', bothStatus: 'TR Vizesiz ⛰️' },
-  { name: 'Brezilya', code: 'BR', trVisa: 'Vizesiz (90 gün)', phVisa: 'Vizesiz (90 gün)', bothStatus: 'İkisi de Vizesiz! 💃' },
+  { name: 'Japan', code: 'JP', trVisa: 'Visa-Free (90 days)', phVisa: 'e-Visa / Easy', bothStatus: 'Top Pick / Easy 🌸' },
+  { name: 'Thailand', code: 'TH', trVisa: 'Visa-Free (60 days)', phVisa: 'Visa-Free (30 days)', bothStatus: 'Both Visa-Free! 🌴' },
+  { name: 'South Korea', code: 'KR', trVisa: 'K-ETA (e-Visa)', phVisa: 'e-Visa', bothStatus: 'Easy with e-Visa 🇰🇷' },
+  { name: 'Indonesia (Bali)', code: 'ID', trVisa: 'Visa on Arrival (VoA)', phVisa: 'Visa-Free (30 days)', bothStatus: 'Very Easy for Both 🏖️' },
+  { name: 'Singapore', code: 'SG', trVisa: 'Visa-Free (30 days)', phVisa: 'Visa-Free (30 days)', bothStatus: 'Both Visa-Free! 🏙️' },
+  { name: 'Maldives', code: 'MV', trVisa: 'Free Visa on Arrival (30d)', phVisa: 'Free Visa on Arrival (30d)', bothStatus: 'Both Visa-Free! 🌊' },
+  { name: 'Montenegro', code: 'ME', trVisa: 'Visa-Free (90 days)', phVisa: 'Visa Required', bothStatus: 'TR Visa-Free ⛰️' },
+  { name: 'Brazil', code: 'BR', trVisa: 'Visa-Free (90 days)', phVisa: 'Visa-Free (90 days)', bothStatus: 'Both Visa-Free! 💃' },
 ];
 
 export default function TravelPage() {
   const [filter, setFilter] = useState<'all' | 'both_easy'>('both_easy');
 
   const displayed = filter === 'both_easy'
-    ? VISA_FREE_COUNTRIES.filter((c) => c.bothStatus.includes('Vizesiz') || c.bothStatus.includes('Kolay'))
+    ? VISA_FREE_COUNTRIES.filter((c) => c.bothStatus.includes('Visa-Free') || c.bothStatus.includes('Easy'))
     : VISA_FREE_COUNTRIES;
 
   return (
@@ -27,10 +27,10 @@ export default function TravelPage() {
       <div className="card-cozy p-4 space-y-1">
         <h1 className="text-base font-bold text-white flex items-center gap-1.5">
           <Compass className="w-4 h-4 text-rose-400" />
-          <span>TR & PH Çifte Pasaport Vize Eşleştirici</span>
+          <span>TR & PH Dual Passport Visa Matcher</span>
         </h1>
         <p className="text-[11px] text-slate-400">
-          Türk (TR) ve Filipin (PH) pasaportuyla birlikte en rahat gidebileceğimiz ülkeler
+          Destinations where Turkish (TR) and Philippine (PH) passports can easily travel together
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function TravelPage() {
               : 'bg-[#121824] border border-white/[0.08] text-slate-400'
           }`}
         >
-          İkimize de Kolay / Vizesizler
+          Easy / Visa-Free for Both
         </button>
         <button
           onClick={() => setFilter('all')}
@@ -53,7 +53,7 @@ export default function TravelPage() {
               : 'bg-[#121824] border border-white/[0.08] text-slate-400'
           }`}
         >
-          Tüm Rotalar
+          All Destinations
         </button>
       </div>
 
@@ -72,11 +72,11 @@ export default function TravelPage() {
 
             <div className="grid grid-cols-2 gap-2 text-[11px] pt-1 border-t border-white/[0.04]">
               <div className="bg-[#161e2c] p-2 rounded-xl">
-                <span className="text-[10px] text-blue-300 font-semibold block">🦁 TR Pasaport</span>
+                <span className="text-[10px] text-blue-300 font-semibold block">🦁 TR Passport</span>
                 <span className="text-slate-300">{item.trVisa}</span>
               </div>
               <div className="bg-[#161e2c] p-2 rounded-xl">
-                <span className="text-[10px] text-rose-300 font-semibold block">🌸 PH Pasaport</span>
+                <span className="text-[10px] text-rose-300 font-semibold block">🌸 PH Passport</span>
                 <span className="text-slate-300">{item.phVisa}</span>
               </div>
             </div>

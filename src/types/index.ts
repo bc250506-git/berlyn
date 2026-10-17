@@ -75,12 +75,17 @@ export interface MediaItem {
   year?: number;
   total_episodes?: number;
   current_episode?: number;
+  imdb_rating?: number | string;
+  imdb_id?: string;
+  plot?: string;
   created_at: string;
 }
 
 // Finance Hub (Currencies: TRY default, USD, GBP)
 export type TransactionType = 'income' | 'expense' | 'investment';
 export type Currency = 'TRY' | 'USD' | 'GBP';
+
+export type FinancePayer = CoupleUser | 'shared' | 'family';
 
 export interface FinanceItem {
   id: string;
@@ -89,9 +94,24 @@ export interface FinanceItem {
   amount: number;
   currency: Currency;
   category: string;
-  user: CoupleUser | 'shared';
-  date: string;
+  user: FinancePayer;
+  date: string; // YYYY-MM-DD
   recurring?: boolean;
+  isInterest?: boolean;
+  compoundAccountId?: string;
+}
+
+// Recurring Income & Expenses (Monthly on day X)
+export interface RecurringPayment {
+  id: string;
+  type: 'income' | 'expense';
+  title: string;
+  amount: number;
+  currency: Currency;
+  category: string;
+  user: FinancePayer;
+  dayOfMonth: number; // 1 - 31
+  lastProcessedMonth?: string; // e.g. "2026-10"
 }
 
 export interface InvestmentAsset {
@@ -104,16 +124,16 @@ export interface InvestmentAsset {
   monthly_contribution?: number;
 }
 
-// Compound Interest / Faiz Getirisi Account
+// Compound Interest / Term Savings Account
 export interface CompoundInterestAccount {
   id: string;
   name: string;
-  principal: number; // Anapara
+  principal: number; // Principal deposit
   currency: Currency; // TRY, USD, GBP
-  annualRate: number; // Yıllık faiz oranı (%)
-  compoundingFrequency: 'monthly' | 'daily' | '32_days'; // Bileşik sıklığı
+  annualRate: number; // Annual interest rate (%)
+  compoundingFrequency: 'monthly' | 'daily' | '32_days'; // Compounding schedule
   startDate: string; // YYYY-MM-DD
-  withholdingTax: number; // Stopaj oranı (örn: %10 veya %0)
+  withholdingTax: number; // Withholding tax rate (%10 or %0)
   note?: string;
 }
 
@@ -146,16 +166,26 @@ export interface StickyNote {
   created_at: string;
 }
 
+export type BucketCategory = 
+  | 'trips' 
+  | 'outdoors' 
+  | 'habits' 
+  | 'home' 
+  | 'learning' 
+  | 'special';
+
 export interface BucketItem {
   id: string;
   title: string;
-  category: 'travel' | 'experience' | 'home' | 'date_night' | 'life_milestone';
+  category: BucketCategory;
   completed: boolean;
   completed_at?: string | null;
   photo_url?: string | null;
-  memory_note?: string | null;
-  created_by: CoupleUser;
-  created_at: string;
+  notes?: string | null;
+  schedule_days?: string[];
+  schedule_time?: string;
+  created_by?: string;
+  created_at?: string;
 }
 
 // Swear & Penalty Jar
