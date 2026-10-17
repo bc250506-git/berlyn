@@ -78,8 +78,15 @@ export default function MessagesPage() {
   const isTypingRef = useRef<boolean>(false);
   const lastMarkedSeenIdRef = useRef<string | null>(null);
 
-  // Supabase client instance for real-time WebSockets
-  const supabase = useMemo(() => createClient(), []);
+  // Supabase client instance for real-time WebSockets (resilient against missing env or init errors)
+  const supabase = useMemo(() => {
+    try {
+      return createClient();
+    } catch (e) {
+      console.warn('Supabase client init failed in messages:', e);
+      return null;
+    }
+  }, []);
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
@@ -95,6 +102,7 @@ export default function MessagesPage() {
   // Helper to broadcast via Supabase Realtime
   const channelBroadcast = useCallback((event: string, payload: any) => {
     try {
+      if (!supabase?.channel) return;
       const channel = supabase.channel('berlyn_couple_realtime_chat');
       channel.send({
         type: 'broadcast',
@@ -185,74 +193,81 @@ export default function MessagesPage() {
     updateMyPresence({ in_chat: true });
 
     // 2. Realtime WebSocket subscription with Supabase broadcast channel
-    const channel = supabase.channel('berlyn_couple_realtime_chat', {
-      config: { broadcast: { self: false } }
-    });
+    let channel: any = null;
+    if (supabase?.channel) {
+      try {
+        channel = supabase.channel('berlyn_couple_realtime_chat', {
+          config: { broadcast: { self: false } }
+        });
 
-    channel
-      .on('broadcast', { event: 'new_message' }, ({ payload }) => {
-        if (payload && payload.id) {
-          setMessages((prev) => {
-            if (prev.some((m) => m.id === payload.id)) return prev;
-            return [...prev, payload];
+        channel
+          .on('broadcast', { event: 'new_message' }, ({ payload }: any) => {
+            if (payload && payload.id) {
+              setMessages((prev) => {
+                if (prev.some((m) => m.id === payload.id)) return prev;
+                return [...prev, payload];
+              });
+              setTimeout(scrollToBottom, 50);
+              if (payload.text === '❤️') {
+                confetti({ particleCount: 30, spread: 60, origin: { y: 0.6 } });
+              }
+
+              // If partner sent it and we are in chat, mark it as seen immediately
+              if (payload.sender === partnerUser) {
+                updateMyPresence({ in_chat: true, last_seen_message_id: payload.id });
+                channelBroadcast('seen_event', { user: activeSender, message_id: payload.id });
+              }
+            }
+          })
+          .on('broadcast', { event: 'edit_message' }, ({ payload }: any) => {
+            if (payload && payload.id) {
+              setMessages((prev) => prev.map((m) => (m.id === payload.id ? { ...m, ...payload } : m)));
+            }
+          })
+          .on('broadcast', { event: 'delete_message' }, ({ payload }: any) => {
+            if (payload && payload.id) {
+              setMessages((prev) => prev.filter((m) => m.id !== payload.id));
+            }
+          })
+          .on('broadcast', { event: 'typing_event' }, ({ payload }: any) => {
+            if (payload && payload.user === partnerUser) {
+              setPartnerPresence((prev) => ({
+                ...prev,
+                is_typing: !!payload.is_typing,
+              }));
+            }
+          })
+          .on('broadcast', { event: 'seen_event' }, ({ payload }: any) => {
+            if (payload && payload.user === partnerUser) {
+              setPartnerPresence((prev) => ({
+                ...prev,
+                last_seen_message_id: payload.message_id,
+                last_seen_message_at: Date.now(),
+              }));
+            }
+          })
+          .on('broadcast', { event: 'presence_event' }, ({ payload }: any) => {
+            if (payload && payload.user === partnerUser) {
+              setPartnerPresence((prev) => ({
+                ...prev,
+                is_online: true,
+                is_in_chat: typeof payload.in_chat === 'boolean' ? payload.in_chat : prev.is_in_chat,
+                last_seen_message_id: payload.last_seen_msg_id || prev.last_seen_message_id,
+              }));
+            }
+          })
+          .subscribe((status: string) => {
+            if (status === 'SUBSCRIBED') {
+              setIsConnected(true);
+              channelBroadcast('presence_event', { user: activeSender, in_chat: true });
+            } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
+              setIsConnected(false);
+            }
           });
-          setTimeout(scrollToBottom, 50);
-          if (payload.text === '❤️') {
-            confetti({ particleCount: 30, spread: 60, origin: { y: 0.6 } });
-          }
-
-          // If partner sent it and we are in chat, mark it as seen immediately
-          if (payload.sender === partnerUser) {
-            updateMyPresence({ in_chat: true, last_seen_message_id: payload.id });
-            channelBroadcast('seen_event', { user: activeSender, message_id: payload.id });
-          }
-        }
-      })
-      .on('broadcast', { event: 'edit_message' }, ({ payload }) => {
-        if (payload && payload.id) {
-          setMessages((prev) => prev.map((m) => (m.id === payload.id ? { ...m, ...payload } : m)));
-        }
-      })
-      .on('broadcast', { event: 'delete_message' }, ({ payload }) => {
-        if (payload && payload.id) {
-          setMessages((prev) => prev.filter((m) => m.id !== payload.id));
-        }
-      })
-      .on('broadcast', { event: 'typing_event' }, ({ payload }) => {
-        if (payload && payload.user === partnerUser) {
-          setPartnerPresence((prev) => ({
-            ...prev,
-            is_typing: !!payload.is_typing,
-          }));
-        }
-      })
-      .on('broadcast', { event: 'seen_event' }, ({ payload }) => {
-        if (payload && payload.user === partnerUser) {
-          setPartnerPresence((prev) => ({
-            ...prev,
-            last_seen_message_id: payload.message_id,
-            last_seen_message_at: Date.now(),
-          }));
-        }
-      })
-      .on('broadcast', { event: 'presence_event' }, ({ payload }) => {
-        if (payload && payload.user === partnerUser) {
-          setPartnerPresence((prev) => ({
-            ...prev,
-            is_online: true,
-            is_in_chat: typeof payload.in_chat === 'boolean' ? payload.in_chat : prev.is_in_chat,
-            last_seen_message_id: payload.last_seen_msg_id || prev.last_seen_message_id,
-          }));
-        }
-      })
-      .subscribe((status) => {
-        if (status === 'SUBSCRIBED') {
-          setIsConnected(true);
-          channelBroadcast('presence_event', { user: activeSender, in_chat: true });
-        } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
-          setIsConnected(false);
-        }
-      });
+      } catch (err) {
+        console.warn('Realtime channel setup warning:', err);
+      }
+    }
 
     // 3. Keep-alive polling fallback every 3.5 seconds
     const interval = setInterval(() => {
@@ -273,7 +288,13 @@ export default function MessagesPage() {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       updateMyPresence({ in_chat: false, is_typing: false });
       channelBroadcast('presence_event', { user: activeSender, in_chat: false });
-      supabase.removeChannel(channel);
+      if (channel && supabase?.removeChannel) {
+        try {
+          supabase.removeChannel(channel);
+        } catch {
+          // ignore
+        }
+      }
       clearInterval(interval);
     };
   }, [supabase, activeSender, partnerUser, fetchMessages, fetchPresence, updateMyPresence, channelBroadcast]);
@@ -581,7 +602,8 @@ export default function MessagesPage() {
           messages.map((msg) => {
             const isMe = msg.sender === activeSender;
             const isBerk = msg.sender === 'berk';
-            const isHeartOnly = msg.text.trim() === '❤️';
+            const msgText = typeof msg.text === 'string' ? msg.text : '';
+            const isHeartOnly = msgText.trim() === '❤️';
             
             // Check if this specific message was seen
             const isMsgSeen = isMe && (
@@ -634,9 +656,9 @@ export default function MessagesPage() {
                       </div>
 
                       {/* Caption if provided */}
-                      {msg.text && !msg.text.startsWith('📷') && (
+                      {msgText && !msgText.startsWith('📷') && (
                         <div className="p-2.5 bg-[#121824] border-t border-white/[0.08] text-xs text-slate-200">
-                          <p className="whitespace-pre-wrap">{msg.text}</p>
+                          <p className="whitespace-pre-wrap">{msgText}</p>
                         </div>
                       )}
                     </div>
@@ -685,7 +707,7 @@ export default function MessagesPage() {
                           : 'bg-[#182133] border border-white/[0.08] text-slate-200 rounded-tl-xs'
                       } ${msg.isLoveNote ? 'ring-1 ring-rose-400/30' : ''}`}
                     >
-                      <p className="whitespace-pre-wrap break-words">{msg.text}</p>
+                      <p className="whitespace-pre-wrap break-words">{msgText}</p>
                     </div>
 
                     {/* Footer read receipt & edit button */}

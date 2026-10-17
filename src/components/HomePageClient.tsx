@@ -1110,9 +1110,9 @@ export function HomePageClient({
             </div>
             <span className="text-[11px] font-bold text-white">Quizzes & Questions</span>
           </div>
-          <p className="text-[10px] text-slate-400 line-clamp-1">Couples trivia, prompts & games</p>
+          <p className="text-[10px] text-slate-400 line-clamp-1">Daily couple question & memory vault</p>
           <div className="flex items-center justify-between text-[10px] text-violet-400 font-medium mt-2 pt-1 border-t border-white/[0.06]">
-            <span>Play Quizzes</span>
+            <span>Today's Question</span>
             <ArrowRight className="w-3 h-3" />
           </div>
         </Link>

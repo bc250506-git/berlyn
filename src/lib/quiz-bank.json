@@ -1,0 +1,3362 @@
+[
+  {
+    "id": "quiz-1",
+    "number": 1,
+    "category": "Memories",
+    "question": "Out of all the moments we have spent together, which one is the most unforgettable and special for you?"
+  },
+  {
+    "id": "quiz-2",
+    "number": 2,
+    "category": "Memories",
+    "question": "What was your very first impression of me the first time we ever talked?"
+  },
+  {
+    "id": "quiz-3",
+    "number": 3,
+    "category": "Memories",
+    "question": "What is a specific date or evening we shared that you would love to experience again from scratch?"
+  },
+  {
+    "id": "quiz-4",
+    "number": 4,
+    "category": "Memories",
+    "question": "What song immediately reminds you of me the second you hear the opening notes?"
+  },
+  {
+    "id": "quiz-5",
+    "number": 5,
+    "category": "Memories",
+    "question": "What was the exact moment or conversation where you realized you were falling in love with me?"
+  },
+  {
+    "id": "quiz-6",
+    "number": 6,
+    "category": "Memories",
+    "question": "What is our funniest inside joke or funny misunderstanding that still makes you laugh?"
+  },
+  {
+    "id": "quiz-7",
+    "number": 7,
+    "category": "Memories",
+    "question": "What is your absolute favorite photo or video of us together, and what memory does it bring back?"
+  },
+  {
+    "id": "quiz-8",
+    "number": 8,
+    "category": "Memories",
+    "question": "What is a small, unexpected thing I did early in our relationship that made your heart skip a beat?"
+  },
+  {
+    "id": "quiz-9",
+    "number": 9,
+    "category": "Memories",
+    "question": "What is the most adventurous or spontaneous thing we have ever done together?"
+  },
+  {
+    "id": "quiz-10",
+    "number": 10,
+    "category": "Memories",
+    "question": "What movie or TV show that we watched together will forever feel like \"our show\"?"
+  },
+  {
+    "id": "quiz-11",
+    "number": 11,
+    "category": "Memories",
+    "question": "What was going through your head the first time we held hands or cuddled?"
+  },
+  {
+    "id": "quiz-12",
+    "number": 12,
+    "category": "Memories",
+    "question": "What is a sweet compliment I once gave you that you still remember to this day?"
+  },
+  {
+    "id": "quiz-13",
+    "number": 13,
+    "category": "Memories",
+    "question": "What is a challenge or tough day we went through together that ended up making our bond stronger?"
+  },
+  {
+    "id": "quiz-14",
+    "number": 14,
+    "category": "Memories",
+    "question": "What meal or dish that we ate together brings back the happiest memories for you?"
+  },
+  {
+    "id": "quiz-15",
+    "number": 15,
+    "category": "Memories",
+    "question": "If you had to pick one screenshot or text message from our history to frame on a wall, which one would it be?"
+  },
+  {
+    "id": "quiz-16",
+    "number": 16,
+    "category": "Memories",
+    "question": "What was the most nervous you ever felt around me, and why?"
+  },
+  {
+    "id": "quiz-17",
+    "number": 17,
+    "category": "Memories",
+    "question": "What is a silly or goofy face I make that only you know about?"
+  },
+  {
+    "id": "quiz-18",
+    "number": 18,
+    "category": "Memories",
+    "question": "What was our best late-night conversation, and what did we talk about until the early morning?"
+  },
+  {
+    "id": "quiz-19",
+    "number": 19,
+    "category": "Memories",
+    "question": "Which trip or outing of ours felt the most like a romantic movie scene?"
+  },
+  {
+    "id": "quiz-20",
+    "number": 20,
+    "category": "Memories",
+    "question": "What is something you learned about me that surprised you in the best possible way?"
+  },
+  {
+    "id": "quiz-21",
+    "number": 21,
+    "category": "Memories",
+    "question": "What is the sweetest gift or surprise you have ever received from me?"
+  },
+  {
+    "id": "quiz-22",
+    "number": 22,
+    "category": "Memories",
+    "question": "What was the first thing you told your best friend or family about me when we started talking?"
+  },
+  {
+    "id": "quiz-23",
+    "number": 23,
+    "category": "Memories",
+    "question": "What memory of us instantly calms you down whenever you are having a stressful day?"
+  },
+  {
+    "id": "quiz-24",
+    "number": 24,
+    "category": "Memories",
+    "question": "What was the hardest goodbye we had to say, and how did it make you feel?"
+  },
+  {
+    "id": "quiz-25",
+    "number": 25,
+    "category": "Memories",
+    "question": "What is a habit or phrase of mine that you caught yourself adopting?"
+  },
+  {
+    "id": "quiz-26",
+    "number": 26,
+    "category": "Memories",
+    "question": "What was our most chaotic or funny travel/road moment together?"
+  },
+  {
+    "id": "quiz-27",
+    "number": 27,
+    "category": "Memories",
+    "question": "What is an ordinary, simple day with me that somehow felt magical to you?"
+  },
+  {
+    "id": "quiz-28",
+    "number": 28,
+    "category": "Memories",
+    "question": "What outfit or look of mine has been your all-time favorite?"
+  },
+  {
+    "id": "quiz-29",
+    "number": 29,
+    "category": "Memories",
+    "question": "When was the last time we laughed so hard our stomachs hurt?"
+  },
+  {
+    "id": "quiz-30",
+    "number": 30,
+    "category": "Memories",
+    "question": "What is a secret detail about our first weeks together that you never confessed until now?"
+  },
+  {
+    "id": "quiz-31",
+    "number": 31,
+    "category": "Deep Love",
+    "question": "What is something I do on ordinary days that makes you feel deeply cherished and safe?"
+  },
+  {
+    "id": "quiz-32",
+    "number": 32,
+    "category": "Deep Love",
+    "question": "When do you feel most emotionally connected and closest to my heart?"
+  },
+  {
+    "id": "quiz-33",
+    "number": 33,
+    "category": "Deep Love",
+    "question": "What is one quality or strength in me that you admire the most?"
+  },
+  {
+    "id": "quiz-34",
+    "number": 34,
+    "category": "Deep Love",
+    "question": "How has being with me changed the way you view love and companionship?"
+  },
+  {
+    "id": "quiz-35",
+    "number": 35,
+    "category": "Deep Love",
+    "question": "What does \"feeling completely safe\" mean to you when you are in my arms?"
+  },
+  {
+    "id": "quiz-36",
+    "number": 36,
+    "category": "Deep Love",
+    "question": "What is a vulnerability or fear of yours that you only feel comfortable sharing with me?"
+  },
+  {
+    "id": "quiz-37",
+    "number": 37,
+    "category": "Deep Love",
+    "question": "In what ways do you feel we balance each other out like puzzle pieces?"
+  },
+  {
+    "id": "quiz-38",
+    "number": 38,
+    "category": "Deep Love",
+    "question": "What is something about your inner world that you wish I understood even more deeply?"
+  },
+  {
+    "id": "quiz-39",
+    "number": 39,
+    "category": "Deep Love",
+    "question": "What is a habit or gesture of mine that never fails to melt your heart?"
+  },
+  {
+    "id": "quiz-40",
+    "number": 40,
+    "category": "Deep Love",
+    "question": "What do you think is the strongest foundation of our relationship?"
+  },
+  {
+    "id": "quiz-41",
+    "number": 41,
+    "category": "Deep Love",
+    "question": "When you look at me across a crowded room, what is the first thought that enters your mind?"
+  },
+  {
+    "id": "quiz-42",
+    "number": 42,
+    "category": "Deep Love",
+    "question": "What is one way I have supported your personal growth or confidence?"
+  },
+  {
+    "id": "quiz-43",
+    "number": 43,
+    "category": "Deep Love",
+    "question": "If you had to describe my soul in three words, which three words would you choose?"
+  },
+  {
+    "id": "quiz-44",
+    "number": 44,
+    "category": "Deep Love",
+    "question": "What is something you appreciate about me that you feel you do not say often enough?"
+  },
+  {
+    "id": "quiz-45",
+    "number": 45,
+    "category": "Deep Love",
+    "question": "What was a moment when you felt proud to call me your partner?"
+  },
+  {
+    "id": "quiz-46",
+    "number": 46,
+    "category": "Deep Love",
+    "question": "How do you know when I need a hug or affection without me having to ask?"
+  },
+  {
+    "id": "quiz-47",
+    "number": 47,
+    "category": "Deep Love",
+    "question": "What is your favorite way to receive love from me: words, touch, quality time, or acts of care?"
+  },
+  {
+    "id": "quiz-48",
+    "number": 48,
+    "category": "Deep Love",
+    "question": "What is a promise you quietly made to yourself about how you will love and care for me?"
+  },
+  {
+    "id": "quiz-49",
+    "number": 49,
+    "category": "Deep Love",
+    "question": "What does our love teach you about patience and forgiveness?"
+  },
+  {
+    "id": "quiz-50",
+    "number": 50,
+    "category": "Deep Love",
+    "question": "What is something beautiful you see in me that you think I sometimes fail to see in myself?"
+  },
+  {
+    "id": "quiz-51",
+    "number": 51,
+    "category": "Deep Love",
+    "question": "What makes you feel most heard and validated when we talk through disagreements?"
+  },
+  {
+    "id": "quiz-52",
+    "number": 52,
+    "category": "Deep Love",
+    "question": "When we are apart, what do you miss the most about my physical presence?"
+  },
+  {
+    "id": "quiz-53",
+    "number": 53,
+    "category": "Deep Love",
+    "question": "What is a dream you have for my own happiness that you pray comes true?"
+  },
+  {
+    "id": "quiz-54",
+    "number": 54,
+    "category": "Deep Love",
+    "question": "What part of my personality makes you smile even when you are annoyed?"
+  },
+  {
+    "id": "quiz-55",
+    "number": 55,
+    "category": "Deep Love",
+    "question": "How do you feel our love has evolved from the beginning until right now?"
+  },
+  {
+    "id": "quiz-56",
+    "number": 56,
+    "category": "Deep Love",
+    "question": "What is the most comforting thing I can say to you when you are feeling overwhelmed?"
+  },
+  {
+    "id": "quiz-57",
+    "number": 57,
+    "category": "Deep Love",
+    "question": "What does \"home\" feel like to you, and how do I fit into that feeling?"
+  },
+  {
+    "id": "quiz-58",
+    "number": 58,
+    "category": "Deep Love",
+    "question": "What is one thing about our chemistry that feels completely one-of-a-kind?"
+  },
+  {
+    "id": "quiz-59",
+    "number": 59,
+    "category": "Deep Love",
+    "question": "If you could whisper one reminder into my ear every morning as I wake up, what would it be?"
+  },
+  {
+    "id": "quiz-60",
+    "number": 60,
+    "category": "Deep Love",
+    "question": "What does growing old together look like in your heart?"
+  },
+  {
+    "id": "quiz-61",
+    "number": 61,
+    "category": "Future & Home",
+    "question": "In our future shared home, which room or cozy corner do you want to design together first?"
+  },
+  {
+    "id": "quiz-62",
+    "number": 62,
+    "category": "Future & Home",
+    "question": "What does your dream Sunday morning look like in our future house?"
+  },
+  {
+    "id": "quiz-63",
+    "number": 63,
+    "category": "Future & Home",
+    "question": "Where is the very first international destination you want us to travel to as a married couple?"
+  },
+  {
+    "id": "quiz-64",
+    "number": 64,
+    "category": "Future & Home",
+    "question": "What kind of pets or animals do you picture us having in our yard or living room?"
+  },
+  {
+    "id": "quiz-65",
+    "number": 65,
+    "category": "Future & Home",
+    "question": "What is a family tradition from your childhood that you want us to continue in our home?"
+  },
+  {
+    "id": "quiz-66",
+    "number": 66,
+    "category": "Future & Home",
+    "question": "What is a completely new tradition that you want us to start just for the two of us?"
+  },
+  {
+    "id": "quiz-67",
+    "number": 67,
+    "category": "Future & Home",
+    "question": "What kind of kitchen vibes do you want: cooking big dinners together or cozy late-night snacks?"
+  },
+  {
+    "id": "quiz-68",
+    "number": 68,
+    "category": "Future & Home",
+    "question": "Where do you see the two of us in exactly 5 years from today?"
+  },
+  {
+    "id": "quiz-69",
+    "number": 69,
+    "category": "Future & Home",
+    "question": "What is the biggest financial or life goal you are most excited for us to achieve as a team?"
+  },
+  {
+    "id": "quiz-70",
+    "number": 70,
+    "category": "Future & Home",
+    "question": "What will our evening wind-down routine look like when we finally live under the same roof forever?"
+  },
+  {
+    "id": "quiz-71",
+    "number": 71,
+    "category": "Future & Home",
+    "question": "What kind of neighborhood or environment do you dream of living in (coastal, mountain, suburban, or city)?"
+  },
+  {
+    "id": "quiz-72",
+    "number": 72,
+    "category": "Future & Home",
+    "question": "What is one habit we should establish right away when we move in together?"
+  },
+  {
+    "id": "quiz-73",
+    "number": 73,
+    "category": "Future & Home",
+    "question": "If we could build a custom room in our house with zero budget limits, what would it be?"
+  },
+  {
+    "id": "quiz-74",
+    "number": 74,
+    "category": "Future & Home",
+    "question": "What is something you are nervous about, and something you are thrilled about, regarding living together?"
+  },
+  {
+    "id": "quiz-75",
+    "number": 75,
+    "category": "Future & Home",
+    "question": "How do you imagine us celebrating our 10th anniversary?"
+  },
+  {
+    "id": "quiz-76",
+    "number": 76,
+    "category": "Future & Home",
+    "question": "What is one skill or hobby you hope we learn together in the next few years?"
+  },
+  {
+    "id": "quiz-77",
+    "number": 77,
+    "category": "Future & Home",
+    "question": "What kind of car or road trip vehicle do you picture us driving on coastal adventures?"
+  },
+  {
+    "id": "quiz-78",
+    "number": 78,
+    "category": "Future & Home",
+    "question": "What does a perfect holiday or New Year’s celebration look like in our home?"
+  },
+  {
+    "id": "quiz-79",
+    "number": 79,
+    "category": "Future & Home",
+    "question": "How would you like our bedroom to feel: minimalist sanctuary, warm boho, or dark luxury cozy?"
+  },
+  {
+    "id": "quiz-80",
+    "number": 80,
+    "category": "Future & Home",
+    "question": "What is a bucket list concert or event you want us to experience together?"
+  },
+  {
+    "id": "quiz-81",
+    "number": 81,
+    "category": "Future & Home",
+    "question": "What will our garden or balcony look like: flowers, herbs, fairy lights, or coffee chairs?"
+  },
+  {
+    "id": "quiz-82",
+    "number": 82,
+    "category": "Future & Home",
+    "question": "If we adopt a puppy or kitten, what cute names are at the top of your list?"
+  },
+  {
+    "id": "quiz-83",
+    "number": 83,
+    "category": "Future & Home",
+    "question": "How do you want us to handle household chores so it always feels fair and fun?"
+  },
+  {
+    "id": "quiz-84",
+    "number": 84,
+    "category": "Future & Home",
+    "question": "What is a crazy adventure (like skydiving, scuba diving, or northern lights) on our joint bucket list?"
+  },
+  {
+    "id": "quiz-85",
+    "number": 85,
+    "category": "Future & Home",
+    "question": "What will our dinner table conversations look like when we are 70 years old?"
+  },
+  {
+    "id": "quiz-86",
+    "number": 86,
+    "category": "Future & Home",
+    "question": "What is a place in the world that you cannot wait to show me with your own eyes?"
+  },
+  {
+    "id": "quiz-87",
+    "number": 87,
+    "category": "Future & Home",
+    "question": "How do you imagine our wedding day feeling: intimate and private or a vibrant celebration?"
+  },
+  {
+    "id": "quiz-88",
+    "number": 88,
+    "category": "Future & Home",
+    "question": "What is the first home-cooked dinner you want us to make on our first night in our home?"
+  },
+  {
+    "id": "quiz-89",
+    "number": 89,
+    "category": "Future & Home",
+    "question": "What kind of legacy or reputation do you want \"Berk & Jaquilyn\" to have among our friends and family?"
+  },
+  {
+    "id": "quiz-90",
+    "number": 90,
+    "category": "Future & Home",
+    "question": "What is the one thing about our future that brings you the greatest peace of mind?"
+  },
+  {
+    "id": "quiz-91",
+    "number": 91,
+    "category": "Fun & Quirky",
+    "question": "If our relationship were a genre of movie, which genre would it be and who would direct it?"
+  },
+  {
+    "id": "quiz-92",
+    "number": 92,
+    "category": "Fun & Quirky",
+    "question": "If we had to enter a couple reality TV show or game show, which one would we dominate?"
+  },
+  {
+    "id": "quiz-93",
+    "number": 93,
+    "category": "Fun & Quirky",
+    "question": "What is a bizarre food combination that you love that you think I would secretly enjoy?"
+  },
+  {
+    "id": "quiz-94",
+    "number": 94,
+    "category": "Fun & Quirky",
+    "question": "If we swapped bodies for 24 hours, what is the very first thing you would do?"
+  },
+  {
+    "id": "quiz-95",
+    "number": 95,
+    "category": "Fun & Quirky",
+    "question": "What is the most ridiculous or stubborn argument we have ever had over something totally unimportant?"
+  },
+  {
+    "id": "quiz-96",
+    "number": 96,
+    "category": "Fun & Quirky",
+    "question": "If we were cartoon characters, which iconic animated duo would we be?"
+  },
+  {
+    "id": "quiz-97",
+    "number": 97,
+    "category": "Fun & Quirky",
+    "question": "What is a weird habit or quirk of mine that you secretly find hilarious?"
+  },
+  {
+    "id": "quiz-98",
+    "number": 98,
+    "category": "Fun & Quirky",
+    "question": "If we were trapped in an escape room with a 60-minute timer, who would panic and who would solve the clues?"
+  },
+  {
+    "id": "quiz-99",
+    "number": 99,
+    "category": "Fun & Quirky",
+    "question": "What is a fictional universe (Harry Potter, Marvel, Star Wars, etc.) you would want us to live in?"
+  },
+  {
+    "id": "quiz-100",
+    "number": 100,
+    "category": "Fun & Quirky",
+    "question": "If my personality were a flavor of ice cream, what would the flavor and toppings be?"
+  },
+  {
+    "id": "quiz-101",
+    "number": 101,
+    "category": "Fun & Quirky",
+    "question": "Who is more likely to accidentally burn dinner, and who is more likely to order takeout behind the scenes?"
+  },
+  {
+    "id": "quiz-102",
+    "number": 102,
+    "category": "Fun & Quirky",
+    "question": "What is the funniest nickname you have for me that you rarely use out loud?"
+  },
+  {
+    "id": "quiz-103",
+    "number": 103,
+    "category": "Fun & Quirky",
+    "question": "If you had to dress me up in an outfit of your choice for a full day, what would you make me wear?"
+  },
+  {
+    "id": "quiz-104",
+    "number": 104,
+    "category": "Fun & Quirky",
+    "question": "What superpower would be the most hilarious for our couple dynamic?"
+  },
+  {
+    "id": "quiz-105",
+    "number": 105,
+    "category": "Fun & Quirky",
+    "question": "If we started a podcast together, what would the show be called and what would we rant about?"
+  },
+  {
+    "id": "quiz-106",
+    "number": 106,
+    "category": "Fun & Quirky",
+    "question": "Who takes longer to get ready before going out, and who is always waiting by the door?"
+  },
+  {
+    "id": "quiz-107",
+    "number": 107,
+    "category": "Fun & Quirky",
+    "question": "What song would be our entrance music if we walked into a WWE wrestling ring as a tag team?"
+  },
+  {
+    "id": "quiz-108",
+    "number": 108,
+    "category": "Fun & Quirky",
+    "question": "What is a conspiracy theory or urban legend that you could talk about for an hour?"
+  },
+  {
+    "id": "quiz-109",
+    "number": 109,
+    "category": "Fun & Quirky",
+    "question": "If you could ban me from buying or doing one harmless thing forever, what would it be?"
+  },
+  {
+    "id": "quiz-110",
+    "number": 110,
+    "category": "Fun & Quirky",
+    "question": "Who is the bigger baby when they catch a cold or flu?"
+  },
+  {
+    "id": "quiz-111",
+    "number": 111,
+    "category": "Fun & Quirky",
+    "question": "What is the most useless talent you possess that you are weirdly proud of?"
+  },
+  {
+    "id": "quiz-112",
+    "number": 112,
+    "category": "Fun & Quirky",
+    "question": "If we were competing in a cook-off, what dish would you prepare to beat me?"
+  },
+  {
+    "id": "quiz-113",
+    "number": 113,
+    "category": "Fun & Quirky",
+    "question": "What dance move do you think I look funniest doing?"
+  },
+  {
+    "id": "quiz-114",
+    "number": 114,
+    "category": "Fun & Quirky",
+    "question": "If our pet could speak fluent English, what is the first secret about us it would expose?"
+  },
+  {
+    "id": "quiz-115",
+    "number": 115,
+    "category": "Fun & Quirky",
+    "question": "What is the most awkward situation we have ever found ourselves in together?"
+  },
+  {
+    "id": "quiz-116",
+    "number": 116,
+    "category": "Fun & Quirky",
+    "question": "If we had to survive a week in the wild with only 3 items, what would you pack?"
+  },
+  {
+    "id": "quiz-117",
+    "number": 117,
+    "category": "Fun & Quirky",
+    "question": "Who is more likely to lose their keys or phone in the house?"
+  },
+  {
+    "id": "quiz-118",
+    "number": 118,
+    "category": "Fun & Quirky",
+    "question": "What is your go-to karaoke anthem when you have zero shame?"
+  },
+  {
+    "id": "quiz-119",
+    "number": 119,
+    "category": "Fun & Quirky",
+    "question": "If you could rename me with a vintage old-fashioned name, what would it be?"
+  },
+  {
+    "id": "quiz-120",
+    "number": 120,
+    "category": "Fun & Quirky",
+    "question": "What is the silliest face you make in photos that you always try to delete?"
+  },
+  {
+    "id": "quiz-121",
+    "number": 121,
+    "category": "Sweet & Spicy",
+    "question": "What is a physical feature or touch of mine that gives you butterflies every single time?"
+  },
+  {
+    "id": "quiz-122",
+    "number": 122,
+    "category": "Sweet & Spicy",
+    "question": "What is the most attractive thing I do without even realizing I am doing it?"
+  },
+  {
+    "id": "quiz-123",
+    "number": 123,
+    "category": "Sweet & Spicy",
+    "question": "Where is your favorite spot to be kissed by me (forehead, cheek, neck, lips)?"
+  },
+  {
+    "id": "quiz-124",
+    "number": 124,
+    "category": "Sweet & Spicy",
+    "question": "What outfit or style of mine makes you look twice every time I wear it?"
+  },
+  {
+    "id": "quiz-125",
+    "number": 125,
+    "category": "Sweet & Spicy",
+    "question": "What is a romantic fantasy or special date idea you have been wanting to try with me?"
+  },
+  {
+    "id": "quiz-126",
+    "number": 126,
+    "category": "Sweet & Spicy",
+    "question": "What was our most electrically charged, passionate moment together?"
+  },
+  {
+    "id": "quiz-127",
+    "number": 127,
+    "category": "Sweet & Spicy",
+    "question": "What scent or perfume/cologne on me drives you crazy in the best way?"
+  },
+  {
+    "id": "quiz-128",
+    "number": 128,
+    "category": "Sweet & Spicy",
+    "question": "What is something I whisper or say that instantly gives you goosebumps?"
+  },
+  {
+    "id": "quiz-129",
+    "number": 129,
+    "category": "Sweet & Spicy",
+    "question": "What kind of kiss do you love most: soft & gentle, spontaneous, or deep & intense?"
+  },
+  {
+    "id": "quiz-130",
+    "number": 130,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite cuddle position when we are falling asleep together in bed?"
+  },
+  {
+    "id": "quiz-131",
+    "number": 131,
+    "category": "Sweet & Spicy",
+    "question": "What is a sweet compliment that makes you blush whenever I tell you?"
+  },
+  {
+    "id": "quiz-132",
+    "number": 132,
+    "category": "Sweet & Spicy",
+    "question": "If we had an entire candlelit evening with zero phones and zero distractions, how would it go?"
+  },
+  {
+    "id": "quiz-133",
+    "number": 133,
+    "category": "Sweet & Spicy",
+    "question": "What is something bold or playful you want me to do to surprise you next time we are alone?"
+  },
+  {
+    "id": "quiz-134",
+    "number": 134,
+    "category": "Sweet & Spicy",
+    "question": "What is the hottest look or glance I ever gave you across a room?"
+  },
+  {
+    "id": "quiz-135",
+    "number": 135,
+    "category": "Sweet & Spicy",
+    "question": "What makes you feel the most desired and wanted by me?"
+  },
+  {
+    "id": "quiz-136",
+    "number": 136,
+    "category": "Sweet & Spicy",
+    "question": "Do you prefer morning cuddles or late-night whispers under the duvet?"
+  },
+  {
+    "id": "quiz-137",
+    "number": 137,
+    "category": "Sweet & Spicy",
+    "question": "What is a romantic touch (holding hands, arm around waist, playing with hair) you crave most during the day?"
+  },
+  {
+    "id": "quiz-138",
+    "number": 138,
+    "category": "Sweet & Spicy",
+    "question": "What song sets the ultimate intimate, sexy mood for us?"
+  },
+  {
+    "id": "quiz-139",
+    "number": 139,
+    "category": "Sweet & Spicy",
+    "question": "What is a cheeky confession you have never told me until this exact moment?"
+  },
+  {
+    "id": "quiz-140",
+    "number": 140,
+    "category": "Sweet & Spicy",
+    "question": "How would you rate our physical chemistry on a scale of 1 to 10, and why is it an 11?"
+  },
+  {
+    "id": "quiz-141",
+    "number": 141,
+    "category": "Sweet & Spicy",
+    "question": "What is something simple I wear (oversized hoodie, messy hair, glasses) that you find irresistible?"
+  },
+  {
+    "id": "quiz-142",
+    "number": 142,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite memory of us being completely alone together in our own bubble?"
+  },
+  {
+    "id": "quiz-143",
+    "number": 143,
+    "category": "Sweet & Spicy",
+    "question": "If you could plan an all-night romantic date in a luxury hotel room, what would be included?"
+  },
+  {
+    "id": "quiz-144",
+    "number": 144,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite way for me to tease you?"
+  },
+  {
+    "id": "quiz-145",
+    "number": 145,
+    "category": "Sweet & Spicy",
+    "question": "What is something I do with my eyes or smile that you find deeply seductive?"
+  },
+  {
+    "id": "quiz-146",
+    "number": 146,
+    "category": "Sweet & Spicy",
+    "question": "What is a secret bucket list spot where you want us to share an unforgettable kiss?"
+  },
+  {
+    "id": "quiz-147",
+    "number": 147,
+    "category": "Sweet & Spicy",
+    "question": "How long can you hold eye contact with me before you have to smile or kiss me?"
+  },
+  {
+    "id": "quiz-148",
+    "number": 148,
+    "category": "Sweet & Spicy",
+    "question": "What is the sweetest romantic note or message I ever sent you?"
+  },
+  {
+    "id": "quiz-149",
+    "number": 149,
+    "category": "Sweet & Spicy",
+    "question": "What is a cute love nickname you want me to call you when nobody else is around?"
+  },
+  {
+    "id": "quiz-150",
+    "number": 150,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite part of my body to hug tightly?"
+  },
+  {
+    "id": "quiz-151",
+    "number": 151,
+    "category": "Hypothetical",
+    "question": "If we won 10 million dollars in the lottery tomorrow, what is the very first thing we would buy?"
+  },
+  {
+    "id": "quiz-152",
+    "number": 152,
+    "category": "Hypothetical",
+    "question": "If we could teleport to any place on Earth for just 2 hours tonight, where would we go?"
+  },
+  {
+    "id": "quiz-153",
+    "number": 153,
+    "category": "Hypothetical",
+    "question": "If a zombie apocalypse started right now, what would our survival roles be?"
+  },
+  {
+    "id": "quiz-154",
+    "number": 154,
+    "category": "Hypothetical",
+    "question": "If we could instantly master any language together overnight, which language would it be?"
+  },
+  {
+    "id": "quiz-155",
+    "number": 155,
+    "category": "Hypothetical",
+    "question": "If we could invite any historical figure or celebrity to dinner with us, who would it be?"
+  },
+  {
+    "id": "quiz-156",
+    "number": 156,
+    "category": "Hypothetical",
+    "question": "If we were stranded on a deserted tropical island for a month, who would keep our spirits up?"
+  },
+  {
+    "id": "quiz-157",
+    "number": 157,
+    "category": "Hypothetical",
+    "question": "If you could time travel with me to any era (1920s jazz, 1970s disco, 1980s retro), which era do we pick?"
+  },
+  {
+    "id": "quiz-158",
+    "number": 158,
+    "category": "Hypothetical",
+    "question": "If we could only eat one cuisine together for the rest of our lives, what are we eating?"
+  },
+  {
+    "id": "quiz-159",
+    "number": 159,
+    "category": "Hypothetical",
+    "question": "If you had to trade one of my personality traits for a superpower, would you do it or keep me as I am?"
+  },
+  {
+    "id": "quiz-160",
+    "number": 160,
+    "category": "Hypothetical",
+    "question": "If we were given a private yacht for two weeks with a full crew, where are we sailing?"
+  },
+  {
+    "id": "quiz-161",
+    "number": 161,
+    "category": "Hypothetical",
+    "question": "If we opened a little business or coffee shop together, what would the concept and name be?"
+  },
+  {
+    "id": "quiz-162",
+    "number": 162,
+    "category": "Hypothetical",
+    "question": "If you could erase one bad day from our past and replace it with a perfect date, which day would you change?"
+  },
+  {
+    "id": "quiz-163",
+    "number": 163,
+    "category": "Hypothetical",
+    "question": "If an alien landed and asked what human love feels like, what example of us would you show them?"
+  },
+  {
+    "id": "quiz-164",
+    "number": 164,
+    "category": "Hypothetical",
+    "question": "If we could build a cabin anywhere in the mountains, which country or view would it overlook?"
+  },
+  {
+    "id": "quiz-165",
+    "number": 165,
+    "category": "Hypothetical",
+    "question": "If we had to switch our career paths tomorrow and work together in a new field, what would we do?"
+  },
+  {
+    "id": "quiz-166",
+    "number": 166,
+    "category": "Hypothetical",
+    "question": "If our love story was written as a bestselling novel, what would the book title be?"
+  },
+  {
+    "id": "quiz-167",
+    "number": 167,
+    "category": "Hypothetical",
+    "question": "If you could give me any gift in the universe, regardless of money or physics, what would it be?"
+  },
+  {
+    "id": "quiz-168",
+    "number": 168,
+    "category": "Hypothetical",
+    "question": "If we had a magical remote control that could pause time for 1 hour every day, how would we spend it?"
+  },
+  {
+    "id": "quiz-169",
+    "number": 169,
+    "category": "Hypothetical",
+    "question": "If we were gifted a historic castle in Europe, would we live in it or turn it into a romantic getaway?"
+  },
+  {
+    "id": "quiz-170",
+    "number": 170,
+    "category": "Hypothetical",
+    "question": "If you could know one guaranteed fact about our lives 20 years from now, what would you ask?"
+  },
+  {
+    "id": "quiz-171",
+    "number": 171,
+    "category": "Hypothetical",
+    "question": "If we were recruited as spies on a high-stakes mission, what would our secret code names be?"
+  },
+  {
+    "id": "quiz-172",
+    "number": 172,
+    "category": "Hypothetical",
+    "question": "If you could grant me one wish right now, what do you think I would ask for?"
+  },
+  {
+    "id": "quiz-173",
+    "number": 173,
+    "category": "Hypothetical",
+    "question": "If we had to survive 48 hours without electricity or internet, what games would we play?"
+  },
+  {
+    "id": "quiz-174",
+    "number": 174,
+    "category": "Hypothetical",
+    "question": "If we could adopt any exotic animal (lion, panda, otter, koala) as a legal house pet, what would it be?"
+  },
+  {
+    "id": "quiz-175",
+    "number": 175,
+    "category": "Hypothetical",
+    "question": "If you had to describe our relationship to an artist painting a canvas, what colors and scenery would be in it?"
+  },
+  {
+    "id": "quiz-176",
+    "number": 176,
+    "category": "Hypothetical",
+    "question": "If we were given the power of telepathy for just one afternoon, what is the first thought you would beam to me?"
+  },
+  {
+    "id": "quiz-177",
+    "number": 177,
+    "category": "Hypothetical",
+    "question": "If we could produce a movie together, who plays Berk and who plays Jaquilyn?"
+  },
+  {
+    "id": "quiz-178",
+    "number": 178,
+    "category": "Hypothetical",
+    "question": "If you found a magic lamp with 3 wishes for our relationship, what would your 3 wishes be?"
+  },
+  {
+    "id": "quiz-179",
+    "number": 179,
+    "category": "Hypothetical",
+    "question": "If we could redesign the calendar to give us an extra weekend day every week, what would we name it?"
+  },
+  {
+    "id": "quiz-180",
+    "number": 180,
+    "category": "Hypothetical",
+    "question": "If we were offered an all-expenses-paid year of traveling the world with one suitcase each, would you say yes?"
+  },
+  {
+    "id": "quiz-181",
+    "number": 181,
+    "category": "Daily Life & Cozy",
+    "question": "What is your ultimate comfort food when you are having an exhausting or gloomy day?"
+  },
+  {
+    "id": "quiz-182",
+    "number": 182,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite way to spend a rainy afternoon indoors together?"
+  },
+  {
+    "id": "quiz-183",
+    "number": 183,
+    "category": "Daily Life & Cozy",
+    "question": "Do you prefer waking up early to watch the sunrise or staying up late watching movies under the blanket?"
+  },
+  {
+    "id": "quiz-184",
+    "number": 184,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite snack or drink that I could surprise you with to brighten your day?"
+  },
+  {
+    "id": "quiz-185",
+    "number": 185,
+    "category": "Daily Life & Cozy",
+    "question": "What is a small ritual or habit we do every day that you never want to stop doing?"
+  },
+  {
+    "id": "quiz-186",
+    "number": 186,
+    "category": "Daily Life & Cozy",
+    "question": "What temperature do you like the bedroom at night: freezing cold with heavy blankets or warm and breezy?"
+  },
+  {
+    "id": "quiz-187",
+    "number": 187,
+    "category": "Daily Life & Cozy",
+    "question": "What is your go-to lazy weekend outfit?"
+  },
+  {
+    "id": "quiz-188",
+    "number": 188,
+    "category": "Daily Life & Cozy",
+    "question": "What kind of music helps you relax the fastest when you are feeling stressed?"
+  },
+  {
+    "id": "quiz-189",
+    "number": 189,
+    "category": "Daily Life & Cozy",
+    "question": "What is the best breakfast in bed you could ever wake up to?"
+  },
+  {
+    "id": "quiz-190",
+    "number": 190,
+    "category": "Daily Life & Cozy",
+    "question": "What is a chore that you secretly do not mind doing, and one chore that you despise?"
+  },
+  {
+    "id": "quiz-191",
+    "number": 191,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite candle scent or aroma for a relaxing evening at home?"
+  },
+  {
+    "id": "quiz-192",
+    "number": 192,
+    "category": "Daily Life & Cozy",
+    "question": "Are you a big spoon or a little spoon when we cuddle?"
+  },
+  {
+    "id": "quiz-193",
+    "number": 193,
+    "category": "Daily Life & Cozy",
+    "question": "What is something that instantly makes a room feel 100% cozier to you?"
+  },
+  {
+    "id": "quiz-194",
+    "number": 194,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite tea, coffee, or hot beverage order?"
+  },
+  {
+    "id": "quiz-195",
+    "number": 195,
+    "category": "Daily Life & Cozy",
+    "question": "What show can you rewatch 100 times without ever getting tired of it?"
+  },
+  {
+    "id": "quiz-196",
+    "number": 196,
+    "category": "Daily Life & Cozy",
+    "question": "How do you like to spend the first 30 minutes after waking up in the morning?"
+  },
+  {
+    "id": "quiz-197",
+    "number": 197,
+    "category": "Daily Life & Cozy",
+    "question": "What is a comfort meal that reminds you of home and warmth?"
+  },
+  {
+    "id": "quiz-198",
+    "number": 198,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite board game, card game, or video game to play together on cozy nights?"
+  },
+  {
+    "id": "quiz-199",
+    "number": 199,
+    "category": "Daily Life & Cozy",
+    "question": "What is a small everyday luxury that brings you immense joy (clean sheets, skincare, hot shower)?"
+  },
+  {
+    "id": "quiz-200",
+    "number": 200,
+    "category": "Daily Life & Cozy",
+    "question": "What is your idea of the ultimate self-care night?"
+  },
+  {
+    "id": "quiz-201",
+    "number": 201,
+    "category": "Daily Life & Cozy",
+    "question": "Do you prefer long deep conversations in the dark before sleep or chatting over morning breakfast?"
+  },
+  {
+    "id": "quiz-202",
+    "number": 202,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite pair of pajamas or lounge pants?"
+  },
+  {
+    "id": "quiz-203",
+    "number": 203,
+    "category": "Daily Life & Cozy",
+    "question": "What dessert can you never say no to, even when you are completely full?"
+  },
+  {
+    "id": "quiz-204",
+    "number": 204,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite season of the year, and what do you love doing most in that weather?"
+  },
+  {
+    "id": "quiz-205",
+    "number": 205,
+    "category": "Daily Life & Cozy",
+    "question": "What is the most relaxing sound in the world to you (rain, ocean waves, crackling fireplace, silence)?"
+  },
+  {
+    "id": "quiz-206",
+    "number": 206,
+    "category": "Daily Life & Cozy",
+    "question": "What is a cute pet peeve of yours that I should always keep in mind?"
+  },
+  {
+    "id": "quiz-207",
+    "number": 207,
+    "category": "Daily Life & Cozy",
+    "question": "If we spend an entire Sunday doing absolutely nothing productive, do you feel relaxed or guilty?"
+  },
+  {
+    "id": "quiz-208",
+    "number": 208,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite scent that I wear?"
+  },
+  {
+    "id": "quiz-209",
+    "number": 209,
+    "category": "Daily Life & Cozy",
+    "question": "What is the most thoughtful small favor someone can do for you when you are busy?"
+  },
+  {
+    "id": "quiz-210",
+    "number": 210,
+    "category": "Daily Life & Cozy",
+    "question": "What brings you the feeling of peace and contentment at the end of a long week?"
+  },
+  {
+    "id": "quiz-211",
+    "number": 211,
+    "category": "Values & Growth",
+    "question": "What is a life lesson or hardship that shaped you into the strong person you are today?"
+  },
+  {
+    "id": "quiz-212",
+    "number": 212,
+    "category": "Values & Growth",
+    "question": "What is a core value or moral principle that you will never compromise on?"
+  },
+  {
+    "id": "quiz-213",
+    "number": 213,
+    "category": "Values & Growth",
+    "question": "In what ways do you feel you have grown the most as a person over the past two years?"
+  },
+  {
+    "id": "quiz-214",
+    "number": 214,
+    "category": "Values & Growth",
+    "question": "What is something you used to worry about constantly that you have now learned to let go of?"
+  },
+  {
+    "id": "quiz-215",
+    "number": 215,
+    "category": "Values & Growth",
+    "question": "How do you define real success in life: career, inner peace, family, or freedom?"
+  },
+  {
+    "id": "quiz-216",
+    "number": 216,
+    "category": "Values & Growth",
+    "question": "What is a quality in a human being that earns your deepest respect?"
+  },
+  {
+    "id": "quiz-217",
+    "number": 217,
+    "category": "Values & Growth",
+    "question": "What is a personal fear or insecurity you are actively working on overcoming?"
+  },
+  {
+    "id": "quiz-218",
+    "number": 218,
+    "category": "Values & Growth",
+    "question": "What does genuine loyalty look like to you in a partnership?"
+  },
+  {
+    "id": "quiz-219",
+    "number": 219,
+    "category": "Values & Growth",
+    "question": "What is something you want our future home to always be filled with (kindness, laughter, prayer, peace)?"
+  },
+  {
+    "id": "quiz-220",
+    "number": 220,
+    "category": "Values & Growth",
+    "question": "How can I best support you when you are pursuing a big personal or career goal?"
+  },
+  {
+    "id": "quiz-221",
+    "number": 221,
+    "category": "Values & Growth",
+    "question": "What is a book, podcast, or piece of wisdom that fundamentally changed your perspective?"
+  },
+  {
+    "id": "quiz-222",
+    "number": 222,
+    "category": "Values & Growth",
+    "question": "What is something you have forgiven yourself for that used to weigh heavily on your heart?"
+  },
+  {
+    "id": "quiz-223",
+    "number": 223,
+    "category": "Values & Growth",
+    "question": "What does \"showing up for each other\" look like during seasons of grief or difficulty?"
+  },
+  {
+    "id": "quiz-224",
+    "number": 224,
+    "category": "Values & Growth",
+    "question": "What is a habit or mindset you want to cultivate more of this year?"
+  },
+  {
+    "id": "quiz-225",
+    "number": 225,
+    "category": "Values & Growth",
+    "question": "When you make a big life decision, do you trust your analytical head or your intuitive gut?"
+  },
+  {
+    "id": "quiz-226",
+    "number": 226,
+    "category": "Values & Growth",
+    "question": "What role does gratitude play in your daily emotional state?"
+  },
+  {
+    "id": "quiz-227",
+    "number": 227,
+    "category": "Values & Growth",
+    "question": "What is an unspoken expectation you used to have about relationships that you let go of?"
+  },
+  {
+    "id": "quiz-228",
+    "number": 228,
+    "category": "Values & Growth",
+    "question": "What do you think is our greatest strength when facing problems as a team?"
+  },
+  {
+    "id": "quiz-229",
+    "number": 229,
+    "category": "Values & Growth",
+    "question": "What is a legacy or impact you want to leave behind on this world?"
+  },
+  {
+    "id": "quiz-230",
+    "number": 230,
+    "category": "Values & Growth",
+    "question": "What does spiritual or emotional maturity mean to you?"
+  },
+  {
+    "id": "quiz-231",
+    "number": 231,
+    "category": "Values & Growth",
+    "question": "How do you handle moments when you feel emotionally drained or low on energy?"
+  },
+  {
+    "id": "quiz-232",
+    "number": 232,
+    "category": "Values & Growth",
+    "question": "What is one thing you admire about the way I handle stress or adversity?"
+  },
+  {
+    "id": "quiz-233",
+    "number": 233,
+    "category": "Values & Growth",
+    "question": "What is a boundary you have set for yourself that improved your mental well-being?"
+  },
+  {
+    "id": "quiz-234",
+    "number": 234,
+    "category": "Values & Growth",
+    "question": "How do you want us to handle disagreements so our love always comes out on top?"
+  },
+  {
+    "id": "quiz-235",
+    "number": 235,
+    "category": "Values & Growth",
+    "question": "What is something you learned about yourself since you started loving me?"
+  },
+  {
+    "id": "quiz-236",
+    "number": 236,
+    "category": "Values & Growth",
+    "question": "What is a dream you once gave up on that you might want to revisit someday?"
+  },
+  {
+    "id": "quiz-237",
+    "number": 237,
+    "category": "Values & Growth",
+    "question": "What does being a true partner mean to you when life gets chaotic?"
+  },
+  {
+    "id": "quiz-238",
+    "number": 238,
+    "category": "Values & Growth",
+    "question": "What is the kindest thing anyone has ever done for you in your life?"
+  },
+  {
+    "id": "quiz-239",
+    "number": 239,
+    "category": "Values & Growth",
+    "question": "What is a piece of advice you would give to your 16-year-old self?"
+  },
+  {
+    "id": "quiz-240",
+    "number": 240,
+    "category": "Values & Growth",
+    "question": "What makes you feel most proud of the person you are becoming today?"
+  },
+  {
+    "id": "quiz-241",
+    "number": 241,
+    "category": "Deep Love",
+    "question": "What is the first thing you plan to do the moment we are reunited at the airport arrival gate?"
+  },
+  {
+    "id": "quiz-242",
+    "number": 242,
+    "category": "Deep Love",
+    "question": "When we are miles apart, what is the exact thought of me that brings you the most comfort?"
+  },
+  {
+    "id": "quiz-243",
+    "number": 243,
+    "category": "Deep Love",
+    "question": "What is your favorite picture of me saved in your phone gallery, and why is it your favorite?"
+  },
+  {
+    "id": "quiz-244",
+    "number": 244,
+    "category": "Deep Love",
+    "question": "How did you know for sure that I was the one you wanted to build your forever with?"
+  },
+  {
+    "id": "quiz-245",
+    "number": 245,
+    "category": "Deep Love",
+    "question": "What is something I say to you that instantly melts away your bad mood or stress?"
+  },
+  {
+    "id": "quiz-246",
+    "number": 246,
+    "category": "Deep Love",
+    "question": "What is an emotional milestone in our relationship that made you feel closer to me than ever?"
+  },
+  {
+    "id": "quiz-247",
+    "number": 247,
+    "category": "Deep Love",
+    "question": "If you had to write a love letter to me right now with only 3 sentences, what would you write?"
+  },
+  {
+    "id": "quiz-248",
+    "number": 248,
+    "category": "Deep Love",
+    "question": "What is your favorite thing about hearing my voice after a long, exhausting day?"
+  },
+  {
+    "id": "quiz-249",
+    "number": 249,
+    "category": "Deep Love",
+    "question": "What is a quirky way you can tell I am thinking about you even before I text or call?"
+  },
+  {
+    "id": "quiz-250",
+    "number": 250,
+    "category": "Deep Love",
+    "question": "What is something you pray or hope for our relationship every single day?"
+  },
+  {
+    "id": "quiz-251",
+    "number": 251,
+    "category": "Deep Love",
+    "question": "What is a time when you saw me being kind to someone else, and it made you fall for me even more?"
+  },
+  {
+    "id": "quiz-252",
+    "number": 252,
+    "category": "Deep Love",
+    "question": "How do you think our souls recognized each other when we first connected?"
+  },
+  {
+    "id": "quiz-253",
+    "number": 253,
+    "category": "Deep Love",
+    "question": "What is one moment when you felt like we were completely alone together in the universe?"
+  },
+  {
+    "id": "quiz-254",
+    "number": 254,
+    "category": "Deep Love",
+    "question": "What is something I do with my hands that you find comforting or endearing?"
+  },
+  {
+    "id": "quiz-255",
+    "number": 255,
+    "category": "Deep Love",
+    "question": "What is a memory of us talking late at night that you will treasure for the rest of your life?"
+  },
+  {
+    "id": "quiz-256",
+    "number": 256,
+    "category": "Deep Love",
+    "question": "What do you love most about the way I smile at you when you are talking?"
+  },
+  {
+    "id": "quiz-257",
+    "number": 257,
+    "category": "Deep Love",
+    "question": "What is a fear you used to have about love that being with me completely cured?"
+  },
+  {
+    "id": "quiz-258",
+    "number": 258,
+    "category": "Deep Love",
+    "question": "What makes you feel like the most special person in the world in my eyes?"
+  },
+  {
+    "id": "quiz-259",
+    "number": 259,
+    "category": "Deep Love",
+    "question": "What is the sweetest thing about the way we say goodnight to each other?"
+  },
+  {
+    "id": "quiz-260",
+    "number": 260,
+    "category": "Deep Love",
+    "question": "If we could capture the feeling of our love in a glass jar, what would it look like inside?"
+  },
+  {
+    "id": "quiz-261",
+    "number": 261,
+    "category": "Memories",
+    "question": "What was your favorite voice message or video message I ever sent you?"
+  },
+  {
+    "id": "quiz-262",
+    "number": 262,
+    "category": "Memories",
+    "question": "What was the funniest autocorrect fail or typo that happened during our chats?"
+  },
+  {
+    "id": "quiz-263",
+    "number": 263,
+    "category": "Memories",
+    "question": "What is a special date on the calendar that you will celebrate forever in your heart?"
+  },
+  {
+    "id": "quiz-264",
+    "number": 264,
+    "category": "Memories",
+    "question": "What was the first movie we ever watched together, and do you remember what happened in it?"
+  },
+  {
+    "id": "quiz-265",
+    "number": 265,
+    "category": "Memories",
+    "question": "What was our sweetest goodbye kiss, and where did it happen?"
+  },
+  {
+    "id": "quiz-266",
+    "number": 266,
+    "category": "Memories",
+    "question": "What is a song that always makes you want to pull me into an impromptu slow dance?"
+  },
+  {
+    "id": "quiz-267",
+    "number": 267,
+    "category": "Memories",
+    "question": "What was the most romantic sunset or view we ever watched together?"
+  },
+  {
+    "id": "quiz-268",
+    "number": 268,
+    "category": "Memories",
+    "question": "What was a meal we cooked or ate together that tasted like pure heaven?"
+  },
+  {
+    "id": "quiz-269",
+    "number": 269,
+    "category": "Memories",
+    "question": "What is a moment when we got caught in bad weather or an unexpected mishap, but had fun anyway?"
+  },
+  {
+    "id": "quiz-270",
+    "number": 270,
+    "category": "Memories",
+    "question": "What is a cute photo of us that always makes you smile every time it pops up as a phone memory?"
+  },
+  {
+    "id": "quiz-271",
+    "number": 271,
+    "category": "Memories",
+    "question": "What was the longest conversation we ever had without looking at the clock?"
+  },
+  {
+    "id": "quiz-272",
+    "number": 272,
+    "category": "Memories",
+    "question": "What was a gift I gave you that made you realize how well I truly know you?"
+  },
+  {
+    "id": "quiz-273",
+    "number": 273,
+    "category": "Memories",
+    "question": "What is an inside joke that only the two of us understand that would confuse everyone else?"
+  },
+  {
+    "id": "quiz-274",
+    "number": 274,
+    "category": "Memories",
+    "question": "What was the first thing you noticed about my face or eyes when you saw me on video or in person?"
+  },
+  {
+    "id": "quiz-275",
+    "number": 275,
+    "category": "Memories",
+    "question": "What is a place we visited that you want us to return to for our anniversary one day?"
+  },
+  {
+    "id": "quiz-276",
+    "number": 276,
+    "category": "Memories",
+    "question": "What was our best road trip or drive where we sang our hearts out to the music?"
+  },
+  {
+    "id": "quiz-277",
+    "number": 277,
+    "category": "Memories",
+    "question": "What was a day where we did absolutely nothing special, yet it remains one of your favorite days?"
+  },
+  {
+    "id": "quiz-278",
+    "number": 278,
+    "category": "Memories",
+    "question": "What was the sweet text from me that made you screenshot it immediately?"
+  },
+  {
+    "id": "quiz-279",
+    "number": 279,
+    "category": "Memories",
+    "question": "What is a moment when you felt like we were an unstoppable dream team?"
+  },
+  {
+    "id": "quiz-280",
+    "number": 280,
+    "category": "Memories",
+    "question": "What is a silly game or playful competition we had that got surprisingly intense?"
+  },
+  {
+    "id": "quiz-281",
+    "number": 281,
+    "category": "Future & Home",
+    "question": "What will be our signature couple dinner that we cook whenever friends come over?"
+  },
+  {
+    "id": "quiz-282",
+    "number": 282,
+    "category": "Future & Home",
+    "question": "What kind of coffee machine or morning station will we set up in our kitchen?"
+  },
+  {
+    "id": "quiz-283",
+    "number": 283,
+    "category": "Future & Home",
+    "question": "What is a small architectural detail you want in our home (bay window, fireplace, skylight, hammock)?"
+  },
+  {
+    "id": "quiz-284",
+    "number": 284,
+    "category": "Future & Home",
+    "question": "What is the very first piece of furniture we should pick out together?"
+  },
+  {
+    "id": "quiz-285",
+    "number": 285,
+    "category": "Future & Home",
+    "question": "What kind of couple artwork or gallery wall do you picture in our living hallway?"
+  },
+  {
+    "id": "quiz-286",
+    "number": 286,
+    "category": "Future & Home",
+    "question": "What is a travel destination where you want us to rent a private villa with an infinity pool?"
+  },
+  {
+    "id": "quiz-287",
+    "number": 287,
+    "category": "Future & Home",
+    "question": "How do you picture us spending our Friday nights after long productive workweeks?"
+  },
+  {
+    "id": "quiz-288",
+    "number": 288,
+    "category": "Future & Home",
+    "question": "What is an anniversary trip you want us to take when we reach our 5th year together?"
+  },
+  {
+    "id": "quiz-289",
+    "number": 289,
+    "category": "Future & Home",
+    "question": "What will be our favorite room in our house to cuddle and watch Netflix in?"
+  },
+  {
+    "id": "quiz-290",
+    "number": 290,
+    "category": "Future & Home",
+    "question": "What is a plant or garden feature you want on our future terrace or patio?"
+  },
+  {
+    "id": "quiz-291",
+    "number": 291,
+    "category": "Future & Home",
+    "question": "What kind of car or road trip playlist are we jamming to on weekend getaways?"
+  },
+  {
+    "id": "quiz-292",
+    "number": 292,
+    "category": "Future & Home",
+    "question": "What is a festival or holiday you want us to host in our future home with fairy lights and great food?"
+  },
+  {
+    "id": "quiz-293",
+    "number": 293,
+    "category": "Future & Home",
+    "question": "What is a big dream you have for us that you sometimes hesitate to say because it feels so huge?"
+  },
+  {
+    "id": "quiz-294",
+    "number": 294,
+    "category": "Future & Home",
+    "question": "What will our pantry always be stocked with no matter what?"
+  },
+  {
+    "id": "quiz-295",
+    "number": 295,
+    "category": "Future & Home",
+    "question": "How do you imagine us decorating our living room for Christmas or New Year?"
+  },
+  {
+    "id": "quiz-296",
+    "number": 296,
+    "category": "Future & Home",
+    "question": "What is a luxury splurge you want us to save up for in our future master bedroom?"
+  },
+  {
+    "id": "quiz-297",
+    "number": 297,
+    "category": "Future & Home",
+    "question": "What kind of couple workouts or sports do you want us to do together every week?"
+  },
+  {
+    "id": "quiz-298",
+    "number": 298,
+    "category": "Future & Home",
+    "question": "What will be our secret weekend escape spot when we need to unplug from the world?"
+  },
+  {
+    "id": "quiz-299",
+    "number": 299,
+    "category": "Future & Home",
+    "question": "How do you want us to celebrate our birthdays once we live together full-time?"
+  },
+  {
+    "id": "quiz-300",
+    "number": 300,
+    "category": "Future & Home",
+    "question": "What will be the most peaceful corner of our future house?"
+  },
+  {
+    "id": "quiz-301",
+    "number": 301,
+    "category": "Fun & Quirky",
+    "question": "If we were contestants on MasterChef as a duo, what would Gordon Ramsay scream at us for?"
+  },
+  {
+    "id": "quiz-302",
+    "number": 302,
+    "category": "Fun & Quirky",
+    "question": "Which one of us would survive longer in a horror movie, and who gets eliminated first?"
+  },
+  {
+    "id": "quiz-303",
+    "number": 303,
+    "category": "Fun & Quirky",
+    "question": "If we were superheroes, what would our matching costumes and secret hero names look like?"
+  },
+  {
+    "id": "quiz-304",
+    "number": 304,
+    "category": "Fun & Quirky",
+    "question": "What is the weirdest thing I do that you have completely gotten used to?"
+  },
+  {
+    "id": "quiz-305",
+    "number": 305,
+    "category": "Fun & Quirky",
+    "question": "If you had to describe my driving or navigation skills in one word, what would it be?"
+  },
+  {
+    "id": "quiz-306",
+    "number": 306,
+    "category": "Fun & Quirky",
+    "question": "What is a silly habit of mine that you imitate when you are making fun of me?"
+  },
+  {
+    "id": "quiz-307",
+    "number": 307,
+    "category": "Fun & Quirky",
+    "question": "Who is more likely to buy something totally unnecessary just because it was on sale?"
+  },
+  {
+    "id": "quiz-308",
+    "number": 308,
+    "category": "Fun & Quirky",
+    "question": "If we were arrested together for something ridiculous, what crime did we accidentally commit?"
+  },
+  {
+    "id": "quiz-309",
+    "number": 309,
+    "category": "Fun & Quirky",
+    "question": "What is a song that is so cheesy, but both of us secretly love belting out together?"
+  },
+  {
+    "id": "quiz-310",
+    "number": 310,
+    "category": "Fun & Quirky",
+    "question": "If we swapped phone screens for 1 hour, what is the funniest app or tab you would find open?"
+  },
+  {
+    "id": "quiz-311",
+    "number": 311,
+    "category": "Fun & Quirky",
+    "question": "Who is more dramatic when they get paper cuts or minor injuries?"
+  },
+  {
+    "id": "quiz-312",
+    "number": 312,
+    "category": "Fun & Quirky",
+    "question": "If our love was a fast-food chain or menu item, what would it be?"
+  },
+  {
+    "id": "quiz-313",
+    "number": 313,
+    "category": "Fun & Quirky",
+    "question": "What is a goofy dance we do when something exciting happens?"
+  },
+  {
+    "id": "quiz-314",
+    "number": 314,
+    "category": "Fun & Quirky",
+    "question": "Who would win in a thumb wrestling championship between us?"
+  },
+  {
+    "id": "quiz-315",
+    "number": 315,
+    "category": "Fun & Quirky",
+    "question": "What is the weirdest thought you have ever had right before drifting off to sleep?"
+  },
+  {
+    "id": "quiz-316",
+    "number": 316,
+    "category": "Fun & Quirky",
+    "question": "If you had to bet $1,000 on me doing something right now, what would I be doing?"
+  },
+  {
+    "id": "quiz-317",
+    "number": 317,
+    "category": "Fun & Quirky",
+    "question": "What is a funny facial expression I make that you can read like an open book?"
+  },
+  {
+    "id": "quiz-318",
+    "number": 318,
+    "category": "Fun & Quirky",
+    "question": "Who is more likely to accidentally drop their snacks between the couch cushions?"
+  },
+  {
+    "id": "quiz-319",
+    "number": 319,
+    "category": "Fun & Quirky",
+    "question": "If we could hire a personal chef or a personal masseuse for life, which one do we pick?"
+  },
+  {
+    "id": "quiz-320",
+    "number": 320,
+    "category": "Fun & Quirky",
+    "question": "What is your absolute favorite meme that we both send back and forth?"
+  },
+  {
+    "id": "quiz-321",
+    "number": 321,
+    "category": "Sweet & Spicy",
+    "question": "What is a romantic surprise you have secretly imagined me planning for you?"
+  },
+  {
+    "id": "quiz-322",
+    "number": 322,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite place on my neck or shoulders to press your forehead against?"
+  },
+  {
+    "id": "quiz-323",
+    "number": 323,
+    "category": "Sweet & Spicy",
+    "question": "What is something you wear that makes you feel sexy and confident for me?"
+  },
+  {
+    "id": "quiz-324",
+    "number": 324,
+    "category": "Sweet & Spicy",
+    "question": "How do you like to be touched when we are relaxing on the couch watching a movie?"
+  },
+  {
+    "id": "quiz-325",
+    "number": 325,
+    "category": "Sweet & Spicy",
+    "question": "What is a time when my scent stayed on your pillow or sweater and made you miss me terribly?"
+  },
+  {
+    "id": "quiz-326",
+    "number": 326,
+    "category": "Sweet & Spicy",
+    "question": "What is the sweetest thing about the way I hold you in my arms?"
+  },
+  {
+    "id": "quiz-327",
+    "number": 327,
+    "category": "Sweet & Spicy",
+    "question": "If we booked a private cabin with an outdoor hot tub in the snowy mountains, what happens next?"
+  },
+  {
+    "id": "quiz-328",
+    "number": 328,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite compliment about your body or appearance that I give you?"
+  },
+  {
+    "id": "quiz-329",
+    "number": 329,
+    "category": "Sweet & Spicy",
+    "question": "What is something I do with my lips or fingers that always sends a shiver down your spine?"
+  },
+  {
+    "id": "quiz-330",
+    "number": 330,
+    "category": "Sweet & Spicy",
+    "question": "Do you prefer spontaneous passionate kisses or slow romantic embraces?"
+  },
+  {
+    "id": "quiz-331",
+    "number": 331,
+    "category": "Sweet & Spicy",
+    "question": "What is a fantasy vacation where we spend 3 days never leaving our luxury suite?"
+  },
+  {
+    "id": "quiz-332",
+    "number": 332,
+    "category": "Sweet & Spicy",
+    "question": "What is something you want me to do more often when we are being affectionate?"
+  },
+  {
+    "id": "quiz-333",
+    "number": 333,
+    "category": "Sweet & Spicy",
+    "question": "What was the most irresistible look you caught me giving you?"
+  },
+  {
+    "id": "quiz-334",
+    "number": 334,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite way for us to make up after a stressful day?"
+  },
+  {
+    "id": "quiz-335",
+    "number": 335,
+    "category": "Sweet & Spicy",
+    "question": "What is a sweet secret you wanted to whisper in my ear last time we cuddled?"
+  },
+  {
+    "id": "quiz-336",
+    "number": 336,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite time of day for intimacy: morning sunshine or midnight darkness?"
+  },
+  {
+    "id": "quiz-337",
+    "number": 337,
+    "category": "Sweet & Spicy",
+    "question": "What is a sensual massage technique you want me to practice on you?"
+  },
+  {
+    "id": "quiz-338",
+    "number": 338,
+    "category": "Sweet & Spicy",
+    "question": "What is the most romantic thing about our connection that words cannot quite capture?"
+  },
+  {
+    "id": "quiz-339",
+    "number": 339,
+    "category": "Sweet & Spicy",
+    "question": "What is a compliment you give me in your mind that you forget to say out loud?"
+  },
+  {
+    "id": "quiz-340",
+    "number": 340,
+    "category": "Sweet & Spicy",
+    "question": "What makes you feel like the most gorgeous and loved woman in the world?"
+  },
+  {
+    "id": "quiz-341",
+    "number": 341,
+    "category": "Hypothetical",
+    "question": "If we could be invisible for 24 hours together, what harmless shenanigans would we pull off?"
+  },
+  {
+    "id": "quiz-342",
+    "number": 342,
+    "category": "Hypothetical",
+    "question": "If we discovered a hidden room behind a bookshelf in our future home, what should be inside?"
+  },
+  {
+    "id": "quiz-343",
+    "number": 343,
+    "category": "Hypothetical",
+    "question": "If we could relive any 24 hours of our lives as a couple on an infinite loop, which day would you pick?"
+  },
+  {
+    "id": "quiz-344",
+    "number": 344,
+    "category": "Hypothetical",
+    "question": "If an eccentric billionaire gave us $50,000 to spend on a single romantic weekend, what is our itinerary?"
+  },
+  {
+    "id": "quiz-345",
+    "number": 345,
+    "category": "Hypothetical",
+    "question": "If we could talk to each other without words through our minds, what would our daily dialogue be?"
+  },
+  {
+    "id": "quiz-346",
+    "number": 346,
+    "category": "Hypothetical",
+    "question": "If we were granted 3 wishes for our future home, what are the three non-negotiables?"
+  },
+  {
+    "id": "quiz-347",
+    "number": 347,
+    "category": "Hypothetical",
+    "question": "If you could give me any career success in the world with the snap of a finger, what would you choose for me?"
+  },
+  {
+    "id": "quiz-348",
+    "number": 348,
+    "category": "Hypothetical",
+    "question": "If we got shipwrecked on a luxury deserted island with unlimited tropical fruits and cozy cabanas, would we ever leave?"
+  },
+  {
+    "id": "quiz-349",
+    "number": 349,
+    "category": "Hypothetical",
+    "question": "If we had a private airplane with infinite fuel for one whole month, where would our stops be?"
+  },
+  {
+    "id": "quiz-350",
+    "number": 350,
+    "category": "Hypothetical",
+    "question": "If we were invited to a red carpet gala tomorrow night, what matching colors are we showing up in?"
+  },
+  {
+    "id": "quiz-351",
+    "number": 351,
+    "category": "Hypothetical",
+    "question": "If you had to survive a week in a haunted house with me, who would cling to who?"
+  },
+  {
+    "id": "quiz-352",
+    "number": 352,
+    "category": "Hypothetical",
+    "question": "If we could attend any music concert in history from the front row, which artist would we see together?"
+  },
+  {
+    "id": "quiz-353",
+    "number": 353,
+    "category": "Hypothetical",
+    "question": "If we were gifted a vineyard in Italy or a beach house in Bali, which one are we choosing?"
+  },
+  {
+    "id": "quiz-354",
+    "number": 354,
+    "category": "Hypothetical",
+    "question": "If our pets could give wedding speeches at our reception, what would they roast us for?"
+  },
+  {
+    "id": "quiz-355",
+    "number": 355,
+    "category": "Hypothetical",
+    "question": "If we had to eat dinner backwards for a week (dessert first, appetizer last), would you be thrilled or disgusted?"
+  },
+  {
+    "id": "quiz-356",
+    "number": 356,
+    "category": "Hypothetical",
+    "question": "If you could give us both 10 extra years of healthy youth at the end of our lives, how would we spend them?"
+  },
+  {
+    "id": "quiz-357",
+    "number": 357,
+    "category": "Hypothetical",
+    "question": "If we woke up in a fantasy world with magical powers, what elemental powers would we wield?"
+  },
+  {
+    "id": "quiz-358",
+    "number": 358,
+    "category": "Hypothetical",
+    "question": "If we were hired to star in a couple commercial, what product would we be advertising?"
+  },
+  {
+    "id": "quiz-359",
+    "number": 359,
+    "category": "Hypothetical",
+    "question": "If we could design our dream backyard with a lazy river and swim-up bar, would we ever leave home?"
+  },
+  {
+    "id": "quiz-360",
+    "number": 360,
+    "category": "Hypothetical",
+    "question": "If you had to summarize the superpower of our couple in one phrase, what is our superpower?"
+  },
+  {
+    "id": "quiz-361",
+    "number": 361,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite movie snack: sweet popcorn, salty popcorn, nachos, or candy?"
+  },
+  {
+    "id": "quiz-362",
+    "number": 362,
+    "category": "Daily Life & Cozy",
+    "question": "When you are feeling sick, what is the best remedy or treatment that helps you recover?"
+  },
+  {
+    "id": "quiz-363",
+    "number": 363,
+    "category": "Daily Life & Cozy",
+    "question": "What kind of breakfast pastries can you never resist at a bakery?"
+  },
+  {
+    "id": "quiz-364",
+    "number": 364,
+    "category": "Daily Life & Cozy",
+    "question": "What is a small detail in a bedroom that helps you fall asleep within 5 minutes?"
+  },
+  {
+    "id": "quiz-365",
+    "number": 365,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite kind of takeout food when neither of us feels like cooking?"
+  },
+  {
+    "id": "quiz-366",
+    "number": 366,
+    "category": "Daily Life & Cozy",
+    "question": "Do you prefer opening windows to let the cool breeze in or cranking up the AC?"
+  },
+  {
+    "id": "quiz-367",
+    "number": 367,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite kind of soup when the weather outside is chilly and dark?"
+  },
+  {
+    "id": "quiz-368",
+    "number": 368,
+    "category": "Daily Life & Cozy",
+    "question": "What is a cozy ritual you want us to do every Sunday night before the workweek begins?"
+  },
+  {
+    "id": "quiz-369",
+    "number": 369,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite beverage to sip while sitting by a scenic window?"
+  },
+  {
+    "id": "quiz-370",
+    "number": 370,
+    "category": "Daily Life & Cozy",
+    "question": "What is something simple you love doing by yourself, but love even more when I am in the room?"
+  },
+  {
+    "id": "quiz-371",
+    "number": 371,
+    "category": "Daily Life & Cozy",
+    "question": "What is the most comfortable pair of shoes or slippers you have ever owned?"
+  },
+  {
+    "id": "quiz-372",
+    "number": 372,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite fruit in the summer when it is freshly sliced and cold?"
+  },
+  {
+    "id": "quiz-373",
+    "number": 373,
+    "category": "Daily Life & Cozy",
+    "question": "What kind of lighting makes our home feel the most romantic: dim golden lamps, candles, or fairy lights?"
+  },
+  {
+    "id": "quiz-374",
+    "number": 374,
+    "category": "Daily Life & Cozy",
+    "question": "How do you like to spend a quiet morning when we have nowhere we need to be?"
+  },
+  {
+    "id": "quiz-375",
+    "number": 375,
+    "category": "Daily Life & Cozy",
+    "question": "What is a show we should binge together from season 1 to the finale next?"
+  },
+  {
+    "id": "quiz-376",
+    "number": 376,
+    "category": "Daily Life & Cozy",
+    "question": "What is the sweetest gesture someone can make when you are having a headache or bad day?"
+  },
+  {
+    "id": "quiz-377",
+    "number": 377,
+    "category": "Daily Life & Cozy",
+    "question": "What is a cozy bakery or coffee shop vibe you want us to find near our future apartment?"
+  },
+  {
+    "id": "quiz-378",
+    "number": 378,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite blanket or throw to wrap up like a burrito in?"
+  },
+  {
+    "id": "quiz-379",
+    "number": 379,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite part of a long hot shower after a tiring day?"
+  },
+  {
+    "id": "quiz-380",
+    "number": 380,
+    "category": "Daily Life & Cozy",
+    "question": "What is the most comforting scent in the world to you (fresh laundry, vanilla, coffee, rain)?"
+  },
+  {
+    "id": "quiz-381",
+    "number": 381,
+    "category": "Values & Growth",
+    "question": "What is a character trait in our relationship that you hope our future children inherit?"
+  },
+  {
+    "id": "quiz-382",
+    "number": 382,
+    "category": "Values & Growth",
+    "question": "How do you know when your cup is full and you are feeling truly at peace?"
+  },
+  {
+    "id": "quiz-383",
+    "number": 383,
+    "category": "Values & Growth",
+    "question": "What is a habit you want us to build that will keep our love passionate and strong in 30 years?"
+  },
+  {
+    "id": "quiz-384",
+    "number": 384,
+    "category": "Values & Growth",
+    "question": "What does it look like to truly forgive someone and let the pain go?"
+  },
+  {
+    "id": "quiz-385",
+    "number": 385,
+    "category": "Values & Growth",
+    "question": "What is a dream or achievement you want us to celebrate together with a bottle of champagne?"
+  },
+  {
+    "id": "quiz-386",
+    "number": 386,
+    "category": "Values & Growth",
+    "question": "How do you feel our communication has improved since we first met?"
+  },
+  {
+    "id": "quiz-387",
+    "number": 387,
+    "category": "Values & Growth",
+    "question": "What is something about your heritage or background that you are most proud of?"
+  },
+  {
+    "id": "quiz-388",
+    "number": 388,
+    "category": "Values & Growth",
+    "question": "What is a principle you live by that keeps you grounded when life gets hectic?"
+  },
+  {
+    "id": "quiz-389",
+    "number": 389,
+    "category": "Values & Growth",
+    "question": "What is something I did that taught you something valuable about patience or care?"
+  },
+  {
+    "id": "quiz-390",
+    "number": 390,
+    "category": "Values & Growth",
+    "question": "How do you want us to handle financial goals and budgeting as a power couple?"
+  },
+  {
+    "id": "quiz-391",
+    "number": 391,
+    "category": "Values & Growth",
+    "question": "What is the best piece of relationship wisdom an older couple ever shared with you?"
+  },
+  {
+    "id": "quiz-392",
+    "number": 392,
+    "category": "Values & Growth",
+    "question": "What is an act of service or kindness that always touches your soul?"
+  },
+  {
+    "id": "quiz-393",
+    "number": 393,
+    "category": "Values & Growth",
+    "question": "What does unconditional love mean to you in practical, daily actions?"
+  },
+  {
+    "id": "quiz-394",
+    "number": 394,
+    "category": "Values & Growth",
+    "question": "How do you want us to stay playful and youthful even when we have serious adult responsibilities?"
+  },
+  {
+    "id": "quiz-395",
+    "number": 395,
+    "category": "Values & Growth",
+    "question": "What is a personal triumph you achieved that you are proudest of?"
+  },
+  {
+    "id": "quiz-396",
+    "number": 396,
+    "category": "Values & Growth",
+    "question": "What is something you want us to always remind each other of during difficult seasons?"
+  },
+  {
+    "id": "quiz-397",
+    "number": 397,
+    "category": "Values & Growth",
+    "question": "How do you feel we make each other better human beings?"
+  },
+  {
+    "id": "quiz-398",
+    "number": 398,
+    "category": "Values & Growth",
+    "question": "What is a boundary you appreciate that we maintain to protect our relationship peace?"
+  },
+  {
+    "id": "quiz-399",
+    "number": 399,
+    "category": "Values & Growth",
+    "question": "What is something you are profoundly grateful for in this exact season of our lives?"
+  },
+  {
+    "id": "quiz-400",
+    "number": 400,
+    "category": "Values & Growth",
+    "question": "When you picture our life at age 80 sitting on a porch together, what are we talking about?"
+  },
+  {
+    "id": "quiz-401",
+    "number": 401,
+    "category": "Deep Love",
+    "question": "What is the most selfless thing you have ever seen me do?"
+  },
+  {
+    "id": "quiz-402",
+    "number": 402,
+    "category": "Deep Love",
+    "question": "When did you first feel that our connection was not just a crush, but destiny?"
+  },
+  {
+    "id": "quiz-403",
+    "number": 403,
+    "category": "Deep Love",
+    "question": "What is a look I give you that makes you know everything is going to be alright?"
+  },
+  {
+    "id": "quiz-404",
+    "number": 404,
+    "category": "Deep Love",
+    "question": "What is something you never shared with any other person before you met me?"
+  },
+  {
+    "id": "quiz-405",
+    "number": 405,
+    "category": "Deep Love",
+    "question": "How do you feel when I hold your face in my hands?"
+  },
+  {
+    "id": "quiz-406",
+    "number": 406,
+    "category": "Deep Love",
+    "question": "What makes our love feel different from any relationship you have ever witnessed?"
+  },
+  {
+    "id": "quiz-407",
+    "number": 407,
+    "category": "Deep Love",
+    "question": "What is a silent way we communicate across a room without uttering a single word?"
+  },
+  {
+    "id": "quiz-408",
+    "number": 408,
+    "category": "Deep Love",
+    "question": "What is the sweetest thing I do when I am trying to cheer you up?"
+  },
+  {
+    "id": "quiz-409",
+    "number": 409,
+    "category": "Deep Love",
+    "question": "What is a song lyric that perfectly describes the way you feel about me?"
+  },
+  {
+    "id": "quiz-410",
+    "number": 410,
+    "category": "Deep Love",
+    "question": "What is a compliment from me that gave you an instant boost of confidence?"
+  },
+  {
+    "id": "quiz-411",
+    "number": 411,
+    "category": "Deep Love",
+    "question": "What is your favorite memory of us falling asleep on a call or in person?"
+  },
+  {
+    "id": "quiz-412",
+    "number": 412,
+    "category": "Deep Love",
+    "question": "What is something about my heart or personality that you feel makes me one in eight billion?"
+  },
+  {
+    "id": "quiz-413",
+    "number": 413,
+    "category": "Deep Love",
+    "question": "How does it feel to know that you have someone in your corner who loves you unconditionally?"
+  },
+  {
+    "id": "quiz-414",
+    "number": 414,
+    "category": "Deep Love",
+    "question": "What is a moment when you realized that we can get through any obstacle as long as we hold hands?"
+  },
+  {
+    "id": "quiz-415",
+    "number": 415,
+    "category": "Deep Love",
+    "question": "What is your favorite thing about the sound of my laughter?"
+  },
+  {
+    "id": "quiz-416",
+    "number": 416,
+    "category": "Deep Love",
+    "question": "What is a love note or message of mine that you re-read whenever you miss me?"
+  },
+  {
+    "id": "quiz-417",
+    "number": 417,
+    "category": "Deep Love",
+    "question": "What is the most vulnerable you have ever felt with me, and how did I react?"
+  },
+  {
+    "id": "quiz-418",
+    "number": 418,
+    "category": "Deep Love",
+    "question": "What is something you admire about how much effort I put into our relationship?"
+  },
+  {
+    "id": "quiz-419",
+    "number": 419,
+    "category": "Deep Love",
+    "question": "What makes you feel most loved: surprise gifts, tight hugs, heartfelt letters, or gentle kisses?"
+  },
+  {
+    "id": "quiz-420",
+    "number": 420,
+    "category": "Deep Love",
+    "question": "If our love had a heartbeat of its own, what rhythm would it beat to?"
+  },
+  {
+    "id": "quiz-421",
+    "number": 421,
+    "category": "Memories",
+    "question": "What was your favorite celebration or holiday we have experienced together so far?"
+  },
+  {
+    "id": "quiz-422",
+    "number": 422,
+    "category": "Memories",
+    "question": "What was the first funny thing that happened when we were getting to know each other?"
+  },
+  {
+    "id": "quiz-423",
+    "number": 423,
+    "category": "Memories",
+    "question": "What was the best compliment you ever received from me that made your day?"
+  },
+  {
+    "id": "quiz-424",
+    "number": 424,
+    "category": "Memories",
+    "question": "What is a photo of us that looks like it belongs on the cover of a romantic novel?"
+  },
+  {
+    "id": "quiz-425",
+    "number": 425,
+    "category": "Memories",
+    "question": "What was a conversation we had that opened your eyes to a whole new perspective?"
+  },
+  {
+    "id": "quiz-426",
+    "number": 426,
+    "category": "Memories",
+    "question": "What was our best spontaneous food run in the middle of the night or afternoon?"
+  },
+  {
+    "id": "quiz-427",
+    "number": 427,
+    "category": "Memories",
+    "question": "What is a sweet memory of us laughing together until tears rolled down our cheeks?"
+  },
+  {
+    "id": "quiz-428",
+    "number": 428,
+    "category": "Memories",
+    "question": "What was a moment when you could tell I was trying so hard to impress you?"
+  },
+  {
+    "id": "quiz-429",
+    "number": 429,
+    "category": "Memories",
+    "question": "What is a small souvenir, ticket, or keepsake of ours that you keep safe?"
+  },
+  {
+    "id": "quiz-430",
+    "number": 430,
+    "category": "Memories",
+    "question": "What was the most romantic atmosphere we have ever been in together?"
+  },
+  {
+    "id": "quiz-431",
+    "number": 431,
+    "category": "Memories",
+    "question": "What was the best cup of coffee or drink we ever enjoyed while sitting side by side?"
+  },
+  {
+    "id": "quiz-432",
+    "number": 432,
+    "category": "Memories",
+    "question": "What was a moment when you looked at me and thought, \"I am the luckiest person alive\"?"
+  },
+  {
+    "id": "quiz-433",
+    "number": 433,
+    "category": "Memories",
+    "question": "What was our sweetest morning wakeup together?"
+  },
+  {
+    "id": "quiz-434",
+    "number": 434,
+    "category": "Memories",
+    "question": "What is a joke or phrase that only makes sense if you know our story?"
+  },
+  {
+    "id": "quiz-435",
+    "number": 435,
+    "category": "Memories",
+    "question": "What was the most epic dessert we ever shared?"
+  },
+  {
+    "id": "quiz-436",
+    "number": 436,
+    "category": "Memories",
+    "question": "What is an adventure we had that felt like a wild rollercoaster from start to finish?"
+  },
+  {
+    "id": "quiz-437",
+    "number": 437,
+    "category": "Memories",
+    "question": "What was your favorite birthday of yours or mine that we shared?"
+  },
+  {
+    "id": "quiz-438",
+    "number": 438,
+    "category": "Memories",
+    "question": "What is a video of us that you can watch over and over again?"
+  },
+  {
+    "id": "quiz-439",
+    "number": 439,
+    "category": "Memories",
+    "question": "What was the first song we ever added to our shared couple playlist?"
+  },
+  {
+    "id": "quiz-440",
+    "number": 440,
+    "category": "Memories",
+    "question": "What is a memory of us walking together holding hands that felt timeless?"
+  },
+  {
+    "id": "quiz-441",
+    "number": 441,
+    "category": "Future & Home",
+    "question": "What will be our favorite spot to sit outside when the sun is setting?"
+  },
+  {
+    "id": "quiz-442",
+    "number": 442,
+    "category": "Future & Home",
+    "question": "What kind of kitchen appliances or gadget do you dream of having on our counter?"
+  },
+  {
+    "id": "quiz-443",
+    "number": 443,
+    "category": "Future & Home",
+    "question": "What is an overseas city you want us to spend a whole month exploring like locals?"
+  },
+  {
+    "id": "quiz-444",
+    "number": 444,
+    "category": "Future & Home",
+    "question": "What will be our house rule when it comes to phones at the dinner table?"
+  },
+  {
+    "id": "quiz-445",
+    "number": 445,
+    "category": "Future & Home",
+    "question": "What kind of bedtime routine do you want us to maintain every single night?"
+  },
+  {
+    "id": "quiz-446",
+    "number": 446,
+    "category": "Future & Home",
+    "question": "What will be the soundtrack or artist playing softly in our kitchen on Saturday mornings?"
+  },
+  {
+    "id": "quiz-447",
+    "number": 447,
+    "category": "Future & Home",
+    "question": "What is a creative hobby (painting, cooking, gardening, pottery) you want us to master?"
+  },
+  {
+    "id": "quiz-448",
+    "number": 448,
+    "category": "Future & Home",
+    "question": "What kind of books or board games will fill our future bookshelf?"
+  },
+  {
+    "id": "quiz-449",
+    "number": 449,
+    "category": "Future & Home",
+    "question": "What will be our favorite quick weekend getaway within 2 hours of our home?"
+  },
+  {
+    "id": "quiz-450",
+    "number": 450,
+    "category": "Future & Home",
+    "question": "What is a luxury item or experience you want us to treat ourselves to on our 1st anniversary living together?"
+  },
+  {
+    "id": "quiz-451",
+    "number": 451,
+    "category": "Future & Home",
+    "question": "What will our home smell like when you first open the front door?"
+  },
+  {
+    "id": "quiz-452",
+    "number": 452,
+    "category": "Future & Home",
+    "question": "What kind of balcony plants or flowers do you want us to nurture together?"
+  },
+  {
+    "id": "quiz-453",
+    "number": 453,
+    "category": "Future & Home",
+    "question": "What is a milestone you cannot wait for us to celebrate together in our own home?"
+  },
+  {
+    "id": "quiz-454",
+    "number": 454,
+    "category": "Future & Home",
+    "question": "What will our favorite Sunday lunch consist of?"
+  },
+  {
+    "id": "quiz-455",
+    "number": 455,
+    "category": "Future & Home",
+    "question": "What kind of matching mugs or glassware should we get for our coffee and tea?"
+  },
+  {
+    "id": "quiz-456",
+    "number": 456,
+    "category": "Future & Home",
+    "question": "What is an exotic beach you want us to walk on together with our toes in the warm sand?"
+  },
+  {
+    "id": "quiz-457",
+    "number": 457,
+    "category": "Future & Home",
+    "question": "What will our holiday traditions look like: big family gatherings or intimate romantic escapes?"
+  },
+  {
+    "id": "quiz-458",
+    "number": 458,
+    "category": "Future & Home",
+    "question": "What is the biggest personal dream you want to achieve that I can help you reach?"
+  },
+  {
+    "id": "quiz-459",
+    "number": 459,
+    "category": "Future & Home",
+    "question": "What will be our signature cocktail or mocktail that we invent for our home bar?"
+  },
+  {
+    "id": "quiz-460",
+    "number": 460,
+    "category": "Future & Home",
+    "question": "What is the one thing you are most looking forward to about waking up next to me every single day?"
+  },
+  {
+    "id": "quiz-461",
+    "number": 461,
+    "category": "Fun & Quirky",
+    "question": "If we were a crime-fighting duo in Gotham City, what would our superpowers or weapons be?"
+  },
+  {
+    "id": "quiz-462",
+    "number": 462,
+    "category": "Fun & Quirky",
+    "question": "Who is more likely to scream at a spider or insect in the bedroom?"
+  },
+  {
+    "id": "quiz-463",
+    "number": 463,
+    "category": "Fun & Quirky",
+    "question": "If you had to pick one food that I could only eat for 3 straight days, what are you feeding me?"
+  },
+  {
+    "id": "quiz-464",
+    "number": 464,
+    "category": "Fun & Quirky",
+    "question": "What is the weirdest thing that you think is completely normal, but I find hilarious?"
+  },
+  {
+    "id": "quiz-465",
+    "number": 465,
+    "category": "Fun & Quirky",
+    "question": "If our life had a laugh track like a 90s sitcom, what would trigger the loudest audience laugh?"
+  },
+  {
+    "id": "quiz-466",
+    "number": 466,
+    "category": "Fun & Quirky",
+    "question": "Who is more likely to accidentally leave the oven on or forget where the car is parked?"
+  },
+  {
+    "id": "quiz-467",
+    "number": 467,
+    "category": "Fun & Quirky",
+    "question": "If you could give me a cartoon animal sidekick, what animal would match my energy?"
+  },
+  {
+    "id": "quiz-468",
+    "number": 468,
+    "category": "Fun & Quirky",
+    "question": "What is the most chaotic game night we could possibly host for our friends?"
+  },
+  {
+    "id": "quiz-469",
+    "number": 469,
+    "category": "Fun & Quirky",
+    "question": "If we had to enter a couple talent show tomorrow with zero practice, what would our act be?"
+  },
+  {
+    "id": "quiz-470",
+    "number": 470,
+    "category": "Fun & Quirky",
+    "question": "Who would survive longer on a deserted island before starting to talk to a volleyball?"
+  },
+  {
+    "id": "quiz-471",
+    "number": 471,
+    "category": "Fun & Quirky",
+    "question": "If you could program a robot to do one specific chore in our house forever, which chore is it?"
+  },
+  {
+    "id": "quiz-472",
+    "number": 472,
+    "category": "Fun & Quirky",
+    "question": "What is a secret talent or weird party trick that you have that almost nobody knows about?"
+  },
+  {
+    "id": "quiz-473",
+    "number": 473,
+    "category": "Fun & Quirky",
+    "question": "If we had to swap fashion styles for one entire week in public, how funny would we look?"
+  },
+  {
+    "id": "quiz-474",
+    "number": 474,
+    "category": "Fun & Quirky",
+    "question": "Who has the worse sweet tooth when the clock strikes midnight?"
+  },
+  {
+    "id": "quiz-475",
+    "number": 475,
+    "category": "Fun & Quirky",
+    "question": "If you could turn me into any fantasy creature for 24 hours, what creature would I be?"
+  },
+  {
+    "id": "quiz-476",
+    "number": 476,
+    "category": "Fun & Quirky",
+    "question": "What is the most bizarre dream you have ever had that involved me?"
+  },
+  {
+    "id": "quiz-477",
+    "number": 477,
+    "category": "Fun & Quirky",
+    "question": "Who would win in an epic pillow fight championship in our bedroom?"
+  },
+  {
+    "id": "quiz-478",
+    "number": 478,
+    "category": "Fun & Quirky",
+    "question": "What is the funniest way you have ever tried to get my attention?"
+  },
+  {
+    "id": "quiz-479",
+    "number": 479,
+    "category": "Fun & Quirky",
+    "question": "If we had a theme song that played every time we walked into a room, what song would it be?"
+  },
+  {
+    "id": "quiz-480",
+    "number": 480,
+    "category": "Fun & Quirky",
+    "question": "What is the ultimate silly threat you make when we are playfully teasing each other?"
+  },
+  {
+    "id": "quiz-481",
+    "number": 481,
+    "category": "Sweet & Spicy",
+    "question": "What is the first thing that catches your eye when you see me across the room in nice clothes?"
+  },
+  {
+    "id": "quiz-482",
+    "number": 482,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite romantic gesture: hand on your lower back, forehead kiss, or fingers intertwined?"
+  },
+  {
+    "id": "quiz-483",
+    "number": 483,
+    "category": "Sweet & Spicy",
+    "question": "What is a secret outfit or lingerie style that you love seeing or wearing?"
+  },
+  {
+    "id": "quiz-484",
+    "number": 484,
+    "category": "Sweet & Spicy",
+    "question": "How do you like to be woken up on a lazy weekend morning?"
+  },
+  {
+    "id": "quiz-485",
+    "number": 485,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite memory of us being completely breathless together?"
+  },
+  {
+    "id": "quiz-486",
+    "number": 486,
+    "category": "Sweet & Spicy",
+    "question": "What is a romantic movie scene that made you think, \"I want that with Berk/Jaquilyn\"?"
+  },
+  {
+    "id": "quiz-487",
+    "number": 487,
+    "category": "Sweet & Spicy",
+    "question": "What is something I whisper in your ear that makes your heart race?"
+  },
+  {
+    "id": "quiz-488",
+    "number": 488,
+    "category": "Sweet & Spicy",
+    "question": "What is the most seductive thing about my voice or tone?"
+  },
+  {
+    "id": "quiz-489",
+    "number": 489,
+    "category": "Sweet & Spicy",
+    "question": "How do you like me to hold you when we are cuddling on the bed?"
+  },
+  {
+    "id": "quiz-490",
+    "number": 490,
+    "category": "Sweet & Spicy",
+    "question": "What is a romantic touch that instantly turns on your affectionate mood?"
+  },
+  {
+    "id": "quiz-491",
+    "number": 491,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite kiss: gentle butterfly kiss, playful peck, or passionate embrace?"
+  },
+  {
+    "id": "quiz-492",
+    "number": 492,
+    "category": "Sweet & Spicy",
+    "question": "What is a secret naughty thought you had about me recently during the day?"
+  },
+  {
+    "id": "quiz-493",
+    "number": 493,
+    "category": "Sweet & Spicy",
+    "question": "What makes you feel completely irresistible and cherished in my presence?"
+  },
+  {
+    "id": "quiz-494",
+    "number": 494,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite memory of us in the dark with only moonlight or candlelight?"
+  },
+  {
+    "id": "quiz-495",
+    "number": 495,
+    "category": "Sweet & Spicy",
+    "question": "What is something playful you want to try next time we have an uninterrupted night alone?"
+  },
+  {
+    "id": "quiz-496",
+    "number": 496,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite way for me to trace my fingertips across your skin?"
+  },
+  {
+    "id": "quiz-497",
+    "number": 497,
+    "category": "Sweet & Spicy",
+    "question": "What is a sweet compliment about your lips or kiss that you will never forget?"
+  },
+  {
+    "id": "quiz-498",
+    "number": 498,
+    "category": "Sweet & Spicy",
+    "question": "What is your favorite kind of massage: neck & shoulders, back, or feet?"
+  },
+  {
+    "id": "quiz-499",
+    "number": 499,
+    "category": "Sweet & Spicy",
+    "question": "What makes our chemistry feel so intensely magnetic and addictive?"
+  },
+  {
+    "id": "quiz-500",
+    "number": 500,
+    "category": "Sweet & Spicy",
+    "question": "If you had to rate the butterflies I give you from 1 to 100, where are you right now?"
+  },
+  {
+    "id": "quiz-501",
+    "number": 501,
+    "category": "Hypothetical",
+    "question": "If we could hire an architect to build an underground secret lounge in our house, what would be in it?"
+  },
+  {
+    "id": "quiz-502",
+    "number": 502,
+    "category": "Hypothetical",
+    "question": "If we had to live in a luxury treehouse in the rainforest for one month, could we handle it?"
+  },
+  {
+    "id": "quiz-503",
+    "number": 503,
+    "category": "Hypothetical",
+    "question": "If you could give us a magical pass to attend any VIP event in the world this year, what are we attending?"
+  },
+  {
+    "id": "quiz-504",
+    "number": 504,
+    "category": "Hypothetical",
+    "question": "If we were offered $1,000,000 to live without social media and TV for a whole year together, would we do it?"
+  },
+  {
+    "id": "quiz-505",
+    "number": 505,
+    "category": "Hypothetical",
+    "question": "If we could instantly teleport our future home to any mountain or beach in the world, where would it rest?"
+  },
+  {
+    "id": "quiz-506",
+    "number": 506,
+    "category": "Hypothetical",
+    "question": "If we were gifted a custom couple sports car, what color and model would you choose?"
+  },
+  {
+    "id": "quiz-507",
+    "number": 507,
+    "category": "Hypothetical",
+    "question": "If you could ask a crystal ball one single question about our future 50 years from now, what would you ask?"
+  },
+  {
+    "id": "quiz-508",
+    "number": 508,
+    "category": "Hypothetical",
+    "question": "If we were given a private jet for 48 hours, what 3 cities would we visit for breakfast, lunch, and dinner?"
+  },
+  {
+    "id": "quiz-509",
+    "number": 509,
+    "category": "Hypothetical",
+    "question": "If we could choose any celebrity couple to go on a double date with, who would be the most fun?"
+  },
+  {
+    "id": "quiz-510",
+    "number": 510,
+    "category": "Hypothetical",
+    "question": "If you could create a brand new national holiday dedicated to our love, what would the traditions be?"
+  },
+  {
+    "id": "quiz-511",
+    "number": 511,
+    "category": "Hypothetical",
+    "question": "If we were stuck in an elevator for 4 hours together with only a deck of cards and snacks, how would we pass the time?"
+  },
+  {
+    "id": "quiz-512",
+    "number": 512,
+    "category": "Hypothetical",
+    "question": "If we could have an unlimited shopping spree in any store in the world for 15 minutes, where are we running?"
+  },
+  {
+    "id": "quiz-513",
+    "number": 513,
+    "category": "Hypothetical",
+    "question": "If our love story was turned into an animated Disney or Pixar movie, what would the title be?"
+  },
+  {
+    "id": "quiz-514",
+    "number": 514,
+    "category": "Hypothetical",
+    "question": "If you could wake up tomorrow with any talent that I possess, which one would you steal?"
+  },
+  {
+    "id": "quiz-515",
+    "number": 515,
+    "category": "Hypothetical",
+    "question": "If we could spend an evening stargazing in a glass igloo under the Northern Lights, what would you say to me?"
+  },
+  {
+    "id": "quiz-516",
+    "number": 516,
+    "category": "Hypothetical",
+    "question": "If we had the chance to adopt a baby panda for one month, what cute name would we give it?"
+  },
+  {
+    "id": "quiz-517",
+    "number": 517,
+    "category": "Hypothetical",
+    "question": "If we were asked to write a relationship advice book for couples, what would chapter 1 be about?"
+  },
+  {
+    "id": "quiz-518",
+    "number": 518,
+    "category": "Hypothetical",
+    "question": "If you could erase any one stressor from my daily routine right now, what would you remove?"
+  },
+  {
+    "id": "quiz-519",
+    "number": 519,
+    "category": "Hypothetical",
+    "question": "If we had a magical kitchen that cooked any gourmet dish at the press of a button, what would you order tonight?"
+  },
+  {
+    "id": "quiz-520",
+    "number": 520,
+    "category": "Hypothetical",
+    "question": "If we could make one wish that is guaranteed to come true within 365 days, what are we wishing for together?"
+  },
+  {
+    "id": "quiz-521",
+    "number": 521,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite kind of dessert to share with two spoons?"
+  },
+  {
+    "id": "quiz-522",
+    "number": 522,
+    "category": "Daily Life & Cozy",
+    "question": "What is the most peaceful sound in our shared world?"
+  },
+  {
+    "id": "quiz-523",
+    "number": 523,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite kind of weather to cuddle indoors under a heavy duvet?"
+  },
+  {
+    "id": "quiz-524",
+    "number": 524,
+    "category": "Daily Life & Cozy",
+    "question": "What is a comfort snack that you crave when you are feeling sentimental or tired?"
+  },
+  {
+    "id": "quiz-525",
+    "number": 525,
+    "category": "Daily Life & Cozy",
+    "question": "What kind of candles or essential oils do you want filling our living space?"
+  },
+  {
+    "id": "quiz-526",
+    "number": 526,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite morning routine ritual when you have total freedom?"
+  },
+  {
+    "id": "quiz-527",
+    "number": 527,
+    "category": "Daily Life & Cozy",
+    "question": "What is a TV show or movie genre you can always fall asleep to comfortably?"
+  },
+  {
+    "id": "quiz-528",
+    "number": 528,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite type of warm bath or shower: bubbles, eucalyptus, or scalding hot steam?"
+  },
+  {
+    "id": "quiz-529",
+    "number": 529,
+    "category": "Daily Life & Cozy",
+    "question": "What is a small act of kindness I do around the house that makes you feel appreciated?"
+  },
+  {
+    "id": "quiz-530",
+    "number": 530,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite comfort sandwich or toast combination?"
+  },
+  {
+    "id": "quiz-531",
+    "number": 531,
+    "category": "Daily Life & Cozy",
+    "question": "What is the coziest piece of clothing you own that you wish you could wear 24/7?"
+  },
+  {
+    "id": "quiz-532",
+    "number": 532,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite way to unwind after an intense week of work?"
+  },
+  {
+    "id": "quiz-533",
+    "number": 533,
+    "category": "Daily Life & Cozy",
+    "question": "What is a simple breakfast food that instantly puts a smile on your face?"
+  },
+  {
+    "id": "quiz-534",
+    "number": 534,
+    "category": "Daily Life & Cozy",
+    "question": "Do you prefer listening to lo-fi beats, acoustic guitar, or ambient nature sounds to relax?"
+  },
+  {
+    "id": "quiz-535",
+    "number": 535,
+    "category": "Daily Life & Cozy",
+    "question": "What is a quirky comfort habit of yours that you only feel comfortable doing around me?"
+  },
+  {
+    "id": "quiz-536",
+    "number": 536,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite way to celebrate a small personal win during the week?"
+  },
+  {
+    "id": "quiz-537",
+    "number": 537,
+    "category": "Daily Life & Cozy",
+    "question": "What is a seasonal drink (pumpkin spice, hot cocoa, iced lemonade, matcha) you adore?"
+  },
+  {
+    "id": "quiz-538",
+    "number": 538,
+    "category": "Daily Life & Cozy",
+    "question": "What is your favorite spot on the couch when we watch TV together?"
+  },
+  {
+    "id": "quiz-539",
+    "number": 539,
+    "category": "Daily Life & Cozy",
+    "question": "What is the sweetest thing about the way we wake up next to each other?"
+  },
+  {
+    "id": "quiz-540",
+    "number": 540,
+    "category": "Daily Life & Cozy",
+    "question": "What makes our home feel like an impenetrable sanctuary from the chaos of the outside world?"
+  },
+  {
+    "id": "quiz-541",
+    "number": 541,
+    "category": "Values & Growth",
+    "question": "What is a personal strength of yours that you are learning to appreciate more?"
+  },
+  {
+    "id": "quiz-542",
+    "number": 542,
+    "category": "Values & Growth",
+    "question": "What does emotional safety mean to you when we have tough discussions?"
+  },
+  {
+    "id": "quiz-543",
+    "number": 543,
+    "category": "Values & Growth",
+    "question": "What is something you admire about how I treat the people I care about?"
+  },
+  {
+    "id": "quiz-544",
+    "number": 544,
+    "category": "Values & Growth",
+    "question": "How do you want us to handle stress when unexpected life changes happen?"
+  },
+  {
+    "id": "quiz-545",
+    "number": 545,
+    "category": "Values & Growth",
+    "question": "What is a life value that you learned from your family that you cherish deeply?"
+  },
+  {
+    "id": "quiz-546",
+    "number": 546,
+    "category": "Values & Growth",
+    "question": "What is something you had to unlearn from your past to become happier today?"
+  },
+  {
+    "id": "quiz-547",
+    "number": 547,
+    "category": "Values & Growth",
+    "question": "What does \"true wealth\" look like to you beyond just bank account numbers?"
+  },
+  {
+    "id": "quiz-548",
+    "number": 548,
+    "category": "Values & Growth",
+    "question": "How can we ensure that our relationship always remains our top priority no matter how busy life gets?"
+  },
+  {
+    "id": "quiz-549",
+    "number": 549,
+    "category": "Values & Growth",
+    "question": "What is a skill or trade you would love to learn just for the joy of learning?"
+  },
+  {
+    "id": "quiz-550",
+    "number": 550,
+    "category": "Values & Growth",
+    "question": "What is something that instantly restores your faith in humanity when you see it?"
+  },
+  {
+    "id": "quiz-551",
+    "number": 551,
+    "category": "Values & Growth",
+    "question": "What makes you feel most valued and respected as a partner?"
+  },
+  {
+    "id": "quiz-552",
+    "number": 552,
+    "category": "Values & Growth",
+    "question": "What is a habit you want us to protect fiercely as the years go on?"
+  },
+  {
+    "id": "quiz-553",
+    "number": 553,
+    "category": "Values & Growth",
+    "question": "What is a challenge we conquered as a couple that proved we can handle anything?"
+  },
+  {
+    "id": "quiz-554",
+    "number": 554,
+    "category": "Values & Growth",
+    "question": "What does growing together rather than growing apart look like to you?"
+  },
+  {
+    "id": "quiz-555",
+    "number": 555,
+    "category": "Values & Growth",
+    "question": "What is something you are proud of accomplishing this year?"
+  },
+  {
+    "id": "quiz-556",
+    "number": 556,
+    "category": "Values & Growth",
+    "question": "How do you define a life well lived when looking back in our golden years?"
+  },
+  {
+    "id": "quiz-557",
+    "number": 557,
+    "category": "Values & Growth",
+    "question": "What is something you pray or meditate on when you want guidance in life?"
+  },
+  {
+    "id": "quiz-558",
+    "number": 558,
+    "category": "Values & Growth",
+    "question": "What is a quality in me that inspires you to be the best version of yourself?"
+  },
+  {
+    "id": "quiz-559",
+    "number": 559,
+    "category": "Values & Growth",
+    "question": "What is a piece of wisdom you want us to pass on to future generations?"
+  },
+  {
+    "id": "quiz-560",
+    "number": 560,
+    "category": "Values & Growth",
+    "question": "What is the single most beautiful thing about the love we share?"
+  }
+]

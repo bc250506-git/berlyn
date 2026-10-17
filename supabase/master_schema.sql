@@ -290,10 +290,9 @@ ALTER TABLE public.quiz_prompts ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Anon couple access" ON public.quiz_prompts;
 CREATE POLICY "Anon couple access" ON public.quiz_prompts FOR ALL USING (true) WITH CHECK (true);
 
+-- Default seed for Day 1 daily quiz (id format: daily-YYYY-MM-DD)
 INSERT INTO public.quiz_prompts (id, question, category) VALUES
-  ('q-1', 'Out of all the moments we have spent together, which one is the most unforgettable and special for you?', 'Memories'),
-  ('q-2', 'In our future shared home, where do you want to spend the most time together?', 'Future'),
-  ('q-3', 'What is something you appreciated or that made you smile about me today?', 'Deep Love')
+  ('daily-2026-10-17', 'Out of all the moments we have spent together, which one is the most unforgettable and special for you?', 'Memories')
 ON CONFLICT (id) DO NOTHING;
 
 -- ==============================================================================
