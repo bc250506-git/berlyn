@@ -7,16 +7,12 @@ import { Navbar } from './Navbar';
 export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <UserProvider>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-[#0b0f17] text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
         <Navbar />
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        {/* Mobile-centric container: max-w-md keeps everything thumb-friendly and organized */}
+        <main className="flex-1 w-full max-w-md mx-auto px-4 py-4 pb-28">
           {children}
         </main>
-        <footer className="border-t border-white/5 py-6 text-center text-xs text-slate-500">
-          <p>
-            Berlyn — Built with ❤️ for Berk & Jaquilyn • Kyrenia & Bulacan
-          </p>
-        </footer>
       </div>
     </UserProvider>
   );

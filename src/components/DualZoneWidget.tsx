@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Sun, Moon, CloudRain, Cloud, Compass } from 'lucide-react';
+import { Sun, Moon, CloudRain, Cloud } from 'lucide-react';
 
 interface CityWeather {
   temp: number | null;
@@ -25,24 +25,21 @@ export function DualZoneWidget() {
     timeString: '--:--',
   });
 
-  // Time ticker
   useEffect(() => {
     const updateTimes = () => {
       const now = new Date();
 
-      const kyreniaTime = new Intl.DateTimeFormat('en-US', {
+      const kyreniaTime = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Asia/Nicosia',
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
         hour12: false,
       }).format(now);
 
-      const bulacanTime = new Intl.DateTimeFormat('en-US', {
+      const bulacanTime = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Asia/Manila',
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
         hour12: false,
       }).format(now);
 
@@ -55,16 +52,14 @@ export function DualZoneWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch weather from open-meteo (Free, no API key required)
   useEffect(() => {
     async function fetchWeather() {
       try {
-        // Kyrenia: 35.3364, 33.3173
-        const resKyrenia = await fetch(
+        const resK = await fetch(
           'https://api.open-meteo.com/v1/forecast?latitude=35.3364&longitude=33.3173&current=temperature_2m,is_day,weather_code&timezone=Asia%2FNicosia'
         );
-        if (resKyrenia.ok) {
-          const data = await resKyrenia.json();
+        if (resK.ok) {
+          const data = await resK.json();
           setKyrenia((prev) => ({
             ...prev,
             temp: Math.round(data.current?.temperature_2m ?? 24),
@@ -73,12 +68,11 @@ export function DualZoneWidget() {
           }));
         }
 
-        // Bulacan: 14.8527, 120.8160
-        const resBulacan = await fetch(
+        const resB = await fetch(
           'https://api.open-meteo.com/v1/forecast?latitude=14.8527&longitude=120.8160&current=temperature_2m,is_day,weather_code&timezone=Asia%2FManila'
         );
-        if (resBulacan.ok) {
-          const data = await resBulacan.json();
+        if (resB.ok) {
+          const data = await resB.json();
           setBulacan((prev) => ({
             ...prev,
             temp: Math.round(data.current?.temperature_2m ?? 29),
@@ -87,70 +81,61 @@ export function DualZoneWidget() {
           }));
         }
       } catch {
-        // Default graceful fallback
         setKyrenia((prev) => ({ ...prev, temp: 24, isDay: true, code: 0 }));
         setBulacan((prev) => ({ ...prev, temp: 29, isDay: true, code: 0 }));
       }
     }
 
     fetchWeather();
-    const interval = setInterval(fetchWeather, 600000); // refresh every 10 mins
+    const interval = setInterval(fetchWeather, 600000);
     return () => clearInterval(interval);
   }, []);
 
-  const getWeatherIcon = (isDay: boolean, code: number | null) => {
+  const renderIcon = (isDay: boolean, code: number | null) => {
     if (code !== null && (code >= 51 && code <= 67 || code >= 80)) {
-      return <CloudRain className="w-4 h-4 text-sky-400" />;
+      return <CloudRain className="w-3.5 h-3.5 text-sky-400" />;
     }
     if (code !== null && code >= 1 && code <= 3) {
-      return <Cloud className="w-4 h-4 text-slate-300" />;
+      return <Cloud className="w-3.5 h-3.5 text-slate-300" />;
     }
     return isDay ? (
-      <Sun className="w-4 h-4 text-amber-400 animate-spin-slow" />
+      <Sun className="w-3.5 h-3.5 text-amber-400" />
     ) : (
-      <Moon className="w-4 h-4 text-indigo-300" />
+      <Moon className="w-3.5 h-3.5 text-indigo-300" />
     );
   };
 
   return (
-    <div className="flex items-center gap-3 bg-[#111726]/80 backdrop-blur-md border border-white/10 rounded-2xl p-2 px-3.5 shadow-lg">
-      {/* Kyrenia */}
-      <div className="flex items-center gap-2 pr-3 border-r border-white/10">
-        <div className="p-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
-          {getWeatherIcon(kyrenia.isDay, kyrenia.code)}
-        </div>
+    <div className="flex items-center justify-between w-full bg-[#111722] border border-white/[0.08] rounded-2xl px-3.5 py-2 text-xs">
+      {/* Kyrenia (Berk) */}
+      <div className="flex items-center gap-2">
+        {renderIcon(kyrenia.isDay, kyrenia.code)}
         <div>
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-            <span>Kyrenia</span>
-            <span className="text-[10px] px-1 rounded bg-blue-500/20 text-blue-300">TR/NC</span>
+          <div className="text-[10px] text-slate-400 flex items-center gap-1 leading-none">
+            <span>🦁 Girne</span>
           </div>
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-mono text-sm font-semibold text-white tracking-wider">
-              {kyrenia.timeString}
-            </span>
-            <span className="text-xs text-amber-400 font-medium">
-              {kyrenia.temp !== null ? `${kyrenia.temp}°C` : '--'}
+          <div className="flex items-baseline gap-1 mt-0.5">
+            <span className="font-mono font-bold text-white text-xs">{kyrenia.timeString}</span>
+            <span className="text-[10px] text-amber-400/90 font-medium">
+              {kyrenia.temp !== null ? `${kyrenia.temp}°` : ''}
             </span>
           </div>
         </div>
       </div>
 
-      {/* Bulacan */}
+      <div className="h-5 w-px bg-white/[0.08]" />
+
+      {/* Bulacan (Jaquilyn) */}
       <div className="flex items-center gap-2">
-        <div className="p-1.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400">
-          {getWeatherIcon(bulacan.isDay, bulacan.code)}
-        </div>
+        {renderIcon(bulacan.isDay, bulacan.code)}
         <div>
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-            <span>Bulacan</span>
-            <span className="text-[10px] px-1 rounded bg-rose-500/20 text-rose-300">PH</span>
+          <div className="text-[10px] text-slate-400 flex items-center gap-1 leading-none">
+            <span>🌸 Bulacan</span>
           </div>
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-mono text-sm font-semibold text-white tracking-wider">
-              {bulacan.timeString}
-            </span>
-            <span className="text-xs text-amber-400 font-medium">
-              {bulacan.temp !== null ? `${bulacan.temp}°C` : '--'}
+          <div className="flex items-baseline gap-1 mt-0.5">
+            <span className="font-mono font-bold text-white text-xs">{bulacan.timeString}</span>
+            <span className="text-[10px] text-rose-400/90 font-medium">
+              {bulacan.temp !== null ? `${bulacan.temp}°` : ''}
             </span>
           </div>
         </div>

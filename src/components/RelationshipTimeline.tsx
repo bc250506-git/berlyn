@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Heart, Sparkles, Calendar, Clock } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { formatDateDDMMYYYY } from '@/lib/date';
 
 interface TimeElapsed {
@@ -14,13 +14,11 @@ interface TimeElapsed {
   totalDays: number;
 }
 
-interface RelationshipTimelineProps {
-  startDate?: string;
-}
-
 export function RelationshipTimeline({
   startDate = process.env.NEXT_PUBLIC_RELATIONSHIP_START || '2026-03-01T00:00:00',
-}: RelationshipTimelineProps) {
+}: {
+  startDate?: string;
+}) {
   const [elapsed, setElapsed] = useState<TimeElapsed>({
     years: 0,
     months: 0,
@@ -39,7 +37,6 @@ export function RelationshipTimeline({
       const diffMs = Math.max(0, now - start);
 
       const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
       const startDateObj = new Date(start);
       const nowDateObj = new Date();
 
@@ -58,21 +55,17 @@ export function RelationshipTimeline({
         months += 12;
       }
 
-      const hours = nowDateObj.getHours() - startDateObj.getHours();
-      const minutes = nowDateObj.getMinutes() - startDateObj.getMinutes();
-      const seconds = nowDateObj.getSeconds() - startDateObj.getSeconds();
-
-      const adjustedHours = (hours + 24) % 24;
-      const adjustedMinutes = (minutes + 60) % 60;
-      const adjustedSeconds = (seconds + 60) % 60;
+      const hours = (nowDateObj.getHours() - startDateObj.getHours() + 24) % 24;
+      const minutes = (nowDateObj.getMinutes() - startDateObj.getMinutes() + 60) % 60;
+      const seconds = (nowDateObj.getSeconds() - startDateObj.getSeconds() + 60) % 60;
 
       setElapsed({
         years: Math.max(0, years),
         months: Math.max(0, months),
         days: Math.max(0, days),
-        hours: adjustedHours,
-        minutes: adjustedMinutes,
-        seconds: adjustedSeconds,
+        hours,
+        minutes,
+        seconds,
         totalDays,
       });
     };
@@ -82,60 +75,40 @@ export function RelationshipTimeline({
     return () => clearInterval(interval);
   }, [startDate]);
 
-  const formattedStartDate = formatDateDDMMYYYY(startDate);
+  const formattedDate = formatDateDDMMYYYY(startDate);
 
   return (
-    <div className="relative overflow-hidden rounded-3xl glass-panel-glow p-6 sm:p-8">
-      {/* Subtle background ambient lights */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
+    <div className="card-cozy p-5 relative overflow-hidden">
+      {/* Subtle warm corner accent */}
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[11px] font-medium tracking-wide text-rose-400/90 uppercase flex items-center gap-1.5">
+          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+          <span>Aşk Zamanı • {formattedDate}'den beri</span>
+        </span>
+        <span className="text-[10px] text-slate-500 font-mono">
+          {elapsed.months} ay {elapsed.days} gün
+        </span>
+      </div>
 
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Left: Romantic label & Days counter */}
-        <div className="text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-medium tracking-wide uppercase mb-3">
-            <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 animate-pulse" />
-            <span>Our Journey Together • Since {formattedStartDate}</span>
+      <div className="flex items-baseline justify-between gap-2">
+        <div>
+          <div className="text-3xl font-extrabold tracking-tight text-white flex items-baseline gap-1.5">
+            <span className="text-love-gradient text-4xl font-black font-mono">
+              {elapsed.totalDays}
+            </span>
+            <span className="text-slate-300 text-lg font-bold">Gündür Birlikteyiz</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Together in Love for{' '}
-            <span className="text-gradient-rose font-mono">
-              {elapsed.totalDays.toLocaleString()}
-            </span>{' '}
-            Days
-          </h2>
-          <p className="text-sm text-slate-400 mt-1 flex items-center gap-2 justify-center md:justify-start">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Every single second counts in our sanctuary</span>
-          </p>
         </div>
 
-        {/* Right: Live Ticker Badges */}
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5 w-full md:w-auto">
-          {[
-            { label: 'Years', val: elapsed.years },
-            { label: 'Months', val: elapsed.months },
-            { label: 'Days', val: elapsed.days },
-            { label: 'Hours', val: String(elapsed.hours).padStart(2, '0') },
-            { label: 'Mins', val: String(elapsed.minutes).padStart(2, '0') },
-            { label: 'Secs', val: String(elapsed.seconds).padStart(2, '0'), highlight: true },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className={`flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-2xl border transition-all ${
-                item.highlight
-                  ? 'bg-rose-500/15 border-rose-500/30 text-rose-300 shadow-lg shadow-rose-500/10'
-                  : 'bg-[#111726]/90 border-white/10 text-white'
-              }`}
-            >
-              <span className="font-mono text-xl sm:text-2xl font-bold tracking-wider">
-                {item.val}
-              </span>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-medium tracking-wide uppercase mt-0.5">
-                {item.label}
-              </span>
-            </div>
-          ))}
+        {/* Live second ticker */}
+        <div className="bg-[#182030] border border-white/[0.06] rounded-xl px-2.5 py-1.5 text-right">
+          <div className="font-mono text-xs font-bold text-white tracking-widest">
+            {String(elapsed.hours).padStart(2, '0')}:{String(elapsed.minutes).padStart(2, '0')}:
+            <span className="text-rose-400">{String(elapsed.seconds).padStart(2, '0')}</span>
+          </div>
+          <div className="text-[9px] text-slate-400 uppercase font-medium mt-0.5">
+            Saat : Dk : Sn
+          </div>
         </div>
       </div>
     </div>
