@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import sharp from 'sharp';
+import { convertImageToWebP } from '@/lib/image-converter';
 import { createClient } from '@supabase/supabase-js';
 
 const MESSAGES_FILE = path.join(process.cwd(), 'src', 'lib', 'messages.json');
@@ -50,10 +50,7 @@ export async function POST(request: Request) {
     const inputBuffer = Buffer.from(bytes);
 
     // Convert HEIC/JPG/PNG to WebP with auto-rotation (iPhone EXIF support)
-    const webpBuffer = await sharp(inputBuffer)
-      .rotate()
-      .webp({ quality: 80, effort: 4 })
-      .toBuffer();
+    const webpBuffer = await convertImageToWebP(inputBuffer, file.name || '', 1920);
 
     const fileName = `chat-${Date.now()}-${Math.random().toString(36).substring(2, 7)}.webp`;
     let photoUrl = `/uploads/chat/${fileName}`;

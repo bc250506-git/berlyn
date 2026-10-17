@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import sharp from 'sharp';
+import { convertImageToWebP } from '@/lib/image-converter';
 import { createClient } from '@supabase/supabase-js';
 
 const MEMORIES_FILE = path.join(process.cwd(), 'src', 'lib', 'memories.json');
@@ -72,11 +72,7 @@ export async function POST(request: Request) {
     const inputBuffer = Buffer.from(bytes);
 
     // Convert HEIC/PNG/JPG/etc to WebP with auto-rotation & smart resizing for massive bulk photo sets
-    const webpBuffer = await sharp(inputBuffer)
-      .rotate() // automatically rotate based on iPhone EXIF orientation tag
-      .resize({ width: 1920, height: 1920, fit: 'inside', withoutEnlargement: true }) // optimize huge 48MP photos
-      .webp({ quality: 84, effort: 4 })
-      .toBuffer();
+    const webpBuffer = await convertImageToWebP(inputBuffer, file.name || '', 1920);
 
     const fileName = `memory-${Date.now()}-${Math.random().toString(36).substring(2, 7)}.webp`;
     let photoUrl = `/uploads/memories/${fileName}`;
