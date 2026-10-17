@@ -25,7 +25,9 @@ import {
   Trash2,
   Check,
   Loader2,
-  Pencil
+  Pencil,
+  PiggyBank,
+  HelpCircle
 } from 'lucide-react';
 import { RelationshipTimeline } from '@/components/RelationshipTimeline';
 import { PhotoMemoryWidget } from '@/components/PhotoMemoryWidget';
@@ -1006,7 +1008,7 @@ export function HomePageClient({
       </div>
 
       {/* 8. Quick Shortcuts */}
-      <div className="grid grid-cols-2 gap-3 pt-1">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
         <Link
           href="/messages"
           className="card-cozy p-3.5 hover:border-rose-500/30 transition-all flex flex-col justify-between"
@@ -1071,6 +1073,40 @@ export function HomePageClient({
           <p className="text-[10px] text-slate-400 line-clamp-1">Completed & to-watch movies</p>
           <div className="flex items-center justify-between text-[10px] text-blue-400 font-medium mt-2 pt-1 border-t border-white/[0.06]">
             <span>Open List</span>
+            <ArrowRight className="w-3 h-3" />
+          </div>
+        </Link>
+
+        <Link
+          href="/penalty"
+          className="card-cozy p-3.5 hover:border-pink-500/30 transition-all flex flex-col justify-between"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-7 h-7 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+              <PiggyBank className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[11px] font-bold text-white">Penalty Jar</span>
+          </div>
+          <p className="text-[10px] text-slate-400 line-clamp-1">Romantic dinner fines & fun rules</p>
+          <div className="flex items-center justify-between text-[10px] text-pink-400 font-medium mt-2 pt-1 border-t border-white/[0.06]">
+            <span>Open Jar</span>
+            <ArrowRight className="w-3 h-3" />
+          </div>
+        </Link>
+
+        <Link
+          href="/quizzes"
+          className="card-cozy p-3.5 hover:border-violet-500/30 transition-all flex flex-col justify-between"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-7 h-7 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+              <HelpCircle className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[11px] font-bold text-white">Quizzes & Questions</span>
+          </div>
+          <p className="text-[10px] text-slate-400 line-clamp-1">Couples trivia, prompts & games</p>
+          <div className="flex items-center justify-between text-[10px] text-violet-400 font-medium mt-2 pt-1 border-t border-white/[0.06]">
+            <span>Play Quizzes</span>
             <ArrowRight className="w-3 h-3" />
           </div>
         </Link>
