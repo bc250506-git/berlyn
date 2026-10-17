@@ -33,11 +33,35 @@ export interface PhotoMemory {
   created_at: string;
 }
 
-export function PhotoMemoryWidget() {
+export interface PhotoMemoryWidgetProps {
+  initialMemories?: PhotoMemory[];
+}
+
+export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = {}) {
   const { currentUser } = useCurrentUser();
   const confirm = useConfirm();
-  const [memories, setMemories] = useState<PhotoMemory[]>([]);
-  const [activePhoto, setActivePhoto] = useState<PhotoMemory | null>(null);
+
+  const getInitialList = (): PhotoMemory[] => {
+    if (initialMemories && initialMemories.length > 0) return initialMemories;
+    if (typeof window !== 'undefined') {
+      try {
+        const cached = localStorage.getItem('berlyn_cached_memories');
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+    }
+    return [];
+  };
+
+  const [memories, setMemories] = useState<PhotoMemory[]>(getInitialList);
+  const [activePhoto, setActivePhoto] = useState<PhotoMemory | null>(() => {
+    const list = getInitialList();
+    if (list.length === 0) return null;
+    return list[Math.floor(Math.random() * list.length)];
+  });
+  const [hasFetched, setHasFetched] = useState(Boolean(initialMemories && initialMemories.length > 0));
 
   // Modals state
   const [showUploadModal, setShowUploadModal] = useState(false);
@@ -62,15 +86,28 @@ export function PhotoMemoryWidget() {
       const list: PhotoMemory[] = data.memories || [];
       setMemories(list);
 
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem('berlyn_cached_memories', JSON.stringify(list));
+        } catch (e) {}
+      }
+
       if (list.length === 0) {
         setActivePhoto(null);
         return;
       }
 
-      // Pick a non-repeating random photo for the widget view
-      selectRandomPhoto(list);
+      // If activePhoto was already selected from initialMemories or cache, preserve it
+      setActivePhoto((prev) => {
+        if (prev && list.some((p) => p.id === prev.id)) {
+          return prev;
+        }
+        return list[Math.floor(Math.random() * list.length)];
+      });
     } catch (err) {
       console.error('Failed to load memories:', err);
+    } finally {
+      setHasFetched(true);
     }
   };
 
@@ -278,6 +315,11 @@ export function PhotoMemoryWidget() {
             decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
           />
+        </div>
+      ) : !hasFetched ? (
+        /* Loading Skeleton */
+        <div className="w-full h-36 sm:h-40 rounded-[20px] bg-[#121824] border border-white/[0.06] animate-pulse flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-white/[0.05]" />
         </div>
       ) : (
         /* Empty State */
