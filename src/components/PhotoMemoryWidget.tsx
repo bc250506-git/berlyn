@@ -42,13 +42,20 @@ export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = 
   const confirm = useConfirm();
 
   const getInitialList = (): PhotoMemory[] => {
-    if (initialMemories && initialMemories.length > 0) return initialMemories;
+    if (initialMemories !== undefined) {
+      if (typeof window !== 'undefined' && initialMemories.length === 0) {
+        try {
+          localStorage.removeItem('berlyn_cached_memories');
+        } catch (e) {}
+      }
+      return initialMemories;
+    }
     if (typeof window !== 'undefined') {
       try {
         const cached = localStorage.getItem('berlyn_cached_memories');
         if (cached) {
           const parsed = JSON.parse(cached);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) return parsed;
         }
       } catch (e) {}
     }

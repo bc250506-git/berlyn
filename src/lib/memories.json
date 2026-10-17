@@ -1,723 +1,149 @@
 [
   {
-    "id": "mem-1792241676070",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241675535-hhjgc.webp",
+    "id": "mem-1792243936301",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243935888-e4xu3.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:36.070Z"
+    "created_at": "2026-10-17T13:32:16.301Z"
   },
   {
-    "id": "mem-1792241675525",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241674925-5thnz.webp",
+    "id": "mem-1792243936192",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243935639-fiti7.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:35.525Z"
+    "created_at": "2026-10-17T13:32:16.192Z"
   },
   {
-    "id": "mem-1792241674804",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241674271-z67ce.webp",
+    "id": "mem-1792243935294",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243934973-veu4p.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:34.804Z"
+    "created_at": "2026-10-17T13:32:15.294Z"
   },
   {
-    "id": "mem-1792241674140",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241673711-7iy2f.webp",
+    "id": "mem-1792243934990",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243934423-e3290.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:34.140Z"
+    "created_at": "2026-10-17T13:32:14.990Z"
   },
   {
-    "id": "mem-1792241673695",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241673381-1nuhg.webp",
+    "id": "mem-1792243934582",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243933392-496l6.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:33.695Z"
+    "created_at": "2026-10-17T13:32:14.582Z"
   },
   {
-    "id": "mem-1792241673127",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241672838-swds6.webp",
+    "id": "mem-1792243934037",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243933340-clzc9.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:33.127Z"
+    "created_at": "2026-10-17T13:32:14.037Z"
   },
   {
-    "id": "mem-1792241672820",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241672484-6azv0.webp",
+    "id": "mem-1792243900174",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243899717-54ef6.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:32.820Z"
+    "created_at": "2026-10-17T13:31:40.174Z"
   },
   {
-    "id": "mem-1792241672237",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241671648-rmie7.webp",
+    "id": "mem-1792243899129",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243898638-53vee.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:32.237Z"
+    "created_at": "2026-10-17T13:31:39.129Z"
   },
   {
-    "id": "mem-1792241671758",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241671446-zi1wf.webp",
+    "id": "mem-1792243899089",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243898606-7qnf3.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:31.758Z"
+    "created_at": "2026-10-17T13:31:39.089Z"
   },
   {
-    "id": "mem-1792241671290",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241670765-oayer.webp",
+    "id": "mem-1792243898009",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243897699-7gkai.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:31.290Z"
+    "created_at": "2026-10-17T13:31:38.009Z"
   },
   {
-    "id": "mem-1792241671053",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241670739-2i1do.webp",
+    "id": "mem-1792243897944",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243897586-z7ep6.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:31.053Z"
+    "created_at": "2026-10-17T13:31:37.944Z"
   },
   {
-    "id": "mem-1792241669944",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241669351-n1g4a.webp",
+    "id": "mem-1792243897146",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243896772-hx9o0.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:29.944Z"
+    "created_at": "2026-10-17T13:31:37.146Z"
   },
   {
-    "id": "mem-1792241669860",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241669277-wk6w3.webp",
+    "id": "mem-1792243897049",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243896733-e56lv.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:29.860Z"
+    "created_at": "2026-10-17T13:31:37.049Z"
   },
   {
-    "id": "mem-1792241668576",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241667942-0db1f.webp",
+    "id": "mem-1792243896229",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243895913-2msjt.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:28.576Z"
+    "created_at": "2026-10-17T13:31:36.229Z"
   },
   {
-    "id": "mem-1792241668464",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241667775-npsmn.webp",
+    "id": "mem-1792243896201",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243895537-j59rb.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:28.464Z"
+    "created_at": "2026-10-17T13:31:36.201Z"
   },
   {
-    "id": "mem-1792241667338",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241666647-dhaxz.webp",
+    "id": "mem-1792243895380",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243894818-sdpt8.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:27.338Z"
+    "created_at": "2026-10-17T13:31:35.380Z"
   },
   {
-    "id": "mem-1792241667089",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241666378-tf0y2.webp",
+    "id": "mem-1792243894949",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243894444-qrb6f.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:27.089Z"
+    "created_at": "2026-10-17T13:31:34.949Z"
   },
   {
-    "id": "mem-1792241666079",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241665532-m199j.webp",
+    "id": "mem-1792243894240",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243893569-pw9l6.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:26.079Z"
+    "created_at": "2026-10-17T13:31:34.240Z"
   },
   {
-    "id": "mem-1792241665673",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241665163-g1q4f.webp",
+    "id": "mem-1792243893905",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243893491-oko95.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:25.673Z"
+    "created_at": "2026-10-17T13:31:33.905Z"
   },
   {
-    "id": "mem-1792241664531",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241663969-hb2v7.webp",
+    "id": "mem-1792243892936",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243892030-3v58z.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:24.531Z"
+    "created_at": "2026-10-17T13:31:32.936Z"
   },
   {
-    "id": "mem-1792241664428",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241664117-swa1h.webp",
+    "id": "mem-1792243892884",
+    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792243892127-a2nsp.webp",
     "caption": null,
     "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:24.428Z"
-  },
-  {
-    "id": "mem-1792241663761",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241663164-tj5eg.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:23.761Z"
-  },
-  {
-    "id": "mem-1792241663569",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241663134-i0nec.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:23.569Z"
-  },
-  {
-    "id": "mem-1792241662838",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241662373-8bakp.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:22.838Z"
-  },
-  {
-    "id": "mem-1792241662793",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241662379-b3rsp.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:22.793Z"
-  },
-  {
-    "id": "mem-1792241661926",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241660442-l0tti.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:21.926Z"
-  },
-  {
-    "id": "mem-1792241661927",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241661301-q3igd.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:21.927Z"
-  },
-  {
-    "id": "mem-1792241660640",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241660255-asssk.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:20.640Z"
-  },
-  {
-    "id": "mem-1792241659806",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241658702-zvqi4.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:19.806Z"
-  },
-  {
-    "id": "mem-1792241659227",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241658676-zbcet.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:19.227Z"
-  },
-  {
-    "id": "mem-1792241657882",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241657107-q4ifs.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:17.882Z"
-  },
-  {
-    "id": "mem-1792241657640",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241656716-gvlpe.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:17.640Z"
-  },
-  {
-    "id": "mem-1792241656190",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241655714-tsri9.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:16.190Z"
-  },
-  {
-    "id": "mem-1792241655807",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241655350-kzzma.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:15.807Z"
-  },
-  {
-    "id": "mem-1792241654805",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241654294-lofd2.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:14.805Z"
-  },
-  {
-    "id": "mem-1792241654198",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241653259-ao8cn.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:14.198Z"
-  },
-  {
-    "id": "mem-1792241653543",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241652551-qxqqb.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:13.543Z"
-  },
-  {
-    "id": "mem-1792241652286",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241651519-wt60j.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:12.286Z"
-  },
-  {
-    "id": "mem-1792241651641",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241651071-aicfp.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:11.641Z"
-  },
-  {
-    "id": "mem-1792241650570",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241649885-cmplb.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:10.570Z"
-  },
-  {
-    "id": "mem-1792241650159",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241649804-cha3p.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:10.159Z"
-  },
-  {
-    "id": "mem-1792241648897",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241648538-c8laf.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:08.897Z"
-  },
-  {
-    "id": "mem-1792241648827",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241648419-wkjsb.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:08.827Z"
-  },
-  {
-    "id": "mem-1792241647760",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241647335-pvarv.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:07.760Z"
-  },
-  {
-    "id": "mem-1792241647585",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241647167-p9lgi.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:07.585Z"
-  },
-  {
-    "id": "mem-1792241646476",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241645958-y1n64.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:06.476Z"
-  },
-  {
-    "id": "mem-1792241646415",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241646105-vaj1z.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:06.415Z"
-  },
-  {
-    "id": "mem-1792241645315",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241644997-niaws.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:05.315Z"
-  },
-  {
-    "id": "mem-1792241645112",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241644831-jyy5w.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:05.112Z"
-  },
-  {
-    "id": "mem-1792241644149",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241643743-i04i0.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:04.149Z"
-  },
-  {
-    "id": "mem-1792241643987",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241643681-zwsq3.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:03.987Z"
-  },
-  {
-    "id": "mem-1792241642182",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241641653-h9sjz.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:02.182Z"
-  },
-  {
-    "id": "mem-1792241642260",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241641825-bbi65.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:02.260Z"
-  },
-  {
-    "id": "mem-1792241640949",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241640297-ma8po.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:00.949Z"
-  },
-  {
-    "id": "mem-1792241640745",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241640130-cb4gj.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:54:00.745Z"
-  },
-  {
-    "id": "mem-1792241639393",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241639122-tg5ds.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:59.393Z"
-  },
-  {
-    "id": "mem-1792241639204",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241638529-l3rec.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:59.204Z"
-  },
-  {
-    "id": "mem-1792241638757",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241638452-zadyn.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:58.757Z"
-  },
-  {
-    "id": "mem-1792241638084",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241637633-maxpj.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:58.084Z"
-  },
-  {
-    "id": "mem-1792241637623",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241637256-4022z.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:57.623Z"
-  },
-  {
-    "id": "mem-1792241636688",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241636386-sdzex.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:56.688Z"
-  },
-  {
-    "id": "mem-1792241636428",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241635824-u3wgh.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:56.428Z"
-  },
-  {
-    "id": "mem-1792241635834",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241635526-bphqb.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:55.834Z"
-  },
-  {
-    "id": "mem-1792241635249",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241634993-1cde8.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:55.249Z"
-  },
-  {
-    "id": "mem-1792241635028",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241634447-aenap.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:55.028Z"
-  },
-  {
-    "id": "mem-1792241634593",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241634297-y07me.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:54.593Z"
-  },
-  {
-    "id": "mem-1792241633964",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241633674-wf08m.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:53.964Z"
-  },
-  {
-    "id": "mem-1792241633707",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241633405-oq857.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:53.707Z"
-  },
-  {
-    "id": "mem-1792241633109",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241632819-lq5bj.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:53.109Z"
-  },
-  {
-    "id": "mem-1792241633073",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241632765-ivto9.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:53.073Z"
-  },
-  {
-    "id": "mem-1792241632307",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241632003-barn2.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:52.307Z"
-  },
-  {
-    "id": "mem-1792241632249",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241631982-3cor7.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:52.249Z"
-  },
-  {
-    "id": "mem-1792241631358",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241630464-b651a.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:51.358Z"
-  },
-  {
-    "id": "mem-1792241631279",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241630942-8o0s7.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:51.279Z"
-  },
-  {
-    "id": "mem-1792241630370",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241630051-u8v8o.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:50.370Z"
-  },
-  {
-    "id": "mem-1792241629931",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241629593-z35r0.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:49.931Z"
-  },
-  {
-    "id": "mem-1792241629570",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241629183-eol1t.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:49.570Z"
-  },
-  {
-    "id": "mem-1792241629126",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241628807-jchkd.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:49.126Z"
-  },
-  {
-    "id": "mem-1792241628603",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241628084-7eruv.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:48.603Z"
-  },
-  {
-    "id": "mem-1792241628247",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241627897-7cbqy.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:48.247Z"
-  },
-  {
-    "id": "mem-1792241627555",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241627141-lfovl.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:47.555Z"
-  },
-  {
-    "id": "mem-1792241627330",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241626617-fws4e.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:47.330Z"
-  },
-  {
-    "id": "mem-1792241626616",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241625928-2b33r.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:46.616Z"
-  },
-  {
-    "id": "mem-1792241626060",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241625709-u0r6h.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:46.060Z"
-  },
-  {
-    "id": "mem-1792241625367",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241624766-ah2n8.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:45.367Z"
-  },
-  {
-    "id": "mem-1792241625258",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241624677-8dv9b.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:45.258Z"
-  },
-  {
-    "id": "mem-1792241624292",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241623688-8vyqc.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:44.292Z"
-  },
-  {
-    "id": "mem-1792241624125",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241623565-dbl2g.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:44.125Z"
-  },
-  {
-    "id": "mem-1792241623184",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241622893-5wmm3.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:43.184Z"
-  },
-  {
-    "id": "mem-1792241623026",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241622511-f1c53.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:43.026Z"
-  },
-  {
-    "id": "mem-1792241622521",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241622189-5wx5x.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:42.521Z"
-  },
-  {
-    "id": "mem-1792241621957",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241621530-chglm.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:41.957Z"
-  },
-  {
-    "id": "mem-1792241621534",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241620828-joctw.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:41.534Z"
-  },
-  {
-    "id": "mem-1792241620923",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241620494-hh0ry.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:40.923Z"
-  },
-  {
-    "id": "mem-1792241620200",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241619850-n791w.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:40.200Z"
-  },
-  {
-    "id": "mem-1792241619823",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241619478-neqpx.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:39.823Z"
-  },
-  {
-    "id": "mem-1792241618911",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241618480-y0b8v.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:38.911Z"
-  },
-  {
-    "id": "mem-1792241618572",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241617991-0bodp.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:38.572Z"
-  },
-  {
-    "id": "mem-1792241617941",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241617539-qlb93.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:37.941Z"
-  },
-  {
-    "id": "mem-1792241617387",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241616861-iw30v.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:37.387Z"
-  },
-  {
-    "id": "mem-1792241617121",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241616660-vtvik.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:37.121Z"
-  },
-  {
-    "id": "mem-1792241615969",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241615011-j852s.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:35.969Z"
-  },
-  {
-    "id": "mem-1792241615810",
-    "photo_url": "https://chwvmpmitbyugyiqtrvd.supabase.co/storage/v1/object/public/memories/memory-1792241614989-h3htf.webp",
-    "caption": null,
-    "uploaded_by": "berk",
-    "created_at": "2026-10-17T12:53:35.810Z"
+    "created_at": "2026-10-17T13:31:32.884Z"
   }
 ]
