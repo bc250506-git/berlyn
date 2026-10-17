@@ -2,9 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { HomePageClient } from '@/components/HomePageClient';
 
-// Opt out of instant-navigation static prerender validation for dynamic couples feed
-export const instant = false;
-
 function getInitialData() {
   let memories: any[] = [];
   let notes: any = { berk: null, jaquilyn: null };

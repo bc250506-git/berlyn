@@ -61,25 +61,12 @@ export default function AgendaPage() {
         try {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed)) {
-            const hasMock = parsed.some((it: any) => 
-              it.title?.includes('Buy oat milk') || 
-              it.title?.includes('Deep clean') || 
-              it.title?.includes('Reserve table') || 
-              it.title?.includes('Pick up international') || 
-              it.title?.includes('Water the balcony') || 
-              it.title?.includes('Restock laundry') ||
-              it.id?.startsWith('habit-')
-            );
-            if (hasMock) {
-              localStorage.setItem('berlyn_agenda_tasks', JSON.stringify([]));
-              return [];
-            }
             return parsed;
           }
         } catch (e) { /* fallback */ }
       }
     }
-    return DEFAULT_TASKS;
+    return [];
   });
 
   const [activeFilter, setActiveFilter] = useState<string>('all');

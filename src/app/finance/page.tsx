@@ -55,7 +55,11 @@ import {
   INITIAL_TRANSACTIONS,
   INITIAL_RECURRING_PAYMENTS,
   INITIAL_ASSETS,
-  INITIAL_COMPOUND_ACCOUNTS
+  INITIAL_COMPOUND_ACCOUNTS,
+  getLocalTransactions,
+  getLocalRecurringPayments,
+  getLocalAssets,
+  getLocalCompoundAccounts
 } from '@/lib/finance-service';
 import { useCurrentUser } from '@/components/UserContext';
 import { useConfirm } from '@/components/ConfirmModal';
@@ -72,12 +76,38 @@ export default function FinancePage() {
   // Background Central Bank live rates (Silent auto-fetch)
   const [liveRates, setLiveRates] = useState<Record<Currency, number>>(DEFAULT_KKTC_RATES);
 
-  // Data states
-  const [transactions, setTransactions] = useState<FinanceItem[]>(INITIAL_TRANSACTIONS);
-  const [recurringPayments, setRecurringPayments] = useState<RecurringPayment[]>(INITIAL_RECURRING_PAYMENTS);
-  const [assets, setAssets] = useState<InvestmentAsset[]>(INITIAL_ASSETS);
-  const [compoundAccounts, setCompoundAccounts] = useState<CompoundInterestAccount[]>(INITIAL_COMPOUND_ACCOUNTS);
-  const [selectedCompoundId, setSelectedCompoundId] = useState<string>(INITIAL_COMPOUND_ACCOUNTS[0]?.id || 'c-1');
+  // Data states (instantly populated from localStorage)
+  const [transactions, setTransactions] = useState<FinanceItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      return getLocalTransactions();
+    }
+    return INITIAL_TRANSACTIONS;
+  });
+  const [recurringPayments, setRecurringPayments] = useState<RecurringPayment[]>(() => {
+    if (typeof window !== 'undefined') {
+      return getLocalRecurringPayments();
+    }
+    return INITIAL_RECURRING_PAYMENTS;
+  });
+  const [assets, setAssets] = useState<InvestmentAsset[]>(() => {
+    if (typeof window !== 'undefined') {
+      return getLocalAssets();
+    }
+    return INITIAL_ASSETS;
+  });
+  const [compoundAccounts, setCompoundAccounts] = useState<CompoundInterestAccount[]>(() => {
+    if (typeof window !== 'undefined') {
+      return getLocalCompoundAccounts();
+    }
+    return INITIAL_COMPOUND_ACCOUNTS;
+  });
+  const [selectedCompoundId, setSelectedCompoundId] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const accs = getLocalCompoundAccounts();
+      return accs[0]?.id || 'c-1';
+    }
+    return 'c-1';
+  });
 
   // Tabs: Default is 'transactions' (Income & Expenses)
   const [activeTab, setActiveTab] = useState<'transactions' | 'overview' | 'compound' | 'simulation'>('transactions');

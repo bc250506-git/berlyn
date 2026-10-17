@@ -143,18 +143,6 @@ export function getLocalTransactions(): FinanceItem[] {
     if (!local) return [];
     const parsed = JSON.parse(local);
     if (!Array.isArray(parsed)) return [];
-    // If it contains legacy mock items, clear and return empty array
-    const hasMock = parsed.some((t: any) => 
-      t.title?.includes('Salary') || 
-      t.title?.includes('Rent & Shared') || 
-      t.title?.includes('Groceries & Kitchen') ||
-      t.title?.includes('Interest Yield') ||
-      t.title?.includes('Family Support')
-    );
-    if (hasMock) {
-      localStorage.setItem('berlyn_finance_tx', JSON.stringify([]));
-      return [];
-    }
     return parsed;
   } catch {
     return [];
@@ -167,16 +155,6 @@ export function getLocalRecurringPayments(): RecurringPayment[] {
     if (!local) return [];
     const parsed = JSON.parse(local);
     if (!Array.isArray(parsed)) return [];
-    const hasMock = parsed.some((r: any) => 
-      r.title?.includes('Rent') || 
-      r.title?.includes('Groceries') || 
-      r.title?.includes('Electricity') ||
-      r.title?.includes('Internet')
-    );
-    if (hasMock) {
-      localStorage.setItem('berlyn_finance_recurring', JSON.stringify([]));
-      return [];
-    }
     return parsed;
   } catch {
     return [];
@@ -217,15 +195,6 @@ export function getLocalAssets(): InvestmentAsset[] {
     if (!local) return [];
     const parsed = JSON.parse(local);
     if (!Array.isArray(parsed)) return [];
-    const hasMock = parsed.some((a: any) => 
-      a.name?.includes('Gold') || 
-      a.name?.includes('Cash') ||
-      a.name?.includes('Emergency')
-    );
-    if (hasMock) {
-      localStorage.setItem('berlyn_finance_assets', JSON.stringify([]));
-      return [];
-    }
     return parsed;
   } catch {
     return [];
@@ -264,15 +233,6 @@ export function getLocalCompoundAccounts(): CompoundInterestAccount[] {
     if (!local) return [];
     const parsed = JSON.parse(local);
     if (!Array.isArray(parsed)) return [];
-    const hasMock = parsed.some((a: any) => 
-      a.name?.includes('High-Yield') || 
-      a.name?.includes('British Pound') || 
-      a.name?.includes('Berk Interest')
-    );
-    if (hasMock) {
-      localStorage.setItem('berlyn_compound_accounts', JSON.stringify([]));
-      return [];
-    }
     return parsed;
   } catch {
     return [];
