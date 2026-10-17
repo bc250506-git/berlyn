@@ -129,6 +129,7 @@ export default function FinancePage() {
   const [txType, setTxType] = useState<'income' | 'expense' | 'investment'>('expense');
   const [txCategory, setTxCategory] = useState('Food & Groceries');
   const [txUser, setTxUser] = useState<FinancePayer>('shared');
+  const [txDate, setTxDate] = useState<string>(() => new Date().toISOString().split('T')[0]);
 
   // Recurring Payment Modal State (Add or Edit)
   const [showRecurringModal, setShowRecurringModal] = useState(false);
@@ -283,11 +284,13 @@ export default function FinancePage() {
   const savingsRate = totalMonthlyIncome > 0 ? Math.round((monthlySavings / totalMonthlyIncome) * 100) : 0;
 
   // Selected Month Ledger calculations (Respects compound account start date!)
-  const ledgerTransactions = transactions.filter((t) => {
-    if (!t.date) return false;
-    const [y, m] = t.date.split('-');
-    return parseInt(y) === ledgerYear && parseInt(m) === ledgerMonth;
-  });
+  const ledgerTransactions = transactions
+    .filter((t) => {
+      if (!t.date) return false;
+      const [y, m] = t.date.split('-');
+      return parseInt(y) === ledgerYear && parseInt(m) === ledgerMonth;
+    })
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   const ledgerManualIncome = ledgerTransactions
     .filter((t) => t.type === 'income')
@@ -436,12 +439,25 @@ export default function FinancePage() {
     }
   };
 
+  const handleOpenAddTx = (defaultDate?: string) => {
+    setEditingTxId(null);
+    setTxTitle('');
+    setTxAmount('');
+    setTxCurrency(selectedCurrency);
+    setTxType('expense');
+    setTxCategory('Food & Groceries');
+    setTxUser('shared');
+    setTxDate(defaultDate || new Date().toISOString().split('T')[0]);
+    setShowTxModal(true);
+  };
+
   // Save / Edit Transaction
   const handleSaveTx = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!txTitle.trim() || !txAmount) return;
 
     const existingTx = editingTxId ? transactions.find((t) => t.id === editingTxId) : null;
+    const finalDate = txDate || existingTx?.date || new Date().toISOString().split('T')[0];
 
     const item: Partial<FinanceItem> = {
       id: editingTxId || undefined,
@@ -451,7 +467,7 @@ export default function FinancePage() {
       type: txType,
       category: txCategory,
       user: txUser,
-      date: existingTx?.date || new Date().toISOString().split('T')[0],
+      date: finalDate,
       recurring: existingTx?.recurring || false,
       isInterest: existingTx?.isInterest || false,
       compoundAccountId: existingTx?.compoundAccountId,
@@ -462,6 +478,15 @@ export default function FinancePage() {
       setTransactions(transactions.map((t) => (t.id === saved.id ? saved : t)));
     } else {
       setTransactions([saved, ...transactions]);
+    }
+
+    // If date is set to another month, sync ledger view so user can immediately view it
+    if (finalDate) {
+      const [y, m] = finalDate.split('-');
+      if (y && m) {
+        setLedgerYear(parseInt(y));
+        setLedgerMonth(parseInt(m));
+      }
     }
 
     setShowTxModal(false);
@@ -484,6 +509,7 @@ export default function FinancePage() {
     setTxType(tx.type);
     setTxCategory(tx.category);
     setTxUser(tx.user);
+    setTxDate(tx.date || new Date().toISOString().split('T')[0]);
     setShowTxModal(true);
   };
 
@@ -687,9 +713,15 @@ export default function FinancePage() {
     }
   };
 
-  const incomeList = currentMonthTransactions.filter((t) => t.type === 'income');
-  const expenseList = currentMonthTransactions.filter((t) => t.type === 'expense');
-  const investmentList = currentMonthTransactions.filter((t) => t.type === 'investment');
+  const incomeList = currentMonthTransactions
+    .filter((t) => t.type === 'income')
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const expenseList = currentMonthTransactions
+    .filter((t) => t.type === 'expense')
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const investmentList = currentMonthTransactions
+    .filter((t) => t.type === 'investment')
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   return (
     <div className="space-y-4 animate-fade-in pb-16">
@@ -943,14 +975,11 @@ export default function FinancePage() {
 
           {/* 2. CURRENT MONTH TRANSACTIONS LIST */}
           <div className="flex items-center justify-between px-1">
-            <span className="text-xs font-bold text-white">October 2026 Transactions</span>
+            <span className="text-xs font-bold text-white">
+              {MONTH_NAMES_EN[todayDate.getMonth()]} {currentCalYear} Transactions
+            </span>
             <button
-              onClick={() => {
-                setEditingTxId(null);
-                setTxTitle('');
-                setTxAmount('');
-                setShowTxModal(true);
-              }}
+              onClick={() => handleOpenAddTx()}
               className="text-[11px] text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1 cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5" />
@@ -1173,11 +1202,21 @@ export default function FinancePage() {
           {/* ======================================================== */}
           <div className="card-cozy p-5 space-y-4 pt-4 border-t border-white/[0.08]">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                <BookOpen className="w-4 h-4 text-rose-400" />
-                <span>Historical Accounting Ledger</span>
-              </span>
-              <span className="text-[10px] text-slate-500">Month-by-month record review</span>
+              <div>
+                <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                  <BookOpen className="w-4 h-4 text-rose-400" />
+                  <span>Historical Accounting Ledger</span>
+                </span>
+                <span className="text-[10px] text-slate-500 block">Month-by-month record review</span>
+              </div>
+              <button
+                onClick={() => handleOpenAddTx(`${ledgerYear}-${String(ledgerMonth).padStart(2, '0')}-01`)}
+                className="text-[11px] text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1 cursor-pointer bg-white/[0.04] hover:bg-white/[0.08] px-2.5 py-1 rounded-lg border border-white/[0.08] transition-colors"
+                title={`Add a transaction directly into ${MONTH_NAMES_EN[ledgerMonth - 1]} ${ledgerYear}`}
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add to {MONTH_NAMES_EN[ledgerMonth - 1]}</span>
+              </button>
             </div>
 
             {/* Month Navigation Button Bar */}
@@ -1287,7 +1326,7 @@ export default function FinancePage() {
                         <span>{formatDateDDMMYYYY(tx.date)}</span>
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="flex items-center gap-2">
                       <span
                         className={`font-mono font-bold text-xs ${
                           tx.type === 'income'
@@ -1301,6 +1340,20 @@ export default function FinancePage() {
                       >
                         {tx.type === 'income' ? '+' : '-'}{CURRENCY_SYMBOLS[tx.currency]}{tx.amount.toLocaleString()}
                       </span>
+                      <button 
+                        onClick={() => handleEditTx(tx)} 
+                        className="text-slate-500 hover:text-white p-1 cursor-pointer transition-colors"
+                        title="Edit transaction"
+                      >
+                        <Pencil className="w-3 h-3" />
+                      </button>
+                      <button 
+                        onClick={() => handleDeleteTx(tx.id)} 
+                        className="text-slate-500 hover:text-rose-400 p-1 cursor-pointer transition-colors"
+                        title="Delete transaction"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
                     </div>
                   </div>
                 ))
@@ -1925,6 +1978,32 @@ export default function FinancePage() {
                     <option value="GBP">GBP (£)</option>
                   </select>
                 </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="text-[11px] text-slate-400 flex items-center gap-1 font-medium">
+                    <Calendar className="w-3.5 h-3.5 text-rose-400" />
+                    <span>Transaction Date (Past, Today, or Future)</span>
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setTxDate(new Date().toISOString().split('T')[0])}
+                    className="text-[10px] text-rose-400 hover:text-rose-300 font-semibold cursor-pointer underline transition-colors"
+                  >
+                    Set to Today
+                  </button>
+                </div>
+                <input
+                  type="date"
+                  required
+                  value={txDate}
+                  onChange={(e) => setTxDate(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl bg-[#0e1420] border border-white/[0.08] text-white focus:outline-none focus:border-rose-500 font-mono text-xs cursor-pointer [color-scheme:dark]"
+                />
+                <p className="text-[10px] text-slate-500 mt-1">
+                  💡 Select any custom date to backdate receipts or schedule future transactions.
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2">
