@@ -257,111 +257,42 @@ export function PhotoMemoryWidget() {
   return (
     <>
       {/* 1. HOMEPAGE PHOTO MEMORY WIDGET CARD */}
-      <div className="card-cozy p-5 relative overflow-hidden bg-gradient-to-br from-[#131926] via-[#161d2d] to-[#121722] border border-rose-500/20 shadow-xl">
-        {/* Header Bar */}
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-[11px] font-semibold tracking-wider text-rose-400 uppercase flex items-center gap-1.5">
-            <Camera className="w-3.5 h-3.5 text-rose-500" />
-            <span>Our Memories & Moments</span>
-            <span className="text-slate-400 font-mono text-[10px] font-normal">
-              ({memories.length} {memories.length === 1 ? 'photo' : 'photos'})
-            </span>
-          </span>
-
-          <div className="flex items-center gap-1.5">
-            {memories.length > 0 && (
-              <button
-                onClick={() => setShowGalleryModal(true)}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-slate-300 hover:text-white border border-white/[0.08] text-xs font-medium transition-colors cursor-pointer"
-                title="View all photos in gallery"
-              >
-                <Grid className="w-3 h-3" />
-                <span>Gallery</span>
-              </button>
-            )}
-
-            {memories.length > 1 && (
-              <button
-                onClick={handleNextRandom}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
-                title="Shuffle another memory"
-              >
-                <RefreshCw className="w-3.5 h-3.5" />
-              </button>
-            )}
-
-            <button
-              onClick={() => setShowUploadModal(true)}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 hover:bg-rose-500/25 text-xs font-semibold transition-all cursor-pointer"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Add Photos</span>
-            </button>
-          </div>
+      {activePhoto ? (
+        <div
+          onClick={() => setShowGalleryModal(true)}
+          className="w-full h-36 sm:h-40 rounded-[20px] overflow-hidden cursor-pointer relative group shadow-lg transition-transform active:scale-[0.99]"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setShowGalleryModal(true);
+            }
+          }}
+          title="Click to open memory gallery"
+        >
+          <img
+            src={activePhoto.photo_url}
+            alt={activePhoto.caption || 'Our memory'}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
         </div>
-
-        {/* Content Area */}
-        {activePhoto ? (
-          <div className="space-y-3 animate-fade-in">
-            {/* Memory Photo Container */}
-            <div 
-              onClick={() => setLightboxPhoto(activePhoto)}
-              className="rounded-2xl overflow-hidden border border-white/[0.08] relative group bg-[#0e1420] aspect-[16/10] max-h-72 cursor-pointer"
-            >
-              <img
-                src={activePhoto.photo_url}
-                alt={activePhoto.caption || 'Our love memory'}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-90" />
-              
-              {/* Photo Bottom Caption Overlay */}
-              <div className="absolute bottom-3 left-3.5 right-3.5 flex items-end justify-between gap-3 text-white">
-                <div className="truncate">
-                  {activePhoto.caption && (
-                    <p className="text-xs font-semibold leading-snug drop-shadow-md text-white truncate">
-                      {activePhoto.caption}
-                    </p>
-                  )}
-                  <p className="text-[10px] text-slate-300/90 flex items-center gap-1.5 mt-0.5">
-                    <span>Uploaded by {activePhoto.uploaded_by === 'berk' ? '🦁 Berk' : '🌸 Jaquilyn'}</span>
-                    <span>•</span>
-                    <span>{new Date(activePhoto.created_at).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-slate-300">
-                    Tap to expand 🔍
-                  </span>
-                </div>
-              </div>
-            </div>
+      ) : (
+        /* Empty State */
+        <div
+          onClick={() => setShowUploadModal(true)}
+          className="w-full h-36 sm:h-40 rounded-[20px] border border-dashed border-white/[0.12] bg-[#121824] flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-rose-500/40 transition-colors group p-4 text-center"
+        >
+          <div className="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 group-hover:scale-110 transition-transform">
+            <Camera className="w-5 h-5" />
           </div>
-        ) : (
-          /* Empty State */
-          <div className="p-8 rounded-2xl border border-dashed border-white/[0.1] text-center space-y-3 bg-[#111724]/50">
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mx-auto text-rose-400">
-              <Camera className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-xs font-bold text-white">No Photos Uploaded Yet</h4>
-              <p className="text-[11px] text-slate-400 max-w-xs mx-auto mt-0.5 leading-relaxed">
-                Add your favorite couple photos! Supports bulk batch upload (up to 160+ photos at once) with automatic iPhone HEIC to WebP conversion.
-              </p>
-            </div>
-            <button
-              onClick={() => setShowUploadModal(true)}
-              className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer inline-flex items-center gap-1.5"
-            >
-              <Upload className="w-3.5 h-3.5" />
-              <span>Bulk Upload Photos</span>
-            </button>
-          </div>
-        )}
-      </div>
+          <p className="text-xs font-semibold text-slate-300">
+            No memories uploaded yet. Click to add photos!
+          </p>
+        </div>
+      )}
 
       {/* ============================================================================== */}
       {/* 2. BATCH / BULK UPLOAD MODAL */}
