@@ -71,10 +71,11 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const inputBuffer = Buffer.from(bytes);
 
-    // Convert HEIC/PNG/JPG/etc to WebP with auto-rotation (handles iPhone EXIF orientation!)
+    // Convert HEIC/PNG/JPG/etc to WebP with auto-rotation & smart resizing for massive bulk photo sets
     const webpBuffer = await sharp(inputBuffer)
       .rotate() // automatically rotate based on iPhone EXIF orientation tag
-      .webp({ quality: 86, effort: 4 })
+      .resize({ width: 1920, height: 1920, fit: 'inside', withoutEnlargement: true }) // optimize huge 48MP photos
+      .webp({ quality: 84, effort: 4 })
       .toBuffer();
 
     const fileName = `memory-${Date.now()}-${Math.random().toString(36).substring(2, 7)}.webp`;
