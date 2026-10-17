@@ -50,6 +50,8 @@ import {
   calculate12MonthTrajectory,
   calculateTotalMonthlyInterestTRY,
   ensureMonthlyInterestTransactions,
+  getFirstInterestPayoutDate,
+  getFirstInterestPayoutMonthTag,
   CURRENCY_SYMBOLS,
   DEFAULT_KKTC_RATES,
   INITIAL_TRANSACTIONS,
@@ -116,6 +118,7 @@ export default function FinancePage() {
   // Month navigation for past accounting ledger (Defter)
   const [ledgerYear, setLedgerYear] = useState<number>(2026);
   const [ledgerMonth, setLedgerMonth] = useState<number>(10); // 1-12 (October)
+  const ledgerMonthKey = `${ledgerYear}-${String(ledgerMonth).padStart(2, '0')}`;
 
   // Transaction Modal State (Add or Edit)
   const [showTxModal, setShowTxModal] = useState(false);
@@ -203,6 +206,13 @@ export default function FinancePage() {
     return () => clearInterval(interval);
   }, []);
 
+  // Ensure monthly interest transactions for the selected ledger month (matures 1 month after start date)
+  useEffect(() => {
+    if (compoundAccounts.length > 0) {
+      setTransactions((prev) => ensureMonthlyInterestTransactions(prev, compoundAccounts, ledgerMonthKey));
+    }
+  }, [ledgerMonthKey, compoundAccounts]);
+
   const symbol = CURRENCY_SYMBOLS[selectedCurrency];
 
   const todayDate = new Date();
@@ -224,9 +234,12 @@ export default function FinancePage() {
 
   // Passive interest calculation: check if any active compound accounts are NOT yet logged in transactions
   const unloggedActiveAccounts = compoundAccounts.filter(acc => {
-    if (acc.startDate && acc.startDate.slice(0, 7) > currentMonthTag) return false;
+    if (acc.startDate) {
+      const firstPayoutMonth = getFirstInterestPayoutMonthTag(acc.startDate);
+      if (firstPayoutMonth && firstPayoutMonth > currentMonthTag) return false;
+    }
     return !currentMonthTransactions.some(
-      t => (t.compoundAccountId === acc.id || t.title.includes(acc.name)) && t.isInterest
+      t => (t.compoundAccountId === acc.id || t.title.includes(acc.name)) && (t.isInterest || t.title.startsWith('Interest Yield:'))
     );
   });
   const unloggedMonthlyInterestTRY = calculateTotalMonthlyInterestTRY(unloggedActiveAccounts, liveRates, currentMonthTag);
@@ -269,7 +282,6 @@ export default function FinancePage() {
   const savingsRate = totalMonthlyIncome > 0 ? Math.round((monthlySavings / totalMonthlyIncome) * 100) : 0;
 
   // Selected Month Ledger calculations (Respects compound account start date!)
-  const ledgerMonthKey = `${ledgerYear}-${String(ledgerMonth).padStart(2, '0')}`;
   const ledgerTransactions = transactions.filter((t) => {
     if (!t.date) return false;
     const [y, m] = t.date.split('-');
@@ -282,9 +294,12 @@ export default function FinancePage() {
 
   // Calculate unlogged passive interest for this specific ledger month
   const unloggedLedgerAccounts = compoundAccounts.filter(acc => {
-    if (acc.startDate && acc.startDate.slice(0, 7) > ledgerMonthKey) return false;
+    if (acc.startDate) {
+      const firstPayoutMonth = getFirstInterestPayoutMonthTag(acc.startDate);
+      if (firstPayoutMonth && firstPayoutMonth > ledgerMonthKey) return false;
+    }
     return !ledgerTransactions.some(
-      t => (t.compoundAccountId === acc.id || t.title.includes(acc.name)) && t.isInterest
+      t => (t.compoundAccountId === acc.id || t.title.includes(acc.name)) && (t.isInterest || t.title.startsWith('Interest Yield:'))
     );
   });
   const ledgerUnloggedInterestTRY = calculateTotalMonthlyInterestTRY(unloggedLedgerAccounts, liveRates, ledgerMonthKey);
@@ -1450,7 +1465,7 @@ export default function FinancePage() {
                       </button>
                     )}
                   </div>
-                  <div className="text-[10px] text-amber-400 font-medium mt-0.5 space-x-1">
+                  <div className="text-[10px] text-amber-400 font-medium mt-0.5 space-x-1 flex flex-wrap items-center">
                     <span>Principal: {CURRENCY_SYMBOLS[activeCompoundAccount.currency]}{activeCompoundAccount.principal.toLocaleString()}</span>
                     <span>•</span>
                     <span>Annual Rate: {activeCompoundAccount.annualRate}%</span>
@@ -1458,6 +1473,8 @@ export default function FinancePage() {
                     <span>Tax: {activeCompoundAccount.withholdingTax}%</span>
                     <span>•</span>
                     <span className="text-slate-300 font-mono">Started: {formatDateDDMMYYYY(activeCompoundAccount.startDate)}</span>
+                    <span>•</span>
+                    <span className="text-emerald-400 font-mono font-semibold">1st Payout: {formatDateDDMMYYYY(getFirstInterestPayoutDate(activeCompoundAccount.startDate))}</span>
                   </div>
                 </div>
 
