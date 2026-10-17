@@ -34,7 +34,7 @@ function getSupabase() {
   return createClient(url, key);
 }
 
-// POST: upload ephemeral photo with HEIC -> WebP conversion
+// POST: upload permanent chat photo with HEIC -> WebP conversion
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -91,18 +91,15 @@ export async function POST(request: Request) {
     }
 
     const now = Date.now();
-    const twelveHoursMs = 12 * 60 * 60 * 1000;
-    const expiresAt = now + twelveHoursMs;
-
     const timeStr = new Date(now).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     const newMessage = {
       id: `msg-${now}-${Math.random().toString(36).substring(2, 7)}`,
       sender: sender === 'jaquilyn' ? 'jaquilyn' : 'berk',
-      text: caption.trim() || '📷 Ephemeral Photo',
+      text: caption.trim() || '📷 Photo',
       photo_url: photoUrl,
-      is_ephemeral_photo: true,
-      expires_at: expiresAt,
+      is_ephemeral_photo: false,
+      expires_at: null,
       is_expired: false,
       timestamp: timeStr,
       created_at: now,
@@ -121,8 +118,8 @@ export async function POST(request: Request) {
           sender: newMessage.sender,
           text: newMessage.text,
           photo_url: newMessage.photo_url,
-          is_ephemeral_photo: true,
-          expires_at: newMessage.expires_at,
+          is_ephemeral_photo: false,
+          expires_at: null,
           is_expired: false,
           timestamp: newMessage.timestamp,
           created_at: newMessage.created_at,

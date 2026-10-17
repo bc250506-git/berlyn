@@ -10,7 +10,6 @@ import {
   Check,
   Loader2,
   Camera,
-  Clock,
   ZoomIn
 } from 'lucide-react';
 import { useCurrentUser } from '@/components/UserContext';
@@ -27,9 +26,6 @@ interface Message {
   isEdited?: boolean;
   editedAt?: number;
   photo_url?: string | null;
-  is_ephemeral_photo?: boolean;
-  expires_at?: number;
-  is_expired?: boolean;
 }
 
 interface PartnerPresenceState {
@@ -50,7 +46,7 @@ export default function MessagesPage() {
   const [editText, setEditText] = useState('');
   const [isSavingEdit, setIsSavingEdit] = useState(false);
 
-  // Ephemeral Photo state
+  // Photo upload state
   const photoInputRef = useRef<HTMLInputElement>(null);
   const [pendingPhotoFile, setPendingPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
@@ -426,7 +422,7 @@ export default function MessagesPage() {
     if (photoInputRef.current) photoInputRef.current.value = '';
   };
 
-  // Send ephemeral 12-hour photo (converts to WebP on server)
+  // Send permanent photo (converts to WebP on server)
   const handleSendPhoto = async () => {
     if (!pendingPhotoFile || isUploadingPhoto) return;
     setIsUploadingPhoto(true);
@@ -461,17 +457,6 @@ export default function MessagesPage() {
     } finally {
       setIsUploadingPhoto(false);
     }
-  };
-
-  // Format remaining time for 12-hour ephemeral photo
-  const formatRemainingTime = (expiresAt?: number): string => {
-    if (!expiresAt) return '';
-    const diffMs = expiresAt - Date.now();
-    if (diffMs <= 0) return 'Expired';
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    if (hours > 0) return `${hours}h ${mins}m left`;
-    return `${mins}m left`;
   };
 
   // Determine if partner has seen the latest message sent by active user
@@ -623,63 +608,35 @@ export default function MessagesPage() {
                   )}
                 </div>
 
-                {/* Message Bubble: Ephemeral Photo, Heart Emoji, or Text */}
-                {msg.is_ephemeral_photo ? (
+                {/* Message Bubble: Photo, Heart Emoji, or Text */}
+                {msg.photo_url ? (
                   <div className="relative max-w-[85%]">
-                    {msg.is_expired || (msg.expires_at && Date.now() > msg.expires_at) ? (
-                      /* Expired Placeholder: "Photo was sent" */
-                      <div className="p-3 rounded-2xl bg-[#131b28] border border-white/[0.08] text-slate-400 text-xs flex items-center gap-2.5 shadow-sm">
-                        <div className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-slate-400 shrink-0">
-                          <Camera className="w-4 h-4 text-slate-400" />
-                        </div>
-                        <div>
-                          <span className="font-semibold text-slate-200 block text-[11px]">
-                            Photo was sent
-                          </span>
-                          <span className="text-[10px] text-slate-500 flex items-center gap-1">
-                            <Clock className="w-2.5 h-2.5" />
-                            12-hour ephemeral photo expired
+                    {/* Permanent Chat Photo */}
+                    <div className="rounded-2xl overflow-hidden border border-white/[0.1] relative group bg-[#121824] shadow-md">
+                      <div
+                        onClick={() => setSelectedFullPhoto(msg.photo_url || null)}
+                        className="cursor-pointer overflow-hidden max-h-72 relative"
+                      >
+                        <img
+                          src={msg.photo_url}
+                          alt="Photo"
+                          loading="lazy"
+                          className="w-full object-cover group-hover:scale-102 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <span className="p-2 rounded-full bg-black/60 text-white backdrop-blur-sm">
+                            <ZoomIn className="w-4 h-4" />
                           </span>
                         </div>
                       </div>
-                    ) : (
-                      /* Active Ephemeral Photo */
-                      <div className="rounded-2xl overflow-hidden border border-white/[0.1] relative group bg-[#121824] shadow-md">
-                        <div
-                          onClick={() => setSelectedFullPhoto(msg.photo_url || null)}
-                          className="cursor-pointer overflow-hidden max-h-72 relative"
-                        >
-                          <img
-                            src={msg.photo_url || ''}
-                            alt="Ephemeral Photo"
-                            className="w-full object-cover group-hover:scale-102 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span className="p-2 rounded-full bg-black/60 text-white backdrop-blur-sm">
-                              <ZoomIn className="w-4 h-4" />
-                            </span>
-                          </div>
-                        </div>
 
-                        {/* Top Badge: Remaining Time Countdown */}
-                        <div className="absolute top-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-                          <span className="text-[9.5px] px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-amber-300 font-medium flex items-center gap-1">
-                            <Clock className="w-3 h-3 text-amber-400" />
-                            <span>⏱️ {formatRemainingTime(msg.expires_at)}</span>
-                          </span>
-                          <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-purple-500/80 text-white font-semibold backdrop-blur-sm">
-                            12h
-                          </span>
+                      {/* Caption if provided */}
+                      {msg.text && !msg.text.startsWith('📷') && (
+                        <div className="p-2.5 bg-[#121824] border-t border-white/[0.08] text-xs text-slate-200">
+                          <p className="whitespace-pre-wrap">{msg.text}</p>
                         </div>
-
-                        {/* Caption if provided */}
-                        {msg.text && !msg.text.startsWith('📷') && (
-                          <div className="p-2.5 bg-[#121824] border-t border-white/[0.08] text-xs text-slate-200">
-                            <p className="whitespace-pre-wrap">{msg.text}</p>
-                          </div>
-                        )}
-                      </div>
-                    )}
+                      )}
+                    </div>
 
                     {/* Footer receipt */}
                     <div className={`flex items-center gap-1 mt-0.5 text-[9px] ${isMe ? 'justify-end text-slate-400' : 'justify-start text-slate-500'}`}>
@@ -808,13 +765,13 @@ export default function MessagesPage() {
           <Heart className="w-4 h-4 fill-rose-500 text-rose-500 animate-pulse" />
         </button>
 
-        {/* 12-Hour Ephemeral Photo Button */}
+        {/* Chat Photo Button */}
         <button
           type="button"
           onClick={() => photoInputRef.current?.click()}
           disabled={isSending || isUploadingPhoto}
-          className="p-2.5 rounded-xl bg-[#161f2e] hover:bg-purple-500/15 border border-white/[0.08] hover:border-purple-500/30 text-purple-400 hover:text-purple-300 transition-all cursor-pointer active:scale-95 disabled:opacity-50 shrink-0"
-          title="Send Ephemeral Photo (Auto-deletes after 12 hours)"
+          className="p-2.5 rounded-xl bg-[#161f2e] hover:bg-rose-500/15 border border-white/[0.08] hover:border-rose-500/30 text-rose-400 hover:text-rose-300 transition-all cursor-pointer active:scale-95 disabled:opacity-50 shrink-0"
+          title="Send Photo"
         >
           <Camera className="w-4 h-4" />
         </button>
@@ -924,25 +881,22 @@ export default function MessagesPage() {
         </div>
       )}
 
-      {/* 5. Ephemeral Photo Upload Modal with Sticky Header */}
+      {/* 5. Photo Upload Modal with Sticky Header */}
       {pendingPhotoFile && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fade-in">
           <div className="w-full max-w-md bg-[#121824] border border-white/[0.1] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             {/* Sticky Header */}
             <div className="sticky top-0 z-20 flex items-center justify-between p-4 border-b border-white/[0.08] bg-[#121824] shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                <div className="w-8 h-8 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400">
                   <Camera className="w-4 h-4" />
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <span>Send Ephemeral Photo</span>
-                    <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold">
-                      12 Hours
-                    </span>
+                    <span>Send Photo</span>
                   </h3>
                   <p className="text-[10px] text-slate-400">
-                    Auto WebP optimization & disappears in 12 hours
+                    High-speed WebP optimization & saved permanently
                   </p>
                 </div>
               </div>
@@ -972,13 +926,13 @@ export default function MessagesPage() {
                   />
                 ) : (
                   <div className="text-center p-6 space-y-2">
-                    <div className="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-500/30 mx-auto flex items-center justify-center text-purple-400">
+                    <div className="w-12 h-12 rounded-2xl bg-rose-500/15 border border-rose-500/30 mx-auto flex items-center justify-center text-rose-400">
                       <Camera className="w-6 h-6" />
                     </div>
                     <p className="text-xs font-medium text-slate-200">
                       iPhone Photo (HEIC / HEIF) Detected
                     </p>
-                    <p className="text-[10px] text-purple-300">
+                    <p className="text-[10px] text-rose-300">
                       Automatically converted to ultra-lightweight WebP format
                     </p>
                   </div>
@@ -991,19 +945,6 @@ export default function MessagesPage() {
                 </div>
               </div>
 
-              {/* Ephemeral Features Note */}
-              <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 space-y-1.5">
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-purple-300">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>12-Hour Ephemeral Photo Protection</span>
-                </div>
-                <ul className="text-[10px] text-slate-300 space-y-1 pl-4 list-disc">
-                  <li>Automatic WebP compression to save storage and bandwidth.</li>
-                  <li>Permanently deleted from the server and chat room after 12 hours.</li>
-                  <li>A sleek <b>&quot;Photo was sent&quot;</b> placeholder keeps the timeline seamless.</li>
-                </ul>
-              </div>
-
               {/* Optional Caption */}
               <div>
                 <label className="block text-[11px] text-slate-400 font-medium mb-1">
@@ -1014,7 +955,7 @@ export default function MessagesPage() {
                   value={photoCaption}
                   onChange={(e) => setPhotoCaption(e.target.value)}
                   placeholder="Write something about this photo..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#161f2e] border border-white/[0.1] text-white text-xs placeholder-slate-500 focus:outline-none focus:border-purple-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#161f2e] border border-white/[0.1] text-white text-xs placeholder-slate-500 focus:outline-none focus:border-rose-500"
                 />
               </div>
 
@@ -1036,7 +977,7 @@ export default function MessagesPage() {
                   type="button"
                   onClick={handleSendPhoto}
                   disabled={isUploadingPhoto}
-                  className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow-md transition-all cursor-pointer disabled:opacity-50 flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-md transition-all cursor-pointer disabled:opacity-50 flex items-center gap-1.5"
                 >
                   {isUploadingPhoto ? (
                     <>
@@ -1046,7 +987,7 @@ export default function MessagesPage() {
                   ) : (
                     <>
                       <Send className="w-3.5 h-3.5" />
-                      <span>Send Ephemeral Photo</span>
+                      <span>Send Photo</span>
                     </>
                   )}
                 </button>
@@ -1068,8 +1009,8 @@ export default function MessagesPage() {
             className="w-full max-w-2xl flex items-center justify-between pb-3"
           >
             <div className="flex items-center gap-2 text-white text-xs font-medium">
-              <Camera className="w-4 h-4 text-purple-400" />
-              <span>Ephemeral Photo Preview (12h)</span>
+              <Camera className="w-4 h-4 text-rose-400" />
+              <span>Photo Preview</span>
             </div>
             <button
               onClick={() => setSelectedFullPhoto(null)}
@@ -1086,7 +1027,7 @@ export default function MessagesPage() {
           >
             <img
               src={selectedFullPhoto}
-              alt="Ephemeral Photo Large"
+              alt="Chat Photo"
               className="max-h-[80vh] w-auto max-w-full object-contain"
             />
           </div>

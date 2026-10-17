@@ -33,7 +33,7 @@ function getSupabase() {
   return createClient(url, key);
 }
 
-// GET: fetch all messages and clean up expired 12-hour ephemeral photos
+// GET: fetch all messages (chat photos are permanent)
 export async function GET() {
   try {
     const supabase = getSupabase();
@@ -57,9 +57,6 @@ export async function GET() {
             isEdited: Boolean(row.is_edited),
             editedAt: row.edited_at ? Number(row.edited_at) : null,
             photo_url: row.photo_url,
-            is_ephemeral_photo: Boolean(row.is_ephemeral_photo),
-            expires_at: row.expires_at ? Number(row.expires_at) : null,
-            is_expired: Boolean(row.is_expired),
           }));
         }
       } catch (err) {
@@ -69,55 +66,6 @@ export async function GET() {
 
     if (messages.length === 0) {
       messages = getMessagesFromFile();
-    }
-
-    const now = Date.now();
-    let hasChanges = false;
-
-    for (const m of messages) {
-      if (m.is_ephemeral_photo && !m.is_expired && m.expires_at && now > m.expires_at) {
-        hasChanges = true;
-        m.is_expired = true;
-
-        // 1. Clean up physical file if it was saved locally
-        if (m.photo_url && m.photo_url.startsWith('/uploads/chat/')) {
-          try {
-            const localPath = path.join(process.cwd(), 'public', m.photo_url.replace(/^\//, ''));
-            if (fs.existsSync(localPath)) {
-              fs.unlinkSync(localPath);
-            }
-          } catch (e) {
-            console.warn('Failed to delete expired chat photo file:', e);
-          }
-        }
-
-        // 2. Clean up from Supabase Storage bucket
-        if (m.photo_url && m.photo_url.includes('chat/') && supabase) {
-          try {
-            const parts = m.photo_url.split('/chat/');
-            const fileName = parts[1]?.split('?')[0];
-            if (fileName) {
-              await supabase.storage.from('memories').remove([`chat/${fileName}`]);
-            }
-          } catch (e) {
-            console.warn('Failed to delete from Supabase storage:', e);
-          }
-        }
-
-        // 3. Nullify photo_url in database and memory
-        m.photo_url = null;
-
-        // 4. Update Supabase messages table if exists
-        if (supabase) {
-          try {
-            await supabase.from('messages').update({ photo_url: null, is_expired: true }).eq('id', m.id);
-          } catch (e) {}
-        }
-      }
-    }
-
-    if (hasChanges) {
-      saveMessagesToFile(messages);
     }
 
     return NextResponse.json({ messages });
