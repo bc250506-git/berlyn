@@ -16,21 +16,21 @@ export const USERS: Record<CoupleUser, UserProfile> = {
     id: 'berk',
     name: 'Berk',
     avatar: '🦁',
-    location: 'Kyrenia, North Cyprus',
+    location: 'Kyrenia',
     city: 'Kyrenia',
     timezone: 'Asia/Nicosia',
     country: 'TR / NC',
-    accentColor: '#3b82f6', // subtle blue / amber
+    accentColor: '#3b82f6',
   },
   jaquilyn: {
     id: 'jaquilyn',
     name: 'Jaquilyn',
     avatar: '🌸',
-    location: 'Bulacan, Philippines',
+    location: 'Bulacan',
     city: 'Bulacan',
     timezone: 'Asia/Manila',
     country: 'PH',
-    accentColor: '#ec4899', // soft rose
+    accentColor: '#ec4899',
   },
 };
 
@@ -67,8 +67,8 @@ export interface MediaItem {
   poster_url?: string;
   genres: string[];
   moods: MediaMood[];
-  berk_rating?: number | null; // 1-10
-  jaquilyn_rating?: number | null; // 1-10
+  berk_rating?: number | null;
+  jaquilyn_rating?: number | null;
   berk_review?: string | null;
   jaquilyn_review?: string | null;
   added_by: CoupleUser;
@@ -78,9 +78,9 @@ export interface MediaItem {
   created_at: string;
 }
 
-// Finance Hub
+// Finance Hub (Currencies: TRY default, USD, GBP)
 export type TransactionType = 'income' | 'expense' | 'investment';
-export type Currency = 'TRY' | 'USD' | 'PHP' | 'EUR';
+export type Currency = 'TRY' | 'USD' | 'GBP';
 
 export interface FinanceItem {
   id: string;
@@ -104,13 +104,26 @@ export interface InvestmentAsset {
   monthly_contribution?: number;
 }
 
+// Compound Interest / Faiz Getirisi Account
+export interface CompoundInterestAccount {
+  id: string;
+  name: string;
+  principal: number; // Anapara
+  currency: Currency; // TRY, USD, GBP
+  annualRate: number; // Yıllık faiz oranı (%)
+  compoundingFrequency: 'monthly' | 'daily' | '32_days'; // Bileşik sıklığı
+  startDate: string; // YYYY-MM-DD
+  withholdingTax: number; // Stopaj oranı (örn: %10 veya %0)
+  note?: string;
+}
+
 // Travel & Visa
 export type VisaStatus = 'visa_free' | 'e_visa' | 'visa_on_arrival' | 'visa_required';
 
 export interface Destination {
   id: string;
   country: string;
-  country_code: string; // ISO 2
+  country_code: string;
   city?: string;
   status: 'visited' | 'bucketlist' | 'planning';
   target_date?: string;
@@ -150,7 +163,7 @@ export interface PenaltyEntry {
   id: string;
   perpetrator: CoupleUser;
   reason: string;
-  amount: number; // e.g. 100 TRY or 150 PHP
+  amount: number;
   currency: Currency;
   created_at: string;
 }
