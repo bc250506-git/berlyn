@@ -254,10 +254,33 @@ export default function FinancePage() {
   // Total income = all income transactions (which includes logged interest!) + any unlogged passive interest
   const totalMonthlyIncome = manualMonthlyIncome + unloggedMonthlyInterestSelected;
 
-  // Total Net Worth
-  const totalNetWorthTRY = assets.reduce((sum, a) => {
+  // 1. Total Portfolio Assets (Gold, Stocks, Crypto, Real Estate, etc.)
+  const totalAssetsTRY = assets.reduce((sum, a) => {
     return sum + convertCurrency(a.current_value, a.currency, 'TRY', liveRates);
   }, 0);
+  const totalAssetsSelected = convertCurrency(totalAssetsTRY, 'TRY', selectedCurrency, liveRates);
+
+  // 2. Total Compound Interest Term Deposits (Principal in active compound accounts)
+  const totalCompoundPrincipalTRY = compoundAccounts.reduce((sum, acc) => {
+    return sum + convertCurrency(acc.principal, acc.currency, 'TRY', liveRates);
+  }, 0);
+  const totalCompoundPrincipalSelected = convertCurrency(totalCompoundPrincipalTRY, 'TRY', selectedCurrency, liveRates);
+
+  // 3. Net Cash Reserves / Cumulative Savings from all recorded transactions
+  // (Total Income - Non-Family Out-of-Pocket Expenses)
+  const cumulativeCashSavingsTRY = transactions.reduce((sum, t) => {
+    if (t.type === 'income') {
+      return sum + convertCurrency(t.amount, t.currency, 'TRY', liveRates);
+    }
+    if (t.type === 'expense' && t.user !== 'family') {
+      return sum - convertCurrency(t.amount, t.currency, 'TRY', liveRates);
+    }
+    return sum;
+  }, 0);
+  const cumulativeCashSavingsSelected = convertCurrency(cumulativeCashSavingsTRY, 'TRY', selectedCurrency, liveRates);
+
+  // Total Couple Net Worth: Liquid Cash Savings + Portfolio Assets + Compound Term Deposits
+  const totalNetWorthTRY = Math.max(0, cumulativeCashSavingsTRY + totalAssetsTRY + totalCompoundPrincipalTRY);
   const totalNetWorth = convertCurrency(totalNetWorthTRY, 'TRY', selectedCurrency, liveRates);
 
   // Family Support Expenses (Never deducted from couple net worth or savings)
@@ -752,11 +775,23 @@ export default function FinancePage() {
         </div>
 
         {/* Total Net Worth */}
-        <div>
-          <span className="text-[11px] text-slate-400 font-medium">Total Couple Net Worth</span>
-          <div className="text-3xl font-extrabold text-white tracking-tight font-mono mt-0.5">
+        <div className="space-y-1">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] text-slate-400 font-medium">Total Couple Net Worth</span>
+            {totalNetWorth > 0 && (
+              <span className="text-[10px] text-emerald-400 font-mono font-semibold">
+                {cumulativeCashSavingsSelected > 0 && `💵 +${symbol}${Math.round(cumulativeCashSavingsSelected).toLocaleString()} Savings`}
+                {totalCompoundPrincipalSelected > 0 && ` • 📈 +${symbol}${Math.round(totalCompoundPrincipalSelected).toLocaleString()} Deposits`}
+                {totalAssetsSelected > 0 && ` • 🪙 +${symbol}${Math.round(totalAssetsSelected).toLocaleString()} Assets`}
+              </span>
+            )}
+          </div>
+          <div className="text-3xl font-extrabold text-white tracking-tight font-mono">
             {symbol}{Math.round(totalNetWorth).toLocaleString()}
           </div>
+          <p className="text-[10px] text-slate-400">
+            ✨ Combines liquid cash savings ({symbol}{Math.round(Math.max(0, cumulativeCashSavingsSelected)).toLocaleString()}), term deposits & assets
+          </p>
         </div>
 
         {/* Monthly Income / Expense */}
@@ -1390,15 +1425,75 @@ export default function FinancePage() {
           </div>
 
           <div className="space-y-2.5">
+            {/* Automated Liquid Cash Savings from Transactions */}
+            {cumulativeCashSavingsSelected > 0 && (
+              <div className="card-cozy p-3.5 space-y-2 border border-emerald-500/25 bg-emerald-950/20">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="space-y-0.5 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <Wallet className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Liquid Cash & Bank Reserves</span>
+                      </h4>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
+                        Live Ledger Savings
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 block">
+                      Accumulated net cash savings from all income & living expenses
+                    </span>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="font-mono text-xs font-bold text-emerald-400">
+                      +{symbol}{Math.round(cumulativeCashSavingsSelected).toLocaleString()}
+                    </div>
+                    <div className="text-[9px] text-slate-500 font-mono">
+                      Available Cash
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Automated Compound Term Deposits */}
+            {totalCompoundPrincipalSelected > 0 && (
+              <div className="card-cozy p-3.5 space-y-2 border border-amber-500/25 bg-amber-950/20">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="space-y-0.5 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
+                        <span>Compound Term Deposits (Principal)</span>
+                      </h4>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
+                        Yield Accounts
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 block">
+                      Total principal committed across compound interest savings accounts
+                    </span>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="font-mono text-xs font-bold text-amber-300">
+                      +{symbol}{Math.round(totalCompoundPrincipalSelected).toLocaleString()}
+                    </div>
+                    <div className="text-[9px] text-slate-500 font-mono">
+                      {compoundAccounts.length} Active Account{compoundAccounts.length > 1 ? 's' : ''}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {assets.length === 0 ? (
               <div className="card-cozy p-6 text-center space-y-2">
                 <PieChart className="w-8 h-8 text-slate-600 mx-auto" />
-                <p className="text-xs text-slate-400">No assets in your portfolio yet.</p>
+                <p className="text-xs text-slate-400">No additional custom assets (Gold, Stocks, Crypto) in your portfolio yet.</p>
                 <button
                   onClick={() => handleOpenAssetModal()}
                   className="px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold cursor-pointer"
                 >
-                  + Add First Asset
+                  + Add First Custom Asset
                 </button>
               </div>
             ) : (
