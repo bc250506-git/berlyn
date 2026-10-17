@@ -146,7 +146,7 @@ export function HomePageClient({
   // Fetch Finance Data
   useEffect(() => {
     fetchFinanceData().then((data) => {
-      if (!data || !data.transactions || data.transactions.length === 0) {
+      if (!data || !data.transactions) {
         setFinanceCelebration({
           income: 0,
           savings: 0,
@@ -155,27 +155,32 @@ export function HomePageClient({
         });
         return;
       }
+
+      const now = new Date();
+      const curYear = now.getFullYear();
+      const curMonth = now.getMonth() + 1;
+      const currentMonthTag = `${curYear}-${String(curMonth).padStart(2, '0')}`;
+
       const currentMonthTransactions = data.transactions.filter((t) => {
         if (!t.date) return false;
         const [y, m] = t.date.split('-');
-        return parseInt(y) === 2026 && parseInt(m) === 10;
+        return parseInt(y) === curYear && parseInt(m) === curMonth;
       });
-
-      if (currentMonthTransactions.length === 0) {
-        setFinanceCelebration({
-          income: 0,
-          savings: 0,
-          rate: 0,
-          hasData: false,
-        });
-        return;
-      }
 
       const manualIncome = currentMonthTransactions
         .filter((t) => t.type === 'income')
         .reduce((sum, t) => sum + convertCurrency(t.amount, t.currency, 'TRY', DEFAULT_KKTC_RATES), 0);
 
-      const passiveInterest = calculateTotalMonthlyInterestTRY(data.compoundAccounts, DEFAULT_KKTC_RATES, '2026-10');
+      // Only count unlogged compound interest to prevent double-counting!
+      const unloggedAccounts = (data.compoundAccounts || []).filter((acc) => {
+        return !currentMonthTransactions.some(
+          (t) =>
+            (t.compoundAccountId === acc.id || t.title.includes(acc.name)) &&
+            (t.isInterest || t.title.startsWith('Interest Yield:'))
+        );
+      });
+
+      const passiveInterest = calculateTotalMonthlyInterestTRY(unloggedAccounts, DEFAULT_KKTC_RATES, currentMonthTag);
       const totalIncome = manualIncome + passiveInterest;
 
       const ourExpense = currentMonthTransactions
@@ -838,7 +843,9 @@ export function HomePageClient({
                 <span className="text-base">🎉</span>
                 <span className="text-xs font-bold text-emerald-300 tracking-wider uppercase flex items-center gap-1">
                   <span>This Month's Wins</span>
-                  <span className="text-slate-400 font-normal">• October 2026</span>
+                  <span className="text-slate-400 font-normal">
+                    • {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                  </span>
                 </span>
               </div>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold border border-emerald-500/30">
