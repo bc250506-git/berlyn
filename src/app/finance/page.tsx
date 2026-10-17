@@ -132,6 +132,7 @@ export default function FinancePage() {
 
   // Recurring Payment Modal State (Add or Edit)
   const [showRecurringModal, setShowRecurringModal] = useState(false);
+  const [editingRecurringId, setEditingRecurringId] = useState<string | null>(null);
   const [recTitle, setRecTitle] = useState('');
   const [recAmount, setRecAmount] = useState('');
   const [recCurrency, setRecCurrency] = useState<Currency>('TRY');
@@ -498,26 +499,53 @@ export default function FinancePage() {
     }
   };
 
-  // Save Recurring Payment
+  const handleOpenAddRecurring = () => {
+    setEditingRecurringId(null);
+    setRecTitle('');
+    setRecAmount('');
+    setRecCurrency(selectedCurrency);
+    setRecType('expense');
+    setRecCategory('Housing & Living');
+    setRecDay('5');
+    setRecUser('shared');
+    setShowRecurringModal(true);
+  };
+
+  const handleEditRecurring = (rec: RecurringPayment) => {
+    setEditingRecurringId(rec.id);
+    setRecTitle(rec.title);
+    setRecAmount(rec.amount.toString());
+    setRecCurrency(rec.currency);
+    setRecType(rec.type);
+    setRecCategory(rec.category);
+    setRecDay(rec.dayOfMonth.toString());
+    setRecUser(rec.user);
+    setShowRecurringModal(true);
+  };
+
+  // Save Recurring Payment (Add or Edit)
   const handleSaveRecurring = (e: React.FormEvent) => {
     e.preventDefault();
     if (!recTitle.trim() || !recAmount) return;
 
-    const newRec: RecurringPayment = {
-      id: `rec-${Date.now()}`,
-      title: recTitle,
+    const existing = editingRecurringId ? recurringPayments.find(r => r.id === editingRecurringId) : null;
+
+    const recItem: RecurringPayment = {
+      id: editingRecurringId || `rec-${Date.now()}`,
+      title: recTitle.trim(),
       amount: parseFloat(recAmount),
       currency: recCurrency,
       type: recType,
       category: recCategory,
       dayOfMonth: parseInt(recDay) || 1,
       user: recUser,
-      lastProcessedMonth: '',
+      lastProcessedMonth: existing ? existing.lastProcessedMonth : '',
     };
 
-    const updated = saveRecurringPayment(newRec);
+    const updated = saveRecurringPayment(recItem);
     setRecurringPayments(updated);
     setShowRecurringModal(false);
+    setEditingRecurringId(null);
     setRecTitle('');
     setRecAmount('');
     if (recType === 'income') {
@@ -799,7 +827,7 @@ export default function FinancePage() {
                 </p>
               </div>
               <button
-                onClick={() => setShowRecurringModal(true)}
+                onClick={handleOpenAddRecurring}
                 className="px-2.5 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 hover:bg-amber-500 hover:text-white text-[11px] font-semibold transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <Plus className="w-3 h-3" />
@@ -892,8 +920,16 @@ export default function FinancePage() {
                       )}
 
                       <button
+                        onClick={() => handleEditRecurring(rec)}
+                        className="text-slate-500 hover:text-amber-400 p-1 cursor-pointer transition-colors"
+                        title="Edit recurring payment"
+                      >
+                        <Pencil className="w-3 h-3" />
+                      </button>
+
+                      <button
                         onClick={() => handleDeleteRecurring(rec.id)}
-                        className="text-slate-500 hover:text-rose-400 p-1 cursor-pointer"
+                        className="text-slate-500 hover:text-rose-400 p-1 cursor-pointer transition-colors"
                         title="Delete recurring payment"
                       >
                         <Trash2 className="w-3 h-3" />
@@ -1953,7 +1989,7 @@ export default function FinancePage() {
             <div className="sticky top-0 z-20 flex items-center justify-between p-5 pb-3.5 border-b border-white/[0.08] bg-[#121824] shrink-0">
               <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
                 <Repeat className="w-4 h-4 text-amber-400" />
-                <span>Add Recurring Payment</span>
+                <span>{editingRecurringId ? 'Edit Recurring Payment' : 'Add Recurring Payment'}</span>
               </h3>
               <button
                 onClick={() => setShowRecurringModal(false)}
@@ -2066,7 +2102,7 @@ export default function FinancePage() {
                 type="submit"
                 className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs transition-colors mt-2 cursor-pointer"
               >
-                Save Recurring Payment
+                {editingRecurringId ? 'Save Changes' : 'Save Recurring Payment'}
               </button>
             </form>
             </div>
