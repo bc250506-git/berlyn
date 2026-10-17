@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { BucketCategory, BucketItem } from '@/types';
 import { useConfirm } from '@/components/ConfirmModal';
+import confetti from 'canvas-confetti';
+import { playSparkle, playTap } from '@/lib/sound-effects';
 
 export const CATEGORY_CONFIG: Record<BucketCategory, {
   label: string;
@@ -372,6 +374,14 @@ export default function BucketListPage() {
     setItems(items.map(item => {
       if (item.id === id) {
         const nextCompleted = !item.completed;
+        if (nextCompleted) {
+          playSparkle();
+          confetti({
+            particleCount: 55,
+            spread: 60,
+            origin: { y: 0.6 },
+          });
+        }
         return {
           ...item,
           completed: nextCompleted,
@@ -512,6 +522,8 @@ export default function BucketListPage() {
         setNotification(`✨ "${newTitle.trim()}" added to your Bucket List!`);
       }
     }
+
+    playTap();
 
     // Reset form
     setEditingItemId(null);

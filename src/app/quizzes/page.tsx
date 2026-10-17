@@ -5,6 +5,7 @@ import { HelpCircle, Sparkles, Send, CheckCircle2, Eye, EyeOff, Plus, Heart } fr
 import { useCurrentUser } from '@/components/UserContext';
 import { formatDateDDMMYYYY } from '@/lib/date';
 import confetti from 'canvas-confetti';
+import { playSeal, playMatch } from '@/lib/sound-effects';
 
 interface PromptItem {
   id: string;
@@ -52,6 +53,9 @@ export default function QuizzesPage() {
     const text = activeAnswerInput[promptId];
     if (!text?.trim()) return;
 
+    const targetPrompt = prompts.find((p) => p.id === promptId);
+    const partnerAlreadyAnswered = currentUser === 'berk' ? Boolean(targetPrompt?.jaqAnswer) : Boolean(targetPrompt?.berkAnswer);
+
     setPrompts((prev) =>
       prev.map((p) => {
         if (p.id !== promptId) return p;
@@ -64,6 +68,12 @@ export default function QuizzesPage() {
     );
 
     setActiveAnswerInput((prev) => ({ ...prev, [promptId]: '' }));
+
+    if (partnerAlreadyAnswered) {
+      playMatch();
+    } else {
+      playSeal();
+    }
 
     confetti({
       particleCount: 50,

@@ -28,6 +28,7 @@ import { useCurrentUser } from '@/components/UserContext';
 import { useConfirm } from '@/components/ConfirmModal';
 import { formatDateDDMMYYYY } from '@/lib/date';
 import confetti from 'canvas-confetti';
+import { playChime, playPop } from '@/lib/sound-effects';
 
 const MOOD_OPTIONS = [
   { id: 'cozy', label: 'Cozy & Blanket', emoji: '☕', genres: ['Animation', 'Family', 'Fantasy', 'Comedy'] },
@@ -361,6 +362,9 @@ export default function MediaPage() {
     setShowAddModal(false);
     setNewTitle('');
     setSelectedMovieMeta(null);
+    if (isCompleted) {
+      playChime();
+    }
     confetti({ particleCount: 35, spread: 45, origin: { y: 0.6 } });
   };
 
@@ -393,6 +397,9 @@ export default function MediaPage() {
     await saveMediaItem(updated);
     setItems(items.map((i) => (i.id === updated.id ? updated : i)));
     setEditingItem(null);
+    if (isCompleted) {
+      playChime();
+    }
     confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
@@ -463,6 +470,7 @@ export default function MediaPage() {
     // Remove from active recommendations list in real time!
     setRecommendations((prev) => prev.filter((r) => r.item.title.toLowerCase() !== updated.title.toLowerCase()));
     setRatingPopupItem(null);
+    playChime();
     confetti({ particleCount: 55, spread: 60, origin: { y: 0.6 } });
   };
 
@@ -478,6 +486,11 @@ export default function MediaPage() {
     };
     await saveMediaItem(updated);
     setItems(items.map((i) => (i.id === updated.id ? updated : i)));
+    if (nextEp === max) {
+      playChime();
+    } else {
+      playPop();
+    }
   };
 
   const completedCount = items.filter((i) => i.status === 'completed').length;
@@ -1160,6 +1173,7 @@ export default function MediaPage() {
                     step="0.5"
                     value={newMyRating}
                     onChange={(e) => setNewMyRating(Number(e.target.value))}
+                    onPointerUp={() => playPop()}
                     className={`w-full cursor-pointer ${isBerk ? 'accent-blue-500' : 'accent-rose-500'}`}
                   />
                   <p className="text-[10px] text-slate-400 italic">
@@ -1241,6 +1255,7 @@ export default function MediaPage() {
                   step="0.5"
                   value={popupMyRating}
                   onChange={(e) => setPopupMyRating(Number(e.target.value))}
+                  onPointerUp={() => playPop()}
                   className={`w-full cursor-pointer ${isBerk ? 'accent-blue-500' : 'accent-rose-500'}`}
                 />
               </div>
@@ -1340,6 +1355,7 @@ export default function MediaPage() {
                     step="0.5"
                     value={editMyRating}
                     onChange={(e) => setEditMyRating(Number(e.target.value))}
+                    onPointerUp={() => playPop()}
                     className={`w-full cursor-pointer ${isBerk ? 'accent-blue-500' : 'accent-rose-500'}`}
                   />
 

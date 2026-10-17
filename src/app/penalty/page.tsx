@@ -18,6 +18,7 @@ import { formatDateDDMMYYYY } from '@/lib/date';
 import { createClient } from '@/lib/supabase/client';
 import { useConfirm } from '@/components/ConfirmModal';
 import confetti from 'canvas-confetti';
+import { playCoin, playFanfare } from '@/lib/sound-effects';
 
 export interface PenaltyEntry {
   id: string;
@@ -186,9 +187,18 @@ export default function PenaltyPage() {
       console.warn('Supabase insert penalty error:', err);
     }
 
+    const addedTRY = addCurrency === 'USD' ? (Math.abs(Number(addAmount)) || 100) * 38 : (Math.abs(Number(addAmount)) || 100);
+    const willReachGoal = (totalPoolTRY + addedTRY) >= targetDinnerTRY && targetDinnerTRY > 0;
+
     setAddReason('');
     setAddAmount('100');
     setShowAddModal(false);
+
+    if (willReachGoal && !isGoalReached) {
+      playFanfare();
+    } else {
+      playCoin();
+    }
 
     confetti({
       particleCount: 50,
@@ -278,6 +288,7 @@ export default function PenaltyPage() {
 
     saveGoal(newGoal);
     setShowGoalModal(false);
+    playCoin();
 
     confetti({
       particleCount: 30,

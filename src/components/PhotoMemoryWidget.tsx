@@ -24,6 +24,7 @@ import {
 import { useCurrentUser } from './UserContext';
 import { useConfirm } from './ConfirmModal';
 import confetti from 'canvas-confetti';
+import { playShutter, playPop } from '@/lib/sound-effects';
 
 export interface PhotoMemory {
   id: string;
@@ -221,6 +222,7 @@ export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = 
     if (newUploadedMemories.length > 0) {
       setMemories((prev) => [...newUploadedMemories, ...prev]);
       setActivePhoto(newUploadedMemories[0]);
+      playShutter();
 
       confetti({
         particleCount: 60,
@@ -248,6 +250,7 @@ export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = 
   // Next Random Memory
   const handleNextRandom = () => {
     if (memories.length <= 1) return;
+    playPop();
     let seenIds: string[] = [];
     try {
       const saved = localStorage.getItem('berlyn_seen_photo_ids');

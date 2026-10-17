@@ -65,6 +65,7 @@ import { useCurrentUser } from '@/components/UserContext';
 import { useConfirm } from '@/components/ConfirmModal';
 import { formatDateDDMMYYYY, MONTH_NAMES_EN } from '@/lib/date';
 import confetti from 'canvas-confetti';
+import { playCash, playTap, playCrystal, playSafeLock } from '@/lib/sound-effects';
 
 export default function FinancePage() {
   const { currentUser } = useCurrentUser();
@@ -391,6 +392,11 @@ export default function FinancePage() {
     const updatedList = saveRecurringPayment(updatedRec);
     setRecurringPayments(updatedList);
 
+    if (rec.type === 'income') {
+      playCash();
+    } else {
+      playTap();
+    }
     confetti({ particleCount: 35, spread: 50, origin: { y: 0.6 } });
   };
 
@@ -446,6 +452,11 @@ export default function FinancePage() {
     setEditingTxId(null);
     setTxTitle('');
     setTxAmount('');
+    if (txType === 'income') {
+      playCash();
+    } else {
+      playTap();
+    }
     confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
@@ -494,6 +505,11 @@ export default function FinancePage() {
     setShowRecurringModal(false);
     setRecTitle('');
     setRecAmount('');
+    if (recType === 'income') {
+      playCash();
+    } else {
+      playTap();
+    }
     confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
@@ -553,6 +569,7 @@ export default function FinancePage() {
     setAssets(updated);
     setShowAssetModal(false);
     setEditingAssetId(null);
+    playCrystal();
     confetti({ particleCount: 30, spread: 45, origin: { y: 0.6 } });
   };
 
@@ -596,6 +613,7 @@ export default function FinancePage() {
     setShowCompoundModal(false);
     setEditingCompoundId(null);
     setCpName('');
+    playSafeLock();
     confetti({ particleCount: 40, spread: 50, origin: { y: 0.6 } });
   };
 

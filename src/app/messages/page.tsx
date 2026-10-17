@@ -15,6 +15,7 @@ import {
 import { useCurrentUser } from '@/components/UserContext';
 import { createClient } from '@/lib/supabase/client';
 import confetti from 'canvas-confetti';
+import { playWhoosh, playShutter } from '@/lib/sound-effects';
 
 interface Message {
   id: string;
@@ -340,6 +341,7 @@ export default function MessagesPage() {
 
         // Broadcast immediately over Realtime WebSocket to partner
         channelBroadcast('new_message', newMsg);
+        playWhoosh();
 
         if (isHeartOnly) {
           confetti({ particleCount: 35, spread: 65, origin: { y: 0.7 } });
@@ -447,6 +449,7 @@ export default function MessagesPage() {
       setTimeout(scrollToBottom, 50);
 
       channelBroadcast('new_message', newMsg);
+      playShutter();
 
       // Reset modal state
       setPendingPhotoFile(null);

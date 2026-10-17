@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useCurrentUser } from '@/components/UserContext';
 import { useConfirm } from '@/components/ConfirmModal';
+import { playTaskCheck, playTap } from '@/lib/sound-effects';
 
 export interface AgendaTask {
   id: string;
@@ -108,6 +109,10 @@ export default function AgendaPage() {
   }, []);
 
   const toggleTask = (id: string) => {
+    const target = tasks.find(t => t.id === id);
+    if (target && !target.completed) {
+      playTaskCheck();
+    }
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
   };
 
@@ -144,6 +149,7 @@ export default function AgendaPage() {
     setDueDay('');
     setDueTime('');
     setShowAddModal(false);
+    playTap();
   };
 
   const clearCompleted = () => {

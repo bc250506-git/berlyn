@@ -41,6 +41,7 @@ import {
   DEFAULT_KKTC_RATES 
 } from '@/lib/finance-service';
 import confetti from 'canvas-confetti';
+import { playHarp, playVote, playMatch, playSeal, playTaskCheck } from '@/lib/sound-effects';
 
 interface NoteEntry {
   author: 'berk' | 'jaquilyn';
@@ -287,6 +288,7 @@ export function HomePageClient({
         setShowNoteModal(false);
         setMyNoteInput('');
         handleAcknowledgePartnerNote();
+        playHarp();
 
         confetti({
           particleCount: 40,
@@ -306,6 +308,10 @@ export function HomePageClient({
     e.preventDefault();
     if (!dailyPromptAnswer.trim()) return;
 
+    const willBothHaveSubmitted = 
+      (currentUser === 'jaquilyn' && berkAnswerSubmitted) ||
+      (currentUser === 'berk' && jaquilynAnswerSubmitted);
+
     if (currentUser === 'jaquilyn') {
       setJaquilynAnswerSubmitted(dailyPromptAnswer);
     } else {
@@ -313,15 +319,15 @@ export function HomePageClient({
     }
     setDailyPromptAnswer('');
 
-    if (
-      (currentUser === 'jaquilyn' && berkAnswerSubmitted) ||
-      (currentUser === 'berk' && jaquilynAnswerSubmitted)
-    ) {
+    if (willBothHaveSubmitted) {
+      playMatch();
       confetti({
         particleCount: 70,
         spread: 60,
         origin: { y: 0.6 },
       });
+    } else {
+      playSeal();
     }
   };
 
@@ -340,11 +346,14 @@ export function HomePageClient({
       const target = choices.find((c) => c.id === choiceId);
       const partnerVoted = target?.votes[partnerUser];
       if (partnerVoted === option) {
+        playMatch();
         confetti({
           particleCount: 50,
           spread: 60,
           origin: { y: 0.6 },
         });
+      } else {
+        playVote();
       }
 
       await fetch('/api/choices', {
@@ -454,6 +463,10 @@ export function HomePageClient({
   // Toggle agenda task completion
   const handleToggleTask = (taskId: string) => {
     setAllAgendaTasks((prev) => {
+      const target = prev.find((t) => t.id === taskId);
+      if (target && !target.completed) {
+        playTaskCheck();
+      }
       const updated = prev.map((t) => (t.id === taskId ? { ...t, completed: !t.completed } : t));
       try {
         localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(updated));

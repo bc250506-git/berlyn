@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
@@ -17,14 +17,25 @@ import {
   X,
   ChevronRight,
   LogOut,
-  Sparkles
+  Sparkles,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { useCurrentUser } from './UserContext';
+import { isSoundMuted, toggleSoundMuted, playPop } from '@/lib/sound-effects';
 
 export function Navbar() {
   const pathname = usePathname();
   const { currentUser, profile, logout } = useCurrentUser();
   const [showMoreMenu, setShowMoreMenu] = useState(false);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    setMuted(isSoundMuted());
+    const handleMuteChange = () => setMuted(isSoundMuted());
+    window.addEventListener('sound_mute_changed', handleMuteChange);
+    return () => window.removeEventListener('sound_mute_changed', handleMuteChange);
+  }, []);
 
   // Position 1: Messages
   // Position 2: Agenda
@@ -85,22 +96,41 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Active user indicator & Lock / Switch button */}
-          {profile && (
-            <div className="flex items-center gap-1.5">
-              <div className="flex items-center gap-1.5 text-xs bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
-                <span className="text-sm">{profile.avatar}</span>
-                <span className="font-semibold text-slate-200">{profile.name}</span>
-              </div>
-              <button
-                onClick={logout}
-                className="p-1.5 rounded-full text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors cursor-pointer"
-                title="Lock session & Switch User"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          )}
+          {/* Sound Mute Toggle & Active user indicator & Lock / Switch button */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => {
+                const next = toggleSoundMuted();
+                setMuted(next);
+                if (!next) playPop();
+              }}
+              className={`p-1.5 rounded-full border transition-all cursor-pointer ${
+                muted 
+                  ? 'text-slate-500 bg-white/[0.02] border-white/[0.05] hover:text-slate-300' 
+                  : 'text-amber-400 bg-amber-500/10 border-amber-500/25 hover:bg-amber-500/20 shadow-xs'
+              }`}
+              title={muted ? 'Sound Effects Muted (Tap to Enable)' : 'Sound Effects Active (Tap to Mute)'}
+              aria-label={muted ? 'Unmute sounds' : 'Mute sounds'}
+            >
+              {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+            </button>
+
+            {profile && (
+              <>
+                <div className="flex items-center gap-1.5 text-xs bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
+                  <span className="text-sm">{profile.avatar}</span>
+                  <span className="font-semibold text-slate-200">{profile.name}</span>
+                </div>
+                <button
+                  onClick={logout}
+                  className="p-1.5 rounded-full text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors cursor-pointer"
+                  title="Lock session & Switch User"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
