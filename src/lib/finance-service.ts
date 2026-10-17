@@ -155,21 +155,103 @@ export async function fetchFinanceData(): Promise<{
   assets: InvestmentAsset[];
   compoundAccounts: CompoundInterestAccount[];
 }> {
-  try {
-    const tx = getLocalTransactions();
-    const recurringPayments = getLocalRecurringPayments();
-    const assets = getLocalAssets();
-    const compoundAccounts = getLocalCompoundAccounts();
+  const localTx = getLocalTransactions();
+  const localRecurring = getLocalRecurringPayments();
+  const localAssets = getLocalAssets();
+  const localCompound = getLocalCompoundAccounts();
 
-    return { transactions: tx, recurringPayments, assets, compoundAccounts };
+  try {
+    const supabase = createClient();
+    if (supabase) {
+      const [txRes, assetRes, compRes] = await Promise.all([
+        supabase.from('finance_transactions').select('*'),
+        supabase.from('finance_assets').select('*'),
+        supabase.from('compound_accounts').select('*'),
+      ]);
+
+      let finalTx = localTx;
+      if (txRes.data && Array.isArray(txRes.data) && txRes.data.length > 0) {
+        const remoteTx: FinanceItem[] = txRes.data.map((r: any) => ({
+          id: r.id,
+          type: r.type,
+          title: r.title,
+          amount: Number(r.amount),
+          currency: r.currency || 'TRY',
+          category: r.category,
+          user: r.user_tag || 'shared',
+          date: r.date,
+          recurring: Boolean(r.recurring),
+          isInterest: Boolean(r.is_interest),
+          compoundAccountId: r.compound_account_id,
+        }));
+        
+        const txMap = new Map<string, FinanceItem>();
+        remoteTx.forEach(t => txMap.set(t.id, t));
+        localTx.forEach(t => txMap.set(t.id, t));
+        finalTx = Array.from(txMap.values());
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('berlyn_finance_tx', JSON.stringify(finalTx));
+        }
+      }
+
+      let finalAssets = localAssets;
+      if (assetRes.data && Array.isArray(assetRes.data) && assetRes.data.length > 0) {
+        const remoteAssets: InvestmentAsset[] = assetRes.data.map((r: any) => ({
+          id: r.id,
+          name: r.name,
+          category: r.category,
+          current_value: Number(r.current_value),
+          currency: r.currency || 'TRY',
+          target_value: r.target_value ? Number(r.target_value) : undefined,
+          monthly_contribution: r.monthly_contribution ? Number(r.monthly_contribution) : undefined,
+        }));
+        const assetMap = new Map<string, InvestmentAsset>();
+        remoteAssets.forEach(a => assetMap.set(a.id, a));
+        localAssets.forEach(a => assetMap.set(a.id, a));
+        finalAssets = Array.from(assetMap.values());
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('berlyn_finance_assets', JSON.stringify(finalAssets));
+        }
+      }
+
+      let finalComp = localCompound;
+      if (compRes.data && Array.isArray(compRes.data) && compRes.data.length > 0) {
+        const remoteComp: CompoundInterestAccount[] = compRes.data.map((r: any) => ({
+          id: r.id,
+          name: r.name,
+          principal: Number(r.principal),
+          currency: r.currency || 'TRY',
+          annualRate: Number(r.annual_rate),
+          compoundingFrequency: 'monthly',
+          startDate: r.start_date,
+          withholdingTax: Number(r.withholding_tax || 0),
+        }));
+        const compMap = new Map<string, CompoundInterestAccount>();
+        remoteComp.forEach(c => compMap.set(c.id, c));
+        localCompound.forEach(c => compMap.set(c.id, c));
+        finalComp = Array.from(compMap.values());
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('berlyn_compound_accounts', JSON.stringify(finalComp));
+        }
+      }
+
+      return {
+        transactions: finalTx,
+        recurringPayments: localRecurring,
+        assets: finalAssets,
+        compoundAccounts: finalComp,
+      };
+    }
   } catch {
-    return {
-      transactions: getLocalTransactions(),
-      recurringPayments: getLocalRecurringPayments(),
-      assets: getLocalAssets(),
-      compoundAccounts: getLocalCompoundAccounts(),
-    };
+    // Fallback to local
   }
+
+  return {
+    transactions: localTx,
+    recurringPayments: localRecurring,
+    assets: localAssets,
+    compoundAccounts: localCompound,
+  };
 }
 
 export function getLocalTransactions(): FinanceItem[] {
@@ -246,6 +328,20 @@ export function saveAsset(asset: InvestmentAsset): InvestmentAsset[] {
       assets.unshift(asset);
     }
     localStorage.setItem('berlyn_finance_assets', JSON.stringify(assets));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('finance_assets').upsert({
+        id: asset.id,
+        name: asset.name,
+        category: asset.category,
+        current_value: asset.current_value,
+        currency: asset.currency,
+        target_value: asset.target_value,
+        monthly_contribution: asset.monthly_contribution,
+      }).then(() => {});
+    }
+
     return assets;
   } catch {
     return [asset];
@@ -256,6 +352,12 @@ export function deleteAsset(id: string): InvestmentAsset[] {
   try {
     const assets = getLocalAssets().filter((a) => a.id !== id);
     localStorage.setItem('berlyn_finance_assets', JSON.stringify(assets));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('finance_assets').delete().eq('id', id).then(() => {});
+    }
+
     return assets;
   } catch {
     return [];
@@ -284,6 +386,21 @@ export function saveCompoundAccount(account: CompoundInterestAccount): CompoundI
       accounts.unshift(account);
     }
     localStorage.setItem('berlyn_compound_accounts', JSON.stringify(accounts));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('compound_accounts').upsert({
+        id: account.id,
+        name: account.name,
+        bank_name: account.name,
+        principal: account.principal,
+        currency: account.currency,
+        annual_rate: account.annualRate,
+        withholding_tax: account.withholdingTax,
+        start_date: account.startDate,
+      }).then(() => {});
+    }
+
     return accounts;
   } catch {
     return [account];
@@ -294,6 +411,12 @@ export function deleteCompoundAccount(id: string): CompoundInterestAccount[] {
   try {
     const accounts = getLocalCompoundAccounts().filter((a) => a.id !== id);
     localStorage.setItem('berlyn_compound_accounts', JSON.stringify(accounts));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('compound_accounts').delete().eq('id', id).then(() => {});
+    }
+
     return accounts;
   } catch {
     return [];
@@ -326,6 +449,23 @@ export async function saveTransaction(item: Partial<FinanceItem>): Promise<Finan
       updated = [newItem, ...current];
     }
     localStorage.setItem('berlyn_finance_tx', JSON.stringify(updated));
+
+    const supabase = createClient();
+    if (supabase) {
+      await supabase.from('finance_transactions').upsert({
+        id: newItem.id,
+        type: newItem.type,
+        title: newItem.title,
+        amount: newItem.amount,
+        currency: newItem.currency,
+        category: newItem.category,
+        user_tag: newItem.user,
+        date: newItem.date,
+        recurring: newItem.recurring,
+        is_interest: newItem.isInterest,
+        compound_account_id: newItem.compoundAccountId,
+      });
+    }
   } catch {
     // ignore
   }
@@ -337,6 +477,12 @@ export function deleteTransaction(id: string): FinanceItem[] {
   try {
     const current = getLocalTransactions().filter((i) => i.id !== id);
     localStorage.setItem('berlyn_finance_tx', JSON.stringify(current));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('finance_transactions').delete().eq('id', id).then(() => {});
+    }
+
     return current;
   } catch {
     return [];
