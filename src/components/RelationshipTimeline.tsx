@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Heart, Sparkles, Calendar, Clock } from 'lucide-react';
+import { formatDateDDMMYYYY } from '@/lib/date';
 
 interface TimeElapsed {
   years: number;
@@ -18,7 +19,7 @@ interface RelationshipTimelineProps {
 }
 
 export function RelationshipTimeline({
-  startDate = process.env.NEXT_PUBLIC_RELATIONSHIP_START || '2023-08-01T00:00:00',
+  startDate = process.env.NEXT_PUBLIC_RELATIONSHIP_START || '2026-03-01T00:00:00',
 }: RelationshipTimelineProps) {
   const [elapsed, setElapsed] = useState<TimeElapsed>({
     years: 0,
@@ -81,6 +82,8 @@ export function RelationshipTimeline({
     return () => clearInterval(interval);
   }, [startDate]);
 
+  const formattedStartDate = formatDateDDMMYYYY(startDate);
+
   return (
     <div className="relative overflow-hidden rounded-3xl glass-panel-glow p-6 sm:p-8">
       {/* Subtle background ambient lights */}
@@ -92,7 +95,7 @@ export function RelationshipTimeline({
         <div className="text-center md:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-medium tracking-wide uppercase mb-3">
             <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 animate-pulse" />
-            <span>Our Journey Together</span>
+            <span>Our Journey Together • Since {formattedStartDate}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Together in Love for{' '}
