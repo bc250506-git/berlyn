@@ -39,10 +39,14 @@ function getInitialData() {
 
 export default function Page() {
   const { memories, notes, choices } = getInitialData();
+  const initialActivePhoto = Array.isArray(memories) && memories.length > 0
+    ? memories[Math.floor(Math.random() * memories.length)]
+    : null;
 
   return (
     <HomePageClient
       initialMemories={memories}
+      initialActivePhoto={initialActivePhoto}
       initialNotes={notes}
       initialChoices={choices}
     />

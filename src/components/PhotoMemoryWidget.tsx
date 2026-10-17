@@ -36,9 +36,10 @@ export interface PhotoMemory {
 
 export interface PhotoMemoryWidgetProps {
   initialMemories?: PhotoMemory[];
+  initialActivePhoto?: PhotoMemory | null;
 }
 
-export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = {}) {
+export function PhotoMemoryWidget({ initialMemories, initialActivePhoto }: PhotoMemoryWidgetProps = {}) {
   const { currentUser } = useCurrentUser();
   const confirm = useConfirm();
 
@@ -65,6 +66,7 @@ export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = 
 
   const [memories, setMemories] = useState<PhotoMemory[]>(getInitialList);
   const [activePhoto, setActivePhoto] = useState<PhotoMemory | null>(() => {
+    if (initialActivePhoto) return initialActivePhoto;
     const list = getInitialList();
     if (list.length === 0) return null;
     return list[Math.floor(Math.random() * list.length)];
@@ -105,10 +107,11 @@ export function PhotoMemoryWidget({ initialMemories }: PhotoMemoryWidgetProps = 
         return;
       }
 
-      // If activePhoto was already selected from initialMemories or cache, preserve it
+      // Lock to whatever photo is currently shown on refresh — NEVER switch 1 second later!
       setActivePhoto((prev) => {
-        if (prev && list.some((p) => p.id === prev.id)) {
-          return prev;
+        if (prev) {
+          const matched = list.find((p) => p.id === prev.id || p.photo_url === prev.photo_url);
+          return matched || prev;
         }
         return list[Math.floor(Math.random() * list.length)];
       });

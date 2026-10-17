@@ -83,12 +83,14 @@ interface HomeAgendaTask {
 
 export interface HomePageClientProps {
   initialMemories?: any[];
+  initialActivePhoto?: any;
   initialNotes?: CoupleNotes;
   initialChoices?: DailyChoiceItem[];
 }
 
 export function HomePageClient({
   initialMemories = [],
+  initialActivePhoto = null,
   initialNotes,
   initialChoices = [],
 }: HomePageClientProps) {
@@ -515,7 +517,7 @@ export function HomePageClient({
       <RelationshipTimeline startDate="2026-03-01T00:00:00" />
 
       {/* 2. Photo Memory Widget */}
-      <PhotoMemoryWidget initialMemories={initialMemories} />
+      <PhotoMemoryWidget initialMemories={initialMemories} initialActivePhoto={initialActivePhoto} />
 
       {/* 3. Notes For Each Other (One for Berk, one for Jaquilyn) */}
       <div className="card-cozy p-5 space-y-3">
