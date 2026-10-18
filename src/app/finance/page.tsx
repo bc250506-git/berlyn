@@ -25,8 +25,7 @@ import {
   BookOpen,
   HeartHandshake,
   RotateCcw,
-  Clock,
-  RefreshCw
+  Clock
 } from 'lucide-react';
 import { 
   FinanceItem, 
@@ -773,23 +772,6 @@ export default function FinancePage() {
               <Wallet className="w-3.5 h-3.5" />
               <span>Shared Financial Sanctuary</span>
             </span>
-            <button
-              onClick={() => {
-                fetchFinanceData().then((data) => {
-                  setTransactions(data.transactions);
-                  setRecurringPayments(data.recurringPayments);
-                  setAssets(data.assets);
-                  setCompoundAccounts(data.compoundAccounts);
-                  playCash();
-                  confetti({ particleCount: 30, spread: 50, origin: { y: 0.6 } });
-                });
-              }}
-              title="Synchronize all records with Cloud database"
-              className="text-[10px] text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/25 flex items-center gap-1 transition-all cursor-pointer"
-            >
-              <RefreshCw className="w-2.5 h-2.5" />
-              <span>Cloud Synced</span>
-            </button>
           </div>
 
           {/* Currency Toggle */}
