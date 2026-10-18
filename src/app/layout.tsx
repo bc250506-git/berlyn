@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Outfit, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { AppProviders } from '@/components/AppProviders';
@@ -14,6 +14,13 @@ const jakarta = Plus_Jakarta_Sans({
   variable: '--font-jakarta',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: 'Berlyn — Our Space & Home',

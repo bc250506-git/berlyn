@@ -15,6 +15,11 @@
   }
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--background);
   color: #f1f5f9;
@@ -24,6 +29,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   padding-bottom: env(safe-area-inset-bottom, 20px);
+  touch-action: manipulation;
+}
+
+/* Prevent auto-zooming on focus in mobile browsers (iOS Safari, Chrome mobile) */
+@media screen and (max-width: 899px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 /* Custom subtle scrollbar */
