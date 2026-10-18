@@ -66,10 +66,32 @@ export function PhotoMemoryWidget({ initialMemories, initialActivePhoto }: Photo
 
   const [memories, setMemories] = useState<PhotoMemory[]>(getInitialList);
   const [activePhoto, setActivePhoto] = useState<PhotoMemory | null>(() => {
-    if (initialActivePhoto) return initialActivePhoto;
     const list = getInitialList();
-    if (list.length === 0) return null;
-    return list[Math.floor(Math.random() * list.length)];
+    if (list.length === 0) return initialActivePhoto || null;
+
+    let lastShownId: string | null = null;
+    if (typeof window !== 'undefined') {
+      try {
+        lastShownId = sessionStorage.getItem('berlyn_last_shown_photo_id');
+      } catch (e) {}
+    }
+
+    // If initialActivePhoto is different from last shown, prefer it
+    if (initialActivePhoto && (!lastShownId || initialActivePhoto.id !== lastShownId || list.length <= 1)) {
+      if (typeof window !== 'undefined') {
+        try { sessionStorage.setItem('berlyn_last_shown_photo_id', initialActivePhoto.id); } catch (e) {}
+      }
+      return initialActivePhoto;
+    }
+
+    // Otherwise pick a different candidate from the pool
+    const candidates = lastShownId && list.length > 1 ? list.filter((p) => p.id !== lastShownId) : list;
+    const pool = candidates.length > 0 ? candidates : list;
+    const chosen = pool[Math.floor(Math.random() * pool.length)] || initialActivePhoto;
+    if (chosen && typeof window !== 'undefined') {
+      try { sessionStorage.setItem('berlyn_last_shown_photo_id', chosen.id); } catch (e) {}
+    }
+    return chosen;
   });
   const [hasFetched, setHasFetched] = useState(Boolean(initialMemories && initialMemories.length > 0));
 
