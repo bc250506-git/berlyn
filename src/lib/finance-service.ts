@@ -163,10 +163,11 @@ export async function fetchFinanceData(): Promise<{
   try {
     const supabase = createClient();
     if (supabase) {
-      const [txRes, assetRes, compRes] = await Promise.all([
+      const [txRes, assetRes, compRes, recRes] = await Promise.all([
         supabase.from('finance_transactions').select('*'),
         supabase.from('finance_assets').select('*'),
         supabase.from('compound_accounts').select('*'),
+        supabase.from('finance_recurring').select('*'),
       ]);
 
       let finalTx = localTx;
@@ -235,9 +236,30 @@ export async function fetchFinanceData(): Promise<{
         }
       }
 
+      let finalRec = localRecurring;
+      if (recRes.data && Array.isArray(recRes.data) && recRes.data.length > 0) {
+        const remoteRec: RecurringPayment[] = recRes.data.map((r: any) => ({
+          id: r.id,
+          title: r.title,
+          amount: Number(r.amount),
+          currency: r.currency || 'TRY',
+          category: r.category,
+          type: (r.category?.toLowerCase().includes('salary') || r.title?.toLowerCase().includes('salary')) ? 'income' : 'expense',
+          dayOfMonth: Number(r.due_day || 1),
+          user: (r.payer || 'shared') as FinancePayer,
+        }));
+        const recMap = new Map<string, RecurringPayment>();
+        remoteRec.forEach(i => recMap.set(i.id, i));
+        localRecurring.forEach(i => recMap.set(i.id, i));
+        finalRec = Array.from(recMap.values());
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('berlyn_finance_recurring', JSON.stringify(finalRec));
+        }
+      }
+
       return {
         transactions: finalTx,
-        recurringPayments: localRecurring,
+        recurringPayments: finalRec,
         assets: finalAssets,
         compoundAccounts: finalComp,
       };
@@ -290,6 +312,21 @@ export function saveRecurringPayment(item: RecurringPayment): RecurringPayment[]
       updated = [item, ...current];
     }
     localStorage.setItem('berlyn_finance_recurring', JSON.stringify(updated));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('finance_recurring').upsert({
+        id: item.id,
+        title: item.title,
+        amount: item.amount,
+        currency: item.currency,
+        category: item.category,
+        due_day: item.dayOfMonth,
+        payer: item.user,
+        is_active: true,
+      }).then(() => {});
+    }
+
     return updated;
   } catch {
     return [item];
@@ -300,6 +337,12 @@ export function deleteRecurringPayment(id: string): RecurringPayment[] {
   try {
     const updated = getLocalRecurringPayments().filter((i) => i.id !== id);
     localStorage.setItem('berlyn_finance_recurring', JSON.stringify(updated));
+
+    const supabase = createClient();
+    if (supabase) {
+      supabase.from('finance_recurring').delete().eq('id', id).then(() => {});
+    }
+
     return updated;
   } catch {
     return [];

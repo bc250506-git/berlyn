@@ -5,6 +5,9 @@ import { createClient } from '@supabase/supabase-js';
 
 const CHOICES_FILE = path.join(process.cwd(), 'src', 'lib', 'daily_choices.json');
 
+const DEFAULT_SUPABASE_URL = 'https://chwvmpmitbyugyiqtrvd.supabase.co';
+const DEFAULT_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNod3ZtcG1pdGJ5dWd5aXF0cnZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIyMDg3NjksImV4cCI6MjEwNzc4NDc2OX0.TPD1w8q-koj61A1iI_AT30mKWgUjjokX6wTLPhCIBvA';
+
 export interface DailyChoiceItem {
   id: string;
   question: string;
@@ -33,18 +36,18 @@ function saveChoicesToFile(choices: DailyChoiceItem[]) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(CHOICES_FILE, JSON.stringify(choices, null, 2), 'utf8');
   } catch (err) {
-    console.error('Failed to save choices:', err);
+    // ignore
   }
 }
 
 function getSupabase() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || DEFAULT_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || DEFAULT_SUPABASE_ANON_KEY;
   if (!url || !key) return null;
   return createClient(url, key);
 }
 
-// GET: fetch daily choices
+// GET: fetch daily choices from cloud database
 export async function GET() {
   try {
     const supabase = getSupabase();
@@ -54,7 +57,7 @@ export async function GET() {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (!error && Array.isArray(data) && data.length > 0) {
+      if (!error && Array.isArray(data)) {
         const formatted = data.map((row: any) => ({
           id: row.id,
           question: row.question,
@@ -107,10 +110,6 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
     };
 
-    const choices = getChoicesFromFile();
-    choices.unshift(newChoice);
-    saveChoicesToFile(choices);
-
     const supabase = getSupabase();
     if (supabase) {
       try {
@@ -122,8 +121,14 @@ export async function POST(request: Request) {
           created_by: newChoice.createdBy,
           created_at: newChoice.createdAt,
         }]);
-      } catch (err) {}
+      } catch (err) {
+        console.error('Supabase choice insert error:', err);
+      }
     }
+
+    const choices = getChoicesFromFile();
+    choices.unshift(newChoice);
+    saveChoicesToFile(choices);
 
     return NextResponse.json({ success: true, choice: newChoice }, { status: 201 });
   } catch (error: any) {
@@ -141,25 +146,43 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'id, user, and option are required' }, { status: 400 });
     }
 
+    const userKey = user === 'jaquilyn' ? 'jaquilyn' : 'berk';
+    const supabase = getSupabase();
+
+    if (supabase) {
+      try {
+        const { data } = await supabase.from('daily_choices').select('*').eq('id', id).single();
+        if (data) {
+          const currentVotes = data.votes || { berk: null, jaquilyn: null };
+          currentVotes[userKey] = option;
+          await supabase.from('daily_choices').update({ votes: currentVotes }).eq('id', id);
+
+          const updatedChoice = {
+            id: data.id,
+            question: data.question,
+            options: data.options,
+            votes: currentVotes,
+            createdBy: data.created_by,
+            createdAt: data.created_at,
+          };
+          return NextResponse.json({ success: true, choice: updatedChoice });
+        }
+      } catch (err) {
+        console.error('Supabase choice vote error:', err);
+      }
+    }
+
+    // Local file fallback
     const choices = getChoicesFromFile();
     const target = choices.find((c) => c.id === id);
 
-    if (!target) {
-      return NextResponse.json({ error: 'Choice not found' }, { status: 404 });
+    if (target) {
+      target.votes[userKey] = option;
+      saveChoicesToFile(choices);
+      return NextResponse.json({ success: true, choice: target });
     }
 
-    const userKey = user === 'jaquilyn' ? 'jaquilyn' : 'berk';
-    target.votes[userKey] = option;
-    saveChoicesToFile(choices);
-
-    const supabase = getSupabase();
-    if (supabase) {
-      try {
-        await supabase.from('daily_choices').update({ votes: target.votes }).eq('id', id);
-      } catch (err) {}
-    }
-
-    return NextResponse.json({ success: true, choice: target });
+    return NextResponse.json({ error: 'Choice not found' }, { status: 404 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -175,15 +198,15 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'Choice ID is required' }, { status: 400 });
     }
 
-    const choices = getChoicesFromFile().filter((c) => c.id !== id);
-    saveChoicesToFile(choices);
-
     const supabase = getSupabase();
     if (supabase) {
       try {
         await supabase.from('daily_choices').delete().eq('id', id);
       } catch (err) {}
     }
+
+    const choices = getChoicesFromFile().filter((c) => c.id !== id);
+    saveChoicesToFile(choices);
 
     return NextResponse.json({ success: true, deletedId: id });
   } catch (error: any) {

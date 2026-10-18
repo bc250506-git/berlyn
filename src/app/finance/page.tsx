@@ -186,26 +186,42 @@ export default function FinancePage() {
     fetchRates();
     const interval = setInterval(fetchRates, 300000); // refresh every 5 mins in background
 
-    fetchFinanceData().then((data) => {
-      const cAccs = data?.compoundAccounts || [];
-      let txs = data?.transactions || [];
-      
-      const todayDate = new Date();
-      const calYear = todayDate.getFullYear();
-      const calMonth = String(todayDate.getMonth() + 1).padStart(2, '0');
-      const monthTag = `${calYear}-${calMonth}`;
+    const loadFinance = () => {
+      fetchFinanceData().then((data) => {
+        const cAccs = data?.compoundAccounts || [];
+        let txs = data?.transactions || [];
+        
+        const todayDate = new Date();
+        const calYear = todayDate.getFullYear();
+        const calMonth = String(todayDate.getMonth() + 1).padStart(2, '0');
+        const monthTag = `${calYear}-${calMonth}`;
 
-      if (cAccs.length > 0) {
-        txs = ensureMonthlyInterestTransactions(txs, cAccs, monthTag);
-      }
+        if (cAccs.length > 0) {
+          txs = ensureMonthlyInterestTransactions(txs, cAccs, monthTag);
+        }
 
-      setTransactions(txs);
-      setRecurringPayments(data?.recurringPayments || []);
-      setAssets(data?.assets || []);
-      setCompoundAccounts(cAccs);
+        setTransactions(txs);
+        setRecurringPayments(data?.recurringPayments || []);
+        setAssets(data?.assets || []);
+        setCompoundAccounts(cAccs);
+      });
+    };
+
+    loadFinance();
+
+    const handleFocus = () => {
+      loadFinance();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') handleFocus();
     });
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   // Ensure monthly interest transactions for the selected ledger month (matures 1 month after start date)

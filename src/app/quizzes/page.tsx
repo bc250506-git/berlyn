@@ -105,6 +105,19 @@ export default function QuizzesPage() {
 
   useEffect(() => {
     loadQuizzes();
+
+    const handleFocus = () => {
+      loadQuizzes();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') handleFocus();
+    });
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   // Handle Answer Submit

@@ -82,6 +82,41 @@ export default function AgendaPage() {
   const [dueDay, setDueDay] = useState('');
   const [dueTime, setDueTime] = useState('');
 
+  // Fetch from Supabase via API route on mount and when tab refocuses
+  const loadCloudTasks = async () => {
+    try {
+      const res = await fetch('/api/agenda', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data.tasks)) {
+          setTasks(data.tasks);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(data.tasks));
+          }
+        }
+      }
+    } catch (e) {
+      // fallback to local
+    }
+  };
+
+  useEffect(() => {
+    loadCloudTasks();
+
+    const handleFocus = () => {
+      loadCloudTasks();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') handleFocus();
+    });
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, []);
+
   // Sync to localStorage
   useEffect(() => {
     localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(tasks));
@@ -108,12 +143,28 @@ export default function AgendaPage() {
     };
   }, []);
 
-  const toggleTask = (id: string) => {
+  const toggleTask = async (id: string) => {
     const target = tasks.find(t => t.id === id);
-    if (target && !target.completed) {
+    if (!target) return;
+    const nextCompleted = !target.completed;
+    if (nextCompleted) {
       playTaskCheck();
     }
-    setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+    const updated = tasks.map(t => t.id === id ? { ...t, completed: nextCompleted } : t);
+    setTasks(updated);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(updated));
+    }
+
+    try {
+      await fetch('/api/agenda', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, completed: nextCompleted }),
+      });
+    } catch (e) {
+      // silent
+    }
   };
 
   const deleteTask = async (id: string) => {
@@ -123,16 +174,26 @@ export default function AgendaPage() {
       confirmText: 'Delete',
     });
     if (ok) {
-      setTasks(tasks.filter(t => t.id !== id));
+      const updated = tasks.filter(t => t.id !== id);
+      setTasks(updated);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(updated));
+      }
+
+      try {
+        await fetch(`/api/agenda?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      } catch (e) {
+        // silent
+      }
     }
   };
 
-  const handleAddTask = (e: React.FormEvent) => {
+  const handleAddTask = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) return;
 
     const newTask: AgendaTask = {
-      id: Date.now().toString(),
+      id: `task-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
       title: title.trim(),
       category,
       assignee,
@@ -144,16 +205,40 @@ export default function AgendaPage() {
       createdAt: new Date().toISOString().slice(0, 10)
     };
 
-    setTasks([newTask, ...tasks]);
+    const updated = [newTask, ...tasks];
+    setTasks(updated);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(updated));
+    }
+
     setTitle('');
     setDueDay('');
     setDueTime('');
     setShowAddModal(false);
     playTap();
+
+    try {
+      await fetch('/api/agenda', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newTask),
+      });
+    } catch (e) {
+      // silent
+    }
   };
 
-  const clearCompleted = () => {
-    setTasks(tasks.filter(t => !t.completed));
+  const clearCompleted = async () => {
+    const completedTasks = tasks.filter(t => t.completed);
+    const remaining = tasks.filter(t => !t.completed);
+    setTasks(remaining);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(remaining));
+    }
+
+    for (const c of completedTasks) {
+      fetch(`/api/agenda?id=${encodeURIComponent(c.id)}`, { method: 'DELETE' }).catch(() => {});
+    }
   };
 
   const todayTasks = tasks.filter(t => t.timeframe === 'today');

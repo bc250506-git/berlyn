@@ -98,7 +98,7 @@ export default function PenaltyPage() {
   const [goalAmountInput, setGoalAmountInput] = useState(goal.targetAmount.toString());
   const [goalRulesInput, setGoalRulesInput] = useState(goal.rulesDescription);
 
-  // Sync with Supabase on mount
+  // Sync with Supabase on mount and window focus
   useEffect(() => {
     const fetchSupabasePenalties = async () => {
       try {
@@ -126,6 +126,19 @@ export default function PenaltyPage() {
     };
 
     fetchSupabasePenalties();
+
+    const handleFocus = () => {
+      fetchSupabasePenalties();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') handleFocus();
+    });
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   // Save to localStorage whenever penalties change

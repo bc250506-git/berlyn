@@ -439,9 +439,23 @@ export function HomePageClient({
   };
 
   // Carousel navigation (smoothly loops back to start)
-  // Load Agenda tasks & sync with localStorage
+  // Load Agenda tasks & sync with cloud database /api/agenda
   useEffect(() => {
-    const loadTasks = () => {
+    const loadTasks = async () => {
+      try {
+        const res = await fetch('/api/agenda', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.tasks)) {
+            setAllAgendaTasks(data.tasks);
+            if (typeof window !== 'undefined') {
+              localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(data.tasks));
+            }
+            return;
+          }
+        }
+      } catch (e) {}
+
       try {
         const saved = localStorage.getItem('berlyn_agenda_tasks');
         if (saved) {
@@ -461,9 +475,11 @@ export function HomePageClient({
     const handleStorageUpdate = () => loadTasks();
     window.addEventListener('storage', handleStorageUpdate);
     window.addEventListener('agenda_updated', handleStorageUpdate);
+    window.addEventListener('focus', loadTasks);
     return () => {
       window.removeEventListener('storage', handleStorageUpdate);
       window.removeEventListener('agenda_updated', handleStorageUpdate);
+      window.removeEventListener('focus', loadTasks);
     };
   }, []);
 
@@ -471,14 +487,22 @@ export function HomePageClient({
   const handleToggleTask = (taskId: string) => {
     setAllAgendaTasks((prev) => {
       const target = prev.find((t) => t.id === taskId);
-      if (target && !target.completed) {
+      const nextCompleted = target ? !target.completed : true;
+      if (nextCompleted) {
         playTaskCheck();
       }
-      const updated = prev.map((t) => (t.id === taskId ? { ...t, completed: !t.completed } : t));
+      const updated = prev.map((t) => (t.id === taskId ? { ...t, completed: nextCompleted } : t));
       try {
         localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(updated));
         window.dispatchEvent(new Event('agenda_updated'));
       } catch (e) {}
+
+      fetch('/api/agenda', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: taskId, completed: nextCompleted }),
+      }).catch(() => {});
+
       return updated;
     });
   };
@@ -645,9 +669,17 @@ export function HomePageClient({
         {currentChoice ? (
           <div className="space-y-3 animate-fade-in">
             <div className="flex items-start justify-between gap-2">
-              <h4 className="text-xs font-bold text-white leading-snug">
-                "{currentChoice.question}"
-              </h4>
+              <div className="space-y-0.5 flex-1">
+                <h4 className="text-xs font-bold text-white leading-snug">
+                  "{currentChoice.question}"
+                </h4>
+                <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
+                  <span>Created by</span>
+                  <span className={`font-semibold ${currentChoice.createdBy === 'jaquilyn' ? 'text-pink-300' : 'text-blue-300'}`}>
+                    {currentChoice.createdBy === 'jaquilyn' ? '🌸 Jaquilyn' : '🦁 Berk'}
+                  </span>
+                </div>
+              </div>
 
               {/* Delete Choice */}
               <button

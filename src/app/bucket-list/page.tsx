@@ -341,6 +341,42 @@ export default function BucketListPage() {
     localStorage.setItem('berlyn_bucket_list', JSON.stringify(items));
   }, [items]);
 
+  // Fetch from Supabase via API route on mount and when tab refocuses
+  const loadCloudBucketItems = async () => {
+    try {
+      const res = await fetch('/api/bucket-list', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data.items) && data.items.length > 0) {
+          setItems(data.items);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(data.items));
+            localStorage.setItem('berlyn_bucket_list', JSON.stringify(data.items));
+          }
+        }
+      }
+    } catch (e) {
+      // fallback to local
+    }
+  };
+
+  useEffect(() => {
+    loadCloudBucketItems();
+
+    const handleFocus = () => {
+      loadCloudBucketItems();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') handleFocus();
+    });
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, []);
+
   // Auto-hide notification
   useEffect(() => {
     if (!notification) return;
@@ -370,18 +406,21 @@ export default function BucketListPage() {
     setShowAddModal(true);
   };
 
-  const toggleItem = (id: string) => {
-    setItems(items.map(item => {
+  const toggleItem = async (id: string) => {
+    const target = items.find(item => item.id === id);
+    if (!target) return;
+    const nextCompleted = !target.completed;
+    if (nextCompleted) {
+      playSparkle();
+      confetti({
+        particleCount: 55,
+        spread: 60,
+        origin: { y: 0.6 },
+      });
+    }
+
+    const updated = items.map(item => {
       if (item.id === id) {
-        const nextCompleted = !item.completed;
-        if (nextCompleted) {
-          playSparkle();
-          confetti({
-            particleCount: 55,
-            spread: 60,
-            origin: { y: 0.6 },
-          });
-        }
         return {
           ...item,
           completed: nextCompleted,
@@ -389,7 +428,23 @@ export default function BucketListPage() {
         };
       }
       return item;
-    }));
+    });
+
+    setItems(updated);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(updated));
+      localStorage.setItem('berlyn_bucket_list', JSON.stringify(updated));
+    }
+
+    try {
+      await fetch('/api/bucket-list', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, completed: nextCompleted }),
+      });
+    } catch (e) {
+      // silent
+    }
   };
 
   const deleteItem = async (id: string) => {
@@ -399,7 +454,18 @@ export default function BucketListPage() {
       confirmText: 'Delete',
     });
     if (ok) {
-      setItems(items.filter(item => item.id !== id));
+      const updated = items.filter(item => item.id !== id);
+      setItems(updated);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(updated));
+        localStorage.setItem('berlyn_bucket_list', JSON.stringify(updated));
+      }
+
+      try {
+        await fetch(`/api/bucket-list?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      } catch (e) {
+        // silent
+      }
     }
   };
 
@@ -413,7 +479,7 @@ export default function BucketListPage() {
     }
   };
 
-  const handleAddItem = (e: React.FormEvent) => {
+  const handleAddItem = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitle.trim()) return;
 
@@ -423,16 +489,21 @@ export default function BucketListPage() {
 
     if (editingItemId) {
       // Update existing item
+      const itemToSave = {
+        id: editingItemId,
+        title: newTitle.trim(),
+        category: newCategory,
+        notes: newNotes.trim() || null,
+        photo_url: newPhoto.trim() || null,
+        schedule_days: days,
+        schedule_time: time,
+      };
+
       const updated = items.map((item) => {
         if (item.id === editingItemId) {
           return {
             ...item,
-            title: newTitle.trim(),
-            category: newCategory,
-            notes: newNotes.trim() || null,
-            photo_url: newPhoto.trim() || null,
-            schedule_days: days,
-            schedule_time: time,
+            ...itemToSave,
           };
         }
         return item;
@@ -441,6 +512,13 @@ export default function BucketListPage() {
       setItems(updated);
       localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(updated));
       localStorage.setItem('berlyn_bucket_list', JSON.stringify(updated));
+
+      // Sync to Supabase
+      fetch('/api/bucket-list', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(itemToSave),
+      }).catch(() => {});
 
       // If Habit, sync to agenda
       if (isHabit && days) {
@@ -468,6 +546,13 @@ export default function BucketListPage() {
           localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(existingAgenda));
           window.dispatchEvent(new Event('storage'));
           window.dispatchEvent(new Event('agenda_updated'));
+
+          // Sync to Supabase agenda API as well
+          fetch('/api/agenda', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(agendaTask),
+          }).catch(() => {});
         } catch (err) {}
       }
 
@@ -491,6 +576,13 @@ export default function BucketListPage() {
       localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(updated));
       localStorage.setItem('berlyn_bucket_list', JSON.stringify(updated));
 
+      // Sync to Supabase
+      fetch('/api/bucket-list', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newItem),
+      }).catch(() => {});
+
       // If Habit, automatically create task in Shared Agenda!
       if (isHabit && days) {
         try {
@@ -513,13 +605,20 @@ export default function BucketListPage() {
           window.dispatchEvent(new Event('storage'));
           window.dispatchEvent(new Event('agenda_updated'));
 
+          // Sync to Supabase agenda API
+          fetch('/api/agenda', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newAgendaTask),
+          }).catch(() => {});
+
           setNotification(`✨ "${newTitle.trim()}" added to Bucket List & scheduled in Shared Agenda for ${days.join(', ')} @ ${time}!`);
         } catch (err) {
           console.error('Failed to sync to agenda', err);
           setNotification(`✨ "${newTitle.trim()}" added to Bucket List!`);
         }
       } else {
-        setNotification(`✨ "${newTitle.trim()}" added to your Bucket List!`);
+        setNotification(`✨ "${newTitle.trim()}" added to Bucket List!`);
       }
     }
 
