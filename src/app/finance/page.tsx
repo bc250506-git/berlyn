@@ -826,7 +826,13 @@ export default function FinancePage() {
             {symbol}{Math.round(totalNetWorth).toLocaleString()}
           </div>
           <p className="text-[10px] text-slate-400">
-            ✨ Combines liquid cash savings ({symbol}{Math.round(Math.max(0, cumulativeCashSavingsSelected)).toLocaleString()}), term deposits & assets
+            {totalCompoundPrincipalSelected > 0 || totalAssetsSelected > 0 ? (
+              `✨ Combines net cash savings (${symbol}${Math.round(Math.max(0, cumulativeCashSavingsSelected)).toLocaleString()})${
+                totalCompoundPrincipalSelected > 0 ? ` + deposits (${symbol}${Math.round(totalCompoundPrincipalSelected).toLocaleString()})` : ''
+              }${totalAssetsSelected > 0 ? ` + assets (${symbol}${Math.round(totalAssetsSelected).toLocaleString()})` : ''}`
+            ) : (
+              `✨ Liquid couple cash savings (Total Income - Real Expenses)`
+            )}
           </p>
         </div>
 

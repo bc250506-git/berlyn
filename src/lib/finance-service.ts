@@ -216,7 +216,7 @@ export async function fetchFinanceData(): Promise<{
         localStorage.setItem('berlyn_finance_tx', JSON.stringify(finalTx));
       }
 
-      // 2. Compound Accounts Upstream Sync:
+      // 2. Compound Accounts Upstream Sync (Ignore any legacy phantom 28k deposit):
       const remoteComp: CompoundInterestAccount[] = (compRes.data || []).map((r: any) => ({
         id: r.id,
         name: r.name,
@@ -231,8 +231,17 @@ export async function fetchFinanceData(): Promise<{
       const remoteCompMap = new Map<string, CompoundInterestAccount>();
       remoteComp.forEach(c => remoteCompMap.set(c.id, c));
 
-      // Push local compound accounts that are missing in Supabase up to the cloud!
-      const missingComp = localCompound.filter(lc => !remoteCompMap.has(lc.id));
+      // Filter out any legacy test 28k deposits
+      const cleanLocalComp = localCompound.filter(
+        (lc) => !lc.id.includes('term-deposit-28k') && !lc.id.includes('dummy') && lc.principal !== 28000
+      );
+
+      // If remote has no compound accounts, clean out legacy local storage
+      if (remoteComp.length === 0 && typeof window !== 'undefined') {
+        localStorage.removeItem('berlyn_compound_accounts');
+      }
+
+      const missingComp = cleanLocalComp.filter(lc => !remoteCompMap.has(lc.id));
       if (missingComp.length > 0) {
         supabase.from('compound_accounts').upsert(
           missingComp.map(c => ({
@@ -250,7 +259,7 @@ export async function fetchFinanceData(): Promise<{
 
       const compMap = new Map<string, CompoundInterestAccount>();
       remoteComp.forEach(c => compMap.set(c.id, c));
-      localCompound.forEach(c => compMap.set(c.id, c));
+      cleanLocalComp.forEach(c => compMap.set(c.id, c));
       const finalComp = Array.from(compMap.values());
       if (typeof window !== 'undefined') {
         localStorage.setItem('berlyn_compound_accounts', JSON.stringify(finalComp));
