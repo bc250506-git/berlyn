@@ -25,7 +25,8 @@ import {
   BookOpen,
   HeartHandshake,
   RotateCcw,
-  Clock
+  Clock,
+  RefreshCw
 } from 'lucide-react';
 import { 
   FinanceItem, 
@@ -766,11 +767,30 @@ export default function FinancePage() {
     <div className="space-y-4 animate-fade-in pb-16">
       {/* 1. Main Overview Card (Default: TRY, Currency Toggle: TRY, USD, GBP) */}
       <div className="card-cozy p-5 space-y-4">
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-rose-400 font-bold uppercase tracking-wide flex items-center gap-1.5">
-            <Wallet className="w-3.5 h-3.5" />
-            <span>Shared Financial Sanctuary</span>
-          </span>
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-rose-400 font-bold uppercase tracking-wide flex items-center gap-1.5">
+              <Wallet className="w-3.5 h-3.5" />
+              <span>Shared Financial Sanctuary</span>
+            </span>
+            <button
+              onClick={() => {
+                fetchFinanceData().then((data) => {
+                  setTransactions(data.transactions);
+                  setRecurringPayments(data.recurringPayments);
+                  setAssets(data.assets);
+                  setCompoundAccounts(data.compoundAccounts);
+                  playCash();
+                  confetti({ particleCount: 30, spread: 50, origin: { y: 0.6 } });
+                });
+              }}
+              title="Synchronize all records with Cloud database"
+              className="text-[10px] text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/25 flex items-center gap-1 transition-all cursor-pointer"
+            >
+              <RefreshCw className="w-2.5 h-2.5" />
+              <span>Cloud Synced</span>
+            </button>
+          </div>
 
           {/* Currency Toggle */}
           <div className="flex items-center gap-1 bg-[#161e2c] p-1 rounded-xl border border-white/[0.08]">

@@ -348,10 +348,40 @@ export default function BucketListPage() {
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data.items) && data.items.length > 0) {
-          setItems(data.items);
+          let localSaved: BucketItem[] = [];
           if (typeof window !== 'undefined') {
-            localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(data.items));
-            localStorage.setItem('berlyn_bucket_list', JSON.stringify(data.items));
+            const savedStr = localStorage.getItem('berlyn_bucket_list_v2');
+            if (savedStr) {
+              try { localSaved = JSON.parse(savedStr); } catch {}
+            }
+          }
+
+          const remoteMap = new Map<string, BucketItem>();
+          data.items.forEach((item: BucketItem) => remoteMap.set(item.id, item));
+
+          // Check if local has items or updates that are missing in cloud
+          const missingInCloud = localSaved.filter(lt => !remoteMap.has(lt.id));
+          if (missingInCloud.length > 0) {
+            for (const mi of missingInCloud) {
+              fetch('/api/bucket-list', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(mi),
+              }).catch(() => {});
+            }
+          }
+
+          const mergedMap = new Map<string, BucketItem>();
+          data.items.forEach((item: BucketItem) => mergedMap.set(item.id, item));
+          localSaved.forEach((item: BucketItem) => {
+            if (!mergedMap.has(item.id)) mergedMap.set(item.id, item);
+          });
+          const merged = Array.from(mergedMap.values());
+
+          setItems(merged);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('berlyn_bucket_list_v2', JSON.stringify(merged));
+            localStorage.setItem('berlyn_bucket_list', JSON.stringify(merged));
           }
         }
       }

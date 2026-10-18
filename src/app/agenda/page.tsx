@@ -89,9 +89,38 @@ export default function AgendaPage() {
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data.tasks)) {
-          setTasks(data.tasks);
+          let localSaved: AgendaTask[] = [];
           if (typeof window !== 'undefined') {
-            localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(data.tasks));
+            const savedStr = localStorage.getItem('berlyn_agenda_tasks');
+            if (savedStr) {
+              try { localSaved = JSON.parse(savedStr); } catch {}
+            }
+          }
+
+          const remoteIds = new Set(data.tasks.map((t: any) => t.id));
+          const missingInCloud = localSaved.filter(lt => !remoteIds.has(lt.id));
+
+          if (missingInCloud.length > 0) {
+            // Push missing local tasks up to cloud!
+            for (const mt of missingInCloud) {
+              fetch('/api/agenda', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(mt),
+              }).catch(() => {});
+            }
+          }
+
+          const mergedMap = new Map<string, AgendaTask>();
+          data.tasks.forEach((t: AgendaTask) => mergedMap.set(t.id, t));
+          localSaved.forEach((t: AgendaTask) => {
+            if (!mergedMap.has(t.id)) mergedMap.set(t.id, t);
+          });
+          const merged = Array.from(mergedMap.values());
+
+          setTasks(merged);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('berlyn_agenda_tasks', JSON.stringify(merged));
           }
         }
       }

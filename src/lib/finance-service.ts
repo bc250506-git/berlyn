@@ -170,91 +170,168 @@ export async function fetchFinanceData(): Promise<{
         supabase.from('finance_recurring').select('*'),
       ]);
 
-      let finalTx = localTx;
-      if (txRes.data && Array.isArray(txRes.data) && txRes.data.length > 0) {
-        const remoteTx: FinanceItem[] = txRes.data.map((r: any) => ({
-          id: r.id,
-          type: r.type,
-          title: r.title,
-          amount: Number(r.amount),
-          currency: r.currency || 'TRY',
-          category: r.category,
-          user: r.user_tag || 'shared',
-          date: r.date,
-          recurring: Boolean(r.recurring),
-          isInterest: Boolean(r.is_interest),
-          compoundAccountId: r.compound_account_id,
-        }));
-        
-        const txMap = new Map<string, FinanceItem>();
-        remoteTx.forEach(t => txMap.set(t.id, t));
-        localTx.forEach(t => txMap.set(t.id, t));
-        finalTx = Array.from(txMap.values());
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('berlyn_finance_tx', JSON.stringify(finalTx));
-        }
+      // 1. Transactions Upstream Sync:
+      const remoteTx: FinanceItem[] = (txRes.data || []).map((r: any) => ({
+        id: r.id,
+        type: r.type,
+        title: r.title,
+        amount: Number(r.amount),
+        currency: r.currency || 'TRY',
+        category: r.category,
+        user: r.user_tag || 'shared',
+        date: r.date,
+        recurring: Boolean(r.recurring),
+        isInterest: Boolean(r.is_interest),
+        compoundAccountId: r.compound_account_id,
+      }));
+
+      const remoteTxMap = new Map<string, FinanceItem>();
+      remoteTx.forEach(t => remoteTxMap.set(t.id, t));
+
+      // Push local items that are missing in Supabase up to the cloud!
+      const missingTx = localTx.filter(lt => !remoteTxMap.has(lt.id));
+      if (missingTx.length > 0) {
+        supabase.from('finance_transactions').upsert(
+          missingTx.map(t => ({
+            id: t.id,
+            type: t.type,
+            title: t.title,
+            amount: t.amount,
+            currency: t.currency,
+            category: t.category,
+            user_tag: t.user,
+            date: t.date,
+            recurring: t.recurring,
+            is_interest: t.isInterest,
+            compound_account_id: t.compoundAccountId,
+          }))
+        ).then(() => {});
       }
 
-      let finalAssets = localAssets;
-      if (assetRes.data && Array.isArray(assetRes.data) && assetRes.data.length > 0) {
-        const remoteAssets: InvestmentAsset[] = assetRes.data.map((r: any) => ({
-          id: r.id,
-          name: r.name,
-          category: r.category,
-          current_value: Number(r.current_value),
-          currency: r.currency || 'TRY',
-          target_value: r.target_value ? Number(r.target_value) : undefined,
-          monthly_contribution: r.monthly_contribution ? Number(r.monthly_contribution) : undefined,
-        }));
-        const assetMap = new Map<string, InvestmentAsset>();
-        remoteAssets.forEach(a => assetMap.set(a.id, a));
-        localAssets.forEach(a => assetMap.set(a.id, a));
-        finalAssets = Array.from(assetMap.values());
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('berlyn_finance_assets', JSON.stringify(finalAssets));
-        }
+      const txMap = new Map<string, FinanceItem>();
+      remoteTx.forEach(t => txMap.set(t.id, t));
+      localTx.forEach(t => txMap.set(t.id, t));
+      const finalTx = Array.from(txMap.values());
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('berlyn_finance_tx', JSON.stringify(finalTx));
       }
 
-      let finalComp = localCompound;
-      if (compRes.data && Array.isArray(compRes.data) && compRes.data.length > 0) {
-        const remoteComp: CompoundInterestAccount[] = compRes.data.map((r: any) => ({
-          id: r.id,
-          name: r.name,
-          principal: Number(r.principal),
-          currency: r.currency || 'TRY',
-          annualRate: Number(r.annual_rate),
-          compoundingFrequency: 'monthly',
-          startDate: r.start_date,
-          withholdingTax: Number(r.withholding_tax || 0),
-        }));
-        const compMap = new Map<string, CompoundInterestAccount>();
-        remoteComp.forEach(c => compMap.set(c.id, c));
-        localCompound.forEach(c => compMap.set(c.id, c));
-        finalComp = Array.from(compMap.values());
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('berlyn_compound_accounts', JSON.stringify(finalComp));
-        }
+      // 2. Compound Accounts Upstream Sync:
+      const remoteComp: CompoundInterestAccount[] = (compRes.data || []).map((r: any) => ({
+        id: r.id,
+        name: r.name,
+        principal: Number(r.principal),
+        currency: r.currency || 'TRY',
+        annualRate: Number(r.annual_rate),
+        compoundingFrequency: 'monthly',
+        startDate: r.start_date,
+        withholdingTax: Number(r.withholding_tax || 0),
+      }));
+
+      const remoteCompMap = new Map<string, CompoundInterestAccount>();
+      remoteComp.forEach(c => remoteCompMap.set(c.id, c));
+
+      // Push local compound accounts that are missing in Supabase up to the cloud!
+      const missingComp = localCompound.filter(lc => !remoteCompMap.has(lc.id));
+      if (missingComp.length > 0) {
+        supabase.from('compound_accounts').upsert(
+          missingComp.map(c => ({
+            id: c.id,
+            name: c.name,
+            bank_name: c.name,
+            principal: c.principal,
+            currency: c.currency,
+            annual_rate: c.annualRate,
+            withholding_tax: c.withholdingTax,
+            start_date: c.startDate,
+          }))
+        ).then(() => {});
       }
 
-      let finalRec = localRecurring;
-      if (recRes.data && Array.isArray(recRes.data) && recRes.data.length > 0) {
-        const remoteRec: RecurringPayment[] = recRes.data.map((r: any) => ({
-          id: r.id,
-          title: r.title,
-          amount: Number(r.amount),
-          currency: r.currency || 'TRY',
-          category: r.category,
-          type: (r.category?.toLowerCase().includes('salary') || r.title?.toLowerCase().includes('salary')) ? 'income' : 'expense',
-          dayOfMonth: Number(r.due_day || 1),
-          user: (r.payer || 'shared') as FinancePayer,
-        }));
-        const recMap = new Map<string, RecurringPayment>();
-        remoteRec.forEach(i => recMap.set(i.id, i));
-        localRecurring.forEach(i => recMap.set(i.id, i));
-        finalRec = Array.from(recMap.values());
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('berlyn_finance_recurring', JSON.stringify(finalRec));
-        }
+      const compMap = new Map<string, CompoundInterestAccount>();
+      remoteComp.forEach(c => compMap.set(c.id, c));
+      localCompound.forEach(c => compMap.set(c.id, c));
+      const finalComp = Array.from(compMap.values());
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('berlyn_compound_accounts', JSON.stringify(finalComp));
+      }
+
+      // 3. Recurring Payments Upstream Sync:
+      const remoteRec: RecurringPayment[] = (recRes.data || []).map((r: any) => ({
+        id: r.id,
+        title: r.title,
+        amount: Number(r.amount),
+        currency: r.currency || 'TRY',
+        category: r.category,
+        type: (r.category?.toLowerCase().includes('salary') || r.title?.toLowerCase().includes('salary')) ? 'income' : 'expense',
+        dayOfMonth: Number(r.due_day || 1),
+        user: (r.payer || 'shared') as FinancePayer,
+      }));
+
+      const remoteRecMap = new Map<string, RecurringPayment>();
+      remoteRec.forEach(r => remoteRecMap.set(r.id, r));
+
+      // Push local recurring payments that are missing in Supabase up to the cloud!
+      const missingRec = localRecurring.filter(lr => !remoteRecMap.has(lr.id));
+      if (missingRec.length > 0) {
+        supabase.from('finance_recurring').upsert(
+          missingRec.map(r => ({
+            id: r.id,
+            title: r.title,
+            amount: r.amount,
+            currency: r.currency,
+            category: r.category,
+            due_day: r.dayOfMonth,
+            payer: r.user,
+            is_active: true,
+          }))
+        ).then(() => {});
+      }
+
+      const recMap = new Map<string, RecurringPayment>();
+      remoteRec.forEach(i => recMap.set(i.id, i));
+      localRecurring.forEach(i => recMap.set(i.id, i));
+      const finalRec = Array.from(recMap.values());
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('berlyn_finance_recurring', JSON.stringify(finalRec));
+      }
+
+      // 4. Assets Upstream Sync:
+      const remoteAssets: InvestmentAsset[] = (assetRes.data || []).map((r: any) => ({
+        id: r.id,
+        name: r.name,
+        category: r.category,
+        current_value: Number(r.current_value),
+        currency: r.currency || 'TRY',
+        target_value: r.target_value ? Number(r.target_value) : undefined,
+        monthly_contribution: r.monthly_contribution ? Number(r.monthly_contribution) : undefined,
+      }));
+
+      const remoteAssetMap = new Map<string, InvestmentAsset>();
+      remoteAssets.forEach(a => remoteAssetMap.set(a.id, a));
+
+      // Push local assets that are missing in Supabase up to the cloud!
+      const missingAssets = localAssets.filter(la => !remoteAssetMap.has(la.id));
+      if (missingAssets.length > 0) {
+        supabase.from('finance_assets').upsert(
+          missingAssets.map(a => ({
+            id: a.id,
+            name: a.name,
+            category: a.category,
+            current_value: a.current_value,
+            currency: a.currency,
+            target_value: a.target_value,
+            monthly_contribution: a.monthly_contribution,
+          }))
+        ).then(() => {});
+      }
+
+      const assetMap = new Map<string, InvestmentAsset>();
+      remoteAssets.forEach(a => assetMap.set(a.id, a));
+      localAssets.forEach(a => assetMap.set(a.id, a));
+      const finalAssets = Array.from(assetMap.values());
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('berlyn_finance_assets', JSON.stringify(finalAssets));
       }
 
       return {
