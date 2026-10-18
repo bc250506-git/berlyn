@@ -635,30 +635,30 @@ export default function MessagesPage() {
 
                 {/* Message Bubble: Photo, Heart Emoji, or Text */}
                 {msg.photo_url ? (
-                  <div className="relative max-w-[85%]">
-                    {/* Permanent Chat Photo */}
-                    <div className="rounded-2xl overflow-hidden border border-white/[0.1] relative group bg-[#121824] shadow-md">
+                  <div className="relative max-w-[200px] sm:max-w-[220px]">
+                    {/* Permanent Chat Photo - Uncropped, natural aspect ratio, 40% more compact */}
+                    <div className="rounded-2xl overflow-hidden border border-white/[0.1] relative group bg-[#121824] shadow-md w-fit">
                       <div
                         onClick={() => setSelectedFullPhoto(msg.photo_url || null)}
-                        className="cursor-pointer overflow-hidden max-h-72 relative"
+                        className="cursor-pointer overflow-hidden relative flex items-center justify-center bg-[#0c1017]"
                       >
                         <img
                           src={msg.photo_url}
                           alt="Photo"
                           loading="lazy"
-                          className="w-full object-cover group-hover:scale-102 transition-transform duration-300"
+                          className="block w-auto h-auto max-w-[200px] sm:max-w-[220px] max-h-[190px] sm:max-h-[210px] object-contain group-hover:scale-[1.02] transition-transform duration-200"
                         />
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <span className="p-2 rounded-full bg-black/60 text-white backdrop-blur-sm">
-                            <ZoomIn className="w-4 h-4" />
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                          <span className="p-1.5 rounded-full bg-black/60 text-white backdrop-blur-sm shadow">
+                            <ZoomIn className="w-3.5 h-3.5" />
                           </span>
                         </div>
                       </div>
 
                       {/* Caption if provided */}
                       {msgText && !msgText.startsWith('📷') && (
-                        <div className="p-2.5 bg-[#121824] border-t border-white/[0.08] text-xs text-slate-200">
-                          <p className="whitespace-pre-wrap">{msgText}</p>
+                        <div className="p-2 bg-[#121824] border-t border-white/[0.08] text-xs text-slate-200 max-w-[200px] sm:max-w-[220px]">
+                          <p className="whitespace-pre-wrap break-words">{msgText}</p>
                         </div>
                       )}
                     </div>
