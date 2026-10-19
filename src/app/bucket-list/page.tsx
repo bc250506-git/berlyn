@@ -24,8 +24,10 @@ import {
 } from 'lucide-react';
 import { BucketCategory, BucketItem } from '@/types';
 import { useConfirm } from '@/components/ConfirmModal';
+import { useCurrentUser } from '@/components/UserContext';
 import confetti from 'canvas-confetti';
 import { playSparkle, playTap } from '@/lib/sound-effects';
+import { broadcastCoupleNotification } from '@/lib/notifications';
 
 export const CATEGORY_CONFIG: Record<BucketCategory, {
   label: string;
@@ -287,6 +289,7 @@ const WEEKDAYS = [
 ];
 
 export default function BucketListPage() {
+  const { currentUser } = useCurrentUser();
   const confirm = useConfirm();
   const [items, setItems] = useState<BucketItem[]>(() => {
     if (typeof window !== 'undefined') {
@@ -612,6 +615,14 @@ export default function BucketListPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newItem),
       }).catch(() => {});
+
+      broadcastCoupleNotification({
+        type: 'bucket',
+        sender: currentUser === 'jaquilyn' ? 'jaquilyn' : 'berk',
+        title: currentUser === 'jaquilyn' ? '🌸 Jaquilyn added to Bucket List' : '🦁 Berk added to Bucket List',
+        subtitle: newItem.title,
+        link: '/bucket-list',
+      });
 
       // If Habit, automatically create task in Shared Agenda!
       if (isHabit && days) {

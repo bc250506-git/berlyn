@@ -9,7 +9,8 @@ import sharp from 'sharp';
 export async function convertImageToWebP(
   inputBuffer: Buffer,
   fileName: string = '',
-  maxWidth: number = 1920
+  maxWidth: number = 1920,
+  flipHorizontal: boolean = false
 ): Promise<Buffer> {
   let processBuffer: Buffer = inputBuffer;
 
@@ -34,9 +35,15 @@ export async function convertImageToWebP(
     }
   }
 
+  let pipeline = sharp(processBuffer, { failOn: 'none', limitInputPixels: false })
+    .rotate(); // auto-orient based on iPhone EXIF orientation tag
+
+  if (flipHorizontal) {
+    pipeline = pipeline.flop(); // mirror horizontally when requested
+  }
+
   // Convert to WebP using sharp with failOn: 'none' to ignore any minor EXIF/tile warnings
-  return await sharp(processBuffer, { failOn: 'none', limitInputPixels: false })
-    .rotate() // auto-orient based on iPhone EXIF orientation tag
+  return await pipeline
     .resize({ width: maxWidth, height: maxWidth, fit: 'inside', withoutEnlargement: true })
     .webp({ quality: 84, effort: 4 })
     .toBuffer();

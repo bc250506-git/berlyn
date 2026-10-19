@@ -17,8 +17,10 @@ import {
 import { formatDateDDMMYYYY } from '@/lib/date';
 import { createClient } from '@/lib/supabase/client';
 import { useConfirm } from '@/components/ConfirmModal';
+import { useCurrentUser } from '@/components/UserContext';
 import confetti from 'canvas-confetti';
 import { playCoin, playFanfare } from '@/lib/sound-effects';
+import { broadcastCoupleNotification } from '@/lib/notifications';
 
 export interface PenaltyEntry {
   id: string;
@@ -42,6 +44,7 @@ const DEFAULT_GOAL: PenaltyGoal = {
 };
 
 export default function PenaltyPage() {
+  const { currentUser } = useCurrentUser();
   const confirm = useConfirm();
   // 1. Penalties State
   const [penalties, setPenalties] = useState<PenaltyEntry[]>(() => {
@@ -202,6 +205,14 @@ export default function PenaltyPage() {
 
     const addedTRY = addCurrency === 'USD' ? (Math.abs(Number(addAmount)) || 100) * 38 : (Math.abs(Number(addAmount)) || 100);
     const willReachGoal = (totalPoolTRY + addedTRY) >= targetDinnerTRY && targetDinnerTRY > 0;
+
+    broadcastCoupleNotification({
+      type: 'penalty',
+      sender: currentUser === 'jaquilyn' ? 'jaquilyn' : 'berk',
+      title: currentUser === 'jaquilyn' ? '🌸 Jaquilyn added a Penalty' : '🦁 Berk added a Penalty',
+      subtitle: `${newP.user === 'berk' ? '🦁 Berk' : '🌸 Jaquilyn'} fined ${newP.amount} ${newP.currency}: "${newP.reason}"`,
+      link: '/penalty',
+    });
 
     setAddReason('');
     setAddAmount('100');

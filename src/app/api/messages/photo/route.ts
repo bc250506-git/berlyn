@@ -48,6 +48,7 @@ export async function POST(request: Request) {
     const file = formData.get('file') as File | null;
     const sender = (formData.get('sender') as string) || 'berk';
     const caption = (formData.get('caption') as string) || '';
+    const mirror = formData.get('mirror') === 'true';
 
     if (!file) {
       return NextResponse.json({ error: 'No image file provided' }, { status: 400 });
@@ -56,8 +57,8 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const inputBuffer = Buffer.from(bytes);
 
-    // Convert HEIC/JPG/PNG to WebP with auto-rotation (iPhone EXIF support)
-    const webpBuffer = await convertImageToWebP(inputBuffer, file.name || '', 1600);
+    // Convert HEIC/JPG/PNG to WebP with auto-rotation (iPhone EXIF support) & optional mirror
+    const webpBuffer = await convertImageToWebP(inputBuffer, file.name || '', 1600, mirror);
 
     const fileName = `chat-${Date.now()}-${Math.random().toString(36).substring(2, 7)}.webp`;
     let photoUrl = '';

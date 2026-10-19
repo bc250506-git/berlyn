@@ -511,3 +511,41 @@ export function playSparkle() {
     osc.stop(startTime + 0.4);
   });
 }
+
+/**
+ * 17. Couple Activity Notification Chime (Gentle D5 -> A5 Harmonic Bell)
+ */
+export function playNotificationChime() {
+  if (isSoundMuted()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  const now = ctx.currentTime;
+  const osc1 = ctx.createOscillator();
+  const osc2 = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc1.type = 'sine';
+  osc2.type = 'triangle';
+
+  // D5 (587.33 Hz) -> A5 (880 Hz) harmonic couple chime
+  osc1.frequency.setValueAtTime(587.33, now);
+  osc1.frequency.exponentialRampToValueAtTime(880.0, now + 0.12);
+
+  osc2.frequency.setValueAtTime(880.0, now + 0.12);
+  osc2.frequency.setValueAtTime(1174.66, now + 0.22); // D6 sparkle
+
+  gain.gain.setValueAtTime(0.001, now);
+  gain.gain.linearRampToValueAtTime(0.16, now + 0.04);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
+
+  osc1.connect(gain);
+  osc2.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc1.start(now);
+  osc2.start(now + 0.1);
+  osc1.stop(now + 0.7);
+  osc2.stop(now + 0.7);
+}
+

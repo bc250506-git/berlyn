@@ -42,6 +42,7 @@ import {
 } from '@/lib/finance-service';
 import confetti from 'canvas-confetti';
 import { playHarp, playVote, playMatch, playSeal, playTaskCheck } from '@/lib/sound-effects';
+import { broadcastCoupleNotification } from '@/lib/notifications';
 
 interface NoteEntry {
   author: 'berk' | 'jaquilyn';
@@ -296,6 +297,14 @@ export function HomePageClient({
         setMyNoteInput('');
         handleAcknowledgePartnerNote();
         playHarp();
+
+        broadcastCoupleNotification({
+          type: 'note',
+          sender: activeUser === 'jaquilyn' ? 'jaquilyn' : 'berk',
+          title: activeUser === 'jaquilyn' ? '🌸 Jaquilyn left a Love Note' : '🦁 Berk left a Love Note',
+          subtitle: textToSave.trim().slice(0, 60),
+          link: '/',
+        });
 
         confetti({
           particleCount: 40,

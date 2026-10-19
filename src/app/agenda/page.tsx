@@ -20,6 +20,7 @@ import {
 import { useCurrentUser } from '@/components/UserContext';
 import { useConfirm } from '@/components/ConfirmModal';
 import { playTaskCheck, playTap } from '@/lib/sound-effects';
+import { broadcastCoupleNotification } from '@/lib/notifications';
 
 export interface AgendaTask {
   id: string;
@@ -245,6 +246,14 @@ export default function AgendaPage() {
     setDueTime('');
     setShowAddModal(false);
     playTap();
+
+    broadcastCoupleNotification({
+      type: 'agenda',
+      sender: currentUser === 'jaquilyn' ? 'jaquilyn' : 'berk',
+      title: currentUser === 'jaquilyn' ? '🌸 Jaquilyn added to Agenda' : '🦁 Berk added to Agenda',
+      subtitle: newTask.title,
+      link: '/agenda',
+    });
 
     try {
       await fetch('/api/agenda', {

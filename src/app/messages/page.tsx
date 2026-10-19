@@ -10,12 +10,14 @@ import {
   Check,
   Loader2,
   Camera,
-  ZoomIn
+  ZoomIn,
+  FlipHorizontal
 } from 'lucide-react';
 import { useCurrentUser } from '@/components/UserContext';
 import { createClient } from '@/lib/supabase/client';
 import confetti from 'canvas-confetti';
 import { playWhoosh, playShutter } from '@/lib/sound-effects';
+import { broadcastCoupleNotification } from '@/lib/notifications';
 
 interface Message {
   id: string;
@@ -51,6 +53,7 @@ export default function MessagesPage() {
   const photoInputRef = useRef<HTMLInputElement>(null);
   const [pendingPhotoFile, setPendingPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [isMirrored, setIsMirrored] = useState(false);
   const [photoCaption, setPhotoCaption] = useState('');
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
   const [selectedFullPhoto, setSelectedFullPhoto] = useState<string | null>(null);
@@ -191,6 +194,10 @@ export default function MessagesPage() {
     fetchMessages();
     fetchPresence();
     updateMyPresence({ in_chat: true });
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(`berlyn_${activeSender}_last_seen_msg_time`, Date.now().toString());
+      window.dispatchEvent(new Event('berlyn_msg_read'));
+    }
 
     // 2. Realtime WebSocket subscription with Supabase broadcast channel
     let channel: any = null;
@@ -362,6 +369,13 @@ export default function MessagesPage() {
 
         // Broadcast immediately over Realtime WebSocket to partner
         channelBroadcast('new_message', newMsg);
+        broadcastCoupleNotification({
+          type: 'message',
+          sender: activeSender,
+          title: activeSender === 'berk' ? '🦁 Berk sent a message' : '🌸 Jaquilyn sent a message',
+          subtitle: isHeartOnly ? '❤️ Sent a heart' : (newMsg.text || 'New message'),
+          link: '/messages',
+        });
         playWhoosh();
 
         if (isHeartOnly) {
@@ -434,18 +448,19 @@ export default function MessagesPage() {
     if (!file) return;
 
     setPendingPhotoFile(file);
-    const isHeic = file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif');
-    if (!isHeic) {
+    setIsMirrored(false);
+
+    try {
       const url = URL.createObjectURL(file);
       setPhotoPreview(url);
-    } else {
+    } catch {
       setPhotoPreview(null);
     }
 
     if (photoInputRef.current) photoInputRef.current.value = '';
   };
 
-  // Send permanent photo (converts to WebP on server)
+  // Send permanent photo (converts to WebP on server, respecting mirror selection)
   const handleSendPhoto = async () => {
     if (!pendingPhotoFile || isUploadingPhoto) return;
     setIsUploadingPhoto(true);
@@ -455,6 +470,7 @@ export default function MessagesPage() {
       formData.append('file', pendingPhotoFile);
       formData.append('sender', activeSender);
       formData.append('caption', photoCaption.trim());
+      formData.append('mirror', isMirrored ? 'true' : 'false');
 
       const res = await fetch('/api/messages/photo', {
         method: 'POST',
@@ -470,12 +486,20 @@ export default function MessagesPage() {
       setTimeout(scrollToBottom, 50);
 
       channelBroadcast('new_message', newMsg);
+      broadcastCoupleNotification({
+        type: 'message',
+        sender: activeSender,
+        title: activeSender === 'berk' ? '🦁 Berk sent a photo' : '🌸 Jaquilyn sent a photo',
+        subtitle: photoCaption.trim() || '📷 Photo',
+        link: '/messages',
+      });
       playShutter();
 
       // Reset modal state
       setPendingPhotoFile(null);
       setPhotoPreview(null);
       setPhotoCaption('');
+      setIsMirrored(false);
     } catch (err) {
       console.error('Failed to send photo:', err);
     } finally {
@@ -941,13 +965,14 @@ export default function MessagesPage() {
 
             {/* Scrollable Body */}
             <div className="p-4 space-y-3.5 overflow-y-auto">
-              {/* Photo Preview / HEIC badge */}
-              <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-[#0c1017] min-h-[180px] max-h-[260px] flex items-center justify-center">
+              {/* Photo Preview / Flip Control */}
+              <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-[#0c1017] min-h-[190px] max-h-[280px] flex items-center justify-center p-2">
                 {photoPreview ? (
                   <img
                     src={photoPreview}
                     alt="Preview"
-                    className="max-h-[260px] w-full object-contain"
+                    style={{ transform: isMirrored ? 'scaleX(-1)' : 'none' }}
+                    className="max-h-[260px] w-auto max-w-full object-contain rounded-lg transition-transform duration-200"
                   />
                 ) : (
                   <div className="text-center p-6 space-y-2">
@@ -955,13 +980,28 @@ export default function MessagesPage() {
                       <Camera className="w-6 h-6" />
                     </div>
                     <p className="text-xs font-medium text-slate-200">
-                      iPhone Photo (HEIC / HEIF) Detected
+                      Photo Selected
                     </p>
                     <p className="text-[10px] text-rose-300">
-                      Automatically converted to ultra-lightweight WebP format
+                      Ready to send in original crisp quality
                     </p>
                   </div>
                 )}
+
+                {/* Flip / Mirror Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsMirrored((prev) => !prev)}
+                  className={`absolute top-2.5 right-2.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold flex items-center gap-1.5 transition-all shadow-md backdrop-blur-md cursor-pointer ${
+                    isMirrored
+                      ? 'bg-rose-600 text-white shadow-rose-600/40 ring-1 ring-white/40'
+                      : 'bg-black/70 hover:bg-black/90 text-slate-200 border border-white/20'
+                  }`}
+                  title="Toggle horizontal mirror / flip"
+                >
+                  <FlipHorizontal className="w-3.5 h-3.5" />
+                  <span>{isMirrored ? 'Flipped (Aynalı)' : 'Flip / Mirror'}</span>
+                </button>
 
                 <div className="absolute bottom-2 left-2 right-2 pointer-events-none">
                   <span className="text-[9.5px] px-2 py-0.5 rounded-md bg-black/75 border border-white/20 text-slate-300 font-mono inline-block truncate max-w-full">

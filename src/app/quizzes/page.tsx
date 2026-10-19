@@ -22,6 +22,7 @@ import { useCurrentUser } from '@/components/UserContext';
 import { formatDateDDMMYYYY } from '@/lib/date';
 import confetti from 'canvas-confetti';
 import { playSeal, playMatch, playFanfare } from '@/lib/sound-effects';
+import { broadcastCoupleNotification } from '@/lib/notifications';
 import { QuizRecord } from '@/app/api/quizzes/route';
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
@@ -141,6 +142,14 @@ export default function QuizzesPage() {
         setTodayQuiz(data.quiz);
         setIsTodayCompleted(data.isCompleted);
         setAnswerInput('');
+
+        broadcastCoupleNotification({
+          type: 'quiz',
+          sender: currentUser === 'jaquilyn' ? 'jaquilyn' : 'berk',
+          title: currentUser === 'jaquilyn' ? '🌸 Jaquilyn answered the Daily Quiz!' : '🦁 Berk answered the Daily Quiz!',
+          subtitle: data.isCompleted ? '🎉 Compatibility match revealed! Tap to view.' : 'Waiting for your answer to reveal!',
+          link: '/quizzes',
+        });
 
         if (data.isCompleted) {
           playMatch();

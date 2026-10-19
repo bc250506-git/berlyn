@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
@@ -29,6 +29,57 @@ export function Navbar() {
   const { currentUser, profile, logout } = useCurrentUser();
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [muted, setMuted] = useState(false);
+  const [unreadCount, setUnreadCount] = useState<number>(0);
+
+  // Unread messages tracking
+  const checkUnreadMessages = useCallback(async () => {
+    if (!currentUser) return;
+    if (pathname === '/messages') {
+      setUnreadCount(0);
+      localStorage.setItem(`berlyn_${currentUser}_last_seen_msg_time`, Date.now().toString());
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/messages', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      const messages: any[] = Array.isArray(data) ? data : (data.messages || []);
+
+      const lastSeenStr = localStorage.getItem(`berlyn_${currentUser}_last_seen_msg_time`);
+      const lastSeenTime = lastSeenStr ? Number(lastSeenStr) : 0;
+
+      const partner = currentUser === 'berk' ? 'jaquilyn' : 'berk';
+      const unread = messages.filter((m: any) => {
+        const mTime = Number(m.created_at) || 0;
+        return m.sender === partner && mTime > lastSeenTime;
+      }).length;
+
+      setUnreadCount(unread);
+    } catch {
+      // silent
+    }
+  }, [currentUser, pathname]);
+
+  useEffect(() => {
+    checkUnreadMessages();
+    const interval = setInterval(checkUnreadMessages, 12000);
+
+    const handleLocalNotif = (e: any) => {
+      const detail = e.detail;
+      if (detail && detail.type === 'message' && pathname !== '/messages') {
+        setUnreadCount((prev) => prev + 1);
+      }
+    };
+    window.addEventListener('berlyn_local_notif', handleLocalNotif);
+    window.addEventListener('berlyn_msg_read', checkUnreadMessages);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('berlyn_local_notif', handleLocalNotif);
+      window.removeEventListener('berlyn_msg_read', checkUnreadMessages);
+    };
+  }, [checkUnreadMessages, pathname]);
 
   useEffect(() => {
     setMuted(isSoundMuted());
@@ -147,7 +198,14 @@ export function Navbar() {
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <MessageCircle className={`w-5 h-5 mb-0.5 ${pathname === '/messages' ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
+            <div className="relative">
+              <MessageCircle className={`w-5 h-5 mb-0.5 ${pathname === '/messages' ? 'stroke-[2.3]' : 'stroke-[1.7]'}`} />
+              {unreadCount > 0 && pathname !== '/messages' && (
+                <span className="absolute -top-1.5 -right-2.5 px-1 min-w-[17px] h-[17px] rounded-full bg-rose-600 text-white text-[9.5px] font-bold flex items-center justify-center shadow-lg shadow-rose-600/50 animate-pulse border-2 border-[#0d121c] leading-none">
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </span>
+              )}
+            </div>
             <span className="text-[10px] tracking-tight">Messages</span>
           </Link>
 
